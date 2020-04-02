@@ -43,6 +43,17 @@ namespace Intersect.GameObjects.Crafting
         [JsonProperty(Order = -2)]
         public int Time { get; set; }
 
+        [Column("CraftEvent")]
+        public Guid CraftEventId { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
+        public Events.EventBase CraftEvent
+        {
+            get => Events.EventBase.Get(CraftEventId);
+            set => CraftEventId = value?.Id ?? Guid.Empty;
+        }
+
         /// <inheritdoc />
         public string Folder { get; set; } = "";
 
