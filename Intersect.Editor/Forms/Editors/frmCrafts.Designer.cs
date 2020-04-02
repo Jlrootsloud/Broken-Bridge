@@ -74,6 +74,8 @@ namespace Intersect.Editor.Forms.Editors
             this.toolStripItemPaste = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripItemUndo = new System.Windows.Forms.ToolStripButton();
+            this.lblSuccessRate = new System.Windows.Forms.Label();
+            this.nudSuccessRate = new DarkUI.Controls.DarkNumericUpDown();
             this.grpCrafts.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.grpGeneral.SuspendLayout();
@@ -82,6 +84,7 @@ namespace Intersect.Editor.Forms.Editors
             this.grpIngredients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).BeginInit();
             this.toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSuccessRate)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -388,6 +391,8 @@ namespace Intersect.Editor.Forms.Editors
             // 
             this.grpIngredients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.grpIngredients.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpIngredients.Controls.Add(this.nudSuccessRate);
+            this.grpIngredients.Controls.Add(this.lblSuccessRate);
             this.grpIngredients.Controls.Add(this.cmbCraftEvent);
             this.grpIngredients.Controls.Add(this.lblCraftEvent);
             this.grpIngredients.Controls.Add(this.nudQuantity);
@@ -422,10 +427,10 @@ namespace Intersect.Editor.Forms.Editors
             this.cmbCraftEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCraftEvent.ForeColor = System.Drawing.Color.Gainsboro;
             this.cmbCraftEvent.FormattingEnabled = true;
-            this.cmbCraftEvent.Location = new System.Drawing.Point(22, 358);
+            this.cmbCraftEvent.Location = new System.Drawing.Point(185, 358);
             this.cmbCraftEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbCraftEvent.Name = "cmbCraftEvent";
-            this.cmbCraftEvent.Size = new System.Drawing.Size(373, 27);
+            this.cmbCraftEvent.Size = new System.Drawing.Size(206, 27);
             this.cmbCraftEvent.TabIndex = 43;
             this.cmbCraftEvent.Text = null;
             this.cmbCraftEvent.TextPadding = new System.Windows.Forms.Padding(2);
@@ -434,7 +439,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblCraftEvent
             // 
             this.lblCraftEvent.AutoSize = true;
-            this.lblCraftEvent.Location = new System.Drawing.Point(16, 337);
+            this.lblCraftEvent.Location = new System.Drawing.Point(181, 337);
             this.lblCraftEvent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCraftEvent.Name = "lblCraftEvent";
             this.lblCraftEvent.Size = new System.Drawing.Size(54, 20);
@@ -681,6 +686,37 @@ namespace Intersect.Editor.Forms.Editors
             this.toolStripItemUndo.Text = "Undo";
             this.toolStripItemUndo.Click += new System.EventHandler(this.toolStripItemUndo_Click);
             // 
+            // lblSuccessRate
+            // 
+            this.lblSuccessRate.AutoSize = true;
+            this.lblSuccessRate.Location = new System.Drawing.Point(14, 337);
+            this.lblSuccessRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSuccessRate.Name = "lblSuccessRate";
+            this.lblSuccessRate.Size = new System.Drawing.Size(113, 20);
+            this.lblSuccessRate.TabIndex = 44;
+            this.lblSuccessRate.Text = "Success Rate:";
+            // 
+            // nudSuccessRate
+            // 
+            this.nudSuccessRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.nudSuccessRate.ForeColor = System.Drawing.Color.Gainsboro;
+            this.nudSuccessRate.Location = new System.Drawing.Point(18, 358);
+            this.nudSuccessRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.nudSuccessRate.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSuccessRate.Name = "nudSuccessRate";
+            this.nudSuccessRate.Size = new System.Drawing.Size(159, 26);
+            this.nudSuccessRate.TabIndex = 45;
+            this.nudSuccessRate.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nudSuccessRate.ValueChanged += new System.EventHandler(this.nudSuccessRate_ValueChanged);
+            // 
             // FrmCrafts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -717,6 +753,7 @@ namespace Intersect.Editor.Forms.Editors
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantity)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSuccessRate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -765,5 +802,7 @@ namespace Intersect.Editor.Forms.Editors
         private System.Windows.Forms.ImageList imageList;
         private DarkComboBox cmbCraftEvent;
         private System.Windows.Forms.Label lblCraftEvent;
+        private DarkNumericUpDown nudSuccessRate;
+        private System.Windows.Forms.Label lblSuccessRate;
     }
 }

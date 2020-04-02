@@ -82,6 +82,8 @@ namespace Intersect.Editor.Forms.Editors
                 nudQuantity.Hide();
                 lblQuantity.Hide();
                 lblIngredient.Hide();
+                // Success Rate
+                nudSuccessRate.Value = mEditorItem.SuccessRate;
                 // Craft Event
                 cmbCraftEvent.SelectedIndex = GameObjects.Events.EventBase.ListIndex(mEditorItem.CraftEventId) + 1;
                 for (var i = 0; i < mEditorItem.Ingredients.Count; i++)
@@ -168,6 +170,11 @@ namespace Intersect.Editor.Forms.Editors
         private void nudSpeed_ValueChanged(object sender, EventArgs e)
         {
             mEditorItem.Time = (int) nudSpeed.Value;
+        }
+
+        private void nudSuccessRate_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.SuccessRate = (int)nudSuccessRate.Value;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -445,7 +452,8 @@ namespace Intersect.Editor.Forms.Editors
 
             btnSave.Text = Strings.CraftsEditor.save;
             btnCancel.Text = Strings.CraftsEditor.cancel;
-            lblCraftEvent.Text = Strings.ItemEditor.craftevent;
+            lblCraftEvent.Text = Strings.CraftsEditor.craftevent;
+            lblSuccessRate.Text = Strings.CraftsEditor.successrate;
         }
 
         private void nudCraftQuantity_ValueChanged(object sender, EventArgs e)

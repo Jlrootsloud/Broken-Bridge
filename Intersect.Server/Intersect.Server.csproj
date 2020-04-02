@@ -484,6 +484,10 @@
     <Compile Include="Migrations\Game\20200402022302_craftevents.designer.cs">
       <DependentUpon>20200402022302_craftevents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Game\20200402190708_ExtendedCrafting.cs" />
+    <Compile Include="Migrations\Game\20200402190708_ExtendedCrafting.designer.cs">
+      <DependentUpon>20200402190708_ExtendedCrafting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Entities\Npc.cs" />
     <Compile Include="Networking\Helpers\NetDebug.cs" />
