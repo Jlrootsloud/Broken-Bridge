@@ -2397,6 +2397,13 @@ namespace Intersect.Server.Entities
                         this, Strings.Crafting.crafted.ToString(ItemBase.GetName(CraftBase.Get(id).ItemId)),
                         CustomColors.Alerts.Success
                     );
+                    // trigger craft event
+                    if (CraftBase.Get(id).CraftEventId != Guid.Empty)
+                    {
+                        StartCommonEvent(EventBase.Get(CraftBase.Get(id).CraftEventId), CommonEventTrigger.None);
+                    }
+
+
                 }
                 else
                 {

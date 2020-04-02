@@ -2905,6 +2905,8 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString weaponproperties = @"Weapon Properties";
 
+            public static LocalizedString craftevent = @"Craft Event";
+
         }
 
         public struct LightEditor
