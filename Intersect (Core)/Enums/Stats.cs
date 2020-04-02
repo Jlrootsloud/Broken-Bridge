@@ -14,6 +14,25 @@ namespace Intersect.Enums
 
         Speed,
 
+        Intelligence,
+
+        Fire,
+
+        Earth,
+
+        Ice,
+
+        Wind,
+
+        FireResist,
+
+        EarthResist,
+
+        IceResist,
+
+        WindResist,
+
+
         StatCount
 
     }
