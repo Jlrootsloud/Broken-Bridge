@@ -43,6 +43,9 @@ namespace Intersect.GameObjects.Crafting
         [JsonProperty(Order = -2)]
         public int Time { get; set; }
 
+        [Column("SuccessRate")]
+        public int SuccessRate { get; set; } = 100;
+
         [Column("CraftEvent")]
         public Guid CraftEventId { get; set; }
 
