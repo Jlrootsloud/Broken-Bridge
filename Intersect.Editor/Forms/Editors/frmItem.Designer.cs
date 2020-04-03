@@ -34,25 +34,13 @@ namespace Intersect.Editor.Forms.Editors
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmItem));
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.toolStrip = new DarkUI.Controls.DarkToolStrip();
-            this.toolStripItemNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripItemDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnChronological = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripItemCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripItemPaste = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripItemUndo = new System.Windows.Forms.ToolStripButton();
-            this.btnCancel = new DarkUI.Controls.DarkButton();
-            this.btnSave = new DarkUI.Controls.DarkButton();
             this.grpItems = new DarkUI.Controls.DarkGroupBox();
             this.btnClearSearch = new DarkUI.Controls.DarkButton();
             this.txtSearch = new DarkUI.Controls.DarkTextBox();
             this.lstItems = new System.Windows.Forms.TreeView();
-            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.btnCancel = new DarkUI.Controls.DarkButton();
+            this.btnSave = new DarkUI.Controls.DarkButton();
             this.grpGeneral = new DarkUI.Controls.DarkGroupBox();
             this.btnAddFolder = new DarkUI.Controls.DarkButton();
             this.lblFolder = new System.Windows.Forms.Label();
@@ -99,16 +87,6 @@ namespace Intersect.Editor.Forms.Editors
             this.lblEquipmentAnimation = new System.Windows.Forms.Label();
             this.nudEffectPercent = new DarkUI.Controls.DarkNumericUpDown();
             this.grpStatBonuses = new DarkUI.Controls.DarkGroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown3 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown4 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown1 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown2 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.lblPercentage5 = new System.Windows.Forms.Label();
             this.lblPercentage4 = new System.Windows.Forms.Label();
             this.lblPercentage8 = new System.Windows.Forms.Label();
@@ -174,14 +152,6 @@ namespace Intersect.Editor.Forms.Editors
             this.lblDamage = new System.Windows.Forms.Label();
             this.grpEvent = new DarkUI.Controls.DarkGroupBox();
             this.cmbEvent = new DarkUI.Controls.DarkComboBox();
-            this.grpSpell = new DarkUI.Controls.DarkGroupBox();
-            this.chkDestroy = new DarkUI.Controls.DarkCheckBox();
-            this.chkQuickCast = new DarkUI.Controls.DarkCheckBox();
-            this.cmbTeachSpell = new DarkUI.Controls.DarkComboBox();
-            this.lblSpell = new System.Windows.Forms.Label();
-            this.grpBags = new DarkUI.Controls.DarkGroupBox();
-            this.nudBag = new DarkUI.Controls.DarkNumericUpDown();
-            this.lblBag = new System.Windows.Forms.Label();
             this.grpConsumable = new DarkUI.Controls.DarkGroupBox();
             this.lblPercentage3 = new System.Windows.Forms.Label();
             this.nudIntervalPercentage = new DarkUI.Controls.DarkNumericUpDown();
@@ -190,44 +160,27 @@ namespace Intersect.Editor.Forms.Editors
             this.lblVital = new System.Windows.Forms.Label();
             this.cmbConsume = new DarkUI.Controls.DarkComboBox();
             this.lblInterval = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown5 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown6 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown7 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown8 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown9 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown10 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown11 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown12 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown13 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label20 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown14 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown15 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label23 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown16 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown17 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label26 = new System.Windows.Forms.Label();
-            this.darkNumericUpDown18 = new DarkUI.Controls.DarkNumericUpDown();
-            this.label27 = new System.Windows.Forms.Label();
-            this.toolStrip.SuspendLayout();
+            this.grpSpell = new DarkUI.Controls.DarkGroupBox();
+            this.chkDestroy = new DarkUI.Controls.DarkCheckBox();
+            this.chkQuickCast = new DarkUI.Controls.DarkCheckBox();
+            this.cmbTeachSpell = new DarkUI.Controls.DarkComboBox();
+            this.lblSpell = new System.Windows.Forms.Label();
+            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.grpBags = new DarkUI.Controls.DarkGroupBox();
+            this.nudBag = new DarkUI.Controls.DarkNumericUpDown();
+            this.lblBag = new System.Windows.Forms.Label();
+            this.toolStrip = new DarkUI.Controls.DarkToolStrip();
+            this.toolStripItemNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripItemDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnChronological = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripItemCopy = new System.Windows.Forms.ToolStripButton();
+            this.toolStripItemPaste = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripItemUndo = new System.Windows.Forms.ToolStripButton();
             this.grpItems.SuspendLayout();
-            this.pnlContainer.SuspendLayout();
             this.grpGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCooldown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
@@ -243,10 +196,6 @@ namespace Intersect.Editor.Forms.Editors
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthBonus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEffectPercent)).BeginInit();
             this.grpStatBonuses.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpdPercentage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMRPercentage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDefPercentage)).BeginInit();
@@ -268,176 +217,15 @@ namespace Intersect.Editor.Forms.Editors
             ((System.ComponentModel.ISupportInitialize)(this.nudCritChance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDamage)).BeginInit();
             this.grpEvent.SuspendLayout();
-            this.grpSpell.SuspendLayout();
-            this.grpBags.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBag)).BeginInit();
             this.grpConsumable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIntervalPercentage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInterval)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown18)).BeginInit();
+            this.grpSpell.SuspendLayout();
+            this.pnlContainer.SuspendLayout();
+            this.grpBags.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBag)).BeginInit();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "folder_Open_16xLG.png");
-            this.imageList.Images.SetKeyName(1, "LegacyPackage_16x.png");
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.AutoSize = false;
-            this.toolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.toolStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripItemNew,
-            this.toolStripSeparator1,
-            this.toolStripItemDelete,
-            this.toolStripSeparator2,
-            this.btnChronological,
-            this.toolStripSeparator4,
-            this.toolStripItemCopy,
-            this.toolStripItemPaste,
-            this.toolStripSeparator3,
-            this.toolStripItemUndo});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.toolStrip.Size = new System.Drawing.Size(690, 25);
-            this.toolStrip.TabIndex = 44;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // toolStripItemNew
-            // 
-            this.toolStripItemNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItemNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripItemNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemNew.Image")));
-            this.toolStripItemNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemNew.Name = "toolStripItemNew";
-            this.toolStripItemNew.Size = new System.Drawing.Size(23, 22);
-            this.toolStripItemNew.Text = "New";
-            this.toolStripItemNew.Click += new System.EventHandler(this.toolStripItemNew_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripItemDelete
-            // 
-            this.toolStripItemDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItemDelete.Enabled = false;
-            this.toolStripItemDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripItemDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemDelete.Image")));
-            this.toolStripItemDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemDelete.Name = "toolStripItemDelete";
-            this.toolStripItemDelete.Size = new System.Drawing.Size(23, 22);
-            this.toolStripItemDelete.Text = "Delete";
-            this.toolStripItemDelete.Click += new System.EventHandler(this.toolStripItemDelete_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnChronological
-            // 
-            this.btnChronological.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnChronological.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.btnChronological.Image = ((System.Drawing.Image)(resources.GetObject("btnChronological.Image")));
-            this.btnChronological.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnChronological.Name = "btnChronological";
-            this.btnChronological.Size = new System.Drawing.Size(23, 22);
-            this.btnChronological.Text = "Order Chronologically";
-            this.btnChronological.Click += new System.EventHandler(this.btnChronological_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripItemCopy
-            // 
-            this.toolStripItemCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItemCopy.Enabled = false;
-            this.toolStripItemCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripItemCopy.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemCopy.Image")));
-            this.toolStripItemCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemCopy.Name = "toolStripItemCopy";
-            this.toolStripItemCopy.Size = new System.Drawing.Size(23, 22);
-            this.toolStripItemCopy.Text = "Copy";
-            this.toolStripItemCopy.Click += new System.EventHandler(this.toolStripItemCopy_Click);
-            // 
-            // toolStripItemPaste
-            // 
-            this.toolStripItemPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItemPaste.Enabled = false;
-            this.toolStripItemPaste.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripItemPaste.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemPaste.Image")));
-            this.toolStripItemPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemPaste.Name = "toolStripItemPaste";
-            this.toolStripItemPaste.Size = new System.Drawing.Size(23, 22);
-            this.toolStripItemPaste.Text = "Paste";
-            this.toolStripItemPaste.Click += new System.EventHandler(this.toolStripItemPaste_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripItemUndo
-            // 
-            this.toolStripItemUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripItemUndo.Enabled = false;
-            this.toolStripItemUndo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripItemUndo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemUndo.Image")));
-            this.toolStripItemUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripItemUndo.Name = "toolStripItemUndo";
-            this.toolStripItemUndo.Size = new System.Drawing.Size(23, 22);
-            this.toolStripItemUndo.Text = "Undo";
-            this.toolStripItemUndo.Click += new System.EventHandler(this.toolStripItemUndo_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(494, 482);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(5);
-            this.btnCancel.Size = new System.Drawing.Size(190, 28);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(298, 482);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(5);
-            this.btnSave.Size = new System.Drawing.Size(190, 28);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // grpItems
             // 
@@ -497,20 +285,33 @@ namespace Intersect.Editor.Forms.Editors
             this.lstItems.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.lstItems_AfterSelect);
             this.lstItems.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.lstItems_NodeMouseClick);
             // 
-            // pnlContainer
+            // imageList
             // 
-            this.pnlContainer.AutoScroll = true;
-            this.pnlContainer.Controls.Add(this.grpGeneral);
-            this.pnlContainer.Controls.Add(this.grpEquipment);
-            this.pnlContainer.Controls.Add(this.grpEvent);
-            this.pnlContainer.Controls.Add(this.grpSpell);
-            this.pnlContainer.Controls.Add(this.grpBags);
-            this.pnlContainer.Controls.Add(this.grpConsumable);
-            this.pnlContainer.Location = new System.Drawing.Point(221, 34);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(463, 442);
-            this.pnlContainer.TabIndex = 43;
-            this.pnlContainer.Visible = false;
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "folder_Open_16xLG.png");
+            this.imageList.Images.SetKeyName(1, "LegacyPackage_16x.png");
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(494, 482);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Size = new System.Drawing.Size(190, 28);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(298, 482);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(5);
+            this.btnSave.Size = new System.Drawing.Size(190, 28);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // grpGeneral
             // 
@@ -891,7 +692,7 @@ namespace Intersect.Editor.Forms.Editors
             this.grpEquipment.ForeColor = System.Drawing.Color.Gainsboro;
             this.grpEquipment.Location = new System.Drawing.Point(2, 270);
             this.grpEquipment.Name = "grpEquipment";
-            this.grpEquipment.Size = new System.Drawing.Size(439, 1185);
+            this.grpEquipment.Size = new System.Drawing.Size(439, 731);
             this.grpEquipment.TabIndex = 12;
             this.grpEquipment.TabStop = false;
             this.grpEquipment.Text = "Equipment";
@@ -907,7 +708,7 @@ namespace Intersect.Editor.Forms.Editors
             this.grpRegen.Controls.Add(this.lblManaRegen);
             this.grpRegen.Controls.Add(this.lblRegenHint);
             this.grpRegen.ForeColor = System.Drawing.Color.Gainsboro;
-            this.grpRegen.Location = new System.Drawing.Point(226, 535);
+            this.grpRegen.Location = new System.Drawing.Point(13, 388);
             this.grpRegen.Margin = new System.Windows.Forms.Padding(2);
             this.grpRegen.Name = "grpRegen";
             this.grpRegen.Padding = new System.Windows.Forms.Padding(2);
@@ -1183,7 +984,7 @@ namespace Intersect.Editor.Forms.Editors
             // 
             this.nudEffectPercent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
             this.nudEffectPercent.ForeColor = System.Drawing.Color.Gainsboro;
-            this.nudEffectPercent.Location = new System.Drawing.Point(315, 659);
+            this.nudEffectPercent.Location = new System.Drawing.Point(103, 510);
             this.nudEffectPercent.Name = "nudEffectPercent";
             this.nudEffectPercent.Size = new System.Drawing.Size(114, 20);
             this.nudEffectPercent.TabIndex = 55;
@@ -1198,51 +999,6 @@ namespace Intersect.Editor.Forms.Editors
             // 
             this.grpStatBonuses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.grpStatBonuses.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.grpStatBonuses.Controls.Add(this.label16);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown11);
-            this.grpStatBonuses.Controls.Add(this.label17);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown12);
-            this.grpStatBonuses.Controls.Add(this.label18);
-            this.grpStatBonuses.Controls.Add(this.label19);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown13);
-            this.grpStatBonuses.Controls.Add(this.label20);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown14);
-            this.grpStatBonuses.Controls.Add(this.label21);
-            this.grpStatBonuses.Controls.Add(this.label22);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown15);
-            this.grpStatBonuses.Controls.Add(this.label23);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown16);
-            this.grpStatBonuses.Controls.Add(this.label24);
-            this.grpStatBonuses.Controls.Add(this.label25);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown17);
-            this.grpStatBonuses.Controls.Add(this.label26);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown18);
-            this.grpStatBonuses.Controls.Add(this.label27);
-            this.grpStatBonuses.Controls.Add(this.label13);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown9);
-            this.grpStatBonuses.Controls.Add(this.label14);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown10);
-            this.grpStatBonuses.Controls.Add(this.label15);
-            this.grpStatBonuses.Controls.Add(this.label10);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown7);
-            this.grpStatBonuses.Controls.Add(this.label11);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown8);
-            this.grpStatBonuses.Controls.Add(this.label12);
-            this.grpStatBonuses.Controls.Add(this.label7);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown5);
-            this.grpStatBonuses.Controls.Add(this.label8);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown6);
-            this.grpStatBonuses.Controls.Add(this.label9);
-            this.grpStatBonuses.Controls.Add(this.label4);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown3);
-            this.grpStatBonuses.Controls.Add(this.label5);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown4);
-            this.grpStatBonuses.Controls.Add(this.label6);
-            this.grpStatBonuses.Controls.Add(this.label1);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown1);
-            this.grpStatBonuses.Controls.Add(this.label2);
-            this.grpStatBonuses.Controls.Add(this.darkNumericUpDown2);
-            this.grpStatBonuses.Controls.Add(this.label3);
             this.grpStatBonuses.Controls.Add(this.lblPercentage5);
             this.grpStatBonuses.Controls.Add(this.lblPercentage4);
             this.grpStatBonuses.Controls.Add(this.lblPercentage8);
@@ -1273,151 +1029,10 @@ namespace Intersect.Editor.Forms.Editors
             this.grpStatBonuses.ForeColor = System.Drawing.Color.Gainsboro;
             this.grpStatBonuses.Location = new System.Drawing.Point(13, 150);
             this.grpStatBonuses.Name = "grpStatBonuses";
-            this.grpStatBonuses.Size = new System.Drawing.Size(202, 645);
+            this.grpStatBonuses.Size = new System.Drawing.Size(202, 234);
             this.grpStatBonuses.TabIndex = 40;
             this.grpStatBonuses.TabStop = false;
             this.grpStatBonuses.Text = "Stat Bonuses";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(179, 218);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 13);
-            this.label4.TabIndex = 92;
-            this.label4.Text = "%";
-            // 
-            // darkNumericUpDown3
-            // 
-            this.darkNumericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown3.Location = new System.Drawing.Point(132, 216);
-            this.darkNumericUpDown3.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown3.Name = "darkNumericUpDown3";
-            this.darkNumericUpDown3.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown3.TabIndex = 91;
-            this.darkNumericUpDown3.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown3.ValueChanged += new System.EventHandler(this.darkNumericUpDown3_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 218);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 13);
-            this.label5.TabIndex = 90;
-            this.label5.Text = "+";
-            // 
-            // darkNumericUpDown4
-            // 
-            this.darkNumericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown4.Location = new System.Drawing.Point(14, 216);
-            this.darkNumericUpDown4.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown4.Name = "darkNumericUpDown4";
-            this.darkNumericUpDown4.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown4.TabIndex = 89;
-            this.darkNumericUpDown4.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown4.ValueChanged += new System.EventHandler(this.darkNumericUpDown4_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 200);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 13);
-            this.label6.TabIndex = 88;
-            this.label6.Text = "Speed";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(179, 257);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 13);
-            this.label1.TabIndex = 87;
-            this.label1.Text = "%";
-            // 
-            // darkNumericUpDown1
-            // 
-            this.darkNumericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown1.Location = new System.Drawing.Point(132, 255);
-            this.darkNumericUpDown1.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown1.Name = "darkNumericUpDown1";
-            this.darkNumericUpDown1.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown1.TabIndex = 86;
-            this.darkNumericUpDown1.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown1.ValueChanged += new System.EventHandler(this.darkNumericUpDown1_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(114, 257);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 85;
-            this.label2.Text = "+";
-            // 
-            // darkNumericUpDown2
-            // 
-            this.darkNumericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown2.Location = new System.Drawing.Point(14, 255);
-            this.darkNumericUpDown2.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown2.Name = "darkNumericUpDown2";
-            this.darkNumericUpDown2.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown2.TabIndex = 84;
-            this.darkNumericUpDown2.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown2.ValueChanged += new System.EventHandler(this.darkNumericUpDown2_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(11, 239);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 83;
-            this.label3.Text = "Fire:";
             // 
             // lblPercentage5
             // 
@@ -1623,7 +1238,7 @@ namespace Intersect.Editor.Forms.Editors
             // 
             this.nudRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
             this.nudRange.ForeColor = System.Drawing.Color.Gainsboro;
-            this.nudRange.Location = new System.Drawing.Point(127, 615);
+            this.nudRange.Location = new System.Drawing.Point(132, 208);
             this.nudRange.Name = "nudRange";
             this.nudRange.Size = new System.Drawing.Size(62, 20);
             this.nudRange.TabIndex = 53;
@@ -1740,9 +1355,9 @@ namespace Intersect.Editor.Forms.Editors
             this.lblSpd.Location = new System.Drawing.Point(11, 162);
             this.lblSpd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpd.Name = "lblSpd";
-            this.lblSpd.Size = new System.Drawing.Size(64, 13);
+            this.lblSpd.Size = new System.Drawing.Size(41, 13);
             this.lblSpd.TabIndex = 47;
-            this.lblSpd.Text = "Intelligence:";
+            this.lblSpd.Text = "Speed:";
             // 
             // lblMR
             // 
@@ -1750,9 +1365,9 @@ namespace Intersect.Editor.Forms.Editors
             this.lblMR.Location = new System.Drawing.Point(10, 124);
             this.lblMR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMR.Name = "lblMR";
-            this.lblMR.Size = new System.Drawing.Size(40, 13);
+            this.lblMR.Size = new System.Drawing.Size(71, 13);
             this.lblMR.TabIndex = 46;
-            this.lblMR.Text = "Vitality:";
+            this.lblMR.Text = "Magic Resist:";
             // 
             // lblDef
             // 
@@ -1760,9 +1375,9 @@ namespace Intersect.Editor.Forms.Editors
             this.lblDef.Location = new System.Drawing.Point(10, 85);
             this.lblDef.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDef.Name = "lblDef";
-            this.lblDef.Size = new System.Drawing.Size(50, 13);
+            this.lblDef.Size = new System.Drawing.Size(37, 13);
             this.lblDef.TabIndex = 45;
-            this.lblDef.Text = "Defense:";
+            this.lblDef.Text = "Armor:";
             // 
             // lblMag
             // 
@@ -1787,7 +1402,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblRange
             // 
             this.lblRange.AutoSize = true;
-            this.lblRange.Location = new System.Drawing.Point(6, 617);
+            this.lblRange.Location = new System.Drawing.Point(11, 210);
             this.lblRange.Name = "lblRange";
             this.lblRange.Size = new System.Drawing.Size(115, 13);
             this.lblRange.TabIndex = 20;
@@ -1809,7 +1424,7 @@ namespace Intersect.Editor.Forms.Editors
             this.cmbFemalePaperdoll.FormattingEnabled = true;
             this.cmbFemalePaperdoll.Items.AddRange(new object[] {
             "None"});
-            this.cmbFemalePaperdoll.Location = new System.Drawing.Point(221, 903);
+            this.cmbFemalePaperdoll.Location = new System.Drawing.Point(221, 550);
             this.cmbFemalePaperdoll.Name = "cmbFemalePaperdoll";
             this.cmbFemalePaperdoll.Size = new System.Drawing.Size(168, 21);
             this.cmbFemalePaperdoll.TabIndex = 36;
@@ -1820,7 +1435,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblFemalePaperdoll
             // 
             this.lblFemalePaperdoll.AutoSize = true;
-            this.lblFemalePaperdoll.Location = new System.Drawing.Point(218, 886);
+            this.lblFemalePaperdoll.Location = new System.Drawing.Point(218, 533);
             this.lblFemalePaperdoll.Name = "lblFemalePaperdoll";
             this.lblFemalePaperdoll.Size = new System.Drawing.Size(91, 13);
             this.lblFemalePaperdoll.TabIndex = 35;
@@ -1829,7 +1444,7 @@ namespace Intersect.Editor.Forms.Editors
             // picFemalePaperdoll
             // 
             this.picFemalePaperdoll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picFemalePaperdoll.Location = new System.Drawing.Point(221, 930);
+            this.picFemalePaperdoll.Location = new System.Drawing.Point(221, 577);
             this.picFemalePaperdoll.Name = "picFemalePaperdoll";
             this.picFemalePaperdoll.Size = new System.Drawing.Size(200, 156);
             this.picFemalePaperdoll.TabIndex = 34;
@@ -1838,7 +1453,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblEffectPercent
             // 
             this.lblEffectPercent.AutoSize = true;
-            this.lblEffectPercent.Location = new System.Drawing.Point(222, 661);
+            this.lblEffectPercent.Location = new System.Drawing.Point(10, 512);
             this.lblEffectPercent.Name = "lblEffectPercent";
             this.lblEffectPercent.Size = new System.Drawing.Size(94, 13);
             this.lblEffectPercent.TabIndex = 31;
@@ -1858,7 +1473,7 @@ namespace Intersect.Editor.Forms.Editors
             this.cmbEquipmentBonus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbEquipmentBonus.ForeColor = System.Drawing.Color.Gainsboro;
             this.cmbEquipmentBonus.FormattingEnabled = true;
-            this.cmbEquipmentBonus.Location = new System.Drawing.Point(315, 632);
+            this.cmbEquipmentBonus.Location = new System.Drawing.Point(103, 483);
             this.cmbEquipmentBonus.Name = "cmbEquipmentBonus";
             this.cmbEquipmentBonus.Size = new System.Drawing.Size(114, 21);
             this.cmbEquipmentBonus.TabIndex = 29;
@@ -1869,7 +1484,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblBonusEffect
             // 
             this.lblBonusEffect.AutoSize = true;
-            this.lblBonusEffect.Location = new System.Drawing.Point(222, 635);
+            this.lblBonusEffect.Location = new System.Drawing.Point(10, 486);
             this.lblBonusEffect.Name = "lblBonusEffect";
             this.lblBonusEffect.Size = new System.Drawing.Size(71, 13);
             this.lblBonusEffect.TabIndex = 28;
@@ -1922,7 +1537,7 @@ namespace Intersect.Editor.Forms.Editors
             this.cmbMalePaperdoll.FormattingEnabled = true;
             this.cmbMalePaperdoll.Items.AddRange(new object[] {
             "None"});
-            this.cmbMalePaperdoll.Location = new System.Drawing.Point(11, 903);
+            this.cmbMalePaperdoll.Location = new System.Drawing.Point(11, 550);
             this.cmbMalePaperdoll.Name = "cmbMalePaperdoll";
             this.cmbMalePaperdoll.Size = new System.Drawing.Size(168, 21);
             this.cmbMalePaperdoll.TabIndex = 22;
@@ -1933,7 +1548,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblMalePaperdoll
             // 
             this.lblMalePaperdoll.AutoSize = true;
-            this.lblMalePaperdoll.Location = new System.Drawing.Point(8, 886);
+            this.lblMalePaperdoll.Location = new System.Drawing.Point(8, 533);
             this.lblMalePaperdoll.Name = "lblMalePaperdoll";
             this.lblMalePaperdoll.Size = new System.Drawing.Size(80, 13);
             this.lblMalePaperdoll.TabIndex = 21;
@@ -1942,7 +1557,7 @@ namespace Intersect.Editor.Forms.Editors
             // picMalePaperdoll
             // 
             this.picMalePaperdoll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.picMalePaperdoll.Location = new System.Drawing.Point(11, 930);
+            this.picMalePaperdoll.Location = new System.Drawing.Point(11, 577);
             this.picMalePaperdoll.Name = "picMalePaperdoll";
             this.picMalePaperdoll.Size = new System.Drawing.Size(200, 156);
             this.picMalePaperdoll.TabIndex = 16;
@@ -2378,125 +1993,6 @@ namespace Intersect.Editor.Forms.Editors
             this.cmbEvent.TextPadding = new System.Windows.Forms.Padding(2);
             this.cmbEvent.SelectedIndexChanged += new System.EventHandler(this.cmbEvent_SelectedIndexChanged);
             // 
-            // grpSpell
-            // 
-            this.grpSpell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.grpSpell.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.grpSpell.Controls.Add(this.chkDestroy);
-            this.grpSpell.Controls.Add(this.chkQuickCast);
-            this.grpSpell.Controls.Add(this.cmbTeachSpell);
-            this.grpSpell.Controls.Add(this.lblSpell);
-            this.grpSpell.ForeColor = System.Drawing.Color.Gainsboro;
-            this.grpSpell.Location = new System.Drawing.Point(0, 269);
-            this.grpSpell.Name = "grpSpell";
-            this.grpSpell.Size = new System.Drawing.Size(217, 127);
-            this.grpSpell.TabIndex = 13;
-            this.grpSpell.TabStop = false;
-            this.grpSpell.Text = "Spell";
-            this.grpSpell.Visible = false;
-            // 
-            // chkDestroy
-            // 
-            this.chkDestroy.AutoSize = true;
-            this.chkDestroy.Checked = true;
-            this.chkDestroy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDestroy.Location = new System.Drawing.Point(15, 95);
-            this.chkDestroy.Name = "chkDestroy";
-            this.chkDestroy.Size = new System.Drawing.Size(107, 17);
-            this.chkDestroy.TabIndex = 29;
-            this.chkDestroy.Text = "Destroy On Use?";
-            this.chkDestroy.CheckedChanged += new System.EventHandler(this.chkDestroy_CheckedChanged);
-            // 
-            // chkQuickCast
-            // 
-            this.chkQuickCast.AutoSize = true;
-            this.chkQuickCast.Location = new System.Drawing.Point(15, 72);
-            this.chkQuickCast.Name = "chkQuickCast";
-            this.chkQuickCast.Size = new System.Drawing.Size(110, 17);
-            this.chkQuickCast.TabIndex = 28;
-            this.chkQuickCast.Text = "Quick Cast Spell?";
-            this.chkQuickCast.CheckedChanged += new System.EventHandler(this.chkQuickCast_CheckedChanged);
-            // 
-            // cmbTeachSpell
-            // 
-            this.cmbTeachSpell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.cmbTeachSpell.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.cmbTeachSpell.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmbTeachSpell.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.cmbTeachSpell.ButtonIcon = ((System.Drawing.Bitmap)(resources.GetObject("cmbTeachSpell.ButtonIcon")));
-            this.cmbTeachSpell.DrawDropdownHoverOutline = false;
-            this.cmbTeachSpell.DrawFocusRectangle = false;
-            this.cmbTeachSpell.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbTeachSpell.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTeachSpell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbTeachSpell.ForeColor = System.Drawing.Color.Gainsboro;
-            this.cmbTeachSpell.FormattingEnabled = true;
-            this.cmbTeachSpell.Location = new System.Drawing.Point(15, 40);
-            this.cmbTeachSpell.Name = "cmbTeachSpell";
-            this.cmbTeachSpell.Size = new System.Drawing.Size(180, 21);
-            this.cmbTeachSpell.TabIndex = 12;
-            this.cmbTeachSpell.Text = null;
-            this.cmbTeachSpell.TextPadding = new System.Windows.Forms.Padding(2);
-            this.cmbTeachSpell.SelectedIndexChanged += new System.EventHandler(this.cmbTeachSpell_SelectedIndexChanged);
-            // 
-            // lblSpell
-            // 
-            this.lblSpell.AutoSize = true;
-            this.lblSpell.Location = new System.Drawing.Point(12, 21);
-            this.lblSpell.Name = "lblSpell";
-            this.lblSpell.Size = new System.Drawing.Size(33, 13);
-            this.lblSpell.TabIndex = 11;
-            this.lblSpell.Text = "Spell:";
-            // 
-            // grpBags
-            // 
-            this.grpBags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.grpBags.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.grpBags.Controls.Add(this.nudBag);
-            this.grpBags.Controls.Add(this.lblBag);
-            this.grpBags.ForeColor = System.Drawing.Color.Gainsboro;
-            this.grpBags.Location = new System.Drawing.Point(3, 271);
-            this.grpBags.Name = "grpBags";
-            this.grpBags.Size = new System.Drawing.Size(222, 57);
-            this.grpBags.TabIndex = 44;
-            this.grpBags.TabStop = false;
-            this.grpBags.Text = "Bag:";
-            this.grpBags.Visible = false;
-            // 
-            // nudBag
-            // 
-            this.nudBag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.nudBag.ForeColor = System.Drawing.Color.Gainsboro;
-            this.nudBag.Location = new System.Drawing.Point(69, 23);
-            this.nudBag.Maximum = new decimal(new int[] {
-            35,
-            0,
-            0,
-            0});
-            this.nudBag.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudBag.Name = "nudBag";
-            this.nudBag.Size = new System.Drawing.Size(144, 20);
-            this.nudBag.TabIndex = 38;
-            this.nudBag.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudBag.ValueChanged += new System.EventHandler(this.nudBag_ValueChanged);
-            // 
-            // lblBag
-            // 
-            this.lblBag.AutoSize = true;
-            this.lblBag.Location = new System.Drawing.Point(8, 25);
-            this.lblBag.Name = "lblBag";
-            this.lblBag.Size = new System.Drawing.Size(55, 13);
-            this.lblBag.TabIndex = 11;
-            this.lblBag.Text = "Bag Slots:";
-            // 
             // grpConsumable
             // 
             this.grpConsumable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -2621,502 +2117,260 @@ namespace Intersect.Editor.Forms.Editors
             this.lblInterval.TabIndex = 9;
             this.lblInterval.Text = "Interval:";
             // 
-            // label7
+            // grpSpell
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(179, 297);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 13);
-            this.label7.TabIndex = 97;
-            this.label7.Text = "%";
+            this.grpSpell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.grpSpell.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpSpell.Controls.Add(this.chkDestroy);
+            this.grpSpell.Controls.Add(this.chkQuickCast);
+            this.grpSpell.Controls.Add(this.cmbTeachSpell);
+            this.grpSpell.Controls.Add(this.lblSpell);
+            this.grpSpell.ForeColor = System.Drawing.Color.Gainsboro;
+            this.grpSpell.Location = new System.Drawing.Point(0, 269);
+            this.grpSpell.Name = "grpSpell";
+            this.grpSpell.Size = new System.Drawing.Size(217, 127);
+            this.grpSpell.TabIndex = 13;
+            this.grpSpell.TabStop = false;
+            this.grpSpell.Text = "Spell";
+            this.grpSpell.Visible = false;
             // 
-            // darkNumericUpDown5
+            // chkDestroy
             // 
-            this.darkNumericUpDown5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown5.Location = new System.Drawing.Point(132, 295);
-            this.darkNumericUpDown5.Maximum = new decimal(new int[] {
-            1000,
+            this.chkDestroy.AutoSize = true;
+            this.chkDestroy.Checked = true;
+            this.chkDestroy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDestroy.Location = new System.Drawing.Point(15, 95);
+            this.chkDestroy.Name = "chkDestroy";
+            this.chkDestroy.Size = new System.Drawing.Size(107, 17);
+            this.chkDestroy.TabIndex = 29;
+            this.chkDestroy.Text = "Destroy On Use?";
+            this.chkDestroy.CheckedChanged += new System.EventHandler(this.chkDestroy_CheckedChanged);
+            // 
+            // chkQuickCast
+            // 
+            this.chkQuickCast.AutoSize = true;
+            this.chkQuickCast.Location = new System.Drawing.Point(15, 72);
+            this.chkQuickCast.Name = "chkQuickCast";
+            this.chkQuickCast.Size = new System.Drawing.Size(110, 17);
+            this.chkQuickCast.TabIndex = 28;
+            this.chkQuickCast.Text = "Quick Cast Spell?";
+            this.chkQuickCast.CheckedChanged += new System.EventHandler(this.chkQuickCast_CheckedChanged);
+            // 
+            // cmbTeachSpell
+            // 
+            this.cmbTeachSpell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.cmbTeachSpell.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbTeachSpell.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbTeachSpell.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbTeachSpell.ButtonIcon = ((System.Drawing.Bitmap)(resources.GetObject("cmbTeachSpell.ButtonIcon")));
+            this.cmbTeachSpell.DrawDropdownHoverOutline = false;
+            this.cmbTeachSpell.DrawFocusRectangle = false;
+            this.cmbTeachSpell.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbTeachSpell.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTeachSpell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbTeachSpell.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbTeachSpell.FormattingEnabled = true;
+            this.cmbTeachSpell.Location = new System.Drawing.Point(15, 40);
+            this.cmbTeachSpell.Name = "cmbTeachSpell";
+            this.cmbTeachSpell.Size = new System.Drawing.Size(180, 21);
+            this.cmbTeachSpell.TabIndex = 12;
+            this.cmbTeachSpell.Text = null;
+            this.cmbTeachSpell.TextPadding = new System.Windows.Forms.Padding(2);
+            this.cmbTeachSpell.SelectedIndexChanged += new System.EventHandler(this.cmbTeachSpell_SelectedIndexChanged);
+            // 
+            // lblSpell
+            // 
+            this.lblSpell.AutoSize = true;
+            this.lblSpell.Location = new System.Drawing.Point(12, 21);
+            this.lblSpell.Name = "lblSpell";
+            this.lblSpell.Size = new System.Drawing.Size(33, 13);
+            this.lblSpell.TabIndex = 11;
+            this.lblSpell.Text = "Spell:";
+            // 
+            // pnlContainer
+            // 
+            this.pnlContainer.AutoScroll = true;
+            this.pnlContainer.Controls.Add(this.grpGeneral);
+            this.pnlContainer.Controls.Add(this.grpEquipment);
+            this.pnlContainer.Controls.Add(this.grpEvent);
+            this.pnlContainer.Controls.Add(this.grpSpell);
+            this.pnlContainer.Controls.Add(this.grpBags);
+            this.pnlContainer.Controls.Add(this.grpConsumable);
+            this.pnlContainer.Location = new System.Drawing.Point(221, 34);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(463, 442);
+            this.pnlContainer.TabIndex = 43;
+            this.pnlContainer.Visible = false;
+            // 
+            // grpBags
+            // 
+            this.grpBags.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.grpBags.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpBags.Controls.Add(this.nudBag);
+            this.grpBags.Controls.Add(this.lblBag);
+            this.grpBags.ForeColor = System.Drawing.Color.Gainsboro;
+            this.grpBags.Location = new System.Drawing.Point(3, 271);
+            this.grpBags.Name = "grpBags";
+            this.grpBags.Size = new System.Drawing.Size(222, 57);
+            this.grpBags.TabIndex = 44;
+            this.grpBags.TabStop = false;
+            this.grpBags.Text = "Bag:";
+            this.grpBags.Visible = false;
+            // 
+            // nudBag
+            // 
+            this.nudBag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.nudBag.ForeColor = System.Drawing.Color.Gainsboro;
+            this.nudBag.Location = new System.Drawing.Point(69, 23);
+            this.nudBag.Maximum = new decimal(new int[] {
+            35,
             0,
             0,
             0});
-            this.darkNumericUpDown5.Name = "darkNumericUpDown5";
-            this.darkNumericUpDown5.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown5.TabIndex = 96;
-            this.darkNumericUpDown5.Value = new decimal(new int[] {
-            0,
+            this.nudBag.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.darkNumericUpDown5.ValueChanged += new System.EventHandler(this.darkNumericUpDown5_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(114, 297);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 13);
-            this.label8.TabIndex = 95;
-            this.label8.Text = "+";
-            // 
-            // darkNumericUpDown6
-            // 
-            this.darkNumericUpDown6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown6.Location = new System.Drawing.Point(14, 295);
-            this.darkNumericUpDown6.Maximum = new decimal(new int[] {
-            255,
+            this.nudBag.Name = "nudBag";
+            this.nudBag.Size = new System.Drawing.Size(144, 20);
+            this.nudBag.TabIndex = 38;
+            this.nudBag.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.darkNumericUpDown6.Name = "darkNumericUpDown6";
-            this.darkNumericUpDown6.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown6.TabIndex = 94;
-            this.darkNumericUpDown6.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown6.ValueChanged += new System.EventHandler(this.darkNumericUpDown6_ValueChanged);
+            this.nudBag.ValueChanged += new System.EventHandler(this.nudBag_ValueChanged);
             // 
-            // label9
+            // lblBag
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Yellow;
-            this.label9.Location = new System.Drawing.Point(11, 279);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 93;
-            this.label9.Text = "Earth:";
+            this.lblBag.AutoSize = true;
+            this.lblBag.Location = new System.Drawing.Point(8, 25);
+            this.lblBag.Name = "lblBag";
+            this.lblBag.Size = new System.Drawing.Size(55, 13);
+            this.lblBag.TabIndex = 11;
+            this.lblBag.Text = "Bag Slots:";
             // 
-            // label10
+            // toolStrip
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(178, 334);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(15, 13);
-            this.label10.TabIndex = 102;
-            this.label10.Text = "%";
+            this.toolStrip.AutoSize = false;
+            this.toolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.toolStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripItemNew,
+            this.toolStripSeparator1,
+            this.toolStripItemDelete,
+            this.toolStripSeparator2,
+            this.btnChronological,
+            this.toolStripSeparator4,
+            this.toolStripItemCopy,
+            this.toolStripItemPaste,
+            this.toolStripSeparator3,
+            this.toolStripItemUndo});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.toolStrip.Size = new System.Drawing.Size(686, 25);
+            this.toolStrip.TabIndex = 44;
+            this.toolStrip.Text = "toolStrip1";
             // 
-            // darkNumericUpDown7
+            // toolStripItemNew
             // 
-            this.darkNumericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown7.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown7.Location = new System.Drawing.Point(131, 332);
-            this.darkNumericUpDown7.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown7.Name = "darkNumericUpDown7";
-            this.darkNumericUpDown7.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown7.TabIndex = 101;
-            this.darkNumericUpDown7.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown7.ValueChanged += new System.EventHandler(this.darkNumericUpDown7_ValueChanged);
+            this.toolStripItemNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItemNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripItemNew.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemNew.Image")));
+            this.toolStripItemNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItemNew.Name = "toolStripItemNew";
+            this.toolStripItemNew.Size = new System.Drawing.Size(23, 22);
+            this.toolStripItemNew.Text = "New";
+            this.toolStripItemNew.Click += new System.EventHandler(this.toolStripItemNew_Click);
             // 
-            // label11
+            // toolStripSeparator1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(113, 334);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(13, 13);
-            this.label11.TabIndex = 100;
-            this.label11.Text = "+";
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // darkNumericUpDown8
+            // toolStripItemDelete
             // 
-            this.darkNumericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown8.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown8.Location = new System.Drawing.Point(13, 332);
-            this.darkNumericUpDown8.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown8.Name = "darkNumericUpDown8";
-            this.darkNumericUpDown8.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown8.TabIndex = 99;
-            this.darkNumericUpDown8.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown8.ValueChanged += new System.EventHandler(this.darkNumericUpDown8_ValueChanged);
+            this.toolStripItemDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItemDelete.Enabled = false;
+            this.toolStripItemDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripItemDelete.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemDelete.Image")));
+            this.toolStripItemDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItemDelete.Name = "toolStripItemDelete";
+            this.toolStripItemDelete.Size = new System.Drawing.Size(23, 22);
+            this.toolStripItemDelete.Text = "Delete";
+            this.toolStripItemDelete.Click += new System.EventHandler(this.toolStripItemDelete_Click);
             // 
-            // label12
+            // toolStripSeparator2
             // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Cyan;
-            this.label12.Location = new System.Drawing.Point(10, 316);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(25, 13);
-            this.label12.TabIndex = 98;
-            this.label12.Text = "Ice:";
+            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // label13
+            // btnChronological
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(178, 373);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 13);
-            this.label13.TabIndex = 107;
-            this.label13.Text = "%";
+            this.btnChronological.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnChronological.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.btnChronological.Image = ((System.Drawing.Image)(resources.GetObject("btnChronological.Image")));
+            this.btnChronological.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnChronological.Name = "btnChronological";
+            this.btnChronological.Size = new System.Drawing.Size(23, 22);
+            this.btnChronological.Text = "Order Chronologically";
+            this.btnChronological.Click += new System.EventHandler(this.btnChronological_Click);
             // 
-            // darkNumericUpDown9
+            // toolStripSeparator4
             // 
-            this.darkNumericUpDown9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown9.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown9.Location = new System.Drawing.Point(131, 371);
-            this.darkNumericUpDown9.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown9.Name = "darkNumericUpDown9";
-            this.darkNumericUpDown9.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown9.TabIndex = 106;
-            this.darkNumericUpDown9.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown9.ValueChanged += new System.EventHandler(this.darkNumericUpDown9_ValueChanged);
+            this.toolStripSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // label14
+            // toolStripItemCopy
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(113, 373);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(13, 13);
-            this.label14.TabIndex = 105;
-            this.label14.Text = "+";
+            this.toolStripItemCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItemCopy.Enabled = false;
+            this.toolStripItemCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripItemCopy.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemCopy.Image")));
+            this.toolStripItemCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItemCopy.Name = "toolStripItemCopy";
+            this.toolStripItemCopy.Size = new System.Drawing.Size(23, 22);
+            this.toolStripItemCopy.Text = "Copy";
+            this.toolStripItemCopy.Click += new System.EventHandler(this.toolStripItemCopy_Click);
             // 
-            // darkNumericUpDown10
+            // toolStripItemPaste
             // 
-            this.darkNumericUpDown10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown10.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown10.Location = new System.Drawing.Point(13, 371);
-            this.darkNumericUpDown10.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown10.Name = "darkNumericUpDown10";
-            this.darkNumericUpDown10.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown10.TabIndex = 104;
-            this.darkNumericUpDown10.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown10.ValueChanged += new System.EventHandler(this.darkNumericUpDown10_ValueChanged);
+            this.toolStripItemPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItemPaste.Enabled = false;
+            this.toolStripItemPaste.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripItemPaste.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemPaste.Image")));
+            this.toolStripItemPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItemPaste.Name = "toolStripItemPaste";
+            this.toolStripItemPaste.Size = new System.Drawing.Size(23, 22);
+            this.toolStripItemPaste.Text = "Paste";
+            this.toolStripItemPaste.Click += new System.EventHandler(this.toolStripItemPaste_Click);
             // 
-            // label15
+            // toolStripSeparator3
             // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Green;
-            this.label15.Location = new System.Drawing.Point(10, 355);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 13);
-            this.label15.TabIndex = 103;
-            this.label15.Text = "Wind:";
+            this.toolStripSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // label16
+            // toolStripItemUndo
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(178, 525);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(15, 13);
-            this.label16.TabIndex = 127;
-            this.label16.Text = "%";
-            // 
-            // darkNumericUpDown11
-            // 
-            this.darkNumericUpDown11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown11.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown11.Location = new System.Drawing.Point(131, 523);
-            this.darkNumericUpDown11.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown11.Name = "darkNumericUpDown11";
-            this.darkNumericUpDown11.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown11.TabIndex = 126;
-            this.darkNumericUpDown11.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown11.ValueChanged += new System.EventHandler(this.darkNumericUpDown11_ValueChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(113, 525);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(13, 13);
-            this.label17.TabIndex = 125;
-            this.label17.Text = "+";
-            // 
-            // darkNumericUpDown12
-            // 
-            this.darkNumericUpDown12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown12.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown12.Location = new System.Drawing.Point(13, 523);
-            this.darkNumericUpDown12.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown12.Name = "darkNumericUpDown12";
-            this.darkNumericUpDown12.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown12.TabIndex = 124;
-            this.darkNumericUpDown12.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown12.ValueChanged += new System.EventHandler(this.darkNumericUpDown12_ValueChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Green;
-            this.label18.Location = new System.Drawing.Point(10, 507);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 13);
-            this.label18.TabIndex = 123;
-            this.label18.Text = "Wind Resist:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(178, 486);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(15, 13);
-            this.label19.TabIndex = 122;
-            this.label19.Text = "%";
-            // 
-            // darkNumericUpDown13
-            // 
-            this.darkNumericUpDown13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown13.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown13.Location = new System.Drawing.Point(131, 484);
-            this.darkNumericUpDown13.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown13.Name = "darkNumericUpDown13";
-            this.darkNumericUpDown13.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown13.TabIndex = 121;
-            this.darkNumericUpDown13.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown13.ValueChanged += new System.EventHandler(this.darkNumericUpDown13_ValueChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(113, 486);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(13, 13);
-            this.label20.TabIndex = 120;
-            this.label20.Text = "+";
-            // 
-            // darkNumericUpDown14
-            // 
-            this.darkNumericUpDown14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown14.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown14.Location = new System.Drawing.Point(13, 484);
-            this.darkNumericUpDown14.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown14.Name = "darkNumericUpDown14";
-            this.darkNumericUpDown14.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown14.TabIndex = 119;
-            this.darkNumericUpDown14.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown14.ValueChanged += new System.EventHandler(this.darkNumericUpDown14_ValueChanged);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.Cyan;
-            this.label21.Location = new System.Drawing.Point(10, 468);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 13);
-            this.label21.TabIndex = 118;
-            this.label21.Text = "Ice Resist;";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(179, 449);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(15, 13);
-            this.label22.TabIndex = 117;
-            this.label22.Text = "%";
-            // 
-            // darkNumericUpDown15
-            // 
-            this.darkNumericUpDown15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown15.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown15.Location = new System.Drawing.Point(132, 447);
-            this.darkNumericUpDown15.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown15.Name = "darkNumericUpDown15";
-            this.darkNumericUpDown15.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown15.TabIndex = 116;
-            this.darkNumericUpDown15.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown15.ValueChanged += new System.EventHandler(this.darkNumericUpDown15_ValueChanged);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(114, 449);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(13, 13);
-            this.label23.TabIndex = 115;
-            this.label23.Text = "+";
-            // 
-            // darkNumericUpDown16
-            // 
-            this.darkNumericUpDown16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown16.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown16.Location = new System.Drawing.Point(14, 447);
-            this.darkNumericUpDown16.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown16.Name = "darkNumericUpDown16";
-            this.darkNumericUpDown16.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown16.TabIndex = 114;
-            this.darkNumericUpDown16.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown16.ValueChanged += new System.EventHandler(this.darkNumericUpDown16_ValueChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.Color.Yellow;
-            this.label24.Location = new System.Drawing.Point(11, 431);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(67, 13);
-            this.label24.TabIndex = 113;
-            this.label24.Text = "Earth Resist:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(179, 409);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(15, 13);
-            this.label25.TabIndex = 112;
-            this.label25.Text = "%";
-            // 
-            // darkNumericUpDown17
-            // 
-            this.darkNumericUpDown17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown17.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown17.Location = new System.Drawing.Point(132, 407);
-            this.darkNumericUpDown17.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown17.Name = "darkNumericUpDown17";
-            this.darkNumericUpDown17.Size = new System.Drawing.Size(43, 20);
-            this.darkNumericUpDown17.TabIndex = 111;
-            this.darkNumericUpDown17.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown17.ValueChanged += new System.EventHandler(this.darkNumericUpDown17_ValueChanged);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(114, 409);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(13, 13);
-            this.label26.TabIndex = 110;
-            this.label26.Text = "+";
-            // 
-            // darkNumericUpDown18
-            // 
-            this.darkNumericUpDown18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.darkNumericUpDown18.ForeColor = System.Drawing.Color.Gainsboro;
-            this.darkNumericUpDown18.Location = new System.Drawing.Point(14, 407);
-            this.darkNumericUpDown18.Maximum = new decimal(new int[] {
-            255,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown18.Name = "darkNumericUpDown18";
-            this.darkNumericUpDown18.Size = new System.Drawing.Size(97, 20);
-            this.darkNumericUpDown18.TabIndex = 109;
-            this.darkNumericUpDown18.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.darkNumericUpDown18.ValueChanged += new System.EventHandler(this.darkNumericUpDown18_ValueChanged);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(11, 391);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(59, 13);
-            this.label27.TabIndex = 108;
-            this.label27.Text = "Fire Resist:";
+            this.toolStripItemUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripItemUndo.Enabled = false;
+            this.toolStripItemUndo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripItemUndo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripItemUndo.Image")));
+            this.toolStripItemUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripItemUndo.Name = "toolStripItemUndo";
+            this.toolStripItemUndo.Size = new System.Drawing.Size(23, 22);
+            this.toolStripItemUndo.Text = "Undo";
+            this.toolStripItemUndo.Click += new System.EventHandler(this.toolStripItemUndo_Click);
             // 
             // FrmItem
             // 
@@ -3124,7 +2378,7 @@ namespace Intersect.Editor.Forms.Editors
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(690, 517);
+            this.ClientSize = new System.Drawing.Size(686, 517);
             this.ControlBox = false;
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.btnCancel);
@@ -3140,11 +2394,8 @@ namespace Intersect.Editor.Forms.Editors
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmItem_FormClosed);
             this.Load += new System.EventHandler(this.frmItem_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.form_KeyDown);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.grpItems.ResumeLayout(false);
             this.grpItems.PerformLayout();
-            this.pnlContainer.ResumeLayout(false);
             this.grpGeneral.ResumeLayout(false);
             this.grpGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCooldown)).EndInit();
@@ -3165,10 +2416,6 @@ namespace Intersect.Editor.Forms.Editors
             ((System.ComponentModel.ISupportInitialize)(this.nudEffectPercent)).EndInit();
             this.grpStatBonuses.ResumeLayout(false);
             this.grpStatBonuses.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpdPercentage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMRPercentage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDefPercentage)).EndInit();
@@ -3192,29 +2439,18 @@ namespace Intersect.Editor.Forms.Editors
             ((System.ComponentModel.ISupportInitialize)(this.nudCritChance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDamage)).EndInit();
             this.grpEvent.ResumeLayout(false);
-            this.grpSpell.ResumeLayout(false);
-            this.grpSpell.PerformLayout();
-            this.grpBags.ResumeLayout(false);
-            this.grpBags.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBag)).EndInit();
             this.grpConsumable.ResumeLayout(false);
             this.grpConsumable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIntervalPercentage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInterval)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.darkNumericUpDown18)).EndInit();
+            this.grpSpell.ResumeLayout(false);
+            this.grpSpell.PerformLayout();
+            this.pnlContainer.ResumeLayout(false);
+            this.grpBags.ResumeLayout(false);
+            this.grpBags.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBag)).EndInit();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3366,50 +2602,5 @@ namespace Intersect.Editor.Forms.Editors
     private Label lblHpRegen;
     private Label lblManaRegen;
     private Label lblRegenHint;
-        private Label label1;
-        private DarkNumericUpDown darkNumericUpDown1;
-        private Label label2;
-        private DarkNumericUpDown darkNumericUpDown2;
-        private Label label3;
-        private Label label4;
-        private DarkNumericUpDown darkNumericUpDown3;
-        private Label label5;
-        private DarkNumericUpDown darkNumericUpDown4;
-        private Label label6;
-        private Label label13;
-        private DarkNumericUpDown darkNumericUpDown9;
-        private Label label14;
-        private DarkNumericUpDown darkNumericUpDown10;
-        private Label label15;
-        private Label label10;
-        private DarkNumericUpDown darkNumericUpDown7;
-        private Label label11;
-        private DarkNumericUpDown darkNumericUpDown8;
-        private Label label12;
-        private Label label7;
-        private DarkNumericUpDown darkNumericUpDown5;
-        private Label label8;
-        private DarkNumericUpDown darkNumericUpDown6;
-        private Label label9;
-        private Label label16;
-        private DarkNumericUpDown darkNumericUpDown11;
-        private Label label17;
-        private DarkNumericUpDown darkNumericUpDown12;
-        private Label label18;
-        private Label label19;
-        private DarkNumericUpDown darkNumericUpDown13;
-        private Label label20;
-        private DarkNumericUpDown darkNumericUpDown14;
-        private Label label21;
-        private Label label22;
-        private DarkNumericUpDown darkNumericUpDown15;
-        private Label label23;
-        private DarkNumericUpDown darkNumericUpDown16;
-        private Label label24;
-        private Label label25;
-        private DarkNumericUpDown darkNumericUpDown17;
-        private Label label26;
-        private DarkNumericUpDown darkNumericUpDown18;
-        private Label label27;
-    }
+  }
 }

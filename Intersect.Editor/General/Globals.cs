@@ -179,34 +179,16 @@ namespace Intersect.Editor.General
         {
             switch (statnum)
             {
-                case (int)Stats.Attack:
+                case (int) Stats.Attack:
                     return "Attack";
-                case (int)Stats.Vitality:
-                    return "Vitality";
-                case (int)Stats.Defense:
+                case (int) Stats.AbilityPower:
+                    return "Ability Power";
+                case (int) Stats.Defense:
                     return "Defense";
-                case (int)Stats.Intelligence:
-                    return "Intelligence";
-                case (int)Stats.Speed:
+                case (int) Stats.MagicResist:
+                    return "Magic Resist";
+                case (int) Stats.Speed:
                     return "Speed";
-                case (int)Stats.Magic:
-                    return "Magic";
-                case (int)Stats.Fire:
-                    return "Fire";
-                case (int)Stats.Earth:
-                    return "Earth";
-                case (int)Stats.Ice:
-                    return "Ice";
-                case (int)Stats.Wind:
-                    return "Wind";
-                case (int)Stats.FireResist:
-                    return "FireResist";
-                case (int)Stats.EarthResist:
-                    return "EarthResist";
-                case (int)Stats.IceResist:
-                    return "IceResist";
-                case (int)Stats.WindResist:
-                    return "WindResist";
                 default:
                     return "Invalid Stat";
             }

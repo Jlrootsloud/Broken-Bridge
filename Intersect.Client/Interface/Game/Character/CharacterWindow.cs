@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using Intersect.Client.Core;
-using Intersect.Client.Entities;
 using Intersect.Client.Framework.File_Management;
 using Intersect.Client.Framework.Gwen;
 using Intersect.Client.Framework.Gwen.Control;
@@ -12,7 +11,6 @@ using Intersect.Client.Localization;
 using Intersect.Client.Networking;
 using Intersect.Enums;
 using Intersect.GameObjects;
-using Label = Intersect.Client.Framework.Gwen.Control.Label;
 
 namespace Intersect.Client.Interface.Game.Character
 {
@@ -23,23 +21,17 @@ namespace Intersect.Client.Interface.Game.Character
         //Equipment List
         public List<EquipmentItem> Items = new List<EquipmentItem>();
 
+        Label mAbilityPwrLabel;
 
-
-        Button mAddVitalityBtn;
-
-        Button mAddIntelligenceBtn;
+        Button mAddAbilityPwrBtn;
 
         Button mAddAttackBtn;
 
         Button mAddDefenseBtn;
 
-        Button mAddMagicBtn;
+        Button mAddMagicResistBtn;
 
         Button mAddSpeedBtn;
-        Button mAddFireBtn;
-        Button mAddEarthBtn;
-        Button mAddIceBtn;
-        Button mAddWindBtn;
 
         //Stats
         Label mAttackLabel;
@@ -63,22 +55,12 @@ namespace Intersect.Client.Interface.Game.Character
 
         private int[] mEmptyStatBoost = new int[Options.MaxStats];
 
-        Label mIntelligenceLabel;
+        Label mMagicRstLabel;
 
         Label mPointsLabel;
-        Label mMagicLabel;
+
         Label mSpeedLabel;
-        Label mVitalityLabel;
-        Label mFireLabel;
-        Label mIceLabel;
-        Label mEarthLabel;
-        Label mWindLabel;
 
-        Label mFireResistLabel;
-
-        Label mEarthResistLabel;
-        Label mWindResistLabel;
-        Label mIceResistLabel;
         public ImagePanel[] PaperdollPanels;
 
         public string[] PaperdollTextures;
@@ -124,10 +106,6 @@ namespace Intersect.Client.Interface.Game.Character
             mAddAttackBtn = new Button(mCharacterWindow, "IncreaseAttackButton");
             mAddAttackBtn.Clicked += _addAttackBtn_Clicked;
 
-            mMagicLabel = new Label(mCharacterWindow, "MagicLabel");
-            mAddMagicBtn = new Button(mCharacterWindow, "IncreaseMagicButton");
-            mAddMagicBtn.Clicked += _AddMagicBtn_Clicked;
-
             mDefenseLabel = new Label(mCharacterWindow, "DefenseLabel");
             mAddDefenseBtn = new Button(mCharacterWindow, "IncreaseDefenseButton");
             mAddDefenseBtn.Clicked += _addDefenseBtn_Clicked;
@@ -136,37 +114,13 @@ namespace Intersect.Client.Interface.Game.Character
             mAddSpeedBtn = new Button(mCharacterWindow, "IncreaseSpeedButton");
             mAddSpeedBtn.Clicked += _addSpeedBtn_Clicked;
 
-            mVitalityLabel = new Label(mCharacterWindow, "VitalityLabel");
-            mAddVitalityBtn = new Button(mCharacterWindow, "VitalityButton");
-            mAddVitalityBtn.Clicked += _addVitalityBtn_Clicked;
+            mAbilityPwrLabel = new Label(mCharacterWindow, "AbilityPowerLabel");
+            mAddAbilityPwrBtn = new Button(mCharacterWindow, "IncreaseAbilityPowerButton");
+            mAddAbilityPwrBtn.Clicked += _addAbilityPwrBtn_Clicked;
 
-            mIntelligenceLabel = new Label(mCharacterWindow, "IntelligenceLabel");
-            mAddIntelligenceBtn = new Button(mCharacterWindow, "IncreaseIntelligenceButton");
-            mAddIntelligenceBtn.Clicked += _addIntelligenceBtn_Clicked;
-
-            mFireLabel = new Label(mCharacterWindow, "FireLabel");
-            mAddFireBtn = new Button(mCharacterWindow, "IncreaseFireButton");
-            mAddFireBtn.Clicked += _AddFireBtn_Clicked;
-
-            mEarthLabel = new Label(mCharacterWindow, "EarthLabel");
-            mAddEarthBtn = new Button(mCharacterWindow, "IncreaseEarthButton");
-            mAddEarthBtn.Clicked += _AddEarthBtn_Clicked;
-
-            mIceLabel = new Label(mCharacterWindow, "IceLabel");
-            mAddIceBtn = new Button(mCharacterWindow, "IncreaseIceButton");
-            mAddIceBtn.Clicked += _AddIceBtn_Clicked;
-
-
-            mWindLabel = new Label(mCharacterWindow, "WindLabel");
-            mAddWindBtn = new Button(mCharacterWindow, "IncreaseWindButton");
-            mAddWindBtn.Clicked += _AddWindBtn_Clicked;
-            mFireResistLabel = new Label(mCharacterWindow, "FireResist");
-            mEarthResistLabel = new Label(mCharacterWindow, "EarthResist");
-            mIceResistLabel = new Label(mCharacterWindow, "IceResist");
-            mWindResistLabel = new Label(mCharacterWindow, "WindResist");
-            
-
-
+            mMagicRstLabel = new Label(mCharacterWindow, "MagicResistLabel");
+            mAddMagicResistBtn = new Button(mCharacterWindow, "IncreaseMagicResistButton");
+            mAddMagicResistBtn.Clicked += _addMagicResistBtn_Clicked;
 
             mPointsLabel = new Label(mCharacterWindow, "PointsLabel");
 
@@ -181,52 +135,29 @@ namespace Intersect.Client.Interface.Game.Character
         }
 
         //Update Button Event Handlers
-        void _addIntelligenceBtn_Clicked(Base sender, ClickedEventArgs arguments)
+        void _addMagicResistBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            PacketSender.SendUpgradeStat((int)Stats.Intelligence);
+            PacketSender.SendUpgradeStat((int) Stats.MagicResist);
         }
 
-        void _AddFireBtn_Clicked(Base sender, ClickedEventArgs arguments)
+        void _addAbilityPwrBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            PacketSender.SendUpgradeStat((int)Stats.Fire);
-        }
-
-        void _addVitalityBtn_Clicked(Base sender, ClickedEventArgs arguments)
-        {
-            PacketSender.SendUpgradeStat((int)Stats.Vitality);
+            PacketSender.SendUpgradeStat((int) Stats.AbilityPower);
         }
 
         void _addSpeedBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            PacketSender.SendUpgradeStat((int)Stats.Speed);
+            PacketSender.SendUpgradeStat((int) Stats.Speed);
         }
 
         void _addDefenseBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            PacketSender.SendUpgradeStat((int)Stats.Defense);
+            PacketSender.SendUpgradeStat((int) Stats.Defense);
         }
 
         void _addAttackBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            PacketSender.SendUpgradeStat((int)Stats.Attack);
-        }
-
-        void _AddMagicBtn_Clicked(Base sender, ClickedEventArgs arguments)
-        {
-            PacketSender.SendUpgradeStat((int)Stats.Magic);
-        }
-        void _AddEarthBtn_Clicked(Base sender, ClickedEventArgs arguments)
-        {
-            PacketSender.SendUpgradeStat((int)Stats.Earth);
-        }
-        void _AddIceBtn_Clicked(Base sender, ClickedEventArgs arguments)
-        {
-            PacketSender.SendUpgradeStat((int)Stats.Ice);
-        }
-        void _AddWindBtn_Clicked(Base sender, ClickedEventArgs arguments)
-        {
-            PacketSender.SendUpgradeStat((int)Stats.Wind);
-
+            PacketSender.SendUpgradeStat((int) Stats.Attack);
         }
 
         //Methods
@@ -346,86 +277,40 @@ namespace Intersect.Client.Interface.Game.Character
             }
 
             mAttackLabel.SetText(
-                Strings.Character.stat0.ToString(Strings.Combat.stat0, Globals.Me.Stat[(int)Stats.Attack])
+                Strings.Character.stat0.ToString(Strings.Combat.stat0, Globals.Me.Stat[(int) Stats.Attack])
             );
 
             mDefenseLabel.SetText(
-                Strings.Character.stat2.ToString(Strings.Combat.stat2, Globals.Me.Stat[(int)Stats.Defense])
-            );
-
-            mMagicLabel.SetText(
-                Strings.Character.stat1.ToString(Strings.Combat.stat1, Globals.Me.Stat[(int)Stats.Magic])
+                Strings.Character.stat2.ToString(Strings.Combat.stat2, Globals.Me.Stat[(int) Stats.Defense])
             );
 
             mSpeedLabel.SetText(
-                Strings.Character.stat5.ToString(Strings.Combat.stat5, Globals.Me.Stat[(int)Stats.Speed])
+                Strings.Character.stat4.ToString(Strings.Combat.stat4, Globals.Me.Stat[(int) Stats.Speed])
             );
 
-            mVitalityLabel.SetText(
-                Strings.Character.stat3.ToString(Strings.Combat.stat3, Globals.Me.Stat[(int)Stats.Vitality])
+            mAbilityPwrLabel.SetText(
+                Strings.Character.stat1.ToString(Strings.Combat.stat1, Globals.Me.Stat[(int) Stats.AbilityPower])
             );
 
-            mIntelligenceLabel.SetText(
-                Strings.Character.stat4.ToString(Strings.Combat.stat4, Globals.Me.Stat[(int)Stats.Intelligence])
+            mMagicRstLabel.SetText(
+                Strings.Character.stat3.ToString(Strings.Combat.stat3, Globals.Me.Stat[(int) Stats.MagicResist])
             );
 
-            mFireLabel.SetText(
-                Strings.Character.stat6.ToString(Strings.Combat.stat6, Globals.Me.Stat[(int)Stats.Fire])
-            );
-
-            mEarthLabel.SetText(
-               Strings.Character.stat7.ToString(Strings.Combat.stat7, Globals.Me.Stat[(int)Stats.Earth])
-           );
-
-            mIceLabel.SetText(
-                Strings.Character.stat8.ToString(Strings.Combat.stat8, Globals.Me.Stat[(int)Stats.Ice])
-            );
-            mWindLabel.SetText(
-               Strings.Character.stat9.ToString(Strings.Combat.stat9, Globals.Me.Stat[(int)Stats.Wind])
-           );
-
-              mFireResistLabel.SetText(
-                  Strings.Character.stat10.ToString(Strings.Combat.stat10, Globals.Me.Stat[(int)Stats.FireResist])
-              );
-
-              mEarthResistLabel.SetText(
-         Strings.Character.stat11.ToString(Strings.Combat.stat11, Globals.Me.Stat[(int)Stats.EarthResist])
-              );
-              mIceResistLabel.SetText(
-         Strings.Character.stat12.ToString(Strings.Combat.stat12, Globals.Me.Stat[(int)Stats.IceResist])
-              );
-              mWindResistLabel.SetText(
-         Strings.Character.stat13.ToString(Strings.Combat.stat13, Globals.Me.Stat[(int)Stats.WindResist])
-              );
             mPointsLabel.SetText(Strings.Character.points.ToString(Globals.Me.StatPoints));
-
-            mAddVitalityBtn.IsHidden = Globals.Me.StatPoints == 0 ||
-                                         Globals.Me.Stat[(int)Stats.Vitality] == Options.MaxStatValue;
+            mAddAbilityPwrBtn.IsHidden = Globals.Me.StatPoints == 0 ||
+                                         Globals.Me.Stat[(int) Stats.AbilityPower] == Options.MaxStatValue;
 
             mAddAttackBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Attack] == Options.MaxStatValue;
-
-            mAddMagicBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Magic] == Options.MaxStatValue;
+                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Attack] == Options.MaxStatValue;
 
             mAddDefenseBtn.IsHidden = Globals.Me.StatPoints == 0 ||
-                                      Globals.Me.Stat[(int)Stats.Defense] == Options.MaxStatValue;
+                                      Globals.Me.Stat[(int) Stats.Defense] == Options.MaxStatValue;
 
-            mAddIntelligenceBtn.IsHidden = Globals.Me.StatPoints == 0 ||
-                                          Globals.Me.Stat[(int)Stats.Intelligence] == Options.MaxStatValue;
+            mAddMagicResistBtn.IsHidden = Globals.Me.StatPoints == 0 ||
+                                          Globals.Me.Stat[(int) Stats.MagicResist] == Options.MaxStatValue;
 
             mAddSpeedBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Speed] == Options.MaxStatValue;
-
-            mAddFireBtn.IsHidden =
-                 Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Fire] == Options.MaxStatValue;
-
-            mAddEarthBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Earth] == Options.MaxStatValue;
-            mAddIceBtn.IsHidden =
-                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Ice] == Options.MaxStatValue;
-            mAddWindBtn.IsHidden =
-                            Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int)Stats.Wind] == Options.MaxStatValue;
+                Globals.Me.StatPoints == 0 || Globals.Me.Stat[(int) Stats.Speed] == Options.MaxStatValue;
 
             for (var i = 0; i < Options.EquipmentSlots.Count; i++)
             {

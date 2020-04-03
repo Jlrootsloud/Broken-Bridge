@@ -25,16 +25,13 @@ namespace Intersect.Server.General
         public Formula ExpFormula = new Formula("BaseExp * Power(Gain, Level)");
 
         public string MagicDamage =
-            "Random(((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * .975, ((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * 1.025) * (100 / (100 + V_Defense))";
+            "Random(((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * .975, ((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * 1.025) * (100 / (100 + V_MagicResist))";
 
         public string PhysicalDamage =
             "Random(((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * .975, ((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * 1.025) * (100 / (100 + V_Defense))";
 
-        public string EarthDamage =
+        public string TrueDamage =
             "Random(((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * .975, ((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * 1.025)";
-
-        public string FireDamage =
-           "Random(((BaseDamage + (ScalingStat * ScaleFactor + (100 + V_Fire/100)))) * CritMultiplier * .975, ((BaseDamage + (ScalingStat * ScaleFactor))) * CritMultiplier * 1.025) * (100 / (100 + V_FireResist))";
 
         public static void LoadFormulas()
         {
@@ -106,16 +103,12 @@ namespace Intersect.Server.General
                     expressionString = mFormulas.MagicDamage;
 
                     break;
-                case DamageType.Earth:
-                    expressionString = mFormulas.EarthDamage;
-
-                    break;
-                case DamageType.Fire:
-                    expressionString = mFormulas.FireDamage;
+                case DamageType.True:
+                    expressionString = mFormulas.TrueDamage;
 
                     break;
                 default:
-                    expressionString = mFormulas.PhysicalDamage;
+                    expressionString = mFormulas.TrueDamage;
 
                     break;
             }
@@ -135,44 +128,21 @@ namespace Intersect.Server.General
 
             try
             {
-
                 expression.Parameters["BaseDamage"] = baseDamage;
-                expression.Parameters["ScalingStat"] = attacker.Stat[(int)scalingStat].Value();
+                expression.Parameters["ScalingStat"] = attacker.Stat[(int) scalingStat].Value();
                 expression.Parameters["ScaleFactor"] = scaling / 100f;
                 expression.Parameters["CritMultiplier"] = critMultiplier;
-                //atacante
-                expression.Parameters["A_Attack"] = attacker.Stat[(int)Stats.Attack].Value();
-                expression.Parameters["A_Magic"] = attacker.Stat[(int)Stats.Magic].Value();
-                expression.Parameters["A_Defense"] = attacker.Stat[(int)Stats.Defense].Value();
-                expression.Parameters["A_Speed"] = attacker.Stat[(int)Stats.Speed].Value();
-                expression.Parameters["A_Vitality"] = attacker.Stat[(int)Stats.Vitality].Value();
-                expression.Parameters["A_Intelligence"] = attacker.Stat[(int)Stats.Intelligence].Value();
-                expression.Parameters["A_Fire"] = attacker.Stat[(int)Stats.Fire].Value();
-                expression.Parameters["A_Earth"] = attacker.Stat[(int)Stats.Earth].Value();
-                expression.Parameters["A_Ice"] = attacker.Stat[(int)Stats.Ice].Value();
-                expression.Parameters["A_Wind"] = attacker.Stat[(int)Stats.Wind].Value();
-                expression.Parameters["A_FireResist"] = attacker.Stat[(int)Stats.FireResist].Value();
-                expression.Parameters["A_EarthResist"] = attacker.Stat[(int)Stats.EarthResist].Value();
-                expression.Parameters["A_WindResist"] = attacker.Stat[(int)Stats.WindResist].Value();
-                expression.Parameters["A_IceResist"] = attacker.Stat[(int)Stats.IceResist].Value();
-                // victima
-                expression.Parameters["V_Attack"] = victim.Stat[(int)Stats.Attack].Value();
-                expression.Parameters["V_Magic"] = victim.Stat[(int)Stats.Magic].Value();
-                expression.Parameters["V_Defense"] = victim.Stat[(int)Stats.Defense].Value();
-                expression.Parameters["V_Speed"] = victim.Stat[(int)Stats.Speed].Value();
-                expression.Parameters["V_Vitality"] = victim.Stat[(int)Stats.Vitality].Value();
-                expression.Parameters["V_Intelligence"] = victim.Stat[(int)Stats.Intelligence].Value();
-                expression.Parameters["V_Fire"] = victim.Stat[(int)Stats.Fire].Value();
-                expression.Parameters["V_Earth"] = victim.Stat[(int)Stats.Earth].Value();
-                expression.Parameters["V_Ice"] = victim.Stat[(int)Stats.Ice].Value();
-                expression.Parameters["V_Wind"] = victim.Stat[(int)Stats.Wind].Value();
-                expression.Parameters["V_FireResist"] = victim.Stat[(int)Stats.FireResist].Value();
-                expression.Parameters["V_EarthResist"] = victim.Stat[(int)Stats.EarthResist].Value();
-                expression.Parameters["V_WindResist"] = victim.Stat[(int)Stats.WindResist].Value();
-                expression.Parameters["V_IceResist"] = victim.Stat[(int)Stats.IceResist].Value();
-
-
-                expression.EvaluateFunction += delegate (string name, FunctionArgs args)
+                expression.Parameters["A_Attack"] = attacker.Stat[(int) Stats.Attack].Value();
+                expression.Parameters["A_Defense"] = attacker.Stat[(int) Stats.Defense].Value();
+                expression.Parameters["A_Speed"] = attacker.Stat[(int) Stats.Speed].Value();
+                expression.Parameters["A_AbilityPwr"] = attacker.Stat[(int) Stats.AbilityPower].Value();
+                expression.Parameters["A_MagicResist"] = attacker.Stat[(int) Stats.MagicResist].Value();
+                expression.Parameters["V_Attack"] = victim.Stat[(int) Stats.Attack].Value();
+                expression.Parameters["V_Defense"] = victim.Stat[(int) Stats.Defense].Value();
+                expression.Parameters["V_Speed"] = victim.Stat[(int) Stats.Speed].Value();
+                expression.Parameters["V_AbilityPwr"] = victim.Stat[(int) Stats.AbilityPower].Value();
+                expression.Parameters["V_MagicResist"] = victim.Stat[(int) Stats.MagicResist].Value();
+                expression.EvaluateFunction += delegate(string name, FunctionArgs args)
                 {
                     if (args == null)
                     {
@@ -191,7 +161,7 @@ namespace Intersect.Server.General
                     result = -result;
                 }
 
-                return (int)Math.Round(result);
+                return (int) Math.Round(result);
             }
             catch (Exception ex)
             {
@@ -214,12 +184,12 @@ namespace Intersect.Server.General
                 throw new ArgumentException($"{nameof(Random)}() requires 2 numerical parameters.");
             }
 
-            var min = (int)Math.Round(
-                (double)(parameters[0] ?? throw new NullReferenceException("First parameter is null."))
+            var min = (int) Math.Round(
+                (double) (parameters[0] ?? throw new NullReferenceException("First parameter is null."))
             );
 
-            var max = (int)Math.Round(
-                (double)(parameters[1] ?? throw new NullReferenceException("First parameter is null."))
+            var max = (int) Math.Round(
+                (double) (parameters[1] ?? throw new NullReferenceException("First parameter is null."))
             );
 
             return min >= max ? min : Globals.Rand.Next(min, max + 1);
