@@ -692,7 +692,7 @@ namespace Intersect.Editor.Localization
 
             public static LocalizedString basehp = @"HP:";
 
-            public static LocalizedString basemagicresist = @"Magic Resist:";
+            public static LocalizedString basemagicresist = @"Intelligence";
 
             public static LocalizedString basemp = @"Mana:";
 
@@ -881,7 +881,10 @@ Tick timer saved in server config.json.";
             {
                 {0, @"Physical"},
                 {1, @"Magic"},
-                {2, @"True"},
+                {2, @"Fire"},
+                {3, @"Earth"},
+                {4, @"Ice"},
+                {5, @"Wind"},
             };
 
             public static LocalizedString exp = @"Experience";
@@ -889,10 +892,20 @@ Tick timer saved in server config.json.";
             public static Dictionary<int, LocalizedString> stats = new Dictionary<int, LocalizedString>
             {
                 {0, @"Attack"},
-                {1, @"Ability Power"},
-                {2, @"Defense"},
-                {3, @"Magic Resist"},
-                {4, @"Speed"},
+
+                      {1, @"Magic"},
+                      {2, @"Defense"},
+                    {3, @"Vitality"},
+                    {4, @"Intelligence"},
+                    {5, @"Speed"},
+                    {6, @"Fire"},
+                    {7, @"Earth"},
+                    {8, @"Ice"},
+                    {9, @"Wind"},
+                    {10, @"Fire resis"},
+                      {11, @"Earth resis"},
+                        {12, @"Ice resis"},
+                          {13, @"Wind resis"}
             };
 
             public static Dictionary<int, LocalizedString> vitals = new Dictionary<int, LocalizedString>
@@ -2782,7 +2795,7 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString items = @"Items";
 
-            public static LocalizedString magicresistbonus = @"Magic Resist:";
+            public static LocalizedString magicresistbonus = @"Intelligence:";
 
             public static LocalizedString malepaperdoll = @"Male Paperdoll:";
 
@@ -3413,7 +3426,7 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString hpregen = @"HP (%);";
 
-            public static LocalizedString magicresist = @"Magic Resist:";
+            public static LocalizedString magicresist = @"Intelligence:";
 
             public static LocalizedString mana = @"Mana:";
 
@@ -4025,7 +4038,7 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString ishotdot = @"HOT/DOT?";
 
-            public static LocalizedString magicresist = @"Magic Resist:";
+            public static LocalizedString magicresist = @"Intelligence";
 
             public static LocalizedString manacost = @"Mana Cost:";
 

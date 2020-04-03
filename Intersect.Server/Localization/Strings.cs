@@ -272,7 +272,10 @@ namespace Intersect.Server.Localization
                     {
                         {0, @"Physical"},
                         {1, @"Magic"},
-                        {2, @"True"}
+                        {2, @"Fire"},
+                         {3, @"Earth"},
+                          {4, @"Ice"},
+                           {5, @"Wind"}
                     }
                 );
 

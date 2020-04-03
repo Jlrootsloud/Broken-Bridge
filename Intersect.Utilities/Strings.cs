@@ -259,7 +259,10 @@ namespace Intersect.Utilities
                     {
                         {0, @"Physical"},
                         {1, @"Magic"},
-                        {2, @"True"}
+                        {2, @"Fire"},
+                         {3, @"Earth"},
+                          {4, @"Ice"},
+                           {5, @"Wind"}
                     }
                 );
 
@@ -312,10 +315,20 @@ namespace Intersect.Utilities
                 new Dictionary<int, LocalizedString>
                 {
                     {0, @"Attack"},
-                    {1, @"Ability Power"},
-                    {2, @"Defense"},
-                    {3, @"Magic Resist"},
-                    {4, @"Speed"}
+
+                      {1, @"Magic"},
+                      {2, @"Defense"},
+                    {3, @"Vitality"},
+                    {4, @"Intelligence"},
+                    {5, @"Speed"},
+                    {6, @"Fire"},
+                    {7, @"Earth"},
+                    {8, @"Ice"},
+                    {9, @"Wind"},
+                    {10, @"Fire resis"},
+                      {11, @"Earth resis"},
+                        {12, @"Ice resis"},
+                          {13, @"Wind resis"}
                 }
             );
 

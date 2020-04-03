@@ -1727,7 +1727,7 @@ namespace Intersect.Server.Entities
                             );
 
                             break;
-                        case DamageType.True:
+                        case DamageType.Fire:
                             PacketSender.SendActionMsg(
                                 enemy, Strings.Combat.removesymbol + (int) baseDamage, CustomColors.Combat.TrueDamage
                             );
