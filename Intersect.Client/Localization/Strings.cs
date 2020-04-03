@@ -373,6 +373,16 @@ namespace Intersect.Client.Localization
 
             public static LocalizedString stat4 = @"{00}: {01}";
 
+            public static LocalizedString stat5 = @"{00}: {01}";
+
+            public static LocalizedString stat6 = @"{00}: {01}";
+            public static LocalizedString stat7 = @"{00}: {01}";
+            public static LocalizedString stat8 = @"{00}: {01}";
+            public static LocalizedString stat9 = @"{00}: {01}";
+            public static LocalizedString stat10 = @"{00}: {01}";
+            public static LocalizedString stat11 = @"{00}: {01}";
+            public static LocalizedString stat12 = @"{00}: {01}";
+            public static LocalizedString stat13 = @"{00}: {01}";
             public static LocalizedString stats = @"Stats:";
 
             public static LocalizedString title = @"Character";
@@ -486,15 +496,26 @@ namespace Intersect.Client.Localization
 
             public static LocalizedString exp = @"Experience";
 
-            public static LocalizedString stat0 = @"Attack";
+            public static LocalizedString stat0 = @"{00}: {01}";
 
-            public static LocalizedString stat1 = @"Ability Power";
+            public static LocalizedString stat1 = @"{00}: {01}";
 
-            public static LocalizedString stat2 = @"Defense";
+            public static LocalizedString stat2 = @"{00}: {01}";
 
-            public static LocalizedString stat3 = @"Magic Resist";
+            public static LocalizedString stat3 = @"{00}: {01}";
 
-            public static LocalizedString stat4 = @"Speed";
+            public static LocalizedString stat4 = @"{00}: {01}";
+
+            public static LocalizedString stat5 = @"{00}: {01}";
+
+            public static LocalizedString stat6 = @"{00}: {01}";
+            public static LocalizedString stat7 = @"{00}: {01}";
+            public static LocalizedString stat8 = @"{00}: {01}";
+            public static LocalizedString stat9 = @"{00}: {01}";
+            public static LocalizedString stat10 = @"{00}: {01}";
+            public static LocalizedString stat11 = @"{00}: {01}";
+            public static LocalizedString stat12 = @"{00}: {01}";
+            public static LocalizedString stat13 = @"{00}: {01}";
 
             public static LocalizedString targetoutsiderange = @"Target too far away!";
 
@@ -858,10 +879,19 @@ namespace Intersect.Client.Localization
             public static Dictionary<int, LocalizedString> stats = new Dictionary<int, LocalizedString>
             {
                 {0, @"Attack: {00}"},
-                {1, @"Ability Power: {00}"},
+                {1, @"Magic: {00}"},
                 {2, @"Defense: {00}"},
-                {3, @"Magic Resist: {00}"},
-                {4, @"Speed: {00}"}
+                {3, @"Vitality: {00}"},
+                 {4, @"Intellingence: {00}"},
+                {5, @"Speed: {00}"},
+                 {6, @"Fire: {00}"},
+                  {7, @"Earth: {00}"},
+                   {8,"Ice: {00}"},
+                    {9, @"Wind: {00}"},
+                     {10, @"Fire Resist: {00}"},
+                      {11, @"Earth Resist: {00}"},
+                      {12, @"Ice Resist: {00}"},
+                      {13, @"Wind Resist: {00}"},
             };
 
             public static LocalizedString twohand = @"2H";
@@ -1411,12 +1441,21 @@ namespace Intersect.Client.Localization
 
             public static Dictionary<int, LocalizedString> stats = new Dictionary<int, LocalizedString>
             {
-                {0, @"Attack: {00}"},
-                {1, @"Ability Power: {00}"},
+                  {0, @"Attack: {00}"},
+                {1, @"Magic: {00}"},
                 {2, @"Defense: {00}"},
-                {3, @"Magic Resist: {00}"},
-                {4, @"Speed: {00}"}
-            };
+                {3, @"Vitality: {00}"},
+                 {4, @"Intellingence: {00}"},
+                {5, @"Speed: {00}"},
+                 {6, @"Fire: {00}"},
+                  {7, @"Earth: {00}"},
+                   {8,"Ice: {00}"},
+                    {9, @"Wind: {00}"},
+                     {10, @"Fire Resist: {00}"},
+                      {11, @"Earth Resist: {00}"},
+                      {12, @"Ice Resist: {00}"},
+                      {13, @"Wind Resist: {00}"},
+            }; 
 
             public static Dictionary<int, LocalizedString> targettypes = new Dictionary<int, LocalizedString>
             {

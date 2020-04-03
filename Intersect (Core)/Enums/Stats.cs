@@ -6,13 +6,31 @@ namespace Intersect.Enums
 
         Attack = 0,
 
-        AbilityPower,
+        Magic,
 
         Defense,
 
-        MagicResist,
+        Vitality,
+
+        Intelligence,
 
         Speed,
+
+        Fire,
+
+        Earth,
+
+        Ice,
+
+        Wind,
+
+        FireResist,
+
+        EarthResist,
+
+        IceResist,
+
+        WindResist,
 
         StatCount
 

@@ -148,9 +148,9 @@ namespace Intersect.Editor.Forms.Editors
                 pnlContainer.Show();
                 txtName.Text = mEditorItem.Name;
                 nudAttack.Value = mEditorItem.BaseStat[(int) Stats.Attack];
-                nudMag.Value = mEditorItem.BaseStat[(int) Stats.AbilityPower];
+                nudMag.Value = mEditorItem.BaseStat[(int) Stats.Vitality];
                 nudDef.Value = mEditorItem.BaseStat[(int) Stats.Defense];
-                nudMR.Value = mEditorItem.BaseStat[(int) Stats.MagicResist];
+                nudMR.Value = mEditorItem.BaseStat[(int) Stats.Intelligence];
                 nudSpd.Value = mEditorItem.BaseStat[(int) Stats.Speed];
                 nudBaseHP.Value = Math.Max(
                     Math.Min(mEditorItem.BaseVital[(int) Vitals.Health], nudBaseHP.Maximum), nudBaseHP.Minimum
@@ -848,11 +848,11 @@ namespace Intersect.Editor.Forms.Editors
 
             nudArmorIncrease.Value = Math.Min(nudArmorIncrease.Maximum, mEditorItem.StatIncrease[(int) Stats.Defense]);
             nudMagicIncrease.Value = Math.Min(
-                nudMagicIncrease.Maximum, mEditorItem.StatIncrease[(int) Stats.AbilityPower]
+                nudMagicIncrease.Maximum, mEditorItem.StatIncrease[(int) Stats.Vitality]
             );
 
             nudMagicResistIncrease.Value = Math.Min(
-                nudMagicResistIncrease.Maximum, mEditorItem.StatIncrease[(int) Stats.MagicResist]
+                nudMagicResistIncrease.Maximum, mEditorItem.StatIncrease[(int) Stats.Intelligence]
             );
 
             nudSpeedIncrease.Value = Math.Min(nudSpeedIncrease.Maximum, mEditorItem.StatIncrease[(int) Stats.Speed]);
@@ -1060,7 +1060,7 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudMag_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.BaseStat[(int) Stats.AbilityPower] = (int) nudMag.Value;
+            mEditorItem.BaseStat[(int) Stats.Vitality] = (int) nudMag.Value;
         }
 
         private void nudDef_ValueChanged(object sender, EventArgs e)
@@ -1070,7 +1070,7 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudMR_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.BaseStat[(int) Stats.MagicResist] = (int) nudMR.Value;
+            mEditorItem.BaseStat[(int) Stats.Intelligence] = (int) nudMR.Value;
         }
 
         private void nudPoints_ValueChanged(object sender, EventArgs e)
@@ -1138,7 +1138,7 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudMagicResistIncrease_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.StatIncrease[(int) Stats.MagicResist] = (int) nudMagicResistIncrease.Value;
+            mEditorItem.StatIncrease[(int) Stats.Intelligence] = (int) nudMagicResistIncrease.Value;
             UpdateIncreases();
         }
 
@@ -1150,7 +1150,7 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudMagicIncrease_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.StatIncrease[(int) Stats.AbilityPower] = (int) nudMagicIncrease.Value;
+            mEditorItem.StatIncrease[(int) Stats.Vitality] = (int) nudMagicIncrease.Value;
             UpdateIncreases();
         }
 
@@ -1684,6 +1684,45 @@ namespace Intersect.Editor.Forms.Editors
 
         #endregion
 
+        private void darkNumericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.Fire] = (int)darkNumericUpDown4.Value;
+        }
+
+        private void darkNumericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.Earth] = (int)darkNumericUpDown3.Value;
+        }
+
+        private void darkNumericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.Wind] = (int)darkNumericUpDown2.Value;
+        }
+
+        private void darkNumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.Ice] = (int)darkNumericUpDown1.Value;
+        }
+
+        private void darkNumericUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.FireResist] = (int)darkNumericUpDown8.Value;
+        }
+
+        private void darkNumericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.EarthResist] = (int)darkNumericUpDown7.Value;
+        }
+
+        private void darkNumericUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.WindResist] = (int)darkNumericUpDown6.Value;
+        }
+
+        private void darkNumericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            mEditorItem.BaseStat[(int)Stats.IceResist] = (int)darkNumericUpDown5.Value;
+        }
     }
 
 }
