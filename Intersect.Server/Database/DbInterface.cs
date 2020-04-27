@@ -29,6 +29,7 @@ using Intersect.Server.Database.PlayerData;
 using Intersect.Server.Database.PlayerData.Players;
 using Intersect.Server.Database.PlayerData.Security;
 using Intersect.Server.Entities;
+using Intersect.Server.Entities.Guilds;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
 using Intersect.Server.Maps;
@@ -548,6 +549,34 @@ namespace Intersect.Server.Database
                 sPlayerDb.Remove<Player>(chr);
             }
 
+            SavePlayerDatabaseAsync();
+        }
+
+        // Guilds
+        public static void CreateGuild(
+            Player player,
+            [NotNull] string name,
+            [NotNull] string tag
+        )
+        {
+            // Generate our new guild
+            var guild = new Guild() {
+                Name = name,
+                Tag = tag,
+                FoundingDate = DateTime.Today
+            };
+
+            // Set up our default ranks!
+            guild.SetupDefaultRanks();
+
+            // Add our guild to the Player Database.
+            lock (mPlayerDbLock)
+            {
+                sPlayerDb.Guilds.Add(guild);
+            }
+
+            // Assign our player their guild and save the database.
+            player.Guild = guild.Id;
             SavePlayerDatabaseAsync();
         }
 

@@ -73,6 +73,8 @@ namespace Intersect.Server.Entities
 
         public int StatPoints { get; set; }
 
+        public Guid Guild { get; set; }
+
         [Column("Equipment"), JsonIgnore]
         public string EquipmentJson
         {

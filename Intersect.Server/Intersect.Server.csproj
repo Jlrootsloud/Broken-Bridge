@@ -430,6 +430,8 @@
     <Compile Include="Database\MigrationBuilderExtensions.cs" />
     <Compile Include="Database\PlayerData\Api\RefreshToken.cs" />
     <Compile Include="Database\PlayerData\Ban.cs" />
+    <Compile Include="Entities\Guilds\Guild.cs" />
+    <Compile Include="Entities\Guilds\GuildRank.cs" />
     <Compile Include="Database\PlayerData\Players\Bag.cs" />
     <Compile Include="Database\PlayerData\Players\BagSlot.cs" />
     <Compile Include="Database\PlayerData\Players\BankSlot.cs" />

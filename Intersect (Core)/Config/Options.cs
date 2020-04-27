@@ -54,6 +54,8 @@ namespace Intersect
 
         [JsonProperty("Security")] public SecurityOptions SecurityOpts = new SecurityOptions();
 
+        [JsonProperty("Guild")] public GuildOptions GuildOpts = new GuildOptions();
+
         public SmtpSettings SmtpSettings = new SmtpSettings();
 
         [NotNull]

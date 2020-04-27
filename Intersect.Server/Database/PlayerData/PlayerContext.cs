@@ -7,6 +7,7 @@ using Intersect.Server.Database.PlayerData.Api;
 using Intersect.Server.Database.PlayerData.Players;
 using Intersect.Server.Database.PlayerData.SeedData;
 using Intersect.Server.Entities;
+using Intersect.Server.Entities.Guilds;
 
 using JetBrains.Annotations;
 
@@ -77,6 +78,9 @@ namespace Intersect.Server.Database.PlayerData
 
         [NotNull]
         public DbSet<BagSlot> Bag_Items { get; set; }
+
+        [NotNull]
+        public DbSet<Guild> Guilds { get; set; }
 
         internal async ValueTask Commit(
             bool commit = false,
