@@ -122,7 +122,7 @@ namespace Intersect.Server.Entities.Guilds
                 LeaderRank = Ranks.First().Id;
             }
 
-            // If our Leader rank is empty, something went horribly awry?
+            // If our Default Member rank is empty, something went horribly awry?
             if (DefaultMemberRank == Guid.Empty)
             {
                 Logging.Log.Debug($@"Created guild with Id {Id} without a DefaultMemberRank. Is the Guild configuration invalid? Setting to First rank!");

@@ -569,7 +569,7 @@ namespace Intersect.Server.Database
             // Set up our default ranks!
             guild.SetupDefaultRanks();
 
-            // Assign our player their guild and save the database.
+            // Assign our player their guild and save the database (Assuming they've successfully joined it).
             if (guild.Join(player, guild.LeaderRank))
             {
                 // Add our guild to the Player Database.
