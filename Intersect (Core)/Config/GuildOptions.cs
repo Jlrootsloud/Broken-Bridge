@@ -19,7 +19,7 @@ namespace Intersect.Config
         /// <summary>
         /// Configures which rank will be used by default for the person creating a guild.
         /// </summary>
-        public string DefaultCreationRank = "Leader";
+        public string DefaultLeaderRank = "Leader";
 
         /// <summary>
         /// Configures which rank will be used by default for each person invited to a guild.

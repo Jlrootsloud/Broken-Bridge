@@ -21,6 +21,7 @@ using Intersect.Server.Database;
 using Intersect.Server.Database.PlayerData;
 using Intersect.Server.Database.PlayerData.Security;
 using Intersect.Server.Entities;
+using Intersect.Server.Entities.Guilds;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
 using Intersect.Server.Maps;
@@ -662,6 +663,23 @@ namespace Intersect.Server.Networking
                 {
                     PacketSender.SendChatMsg(player, Strings.Player.offline, CustomColors.Alerts.Error);
                 }
+            }
+            else if (cmd == Strings.Chat.CreateGuild)
+            {
+                if (msg.Trim().Length == 0)
+                {
+                    return;
+                }
+
+                var arg = msg.Split(';');
+                if (arg.Length != 2)
+                {
+                    return;
+                }
+                var name = arg[0];
+                var tag = arg[1];
+
+                Guild.Create(player, name, tag);
             }
             else
             {

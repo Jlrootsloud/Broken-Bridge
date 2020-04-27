@@ -147,6 +147,8 @@ namespace Intersect
 
         public static bool AdminOnly { get => Instance._adminOnly; set => Instance._adminOnly = value; }
 
+        public static GuildOptions GuildOptions => Instance.GuildOpts;
+
         public static bool BlockClientRegistrations
         {
             get => Instance._blockClientRegistrations;

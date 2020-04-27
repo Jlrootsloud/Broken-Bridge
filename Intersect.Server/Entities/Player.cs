@@ -20,6 +20,7 @@ using Intersect.Server.Database;
 using Intersect.Server.Database.PlayerData.Players;
 using Intersect.Server.Database.PlayerData.Security;
 using Intersect.Server.Entities.Events;
+using Intersect.Server.Entities.Guilds;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
 using Intersect.Server.Maps;
@@ -73,7 +74,7 @@ namespace Intersect.Server.Entities
 
         public int StatPoints { get; set; }
 
-        public Guid Guild { get; set; }
+        public Guild Guild { get; set; }
 
         [Column("Equipment"), JsonIgnore]
         public string EquipmentJson
