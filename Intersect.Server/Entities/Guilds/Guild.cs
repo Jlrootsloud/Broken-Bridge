@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 using Intersect.Enums;
+using Intersect.Logging;
 using Intersect.Server.Localization;
 using Intersect.Server.Networking;
 
@@ -118,16 +119,26 @@ namespace Intersect.Server.Entities.Guilds
             // If our Leader rank is empty, something went horribly awry?
             if (LeaderRank == Guid.Empty) 
             {
-                Logging.Log.Debug($@"Created guild with Id {Id} without a LeaderRank. Is the Guild configuration invalid? Setting to First rank!");
+                Log.Error($@"Created guild with Id {Id} without a LeaderRank. Is the Guild configuration invalid? Setting to First rank!");
                 LeaderRank = Ranks.First().Id;
             }
 
             // If our Default Member rank is empty, something went horribly awry?
             if (DefaultMemberRank == Guid.Empty)
             {
-                Logging.Log.Debug($@"Created guild with Id {Id} without a DefaultMemberRank. Is the Guild configuration invalid? Setting to First rank!");
+                Log.Error($@"Created guild with Id {Id} without a DefaultMemberRank. Is the Guild configuration invalid? Setting to First rank!");
                 DefaultMemberRank = Ranks.First().Id;
             }
+        }
+
+        public GuildRank GetRank(Player player)
+        {
+            if (!Members.ContainsKey(player.Id))
+            {
+                return null;
+            }
+
+            return Ranks.Where(r => r.Id == Members[player.Id]).FirstOrDefault();
         }
 
         public bool Join(Player player, Guid rank) 
@@ -144,10 +155,44 @@ namespace Intersect.Server.Entities.Guilds
             Members.Add(player.Id, rank);
 
             // Notify them they've joined!
-            PacketSender.SendChatMsg(player, Strings.Guilds.JoinedGuild.ToString(Name), CustomColors.Alerts.Success);
+            PacketSender.SendChatMsg(player, Strings.Guilds.Welcome.ToString(Name), CustomColors.Alerts.Success);
+            PacketSender.SendGuildMsg(this, Strings.Guilds.HasJoined.ToString(player.Name, Name), CustomColors.Alerts.Success);
 
             return true;
         }
 
+        public bool Leave(Player player)
+        {
+            if (player == null)
+            {
+                return false;
+            }
+
+            // Does this member exist?
+            if (!Members.Keys.Contains(player.Id))
+            {
+                Log.Warn($@"Player {player.Id} tried to leave Guild {this.Id} but is not a member!");
+                return false;
+            }
+
+            // Can this member leave?
+            if (Members[player.Id] == LeaderRank)
+            {
+                PacketSender.SendChatMsg(player, Strings.Guilds.LeaderCantLeave.ToString(), CustomColors.Alerts.Error);
+                return false;
+            }
+
+            // Remove the member from the guild.
+            player.Guild = null;
+            Members.Remove(player.Id);
+
+
+            // Notify them they've left!
+            PacketSender.SendChatMsg(player, Strings.Guilds.Goodbye.ToString(Name), CustomColors.Alerts.Success);
+            PacketSender.SendGuildMsg(this, Strings.Guilds.HasLeft.ToString(player.Name, Name), CustomColors.Alerts.Info);
+
+
+            return true;
+        }
     }
 }

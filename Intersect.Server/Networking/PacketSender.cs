@@ -18,6 +18,7 @@ using Intersect.Server.Database.PlayerData.Players;
 using Intersect.Server.Database.PlayerData.Security;
 using Intersect.Server.Entities;
 using Intersect.Server.Entities.Events;
+using Intersect.Server.Entities.Guilds;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
 using Intersect.Server.Maps;
@@ -654,6 +655,28 @@ namespace Intersect.Server.Networking
                 {
                     SendChatMsg(p, message, clr, target);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Send a chat message to this guild.
+        /// </summary>
+        /// <param name="guild">TThe guild to send the message to.</param>
+        /// <param name="message">The message to send.</param>
+        /// <param name="clr">The colour of the message to send.</param>
+        /// <param name="target">???</param>
+        public static void SendGuildMsg(Guild guild, string message, Color clr, string target = "")
+        {
+            if (guild == null)
+            {
+                return;
+            }
+
+            // Find every online player in the guild and send them this message.
+            foreach (var playerId in guild.Members.Keys)
+            {
+                var player = Player.FindOnline(playerId);
+                SendChatMsg(player, message, target);
             }
         }
 

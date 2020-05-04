@@ -76,6 +76,9 @@ namespace Intersect.Server.Entities
 
         public Guild Guild { get; set; }
 
+        [NotMapped, JsonIgnore]
+        private Guild guildInvite { get; set; }
+
         [Column("Equipment"), JsonIgnore]
         public string EquipmentJson
         {
@@ -3457,6 +3460,59 @@ namespace Intersect.Server.Entities
             PacketSender.SendChatMsg(this, Strings.Trading.declined, CustomColors.Alerts.Error);
             PacketSender.SendTradeClose(this);
             Trading.Counterparty = null;
+        }
+
+        public void InviteToGuild(Guild guild, Player inviteFrom)
+        {
+            // Are we already in a guild? If so, instantly decline.
+            if (Guild != null)
+            {
+                PacketSender.SendChatMsg(inviteFrom, Strings.Guilds.PlayerAlreadyInGuild, CustomColors.Alerts.Error);
+                return;
+            }
+
+            // Did this player already receive an invite before?
+            if (guildInvite != null)
+            {
+                // Send the previous guild a message their invite is about to be overwritten.
+                PacketSender.SendGuildMsg(guildInvite, Strings.Guilds.InviteOverwritten, CustomColors.Alerts.Declined);
+            }
+
+            // Set our invite to this guild.
+            guildInvite = guild;
+
+            // Notify our players.
+            PacketSender.SendGuildMsg(guild, Strings.Guilds.PlayerInvited.ToString(this.Name, guild.Name), CustomColors.Alerts.Info);
+            PacketSender.SendChatMsg(this, Strings.Guilds.InvitedBy.ToString(inviteFrom.Name, guild.Name), CustomColors.Alerts.Info);
+        }
+
+        /// <summary>
+        /// Handle accepting a pending guild invite.
+        /// </summary>
+        /// <param name="accept">Determines whether the player accepts or declines the invite.</param>
+        /// <returns>Whether the desired action is completed accordingly.</returns>
+        public bool HandleGuildInvite(bool accept)
+        {
+            if (guildInvite == null)
+            {
+                PacketSender.SendChatMsg(this, Strings.Guilds.NotInvited, CustomColors.Alerts.Error);
+                return false;
+            }
+
+            // Do we accept?
+            if (accept)
+            {
+                // Set our invite to nothing and join the guild!
+                return guildInvite.Join(this, guildInvite.DefaultMemberRank);
+                guildInvite = null;
+            }
+            else
+            {
+                // Notify our guild the invite was declined and set the invite to nothing.
+                PacketSender.SendGuildMsg(guildInvite, Strings.Guilds.InviteDeclined.ToString(Name), CustomColors.Alerts.Info);
+                guildInvite = null;
+                return true;
+            }
         }
 
         //Parties
