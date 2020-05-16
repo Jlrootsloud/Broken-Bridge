@@ -69,6 +69,16 @@ namespace Intersect.Server.Entities
 
         public Gender Gender { get; set; }
 
+        [NotMapped]
+        public string[] CustomSpriteLayers { get; set; } = new string[(int)Enums.CustomSpriteLayers.CustomCount];
+
+        [Column("CustomSpriteLayers"), JsonIgnore]
+        public string CustomSpriteLayersJson
+        {
+            get => DatabaseUtils.SaveStringArray(CustomSpriteLayers, (int)Enums.CustomSpriteLayers.CustomCount);
+            set => CustomSpriteLayers = DatabaseUtils.LoadStringArray(value, (int)Enums.CustomSpriteLayers.CustomCount);
+        }
+
         public long Exp { get; set; }
 
         public int StatPoints { get; set; }
@@ -574,6 +584,9 @@ namespace Intersect.Server.Entities
             {
                 ((PlayerEntityPacket) packet).Equipment =
                     PacketSender.GenerateEquipmentPacket(forPlayer, (Player) this);
+
+                pkt.CustomSpriteLayers =
+                    PacketSender.GenerateCustomSpriteLayersPacket((Player)this);
             }
 
             return pkt;
