@@ -349,7 +349,68 @@ namespace Intersect.Editor.Forms.Editors.Events
                             mCommandProperties.Add(clp);
 
                             break;
+                        case EventCommandType.ChangeItemsByTag:
+                            var titm = (ChangeItemsByTag)commandList[i];
+                            lstEventCommands.Items.Add(
+                                indent +
+                                Strings.EventCommandList.linestart +
+                                GetCommandText((dynamic)commandList[i], map)
+                            );
 
+                            clp = new CommandListProperties {
+                                Editable = true,
+                                MyIndex = i,
+                                MyList = commandList,
+                                Cmd = commandList[i],
+                                Type = commandList[i].Type
+                            };
+
+                            mCommandProperties.Add(clp);
+
+                            //When the item(s) were successfully taken:
+                            lstEventCommands.Items.Add(indent + "      : " + Strings.EventCommandList.itemchangedbytag);
+                            clp = new CommandListProperties {
+                                Editable = false,
+                                MyIndex = i,
+                                MyList = commandList,
+                                Type = commandList[i].Type,
+                                Cmd = commandList[i]
+                            };
+
+                            mCommandProperties.Add(clp);
+                            PrintCommandList(
+                                page, page.CommandLists[titm.BranchIds[0]], indent + "          ", lstEventCommands,
+                                mCommandProperties, map
+                            );
+
+                            //When the items failed to be given/taken:
+                            lstEventCommands.Items.Add(indent + "      : " + Strings.EventCommandList.itemnotchangedbytag);
+                            clp = new CommandListProperties {
+                                Editable = false,
+                                MyIndex = i,
+                                MyList = commandList,
+                                Type = commandList[i].Type,
+                                Cmd = commandList[i]
+                            };
+
+                            mCommandProperties.Add(clp);
+                            PrintCommandList(
+                                page, page.CommandLists[titm.BranchIds[1]], indent + "          ", lstEventCommands,
+                                mCommandProperties, map
+                            );
+
+                            lstEventCommands.Items.Add(indent + "      : " + Strings.EventCommandList.endchangeitemsbytag);
+                            clp = new CommandListProperties {
+                                Editable = false,
+                                MyIndex = i,
+                                MyList = commandList,
+                                Type = commandList[i].Type,
+                                Cmd = commandList[i]
+                            };
+
+                            mCommandProperties.Add(clp);
+
+                            break;
                         case EventCommandType.StartQuest:
                             var qst = (StartQuestCommand) commandList[i];
                             lstEventCommands.Items.Add(
@@ -618,6 +679,12 @@ namespace Intersect.Editor.Forms.Editors.Events
             return Strings.EventCommandList.changeitems.ToString(
                 Strings.EventCommandList.take.ToString(ItemBase.GetName(command.ItemId))
             );
+        }
+
+        private static string GetCommandText(ChangeItemsByTag command, MapInstance map)
+        {
+
+            return Strings.EventCommandList.changeitemsbytag.ToString(command.Tag);
         }
 
         private static string GetCommandText(EquipItemCommand command, MapInstance map)

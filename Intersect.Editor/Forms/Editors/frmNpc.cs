@@ -132,6 +132,8 @@ namespace Intersect.Editor.Forms.Editors
             lblName.Text = Strings.NpcEditor.name;
             grpBehavior.Text = Strings.NpcEditor.behavior;
 
+            lblTag.Text = Strings.EventConditional.tag;
+
             lblPic.Text = Strings.NpcEditor.sprite;
             lblSpawnDuration.Text = Strings.NpcEditor.spawnduration;
 
@@ -237,6 +239,7 @@ namespace Intersect.Editor.Forms.Editors
                 pnlContainer.Show();
 
                 txtName.Text = mEditorItem.Name;
+                txtTag.Text = String.Join(";", mEditorItem.Tags);
                 cmbFolder.Text = mEditorItem.Folder;
                 cmbSprite.SelectedIndex = cmbSprite.FindString(TextUtils.NullToNone(mEditorItem.Sprite));
                 nudLevel.Value = mEditorItem.Level;
@@ -352,6 +355,21 @@ namespace Intersect.Editor.Forms.Editors
             }
 
             mChangingName = false;
+        }
+
+        private void txtTag_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                mEditorItem.Tags.Clear();
+                mEditorItem.Tags.AddRange(txtTag.Text.Split(';'));
+            }
+            catch
+            {
+                MessageBox.Show(Strings.NpcEditor.tagparseerror, Strings.NpcEditor.tagparseerrortitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
         }
 
         private void cmbSprite_SelectedIndexChanged(object sender, EventArgs e)
@@ -1111,7 +1129,6 @@ namespace Intersect.Editor.Forms.Editors
         }
 
         #endregion
-
     }
 
 }

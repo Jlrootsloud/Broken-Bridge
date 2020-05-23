@@ -98,6 +98,22 @@ namespace Intersect.Editor.Maps
             }
         }
 
+        [CustomCategory("general"), CustomDescription("tagsdesc"), CustomDisplayName("tags"), DefaultValue("")]
+        public string Tags
+        {
+            get => String.Join(";", mMyMap.Tags);
+            set
+            {
+                if (String.Join(";", mMyMap.Tags) != value)
+                {
+                    Globals.MapEditorWindow.PrepUndoState();
+                    mMyMap.Tags.Clear();
+                    mMyMap.Tags.AddRange(value.Split(';'));
+                    Globals.MapEditorWindow.AddUndoState();
+                }
+            }
+        }
+
         [CustomCategory("audio"), CustomDescription("musicdesc"), CustomDisplayName("music"), DefaultValue("None"),
          TypeConverter(typeof(MapMusicProperty)), Browsable(true)]
         public string Music

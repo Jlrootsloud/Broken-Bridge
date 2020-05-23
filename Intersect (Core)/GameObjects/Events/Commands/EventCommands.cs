@@ -455,6 +455,69 @@ namespace Intersect.GameObjects.Events.Commands
             return base.GetCopyData(commandLists, copyLists);
         }
 
+
+        public override void FixBranchIds(Dictionary<Guid, Guid> idDict)
+        {
+            for (var i = 0; i < BranchIds.Length; i++)
+            {
+                if (idDict.ContainsKey(BranchIds[i]))
+                {
+                    BranchIds[i] = idDict[BranchIds[i]];
+                }
+            }
+        }
+
+    }
+
+    public class ChangeItemsByTag : EventCommand
+    {
+
+        //For Json Deserialization
+        public ChangeItemsByTag()
+        {
+        }
+
+        public ChangeItemsByTag(Dictionary<Guid, List<EventCommand>> commandLists)
+        {
+            for (var i = 0; i < BranchIds.Length; i++)
+            {
+                BranchIds[i] = Guid.NewGuid();
+                commandLists.Add(BranchIds[i], new List<EventCommand>());
+            }
+        }
+
+        public override EventCommandType Type { get; } = EventCommandType.ChangeItemsByTag;
+
+        public string Tag { get; set; }
+
+        public int Quantity { get; set; }
+
+        public bool Add { get; set; }
+
+        public Guid[] BranchIds { get; set; } =
+            new Guid[2]; //Branch[0] is the event commands to execute when given/taken successfully, Branch[1] is for when they're not.
+
+        public override string GetCopyData(
+            Dictionary<Guid, List<EventCommand>> commandLists,
+            Dictionary<Guid, List<EventCommand>> copyLists
+        )
+        {
+            foreach (var branch in BranchIds)
+            {
+                if (branch != Guid.Empty && commandLists.ContainsKey(branch))
+                {
+                    copyLists.Add(branch, commandLists[branch]);
+                    foreach (var cmd in commandLists[branch])
+                    {
+                        cmd.GetCopyData(commandLists, copyLists);
+                    }
+                }
+            }
+
+            return base.GetCopyData(commandLists, copyLists);
+        }
+
+
         public override void FixBranchIds(Dictionary<Guid, Guid> idDict)
         {
             for (var i = 0; i < BranchIds.Length; i++)

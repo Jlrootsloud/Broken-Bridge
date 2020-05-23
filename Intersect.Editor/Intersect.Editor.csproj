@@ -86,6 +86,12 @@
     <Compile Include="Core\Preferences.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Entities\Animation.cs" />
+    <Compile Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeItemsByTag.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeItemsByTag.Designer.cs">
+      <DependentUpon>EventCommand_ChangeItemsByTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -653,6 +659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeGender.resx">
       <DependentUpon>EventCommand_ChangeGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeItemsByTag.resx">
+      <DependentUpon>EventCommand_ChangeItemsByTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeVital.resx">
       <DependentUpon>EventCommand_ChangeVital.cs</DependentUpon>

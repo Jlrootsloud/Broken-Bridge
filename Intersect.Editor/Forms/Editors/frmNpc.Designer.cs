@@ -38,6 +38,8 @@ namespace Intersect.Editor.Forms.Editors
             this.lstNpcs = new System.Windows.Forms.TreeView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.grpGeneral = new DarkUI.Controls.DarkGroupBox();
+            this.lblTag = new System.Windows.Forms.Label();
+            this.txtTag = new DarkUI.Controls.DarkTextBox();
             this.btnAddFolder = new DarkUI.Controls.DarkButton();
             this.lblFolder = new System.Windows.Forms.Label();
             this.cmbFolder = new DarkUI.Controls.DarkComboBox();
@@ -263,6 +265,8 @@ namespace Intersect.Editor.Forms.Editors
             // 
             this.grpGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.grpGeneral.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpGeneral.Controls.Add(this.lblTag);
+            this.grpGeneral.Controls.Add(this.txtTag);
             this.grpGeneral.Controls.Add(this.btnAddFolder);
             this.grpGeneral.Controls.Add(this.lblFolder);
             this.grpGeneral.Controls.Add(this.cmbFolder);
@@ -281,6 +285,26 @@ namespace Intersect.Editor.Forms.Editors
             this.grpGeneral.TabStop = false;
             this.grpGeneral.Text = "General";
             // 
+            // lblTag
+            //
+            this.lblTag.AutoSize = true;
+            this.lblTag.Location = new System.Drawing.Point(72, 110);
+            this.lblTag.Name = "lblTag";
+            this.lblTag.Size = new System.Drawing.Size(29, 13);
+            this.lblTag.TabIndex = 69;
+            this.lblTag.Text = "Tag:";
+            //
+            // txtTag
+            //
+            this.txtTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.txtTag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtTag.Location = new System.Drawing.Point(106, 108);
+            this.txtTag.Name = "txtTag";
+            this.txtTag.Size = new System.Drawing.Size(89, 20);
+            this.txtTag.TabIndex = 68;
+            this.txtTag.TextChanged += new System.EventHandler(this.txtTag_TextChanged);
+            //
             // btnAddFolder
             // 
             this.btnAddFolder.Location = new System.Drawing.Point(177, 45);
@@ -367,7 +391,7 @@ namespace Intersect.Editor.Forms.Editors
             this.cmbSprite.FormattingEnabled = true;
             this.cmbSprite.Items.AddRange(new object[] {
             "None"});
-            this.cmbSprite.Location = new System.Drawing.Point(75, 132);
+            this.cmbSprite.Location = new System.Drawing.Point(75, 150);
             this.cmbSprite.Name = "cmbSprite";
             this.cmbSprite.Size = new System.Drawing.Size(120, 21);
             this.cmbSprite.TabIndex = 11;
@@ -378,7 +402,7 @@ namespace Intersect.Editor.Forms.Editors
             // lblPic
             // 
             this.lblPic.AutoSize = true;
-            this.lblPic.Location = new System.Drawing.Point(72, 116);
+            this.lblPic.Location = new System.Drawing.Point(72, 134);
             this.lblPic.Name = "lblPic";
             this.lblPic.Size = new System.Drawing.Size(37, 13);
             this.lblPic.TabIndex = 6;
@@ -782,6 +806,7 @@ namespace Intersect.Editor.Forms.Editors
             // 
             // grpAttackSpeed
             // 
+            //
             this.grpAttackSpeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.grpAttackSpeed.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.grpAttackSpeed.Controls.Add(this.nudAttackSpeedValue);
@@ -2136,5 +2161,7 @@ namespace Intersect.Editor.Forms.Editors
         private System.Windows.Forms.Label lblAttackSpeedValue;
         private DarkComboBox cmbAttackSpeedModifier;
         private System.Windows.Forms.Label lblAttackSpeedModifier;
+        private System.Windows.Forms.Label lblTag;
+        private DarkTextBox txtTag;
     }
 }

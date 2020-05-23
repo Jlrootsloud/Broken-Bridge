@@ -10,6 +10,7 @@ using Intersect.GameObjects.Events;
 using Intersect.GameObjects.Events.Commands;
 using Intersect.GameObjects.Switches_and_Variables;
 using Intersect.Server.Database;
+using Intersect.Server.Database.PlayerData.Players;
 using Intersect.Server.Database.PlayerData.Security;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
@@ -442,6 +443,114 @@ namespace Intersect.Server.Entities.Events
 
             var tmpStack = new CommandInstance(stackInfo.Page)
             {
+                CommandList = newCommandList,
+                CommandIndex = 0,
+            };
+
+            callStack.Push(tmpStack);
+        }
+
+        //Take Items By tag Command
+        private static void ProcessCommand(
+            ChangeItemsByTag command,
+            Player player,
+            Event instance,
+            CommandInstance stackInfo,
+            Stack<CommandInstance> callStack
+        )
+        {
+            var success = false;
+
+            // Retrieve all items that have the tag we're looking for so we can use this list to check against their inventory, or pick a random item!.
+            var potentialItems = new List<Guid>();
+            foreach (var dbObject in ItemBase.Lookup.Values)
+            {
+                var item = (ItemBase)dbObject;
+                if (item.Tags.Contains(command.Tag))
+                {
+                    potentialItems.Add(item.Id);
+                }
+            }
+
+            // Create a backup of our inventory in case we end up not being able to remove all required items and want to revert.
+            var invBackup = player.Items.Select(item => item?.Clone()).ToList();
+
+            // Going to use this to keep track of how many items we have to change.
+            var changed = 0;
+
+            // Go through each inventory slot we've retrieved before and attempt to remove as many items as we need.
+            //Check if we're going to be giving or taking items.
+            if (command.Add) // Add Items to the inventory!
+            {
+                // Go through the amout of items we have to give, and pick a random item from our list of potential items to attempt to give to our player.
+                var randomizer = new Random();
+                for (var attempt = 0; attempt < command.Quantity; attempt++)
+                {
+                    if (player.TryGiveItem(potentialItems[randomizer.Next(potentialItems.Count)], 1, ItemHandling.Normal, false, false))
+                    {
+                        changed += 1;
+                    }
+                }
+            }
+            else // Remove Items from the inventory!
+            {
+                // Find all inventory slots that has the items we've looked up above.
+                var inventorySlots = new List<InventorySlot>();
+                for (var slot = 0; slot < Options.MaxInvItems; slot++)
+                {
+                    if (potentialItems.Contains(player.Items[slot].ItemId))
+                    {
+                        inventorySlots.Add(player.Items[slot]);
+                    }
+                }
+
+                // Go through each inventory slot we've retrieved before and attempt to remove as many items as we need.
+                foreach (var slot in inventorySlots)
+                {
+                    // No point looping further if we are at the correct quantity!
+                    if (changed == command.Quantity) break;
+                
+                    for (var attempt = 0; attempt < command.Quantity; attempt++)
+                    {
+                        if (player.TryTakeItem(slot, 1, ItemHandling.Normal, false))
+                        {
+                            changed += 1;
+                        }
+                    }
+                }
+            }
+
+            // Do we still have items left to change or did we finish?
+            if ((command.Quantity - changed) == 0)
+            {
+                // We've succeeded! Let's update the inventory.
+                success = true;
+                PacketSender.SendInventory(player);
+            }
+            else
+            {
+                // We've failed to take all the required items. Time to restore our inventory!
+                for (var i = 0; i < invBackup.Count; i++)
+                {
+                    player.Items[i].Set(invBackup[i]);
+                }
+
+                PacketSender.SendInventory(player);
+            }
+
+            // Process other events.
+            List<EventCommand> newCommandList = null;
+            if (success && stackInfo.Page.CommandLists.ContainsKey(command.BranchIds[0]))
+            {
+                newCommandList = stackInfo.Page.CommandLists[command.BranchIds[0]];
+            }
+
+            if (!success && stackInfo.Page.CommandLists.ContainsKey(command.BranchIds[1]))
+            {
+                newCommandList = stackInfo.Page.CommandLists[command.BranchIds[1]];
+            }
+
+            var tmpStack = new CommandInstance(stackInfo.Page) {
                 CommandList = newCommandList,
                 CommandIndex = 0,
             };
