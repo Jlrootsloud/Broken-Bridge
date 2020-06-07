@@ -58,10 +58,10 @@ namespace Intersect.Client.Framework.Gwen.Control
 
             IsTabable = true;
 
-            AddAccelerator("Ctrl + C", OnCopy);
-            AddAccelerator("Ctrl + X", OnCut);
-            AddAccelerator("Ctrl + V", OnPaste);
-            AddAccelerator("Ctrl + A", OnSelectAll);
+            AddAccelerator("CTRL+C", OnCopy);
+            AddAccelerator("CTRL+X", OnCut);
+            AddAccelerator("CTRL+V", OnPaste);
+            AddAccelerator("CTRL+A", OnSelectAll);
         }
 
         protected override bool AccelOnlyFocus => true;
