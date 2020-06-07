@@ -64,10 +64,10 @@ namespace Intersect.Client.Framework.Gwen.Control
             //	This should be as simple as 'm_ScrollControl.AutoSizeToContents = true' or 'm_ScrollControl.NoBounds()'
             mScrollControl.SetInnerSize(1000, 1000);
 
-            AddAccelerator("Ctrl + C", OnCopy);
-            AddAccelerator("Ctrl + X", OnCut);
-            AddAccelerator("Ctrl + V", OnPaste);
-            AddAccelerator("Ctrl + A", OnSelectAll);
+            AddAccelerator("CTRL+C", OnCopy);
+            AddAccelerator("CTRL+X", OnCut);
+            AddAccelerator("CTRL+V", OnPaste);
+            AddAccelerator("CTRL+A", OnSelectAll);
         }
 
         private Point StartPoint
