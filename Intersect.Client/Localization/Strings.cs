@@ -349,8 +349,11 @@ namespace Intersect.Client.Localization
             public static LocalizedString reason = @"Reason:";
 
         }
-
-        public struct Character
+        public struct Skills
+        {
+            public static LocalizedString skill = @"Skills:";
+        }
+            public struct Character
         {
 
             public static LocalizedString equipment = @"Equipment:";
@@ -770,6 +773,8 @@ namespace Intersect.Client.Localization
             public static LocalizedString party = @"Party";
 
             public static LocalizedString quest = @"Quest Log";
+
+            public static LocalizedString skills = @"Skills";
 
             public static LocalizedString spells = @"Spell Book";
 

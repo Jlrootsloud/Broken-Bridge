@@ -139,6 +139,7 @@ namespace Intersect.Client.Interface.Game.Inventory
             mInventoryWindow.IsHidden = true;
         }
 
+       
         public FloatRect RenderBounds()
         {
             var rect = new FloatRect()
