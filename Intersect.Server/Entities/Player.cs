@@ -705,19 +705,15 @@ namespace Intersect.Server.Entities
                     }
                 }
             }
-            int Plus;
+
             //Must have at least 1 hp and no less than 0 mp
             if (vital == (int) Vitals.Health)
             {
-                classVital =  Math.Max(classVital, 1);
-                Plus = Convert.ToInt32(Stats.Defense);
-                classVital = classVital + Plus*2;
+                classVital = Math.Max(classVital, 1);
             }
             else if (vital == (int) Vitals.Mana)
             {
                 classVital = Math.Max(classVital, 0);
-                Plus = Convert.ToInt32(Stats.AbilityPower);
-                classVital = classVital + Plus * 2;
             }
 
             return classVital;
@@ -4378,7 +4374,7 @@ namespace Intersect.Server.Entities
                         {
                             //If we are equipping a 2hand weapon, remove the shield
                             Equipment[Options.WeaponIndex] = slot;
-                            if (itemBase.TwoHanded || itemBase.Axe || itemBase.Pickaxe || itemBase.Fishingnet)
+                            if (itemBase.TwoHanded)
                             {
                                 if (Options.ShieldIndex > -1 && Options.ShieldIndex < Equipment.Length)
                                 {
@@ -4395,7 +4391,7 @@ namespace Intersect.Server.Entities
                             {
                                 //If we have a 2-hand weapon, remove it to equip this new shield
                                 var item = ItemBase.Get(Items[Equipment[Options.WeaponIndex]].ItemId);
-                                if (item != null && item.TwoHanded || itemBase.Axe || itemBase.Pickaxe || itemBase.Fishingnet)
+                                if (item != null && item.TwoHanded)
                                 {
                                     Equipment[Options.WeaponIndex] = -1;
                                 }

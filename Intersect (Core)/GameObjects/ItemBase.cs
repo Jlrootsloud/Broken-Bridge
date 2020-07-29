@@ -86,14 +86,6 @@ namespace Intersect.GameObjects
 
         public bool TwoHanded { get; set; }
 
-        //Skills Animations
-
-        public bool Axe { get; set; }
-
-        public bool Pickaxe { get; set; }
-
-        public bool Fishingnet { get; set; }
-
         public EffectData Effect { get; set; }
 
         public int SlotCount { get; set; }

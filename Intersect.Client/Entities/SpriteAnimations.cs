@@ -8,13 +8,6 @@
         Shoot,
         Cast,
         Weapon,
-
-        
-        //Tools
-        Axe,
-        Pickaxe,
-        Fishingnet,
-        
     }
 
 

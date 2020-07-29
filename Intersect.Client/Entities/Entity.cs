@@ -1694,21 +1694,6 @@ namespace Intersect.Client.Entities
                             {
                                 SpriteAnimation = SpriteAnimations.Shoot;
                             }
-
-                            if (AnimatedTextures[SpriteAnimations.Axe] != null)
-                            {
-                                SpriteAnimation = SpriteAnimations.Axe;
-                            }
-
-                            if (AnimatedTextures[SpriteAnimations.Pickaxe] != null)
-                            {
-                                SpriteAnimation = SpriteAnimations.Pickaxe;
-                            }
-
-                            if (AnimatedTextures[SpriteAnimations.Fishingnet] != null)
-                            {
-                                SpriteAnimation = SpriteAnimations.Fishingnet;
-                            }
                         }
                     }
                 }

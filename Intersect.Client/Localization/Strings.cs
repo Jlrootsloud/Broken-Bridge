@@ -855,9 +855,6 @@ namespace Intersect.Client.Localization
             };
 
             public static LocalizedString twohand = @"2H";
-            public static LocalizedString Axe = @"2H";
-            public static LocalizedString Pickaxe = @"2H";
-            public static LocalizedString Fishingnet = @"2H";
 
             public static Dictionary<int, LocalizedString> rarity = new Dictionary<int, LocalizedString>
             {
