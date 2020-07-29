@@ -317,6 +317,36 @@ namespace Intersect.Editor.Forms.Editors
 
                 nudEffectPercent.Value = mEditorItem.Effect.Percentage;
                 chk2Hand.Checked = mEditorItem.TwoHanded;
+                chkAxe.Checked = mEditorItem.Axe;
+                chkPickaxe.Checked = mEditorItem.Pickaxe;
+                chkFishingnet.Checked = mEditorItem.Fishingnet;
+                if(chk2Hand.Checked)
+                {
+                    mEditorItem.Axe = false;
+                    mEditorItem.Pickaxe = false;
+                    mEditorItem.Fishingnet = false;
+                }
+
+                if (chkAxe.Checked)
+                {
+                    mEditorItem.TwoHanded = false;
+                    mEditorItem.Pickaxe = false;
+                    mEditorItem.Fishingnet = false;
+                }
+
+                if (chkPickaxe.Checked)
+                {
+                    mEditorItem.TwoHanded = false;
+                    mEditorItem.Axe = false;
+                    mEditorItem.Fishingnet = false;
+                }
+
+                if (chkFishingnet.Checked)
+                {
+                    mEditorItem.Axe = false;
+                    mEditorItem.Pickaxe = false;
+                    mEditorItem.TwoHanded = false;
+                }
                 cmbMalePaperdoll.SelectedIndex =
                     cmbMalePaperdoll.FindString(TextUtils.NullToNone(mEditorItem.MalePaperdoll));
 
@@ -1136,6 +1166,20 @@ namespace Intersect.Editor.Forms.Editors
 
         #endregion
 
+        private void chkAxe_CheckedChanged(object sender, EventArgs e)
+        {
+            mEditorItem.Axe = chkAxe.Checked;
+        }
+
+        private void chkPickaxe_CheckedChanged(object sender, EventArgs e)
+        {
+            mEditorItem.Pickaxe = chkPickaxe.Checked;
+        }
+
+        private void chkFishingnet_CheckedChanged(object sender, EventArgs e)
+        {
+            mEditorItem.Fishingnet = chkFishingnet.Checked;
+        }
     }
 
 }

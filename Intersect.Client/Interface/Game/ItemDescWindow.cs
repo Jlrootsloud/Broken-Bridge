@@ -71,6 +71,19 @@ namespace Intersect.Client.Interface.Game
                     {
                         itemType.Text += " - " + Strings.ItemDesc.twohand;
                     }
+
+                    if (item.EquipmentSlot == Options.WeaponIndex && item.Axe)
+                    {
+                        itemType.Text += " - " + Strings.ItemDesc.Axe;
+                    }
+                    if (item.EquipmentSlot == Options.WeaponIndex && item.Pickaxe)
+                    {
+                        itemType.Text += " - " + Strings.ItemDesc.Pickaxe;
+                    }
+                    if (item.EquipmentSlot == Options.WeaponIndex && item.Fishingnet)
+                    {
+                        itemType.Text += " - " + Strings.ItemDesc.Fishingnet;
+                    }
                 }
 
                 if (item.Rarity > 0)
