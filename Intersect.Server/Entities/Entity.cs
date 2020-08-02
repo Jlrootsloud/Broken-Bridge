@@ -2381,7 +2381,7 @@ namespace Intersect.Server.Entities
             {
 
                 //Find tiles to spawn items
-                 /*var tiles = new List<TileHelper>();
+                 var tiles = new List<TileHelper>();
                  for (var x = X - Options.ItemDropRange; x <= X + Options.ItemDropRange; x++)
                  {
                     for (var y = Y - Options.ItemDropRange; y <= Y + Options.ItemDropRange; y++)
@@ -2400,7 +2400,7 @@ namespace Intersect.Server.Entities
                             }
                         }
                     }
-                }   */
+                }   
                 // Drop items
                 for (var n = 0; n < Items.Count; n++)
                 {
@@ -2460,7 +2460,7 @@ namespace Intersect.Server.Entities
                     }
 
                     // Spawn the actual item!
-                    /*if (tiles.Count > 0)
+                    if (tiles.Count > 0)
                     {
                         var tile = tiles[Randomization.Next(tiles.Count)];
                         var map = MapInstance.Get(tile.GetMapId());
@@ -2470,10 +2470,8 @@ namespace Intersect.Server.Entities
                     {
                         var map = MapInstance.Get(MapId);
                         map?.SpawnItem(X, Y, item, item.Quantity);
-                    }*/
-                    var map = MapInstance.Get(MapId);
-                    map?.SpawnItem(X, Y, item, item.Quantity);
-
+                    }
+                   
                     // Remove the item from inventory if a player.
                     var player = this as Player;
                     player?.TryTakeItem(Items[n], item.Quantity);
