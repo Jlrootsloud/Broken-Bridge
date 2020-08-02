@@ -1534,6 +1534,13 @@ namespace Intersect.Client.Localization
 
         }
 
+        public struct GameWindow
+        {
+            public static LocalizedString CharacterName = @"{00} lv.{01}";
+
+            public static LocalizedString CharacterClass = @"{00} lv.{01}";
+        }
+
     }
 
 }

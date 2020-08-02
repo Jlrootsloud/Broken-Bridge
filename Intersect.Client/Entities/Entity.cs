@@ -36,7 +36,9 @@ namespace Intersect.Client.Entities
 
             Name,
 
-            ChatBubble
+            ChatBubble,
+
+            Class,
 
         }
 
@@ -1322,7 +1324,28 @@ namespace Intersect.Client.Entities
                 return;
             }
 
-            var textSize = Graphics.Renderer.MeasureText(Name, Graphics.EntityNameFont, 1);
+            var displayName = Name;
+            var displayClass = String.Empty;
+            switch (Options.Player.DisplayLevelStyle)
+            {
+                case (int)DisplayLevelStyles.NameLevel:
+                    displayName = Localization.Strings.GameWindow.CharacterName.ToString(Name, Level);
+                    break;
+
+                case (int)DisplayLevelStyles.NameClassLevel:
+                    if (this is Player player)
+                    {
+                        displayClass = Localization.Strings.GameWindow.CharacterClass.ToString(ClassBase.GetName(player.Class), player.Level);
+                    }
+                    break;
+
+                case (int)DisplayLevelStyles.NameOnly:
+                default:
+                    break;
+
+            }
+
+            var textSize = Graphics.Renderer.MeasureText(displayName, Graphics.EntityNameFont, 1);
 
             var x = (int) Math.Ceiling(GetCenterPos().X);
             var y = GetLabelLocation(LabelType.Name);
@@ -1336,14 +1359,40 @@ namespace Intersect.Client.Entities
             }
 
             Graphics.Renderer.DrawString(
-                Name, Graphics.EntityNameFont, (int) (x - (int) Math.Ceiling(textSize.X / 2f)), (int) y, 1,
+                displayName, Graphics.EntityNameFont, (int) (x - (int) Math.Ceiling(textSize.X / 2f)), (int) y, 1,
                 Color.FromArgb(textColor.ToArgb()), true, null, Color.FromArgb(borderColor.ToArgb())
             );
+
+            // Do we need to render the class data?
+            if (displayClass != String.Empty)
+            {
+                textSize = Graphics.Renderer.MeasureText(displayClass, Graphics.EntityNameFont, 1);
+                textColor = CustomColors.Names.Class.Name;
+                backgroundColor = CustomColors.Names.Class.Background;
+                borderColor = CustomColors.Names.Class.Outline;
+
+                x = (int)Math.Ceiling(GetCenterPos().X);
+                y = GetLabelLocation(LabelType.Class);
+
+                if (backgroundColor != Color.Transparent)
+                {
+                    Graphics.DrawGameTexture(
+                        Graphics.Renderer.GetWhiteTexture(), new FloatRect(0, 0, 1, 1),
+                        new FloatRect(x - textSize.X / 2f - 4, y, textSize.X + 8, textSize.Y), backgroundColor
+                    );
+                }
+
+                Graphics.Renderer.DrawString(
+                    displayClass, Graphics.EntityNameFont, (int)(x - (int)Math.Ceiling(textSize.X / 2f)), (int)y, 1,
+                    Color.FromArgb(textColor.ToArgb()), true, null, Color.FromArgb(borderColor.ToArgb())
+                );
+            }
         }
 
         public float GetLabelLocation(LabelType type)
         {
             var y = GetTopPos() - 4;
+            var nameSize = Graphics.Renderer.MeasureText(Name, Graphics.EntityNameFont, 1);
             switch (type)
             {
                 case LabelType.Header:
@@ -1369,7 +1418,6 @@ namespace Intersect.Client.Entities
                     break;
                 case LabelType.Name:
                     y = GetLabelLocation(LabelType.Footer);
-                    var nameSize = Graphics.Renderer.MeasureText(Name, Graphics.EntityNameFont, 1);
                     if (string.IsNullOrEmpty(FooterLabel.Text))
                     {
                         y -= nameSize.Y - 8;
@@ -1382,6 +1430,11 @@ namespace Intersect.Client.Entities
                     break;
                 case LabelType.ChatBubble:
                     y = GetLabelLocation(LabelType.Header) - 4;
+
+                    break;
+                case LabelType.Class:
+                    nameSize = Graphics.Renderer.MeasureText(Name, Graphics.EntityNameFont, 1);
+                    y = GetLabelLocation(LabelType.Name) - nameSize.Y;
 
                     break;
             }
