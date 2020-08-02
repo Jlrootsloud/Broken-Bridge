@@ -1179,6 +1179,7 @@ namespace Intersect.Server.Networking
                         if (player.TryGiveItem(mapItem))
                         {
                             // Remove Item From Map
+                            PacketSender.SendActionMsg(player, mapItem.Descriptor.Name, CustomColors.Combat.TrueDamage);
                             MapInstance.Get(player.MapId).RemoveItem(packet.MapItemIndex);
                         } 
                         else 

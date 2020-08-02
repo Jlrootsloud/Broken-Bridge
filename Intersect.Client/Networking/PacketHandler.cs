@@ -843,6 +843,7 @@ namespace Intersect.Client.Networking
                     if (!map.MapItems.ContainsKey(packet.ItemIndex))
                     {
                         map.MapItems.Add(packet.ItemIndex, new MapItemInstance(packet.ItemData));
+                        //map.MapItems[packet.ItemIndex].hasFallen = 1f;
                     }
                     else
                     {

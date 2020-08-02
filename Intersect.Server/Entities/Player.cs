@@ -1624,7 +1624,7 @@ namespace Intersect.Server.Entities
 
             // Update quests for this item.
             UpdateGatherItemQuests(item.ItemId);
-
+            
         }
 
         /// <summary>

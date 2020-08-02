@@ -17,6 +17,9 @@
         //Combat
         public int RegenTime = 3000; //3 seconds
 
+        // Item Drop Range
+        public int ItemDropRange = 2; //2 Tiles
+
     }
 
 }
