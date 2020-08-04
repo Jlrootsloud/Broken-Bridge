@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Intersect.GameObjects.Conditions;
 
 using Intersect.Models;
 
@@ -13,6 +14,7 @@ namespace Intersect.GameObjects.Crafting
     {
 
         [NotMapped] public List<CraftIngredient> Ingredients = new List<CraftIngredient>();
+        [NotMapped] public ConditionLists CraftRequirements = new ConditionLists();
 
         [JsonConstructor]
         public CraftBase(Guid id) : base(id)
@@ -55,6 +57,14 @@ namespace Intersect.GameObjects.Crafting
         {
             get => Events.EventBase.Get(CraftEventId);
             set => CraftEventId = value?.Id ?? Guid.Empty;
+        }
+
+        [Column("CraftRequirements")]
+        [JsonIgnore]
+        public string JsonCraftRequirements
+        {
+            get => CraftRequirements.Data();
+            set => CraftRequirements.Load(value ?? "[]");
         }
 
         /// <inheritdoc />

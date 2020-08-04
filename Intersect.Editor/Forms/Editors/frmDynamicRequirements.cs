@@ -31,6 +31,8 @@ namespace Intersect.Editor.Forms.Editors
 
         NpcCanBeAttacked,
 
+        Craft,
+
     }
 
     public partial class FrmDynamicRequirements : Form
@@ -95,6 +97,10 @@ namespace Intersect.Editor.Forms.Editors
                     lblInstructions.Text = Strings.DynamicRequirements.instructionsnpccanbeattacked;
 
                     break;
+                case RequirementType.Craft:
+                    lblInstructions.Text = Strings.DynamicRequirements.instructionscraft;
+
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -137,13 +143,13 @@ namespace Intersect.Editor.Forms.Editors
                 {
                     lstConditions.Items.Add(
                         Strings.EventConditionDesc.negated.ToString(
-                            Strings.GetEventConditionalDesc((dynamic) list.Conditions[i])
+                            Strings.GetEventConditionalDesc((dynamic)list.Conditions[i])
                         )
                     );
                 }
                 else
                 {
-                    lstConditions.Items.Add(Strings.GetEventConditionalDesc((dynamic) list.Conditions[i]));
+                    lstConditions.Items.Add(Strings.GetEventConditionalDesc((dynamic)list.Conditions[i]));
                 }
             }
         }
