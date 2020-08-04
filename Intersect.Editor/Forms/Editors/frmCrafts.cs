@@ -82,9 +82,9 @@ namespace Intersect.Editor.Forms.Editors
                 nudQuantity.Hide();
                 lblQuantity.Hide();
                 lblIngredient.Hide();
-                //Success Rate
+                // Success Rate
                 nudSuccessRate.Value = mEditorItem.SuccessRate;
-                //Craft Event
+                // Craft Event
                 cmbCraftEvent.SelectedIndex = GameObjects.Events.EventBase.ListIndex(mEditorItem.CraftEventId) + 1;
                 for (var i = 0; i < mEditorItem.Ingredients.Count; i++)
                 {
@@ -143,9 +143,12 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudQuantity_ValueChanged(object sender, EventArgs e)
         {
+            // This should never be below 1. We shouldn't accept giving 0 items!
+            nudQuantity.Value = Math.Max(1, nudQuantity.Value);
+
             if (lstIngredients.SelectedIndex > -1)
             {
-                mEditorItem.Ingredients[lstIngredients.SelectedIndex].Quantity = (int)nudQuantity.Value;
+                mEditorItem.Ingredients[lstIngredients.SelectedIndex].Quantity = (int) nudQuantity.Value;
                 updatingIngedients = true;
                 if (cmbIngredient.SelectedIndex > 0)
                 {
@@ -169,7 +172,7 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudSpeed_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.Time = (int)nudSpeed.Value;
+            mEditorItem.Time = (int) nudSpeed.Value;
         }
 
         private void nudSuccessRate_ValueChanged(object sender, EventArgs e)
@@ -324,7 +327,6 @@ namespace Intersect.Editor.Forms.Editors
                 }
             }
         }
-
         private void cmbCraftEvent_SelectedIndexChanged(object sender, EventArgs e)
         {
             mEditorItem.CraftEvent = GameObjects.Events.EventBase.Get(GameObjects.Events.EventBase.IdFromList(cmbCraftEvent.SelectedIndex - 1));
@@ -455,17 +457,13 @@ namespace Intersect.Editor.Forms.Editors
             btnCancel.Text = Strings.CraftsEditor.cancel;
             lblCraftEvent.Text = Strings.CraftsEditor.craftevent;
             lblSuccessRate.Text = Strings.CraftsEditor.successrate;
-            btnEditRequirements.Text = Strings.ItemEditor.craftrequirements;
-        }
-        private void btnEditRequirements_Click(object sender, EventArgs e)
-        {
-            var frm = new FrmDynamicRequirements(mEditorItem.CraftRequirements, RequirementType.Craft);
-            frm.ShowDialog();
         }
 
         private void nudCraftQuantity_ValueChanged(object sender, EventArgs e)
         {
-            mEditorItem.Quantity = (int)nudCraftQuantity.Value;
+            // This should never be below 1. We shouldn't accept giving 0 items!
+            nudCraftQuantity.Value = Math.Max(1, nudCraftQuantity.Value);
+            mEditorItem.Quantity = (int) nudCraftQuantity.Value;
         }
 
         #region "Item List - Folders, Searching, Sorting, Etc"
@@ -476,7 +474,7 @@ namespace Intersect.Editor.Forms.Editors
             var folderNodes = new Dictionary<string, TreeNode>();
             if (lstCrafts.SelectedNode != null && lstCrafts.SelectedNode.Tag != null)
             {
-                selectedId = (Guid)lstCrafts.SelectedNode.Tag;
+                selectedId = (Guid) lstCrafts.SelectedNode.Tag;
             }
 
             lstCrafts.Nodes.Clear();
@@ -485,13 +483,13 @@ namespace Intersect.Editor.Forms.Editors
             var mFolders = new List<string>();
             foreach (var itm in CraftBase.Lookup)
             {
-                if (!string.IsNullOrEmpty(((CraftBase)itm.Value).Folder) &&
-                    !mFolders.Contains(((CraftBase)itm.Value).Folder))
+                if (!string.IsNullOrEmpty(((CraftBase) itm.Value).Folder) &&
+                    !mFolders.Contains(((CraftBase) itm.Value).Folder))
                 {
-                    mFolders.Add(((CraftBase)itm.Value).Folder);
-                    if (!mKnownFolders.Contains(((CraftBase)itm.Value).Folder))
+                    mFolders.Add(((CraftBase) itm.Value).Folder);
+                    if (!mKnownFolders.Contains(((CraftBase) itm.Value).Folder))
                     {
-                        mKnownFolders.Add(((CraftBase)itm.Value).Folder);
+                        mKnownFolders.Add(((CraftBase) itm.Value).Folder);
                     }
                 }
             }
@@ -646,7 +644,7 @@ namespace Intersect.Editor.Forms.Editors
                 return;
             }
 
-            mEditorItem = CraftBase.Get((Guid)lstCrafts.SelectedNode.Tag);
+            mEditorItem = CraftBase.Get((Guid) lstCrafts.SelectedNode.Tag);
             UpdateEditor();
         }
 
@@ -701,7 +699,6 @@ namespace Intersect.Editor.Forms.Editors
         }
 
         #endregion
-
 
     }
 

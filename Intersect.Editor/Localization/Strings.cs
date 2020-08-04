@@ -1118,9 +1118,6 @@ Tick timer saved in server config.json.";
             public static LocalizedString instructionsnpccanbeattacked =
                 @"Below are condition lists. If there are conditions, and they are not met, then the player will not be able to attack this npc.";
 
-            public static LocalizedString instructionscraft =
-                  @"Below are condition lists. If conditions are met on any of the lists then the player can start  the crafting.";
-
             public static LocalizedString instructionsquest =
                 @"Below are condition lists. If conditions are met on any of the lists then the player can start the quest.";
 
@@ -2765,8 +2762,6 @@ Tick timer saved in server config.json.";
         {
 
             public static LocalizedString abilitypowerbonus = @"Ability Pwr:";
-
-            public static LocalizedString craftrequirements = @"Craft Requirements";
 
             public static LocalizedString animation = @"Animation:";
 
