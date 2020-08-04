@@ -147,6 +147,7 @@ namespace Intersect.Client.Entities
         public Spell[] Spells = new Spell[Options.MaxPlayerSkills];
 
         public int[] Stat = new int[(int) Stats.StatCount];
+        public int[] Skill = new int[(int)Skills.SkillCount];
 
         public int Target = -1;
 

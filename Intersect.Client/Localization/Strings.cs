@@ -14,7 +14,7 @@ namespace Intersect.Client.Localization
     public static class Strings
     {
 
-        private static char[] mQuantityTrimChars = new char[] {'.', '0'};
+        private static char[] mQuantityTrimChars = new char[] { '.', '0' };
 
         public static string FormatQuantityAbbreviated(long value)
         {
@@ -113,12 +113,12 @@ namespace Intersect.Client.Localization
 
                         if (fieldValue is LocalizedString)
                         {
-                            fieldInfo.SetValue(null, new LocalizedString((string) dict[fieldInfo.Name.ToLower()]));
+                            fieldInfo.SetValue(null, new LocalizedString((string)dict[fieldInfo.Name.ToLower()]));
                         }
                         else if (fieldValue is Dictionary<int, LocalizedString>)
                         {
-                            var existingDict = (Dictionary<int, LocalizedString>) fieldInfo.GetValue(null);
-                            var values = ((JObject) dict[fieldInfo.Name]).ToObject<Dictionary<int, string>>();
+                            var existingDict = (Dictionary<int, LocalizedString>)fieldInfo.GetValue(null);
+                            var values = ((JObject)dict[fieldInfo.Name]).ToObject<Dictionary<int, string>>();
                             var dic = values.ToDictionary<KeyValuePair<int, string>, int, LocalizedString>(
                                 val => val.Key, val => val.Value
                             );
@@ -130,8 +130,8 @@ namespace Intersect.Client.Localization
                         }
                         else if (fieldValue is Dictionary<string, LocalizedString>)
                         {
-                            var existingDict = (Dictionary<string, LocalizedString>) fieldInfo.GetValue(null);
-                            var pairs = ((JObject) dict[fieldInfo.Name])?.ToObject<Dictionary<string, string>>() ??
+                            var existingDict = (Dictionary<string, LocalizedString>)fieldInfo.GetValue(null);
+                            var pairs = ((JObject)dict[fieldInfo.Name])?.ToObject<Dictionary<string, string>>() ??
                                         new Dictionary<string, string>();
 
                             foreach (var pair in pairs)
@@ -171,12 +171,12 @@ namespace Intersect.Client.Localization
                 {
                     if (p1.GetValue(null).GetType() == typeof(LocalizedString))
                     {
-                        dict.Add(p1.Name.ToLower(), ((LocalizedString) p1.GetValue(null)).ToString());
+                        dict.Add(p1.Name.ToLower(), ((LocalizedString)p1.GetValue(null)).ToString());
                     }
                     else if (p1.GetValue(null).GetType() == typeof(Dictionary<int, LocalizedString>))
                     {
                         var dic = new Dictionary<int, string>();
-                        foreach (var val in (Dictionary<int, LocalizedString>) p1.GetValue(null))
+                        foreach (var val in (Dictionary<int, LocalizedString>)p1.GetValue(null))
                         {
                             dic.Add(val.Key, val.Value.ToString());
                         }
@@ -186,7 +186,7 @@ namespace Intersect.Client.Localization
                     else if (p1.GetValue(null).GetType() == typeof(Dictionary<string, LocalizedString>))
                     {
                         var dic = new Dictionary<string, string>();
-                        foreach (var val in (Dictionary<string, LocalizedString>) p1.GetValue(null))
+                        foreach (var val in (Dictionary<string, LocalizedString>)p1.GetValue(null))
                         {
                             dic.Add(val.Key.ToLower(), val.Value.ToString());
                         }
@@ -349,7 +349,29 @@ namespace Intersect.Client.Localization
             public static LocalizedString reason = @"Reason:";
 
         }
+        public struct Skills
+        {
+            public static LocalizedString skill = @"Skills:";
+            public static LocalizedString recoskill = @" Recolection Skills:";
+            public static LocalizedString craftskill = @" Crafting Skills:";
+            public static LocalizedString skill0 = @"{00}: {01}";
 
+            public static LocalizedString skill1 = @"{00}: {01}";
+
+            public static LocalizedString skill2 = @"{00}: {01}";
+
+            public static LocalizedString skill3 = @"{00}: {01}";
+
+            public static LocalizedString skill4 = @"{00}: {01}";
+            public static LocalizedString skill5 = @"{00}: {01}";
+            public static LocalizedString skill6 = @"{00}: {01}";
+            public static LocalizedString skill7 = @"{00}: {01}";
+            public static LocalizedString skill8 = @"{00}: {01}";
+            public static LocalizedString skill9 = @"{00}: {01}";
+            public static LocalizedString skill10 = @"{00}: {01}";
+            public static LocalizedString skill11 = @"{00}: {01}";
+            public static LocalizedString skill12 = @"{00}: {01}";
+        }
         public struct Character
         {
 
@@ -478,7 +500,25 @@ namespace Intersect.Client.Localization
             };
 
         }
+        public struct Job
+        {
+            public static LocalizedString skill0 = @"Farming";
 
+            public static LocalizedString skill1 = @"Mining";
+
+            public static LocalizedString skill2 = @"Woodcutter";
+
+            public static LocalizedString skill3 = @"Fishing";
+
+            public static LocalizedString skill4 = @"Hunter";
+            public static LocalizedString skill5 = @"Cooking";
+            public static LocalizedString skill6 = @"Smithing";
+            public static LocalizedString skill7 = @"Alquemy";
+            public static LocalizedString skill8 = @"Jewerly";
+            public static LocalizedString skill9 = @"Tailor";
+            public static LocalizedString skill10 = @"Cobbler";
+
+        }
         public struct Combat
         {
 
@@ -770,6 +810,8 @@ namespace Intersect.Client.Localization
             public static LocalizedString party = @"Party";
 
             public static LocalizedString quest = @"Quest Log";
+
+            public static LocalizedString skills = @"Skills";
 
             public static LocalizedString spells = @"Spell Book";
 
