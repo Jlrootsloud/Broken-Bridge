@@ -217,10 +217,6 @@ namespace Intersect.Client.Networking
         {
             Network.SendPacket(new CraftItemPacket(id));
         }
-        public static void SendCraftRequest(Guid id)
-        {
-            Network.SendPacket(new CraftRequestPacket(id));
-        }
 
         public static void SendPartyInvite(Guid targetId)
         {

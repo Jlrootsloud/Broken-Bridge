@@ -493,13 +493,7 @@ namespace Intersect.Server.Localization
             public readonly LocalizedString nospace = @"You do not have enough inventory space to craft {00}!";
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public readonly LocalizedString noitems = @"You do not have the required items to craft {00}!";
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public readonly LocalizedString failed = @"You failed to craft {00}!";
-
-            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-            public readonly LocalizedString reqnotmet = @"You don't meet the requirements to craft {00}!";
 
         }
 
