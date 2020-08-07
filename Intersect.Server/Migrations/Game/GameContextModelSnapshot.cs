@@ -136,10 +136,7 @@ namespace Intersect.Server.Migrations.Game
                         .HasColumnName("Ingredients");
 
                     b.Property<Guid>("ItemId");
-              
-                    b.Property<string>("JsonCraftRequirements")
-                       .HasColumnName("CraftRequirements");
-                 
+
                     b.Property<string>("Name");
 
                     b.Property<int>("Quantity");

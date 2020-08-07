@@ -284,7 +284,6 @@
     <Compile Include="Enums\SpellTargetTypes.cs" />
     <Compile Include="Enums\SpellTypes.cs" />
     <Compile Include="Enums\Stats.cs" />
-	 <Compile Include="Enums\Skills.cs" />
     <Compile Include="Enums\StatusTypes.cs" />
     <Compile Include="Enums\SwitchVariableTypes.cs" />
     <Compile Include="Enums\TargetTypes.cs" />
@@ -315,7 +314,6 @@
     <Compile Include="Network\Packets\Client\CloseBagPacket.cs" />
     <Compile Include="Network\Packets\Client\CloseBankPacket.cs" />
     <Compile Include="Network\Packets\Client\CloseCraftingPacket.cs" />
-	<Compile Include="Network\Packets\Client\CraftRequestPacket.cs" />
     <Compile Include="Network\Packets\Client\CloseShopPacket.cs" />
     <Compile Include="Network\Packets\Client\CraftItemPacket.cs" />
     <Compile Include="Network\Packets\Client\CreateAccountPacket.cs" />
@@ -426,7 +424,6 @@
     <Compile Include="Network\Packets\Server\CharacterCreationPacket.cs" />
     <Compile Include="Network\Packets\Server\ChatMsgPacket.cs" />
     <Compile Include="Network\Packets\Server\ConfigPacket.cs" />
-	<Compile Include="Network\Packets\Server\CraftStartPacket.cs" />
     <Compile Include="Network\Packets\Server\EntityAttackPacket.cs" />
     <Compile Include="Network\Packets\Server\EntityDirectionPacket.cs" />
     <Compile Include="Network\Packets\Server\EntityLeftPacket.cs" />
