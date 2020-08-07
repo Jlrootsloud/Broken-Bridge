@@ -1096,7 +1096,7 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString conditioneditor = @"Add/Edit Condition";
 
-            public static LocalizedString conditionlist = @"Conditiond";
+            public static LocalizedString conditionlist = @"Conditions";
 
             public static LocalizedString conditionlists = @"Condition Lists";
 
@@ -1126,6 +1126,10 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString instructionsspell =
                 @"Below are condition lists. If conditions are met on any of the lists then the player can use cast the spell.";
+
+            public static LocalizedString instructionscraft =
+               @"Below are condition lists. If conditions are met on any of the lists then the player can craft the item.";
+
 
             public static LocalizedString listname = @"Desc:";
 
@@ -2895,6 +2899,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString projectile = @"Projectile:";
 
             public static LocalizedString requirements = @"Edit Usage Requirements";
+
+            public static LocalizedString craftrequirements = @"Edit Craft Requirements";
 
             public static LocalizedString save = @"Save";
 

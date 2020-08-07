@@ -31,6 +31,8 @@ namespace Intersect.Editor.Forms.Editors
 
         NpcCanBeAttacked,
 
+        Craft
+
     }
 
     public partial class FrmDynamicRequirements : Form
@@ -93,6 +95,11 @@ namespace Intersect.Editor.Forms.Editors
                     break;
                 case RequirementType.NpcCanBeAttacked:
                     lblInstructions.Text = Strings.DynamicRequirements.instructionsnpccanbeattacked;
+
+                    break;
+
+                case RequirementType.Craft:
+                    lblInstructions.Text = Strings.DynamicRequirements.instructionscraft;
 
                     break;
                 default:
