@@ -22,6 +22,8 @@
 
         public int TradeRange = 6;
 
+        public int DisplayLevelStyle = 2;
+
     }
 
 }

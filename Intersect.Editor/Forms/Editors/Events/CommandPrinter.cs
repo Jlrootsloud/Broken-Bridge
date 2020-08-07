@@ -651,6 +651,11 @@ namespace Intersect.Editor.Forms.Editors.Events
             return Strings.EventCommandList.setface.ToString(command.Face);
         }
 
+        private static string GetCommandText(ChangeHairCommand command, MapInstance map)
+        {
+            return Strings.EventCommandList.sethair.ToString(command.Hair);
+        }
+
         private static string GetCommandText(ChangeNameColorCommand command, MapInstance map)
         {
             if (command.Remove)

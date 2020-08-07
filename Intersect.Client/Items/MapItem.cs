@@ -12,6 +12,8 @@ namespace Intersect.Client.Items
 
         public int Y;
 
+        public float hasFallen;
+
         public Guid Owner;
 
         public bool VisibleToAll;

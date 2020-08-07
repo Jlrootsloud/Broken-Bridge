@@ -45,6 +45,8 @@ namespace Intersect.Client.Framework.File_Management
 
             Misc,
 
+            Hair
+
         }
 
         public enum UI
@@ -62,7 +64,13 @@ namespace Intersect.Client.Framework.File_Management
 
         protected Dictionary<string, IAsset> mEntityDict = new Dictionary<string, IAsset>();
 
+
         protected Dictionary<string, IAsset> mFaceDict = new Dictionary<string, IAsset>();
+
+        protected Dictionary<string, GameTexture> mHairDict = new Dictionary<string, GameTexture>();
+
+       
+
 
         protected Dictionary<string, IAsset> mFogDict = new Dictionary<string, IAsset>();
 
@@ -105,6 +113,7 @@ namespace Intersect.Client.Framework.File_Management
         {
             LoadTexturePacks();
             LoadEntities();
+            LoadHairs();
             LoadItems();
             LoadAnimations();
             LoadSpells();
@@ -126,6 +135,8 @@ namespace Intersect.Client.Framework.File_Management
         public abstract void LoadItems();
 
         public abstract void LoadEntities();
+
+        public abstract void LoadHairs();
 
         public abstract void LoadSpells();
 
@@ -210,6 +221,8 @@ namespace Intersect.Client.Framework.File_Management
 
                 case TextureType.Misc:
                     return mMiscDict.Keys.ToArray();
+                case TextureType.Hair:
+                    return mHairDict.Keys.ToArray();
             }
 
             return null;
@@ -283,6 +296,12 @@ namespace Intersect.Client.Framework.File_Management
 
                 case TextureType.Misc:
                     textureDict = mMiscDict;
+
+                    break;
+
+
+                case TextureType.Hair:
+                    textureDict = mHairDict;
 
                     break;
 

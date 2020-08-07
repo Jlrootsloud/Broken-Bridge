@@ -1108,6 +1108,12 @@ namespace Intersect.Server.Networking
                     newChar.Gender = classBase.Sprites[spriteIndex].Gender;
                 }
 
+                // Get our custom layers from the packet.
+                for (var i = 0; i < (int)Enums.CustomSpriteLayers.CustomCount; i++)
+                {
+                    newChar.CustomSpriteLayers[i] = packet.CustomSpriteLayers[i] != -1 ? classBase.CustomSpriteLayers[(Enums.CustomSpriteLayers)i][packet.CustomSpriteLayers[i]].Texture : String.Empty;
+                }
+                
                 client.LoadCharacter(newChar);
 
                 newChar.SetVital(Vitals.Health, classBase.BaseVital[(int) Vitals.Health]);
@@ -1179,6 +1185,7 @@ namespace Intersect.Server.Networking
                         if (player.TryGiveItem(mapItem))
                         {
                             // Remove Item From Map
+                            PacketSender.SendActionMsg(player, mapItem.Descriptor.Name, CustomColors.Combat.TrueDamage);
                             MapInstance.Get(player.MapId).RemoveItem(packet.MapItemIndex);
                         } 
                         else 
@@ -1423,6 +1430,15 @@ namespace Intersect.Server.Networking
             player.CraftTimer = Globals.Timing.TimeMs;
         }
 
+        public void HandlePacket(Client client, Player player, CraftRequestPacket packet)
+        {
+            if (player == null)
+            {
+                return;
+            }
+
+            player.CraftRequestId = packet.CraftId;
+               }
         //CloseBankPacket
         public void HandlePacket(Client client, Player player, CloseBankPacket packet)
         {
