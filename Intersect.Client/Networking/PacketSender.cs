@@ -51,9 +51,9 @@ namespace Intersect.Client.Networking
             Network.SendPacket(new ChatMsgPacket(msg, channel));
         }
 
-        public static void SendAttack(Guid targetId, bool targetOnFocus)
+        public static void SendAttack(Guid targetId)
         {
-            Network.SendPacket(new AttackPacket(targetId, targetOnFocus));
+            Network.SendPacket(new AttackPacket(targetId));
         }
 
         public static void SendBlock(bool blocking)

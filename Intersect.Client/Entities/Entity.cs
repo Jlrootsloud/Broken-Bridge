@@ -111,8 +111,6 @@ namespace Intersect.Client.Entities
 
         private byte mDir;
 
-        private byte mDeplDir;
-
         protected bool mDisposed;
 
         private long mLastUpdate;
@@ -227,17 +225,8 @@ namespace Intersect.Client.Entities
         public byte Dir
         {
             get => mDir;
-            set => mDir = (byte)((value + 8) % 8);
+            set => mDir = (byte) ((value + 4) % 4);
         }
-
-        // DeplacementDir is used because I don't know how to set the sprite animation for the diagonal mouvement.
-       /* public byte DeplacementDir
-        {
-            get => mDeplDir;
-            set => mDeplDir = (byte)((value + 8) % 8);
-            // I don't know why there was a +4 % 4 for the Dir field, but I just repeated the same thing here.
-            // I guess it's to be sure the value is in the acceptable range.
-        }*/
 
         public virtual string TransformedSprite
         {
@@ -435,9 +424,7 @@ namespace Intersect.Client.Entities
 
         public virtual bool IsDisposed()
         {
-            bool temp = mDisposed;
-            mDisposed = false;
-            return temp;
+            return mDisposed;
         }
 
         public virtual void Dispose()
@@ -548,18 +535,11 @@ namespace Intersect.Client.Entities
             }
             else if (IsMoving)
             {
-                float deplacementTime = ecTime * Options.TileHeight / GetMovementTime();
-
-                // Dir = facing direction (only 4)
-                // delta offset Must be more than 0 for movements. 0 = slowest
-                // Direction is related to the sprite animation, I don't know how to set a sprite animation for eache direction
-                // so I use DeplacementDir...
                 switch (Dir)
                 {
-                    case 0: // Up
-                        OffsetY -= deplacementTime;
+                    case 0:
+                        OffsetY -= (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetX = 0;
-
                         if (OffsetY < 0)
                         {
                             OffsetY = 0;
@@ -567,8 +547,8 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 1: // Down
-                        OffsetY += deplacementTime;
+                    case 1:
+                        OffsetY += (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetX = 0;
                         if (OffsetY > 0)
                         {
@@ -577,10 +557,9 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 2: // Left
-                        OffsetX -= deplacementTime;
+                    case 2:
+                        OffsetX -= (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetY = 0;
-
                         if (OffsetX < 0)
                         {
                             OffsetX = 0;
@@ -588,53 +567,13 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 3: // Right
-                        OffsetX += deplacementTime;
+                    case 3:
+                        OffsetX += (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetY = 0;
                         if (OffsetX > 0)
                         {
                             OffsetX = 0;
                         }
-
-                        break;
-                    case 4: // NW     
-                        OffsetY -= deplacementTime;
-                        OffsetX -= deplacementTime;
-
-                        if (OffsetY < 0)
-                            OffsetY = 0;
-                        if (OffsetX < 0)
-                            OffsetX = 0;
-
-                        break;
-                    case 5: // NE
-                        OffsetY -= deplacementTime;
-                        OffsetX += deplacementTime;
-
-                        if (OffsetY < 0)
-                            OffsetY = 0;
-                        if (OffsetX > 0)
-                            OffsetX = 0;
-
-                        break;
-                    case 6: //SW
-                        OffsetY += deplacementTime;
-                        OffsetX -= deplacementTime;
-
-                        if (OffsetY > 0)
-                            OffsetY = 0;
-                        if (OffsetX < 0)
-                            OffsetX = 0;
-
-                        break;
-                    case 7: // SE
-                        OffsetY += deplacementTime;
-                        OffsetX += deplacementTime;
-
-                        if (OffsetY > 0)
-                            OffsetY = 0;
-                        if (OffsetX > 0)
-                            OffsetX = 0;
 
                         break;
                 }
@@ -963,24 +902,6 @@ namespace Intersect.Client.Entities
                         d = 2;
 
                         break;
-
-                    case 4: // UpLeft
-                        d = 1;
-
-                        break;
-                    case 5: // UpRight
-                        d = 2;
-
-                        break;
-                    case 6: // DownLeft
-                        d = 1;
-
-                        break;
-                    case 7: // DownRight
-                        d = 2;
-
-                        break;
-
                     default:
                         Dir = 0;
                         d = 3;
@@ -1035,20 +956,10 @@ namespace Intersect.Client.Entities
 
                 WorldPos = destRectangle;
 
-                int pDollIndex = Dir; // Actually it's because the index would've been outside of the bounds
-                if (Dir == 4 || Dir == 6)
-                {
-                    pDollIndex = 2;
-                }
-                else if (Dir == 5 || Dir == 7)
-                {
-                    pDollIndex = 3;
-                }
-
                 //Order the layers of paperdolls and sprites
-                for (var z = 0; z < Options.PaperdollOrder[pDollIndex].Count; z++)
+                for (var z = 0; z < Options.PaperdollOrder[Dir].Count; z++)
                 {
-                    var paperdoll = Options.PaperdollOrder[pDollIndex][z];
+                    var paperdoll = Options.PaperdollOrder[Dir][z];
                     var equipSlot = Options.EquipmentSlots.IndexOf(paperdoll);
 
                     //Check for player
@@ -1174,21 +1085,7 @@ namespace Intersect.Client.Entities
                         break;
                     case 3:
                         d = 2;
-                        break;
-                    case 4:
-                        d = 1;
 
-                        break;
-                    case 5:
-                        d = 2;
-
-                        break;
-                    case 6:
-                        d = 1;
-
-                        break;
-                    case 7:
-                        d = 2;
                         break;
                 }
 

@@ -1099,7 +1099,7 @@ namespace Intersect.Server.Entities
             base.TryAttack(target, projectile, parentSpell, parentItem, projectileDir);
         }
 
-        public void TryAttack(Entity target, bool targetOnFocus)
+        public override void TryAttack(Entity target)
         {
             if (CastTime >= Globals.Timing.TimeMs)
             {
@@ -1113,7 +1113,7 @@ namespace Intersect.Server.Entities
                 return;
             }
 
-            if (!targetOnFocus && !IsFacingTarget(target))
+            if (!IsFacingTarget(target))
             {
                 return;
             }

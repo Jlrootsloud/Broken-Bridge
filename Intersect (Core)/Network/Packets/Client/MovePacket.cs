@@ -12,7 +12,6 @@ namespace Intersect.Network.Packets.Client
             X = x;
             Y = y;
             Dir = dir;
-         
         }
 
         public Guid MapId { get; set; }
@@ -22,8 +21,6 @@ namespace Intersect.Network.Packets.Client
         public byte Y { get; set; }
 
         public byte Dir { get; set; }
-
-      
 
     }
 
