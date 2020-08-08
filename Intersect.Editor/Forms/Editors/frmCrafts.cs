@@ -82,9 +82,9 @@ namespace Intersect.Editor.Forms.Editors
                 nudQuantity.Hide();
                 lblQuantity.Hide();
                 lblIngredient.Hide();
-                // Success Rate
+                //Success Rate
                 nudSuccessRate.Value = mEditorItem.SuccessRate;
-                // Craft Event
+                //Craft Event
                 cmbCraftEvent.SelectedIndex = GameObjects.Events.EventBase.ListIndex(mEditorItem.CraftEventId) + 1;
                 for (var i = 0; i < mEditorItem.Ingredients.Count; i++)
                 {
@@ -143,9 +143,6 @@ namespace Intersect.Editor.Forms.Editors
 
         private void nudQuantity_ValueChanged(object sender, EventArgs e)
         {
-            // This should never be below 1. We shouldn't accept giving 0 items!
-            nudQuantity.Value = Math.Max(1, nudQuantity.Value);
-
             if (lstIngredients.SelectedIndex > -1)
             {
                 mEditorItem.Ingredients[lstIngredients.SelectedIndex].Quantity = (int) nudQuantity.Value;
@@ -327,6 +324,7 @@ namespace Intersect.Editor.Forms.Editors
                 }
             }
         }
+
         private void cmbCraftEvent_SelectedIndexChanged(object sender, EventArgs e)
         {
             mEditorItem.CraftEvent = GameObjects.Events.EventBase.Get(GameObjects.Events.EventBase.IdFromList(cmbCraftEvent.SelectedIndex - 1));
@@ -457,12 +455,11 @@ namespace Intersect.Editor.Forms.Editors
             btnCancel.Text = Strings.CraftsEditor.cancel;
             lblCraftEvent.Text = Strings.CraftsEditor.craftevent;
             lblSuccessRate.Text = Strings.CraftsEditor.successrate;
+            btnEditRequirements.Text = Strings.ItemEditor.craftrequirements;
         }
-
+        
         private void nudCraftQuantity_ValueChanged(object sender, EventArgs e)
         {
-            // This should never be below 1. We shouldn't accept giving 0 items!
-            nudCraftQuantity.Value = Math.Max(1, nudCraftQuantity.Value);
             mEditorItem.Quantity = (int) nudCraftQuantity.Value;
         }
 
@@ -700,6 +697,11 @@ namespace Intersect.Editor.Forms.Editors
 
         #endregion
 
+        private void btnEditRequirements_Click_1(object sender, EventArgs e)
+        {
+            var frm = new FrmDynamicRequirements(mEditorItem.CraftRequirements, RequirementType.Craft);
+            frm.ShowDialog();
+        }
     }
 
 }
