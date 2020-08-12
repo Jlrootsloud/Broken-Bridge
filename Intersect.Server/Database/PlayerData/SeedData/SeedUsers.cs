@@ -109,6 +109,8 @@ namespace Intersect.Server.Database.PlayerData.SeedData
                         Gender = n % 2 == 0 ? Gender.Male : Gender.Female,
                         Level = 1,
                         Exp = 0,
+                        FarmingExp = 0,
+                        FarmingLevel = 1,
                         StatPoints = 0,
 
                         Sprite = "1.png",

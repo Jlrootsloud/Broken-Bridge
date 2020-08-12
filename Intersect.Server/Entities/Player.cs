@@ -80,6 +80,7 @@ namespace Intersect.Server.Entities
         }
 
         public long Exp { get; set; }
+        public long FarmingExp { get; set; }
 
         public int StatPoints { get; set; }
 
@@ -120,6 +121,9 @@ namespace Intersect.Server.Entities
 
         [NotMapped]
         public long ExperienceToNextLevel => GetExperienceToNextLevel(Level);
+
+        [NotMapped]
+        public long ExperienceToFarmingNextLevel => GetExperienceToFarmingNextLevel(FarmingLevel);
 
         public static Player FindOnline(Guid id)
         {
@@ -165,6 +169,18 @@ namespace Intersect.Server.Entities
             return classBase?.ExperienceToNextLevel(level) ?? ClassBase.DEFAULT_BASE_EXPERIENCE;
         }
 
+        private long GetExperienceToFarmingNextLevel(int FarmingLevel)
+        {
+            if (FarmingLevel >= Options.MaxLevel)
+            {
+                return -1;
+            }
+
+            var skillBase = SkillBase.DEFAULT_BASE_EXPERIENCE;
+            var Gain = 1.5;
+
+            return(long)Math.Floor(skillBase * Math.Pow(Gain, FarmingLevel - 1));
+        }
         public void SetOnline()
         {
             IsDisposed = false;
@@ -856,6 +872,24 @@ namespace Intersect.Server.Entities
             PacketSender.SendExperience(this);
         }
 
+        public void SetFarmingLevel(int Farminglevel, bool resetExperience = false)
+        {
+            if (Farminglevel < 1)
+            {
+                return;
+            }
+
+            FarmingLevel = Math.Min(Options.MaxLevel, Farminglevel);
+            if (resetExperience)
+            {
+                FarmingExp = 0;
+            }
+
+            RecalculateStatsAndPoints();
+            PacketSender.SendEntityDataToProximity(this);
+            PacketSender.SendExperience(this);
+        }
+
         public void LevelUp(bool resetExperience = true, int levels = 1)
         {
             var messages = new List<string>();
@@ -932,7 +966,19 @@ namespace Intersect.Server.Entities
                 PacketSender.SendExperience(this);
             }
         }
+        public void GiveFarmingExperience(long amount)
+        {
+            FarmingExp += (int)(amount);
+            if (FarmingExp < 0)
+            {
+                FarmingExp = 0;
+            }
 
+            if (!CheckFarmingLevelUp())
+            {
+                PacketSender.SendExperience(this);
+            }
+        }
         private bool CheckLevelUp()
         {
             var levelCount = 0;
@@ -952,7 +998,25 @@ namespace Intersect.Server.Entities
 
             return true;
         }
+        private bool CheckFarmingLevelUp()
+        {
+            var levelCount = 0;
+            while (FarmingExp >= GetExperienceToFarmingNextLevel(FarmingLevel + levelCount) &&
+                   GetExperienceToFarmingNextLevel(FarmingLevel + levelCount) > 0)
+            {
+                FarmingExp -= GetExperienceToFarmingNextLevel(FarmingLevel + levelCount);
+                levelCount++;
+            }
 
+            if (levelCount <= 0)
+            {
+                return false;
+            }
+
+            LevelUp(false, levelCount);
+
+            return true;
+        }
         //Combat
         public override void KilledEntity(Entity entity)
         {

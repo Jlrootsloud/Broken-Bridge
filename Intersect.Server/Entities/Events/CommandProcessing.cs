@@ -351,6 +351,7 @@ namespace Intersect.Server.Entities.Events
         )
         {
             player.GiveExperience(command.Exp);
+            player.GiveFarmingExperience(command.FarmingExp);
         }
 
         //Change Level Command

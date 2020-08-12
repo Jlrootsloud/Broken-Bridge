@@ -98,7 +98,7 @@ namespace Intersect.Client.Interface.Game
         public void Update()
         {
             mFarmingLabel.SetText(
-               Strings.Skills.skill0.ToString(Strings.Job.skill0, Globals.Me.Skill[(int)Skills.Farming])
+               Strings.Skills.skill0.ToString(Strings.Job.skill0, Globals.Me.FarmingLevel)
            );
             mMiningLabel.SetText(
                Strings.Skills.skill1.ToString(Strings.Job.skill1, Globals.Me.Skill[(int)Skills.Mining])

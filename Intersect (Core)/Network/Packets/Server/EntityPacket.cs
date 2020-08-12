@@ -18,6 +18,8 @@ namespace Intersect.Network.Packets.Server
 
         public int Level { get; set; }
 
+        public int FarmingLevel { get; set; }
+       
         public byte X { get; set; }
 
         public byte Y { get; set; }

@@ -76,6 +76,8 @@ namespace Intersect.Server.Entities
 
         public int Level { get; set; }
 
+        public int FarmingLevel { get; set; }
+
         [JsonIgnore, Column("Vitals")]
         public string VitalsJson
         {
@@ -2539,6 +2541,7 @@ namespace Intersect.Server.Entities
             packet.Sprite = Sprite;
             packet.Face = Face;
             packet.Level = Level;
+            packet.FarmingLevel = FarmingLevel;
             packet.X = (byte) X;
             packet.Y = (byte) Y;
             packet.Z = (byte) Z;

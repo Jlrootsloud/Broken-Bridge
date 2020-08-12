@@ -354,7 +354,7 @@ namespace Intersect.Client.Localization
             public static LocalizedString skill = @"Skills:";
             public static LocalizedString recoskill = @" Recolection Skills:";
             public static LocalizedString craftskill = @" Crafting Skills:";
-            public static LocalizedString skill0 = @"{00}: {01}";
+            public static LocalizedString skill0 = @"{00}: {01}/100";
 
             public static LocalizedString skill1 = @"{00}: {01}";
 

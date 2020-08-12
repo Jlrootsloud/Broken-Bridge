@@ -332,6 +332,8 @@ namespace Intersect.GameObjects.Events.Commands
 
         public long Exp { get; set; }
 
+        public long FarmingExp { get; set; }
+
     }
 
     public class ChangeLevelCommand : EventCommand

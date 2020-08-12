@@ -21,6 +21,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             mEventEditor = editor;
             InitLocalization();
             nudExperience.Value = mMyCommand.Exp;
+            FarmingXP.Value = mMyCommand.FarmingExp;
         }
 
         private void InitLocalization()
@@ -34,6 +35,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private void btnSave_Click(object sender, EventArgs e)
         {
             mMyCommand.Exp = (long) nudExperience.Value;
+            mMyCommand.FarmingExp = (long)FarmingXP.Value;
             mEventEditor.FinishCommandEdit();
         }
 
@@ -42,6 +44,10 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             mEventEditor.CancelCommandEdit();
         }
 
+        private void nudExperience_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

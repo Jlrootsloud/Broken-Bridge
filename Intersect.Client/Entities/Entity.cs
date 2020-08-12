@@ -101,6 +101,8 @@ namespace Intersect.Client.Entities
 
         public int Level = 1;
 
+        public int FarmingLevel = 1;
+
         //Vitals & Stats
         public int[] MaxVital = new int[(int) Vitals.VitalCount];
 
@@ -271,6 +273,7 @@ namespace Intersect.Client.Entities
             MySprite = packet.Sprite;
             Face = packet.Face;
             Level = packet.Level;
+            FarmingLevel = packet.FarmingLevel;
             X = packet.X;
             Y = packet.Y;
             Z = packet.Z;

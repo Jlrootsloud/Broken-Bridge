@@ -1242,6 +1242,7 @@ namespace Intersect.Server.Networking
         public static void SendExperience(Player player)
         {
             player.SendPacket(new ExperiencePacket(player.Exp, player.ExperienceToNextLevel));
+            player.SendPacket(new ExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
         }
 
         //PlayAnimationPacket
