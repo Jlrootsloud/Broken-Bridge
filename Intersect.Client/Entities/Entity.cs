@@ -433,10 +433,11 @@ namespace Intersect.Client.Entities
         }
 
         public virtual bool IsDisposed()
-        {
+        {/* Cambio chingon aca perro
             bool temp = mDisposed;
             mDisposed = false;
-            return temp;
+            return temp;*/
+            return mDisposed;
         }
 
         public virtual void Dispose()
