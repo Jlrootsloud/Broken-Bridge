@@ -887,7 +887,7 @@ namespace Intersect.Server.Entities
 
             RecalculateStatsAndPoints();
             PacketSender.SendEntityDataToProximity(this);
-            PacketSender.SendExperience(this);
+            PacketSender.SendSkillExperience(this);
         }
 
         public void LevelUp(bool resetExperience = true, int levels = 1)
@@ -952,7 +952,33 @@ namespace Intersect.Server.Entities
                 }
             }
         }
+        public void FarmingLevelUp(bool resetExperience = true, int levels = 1)
+        {
+            var messages = new List<string>();
+            if (FarmingLevel < Options.MaxLevel)
+            {
+                for (var i = 0; i < levels; i++)
+                {
+                    SetFarmingLevel(FarmingLevel + 1, resetExperience);    
+                }
+            }
 
+            PacketSender.SendChatMsg(this, Strings.Player.levelup.ToString(FarmingLevel), CustomColors.Combat.LevelUp, Name);
+            //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
+            foreach (var message in messages)
+            {
+                PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
+            }
+
+           
+
+            
+            PacketSender.SendSkillExperience(this);
+            PacketSender.SendEntityDataToProximity(this);
+
+           
+            
+        }
         public void GiveExperience(long amount)
         {
             Exp += (int) (amount * GetExpMultiplier() / 100);
@@ -976,7 +1002,7 @@ namespace Intersect.Server.Entities
 
             if (!CheckFarmingLevelUp())
             {
-                PacketSender.SendExperience(this);
+                PacketSender.SendSkillExperience(this);
             }
         }
         private bool CheckLevelUp()
@@ -1013,7 +1039,7 @@ namespace Intersect.Server.Entities
                 return false;
             }
 
-            LevelUp(false, levelCount);
+            FarmingLevelUp(false, levelCount);
 
             return true;
         }

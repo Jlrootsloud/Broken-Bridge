@@ -584,8 +584,27 @@ namespace Intersect.Editor.Forms.Editors.Events
 
         private static string GetCommandText(GiveExperienceCommand command, MapInstance map)
         {
-            return Strings.EventCommandList.giveexp.ToString(command.Exp);
+            if(command.Exp == 0)
+            { 
+                
+            }
+            else 
+            { 
+                return Strings.EventCommandList.giveexp.ToString(command.Exp); 
+            }
+            if (command.FarmingExp == 0)
+            {
+
+            }
+            else
+            {
+                return Strings.EventCommandList.giveFarmingexp.ToString(command.FarmingExp);
+            }
+
+            return " ";
         }
+
+        
 
         private static string GetCommandText(ChangeLevelCommand command, MapInstance map)
         {

@@ -1519,6 +1519,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString give = @"Give: Item {00}";
 
             public static LocalizedString giveexp = @"Give Player {00} Experience";
+            
+            public static LocalizedString giveFarmingexp = @"Give Player {00}  Farming Experience";
 
             public static LocalizedString globalswitch = @"Set Global Switch {00} to {01}";
 

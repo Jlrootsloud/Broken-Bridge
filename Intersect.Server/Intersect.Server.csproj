@@ -484,6 +484,10 @@
     <Compile Include="Migrations\20200402173703_PlayerHair_PlayerEdits.designer.cs">
       <DependentUpon>20200402173703_PlayerHair_PlayerEdits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200815181407_FarmingSkill.cs" />
+    <Compile Include="Migrations\20200815181407_FarmingSkill.designer.cs">
+      <DependentUpon>20200815181407_FarmingSkill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Game\20200402142818_PlayerHair_ClassEdits.cs" />
     <Compile Include="Migrations\Game\20200402142818_PlayerHair_ClassEdits.designer.cs">
       <DependentUpon>20200402142818_PlayerHair_ClassEdits.cs</DependentUpon>

@@ -1028,6 +1028,14 @@ namespace Intersect.Client.Networking
                 Globals.Me.ExperienceToNextLevel = packet.ExperienceToNextLevel;
             }
         }
+        private static void HandlePacket(SkillsExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.FarmingExperience = packet.FarmingExperience;
+                Globals.Me.ExperienceToFarmingNextLevel = packet.ExperienceToFarmingNextLevel;
+            }
+        }
 
         //ProjectileDeadPacket
         private static void HandlePacket(ProjectileDeadPacket packet)

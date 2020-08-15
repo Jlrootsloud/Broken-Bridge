@@ -34,7 +34,10 @@ namespace Intersect.Client.Entities
 
         public long Experience = 0;
 
+        public long FarmingExperience = 0;
+
         public long ExperienceToNextLevel = 0;
+        public long ExperienceToFarmingNextLevel = 0;
 
         public List<FriendInstance> Friends = new List<FriendInstance>();
 
@@ -1322,6 +1325,11 @@ namespace Intersect.Client.Entities
         public long GetNextLevelExperience()
         {
             return ExperienceToNextLevel;
+        }
+
+        public long GetNextFarmingLevelExperience()
+        {
+            return ExperienceToFarmingNextLevel;
         }
 
         public override int CalculateAttackTime()

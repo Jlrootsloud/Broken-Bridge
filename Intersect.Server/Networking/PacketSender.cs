@@ -335,6 +335,7 @@ namespace Intersect.Server.Networking
             if (en == player)
             {
                 SendExperience(player);
+                SendSkillExperience(player);
                 SendInventory(player);
                 SendPlayerSpells(player);
                 SendPointsTo(player);
@@ -1242,7 +1243,12 @@ namespace Intersect.Server.Networking
         public static void SendExperience(Player player)
         {
             player.SendPacket(new ExperiencePacket(player.Exp, player.ExperienceToNextLevel));
-            player.SendPacket(new ExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
+           
+        }
+        public static void SendSkillExperience(Player player)
+        {
+           
+            player.SendPacket(new SkillsExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
         }
 
         //PlayAnimationPacket

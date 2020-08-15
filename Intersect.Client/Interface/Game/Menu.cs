@@ -138,7 +138,7 @@ namespace Intersect.Client.Interface.Game
             mSpellsWindow = new SpellsWindow(gameCanvas);
             mCharacterWindow = new CharacterWindow(gameCanvas);
             mQuestsWindow = new QuestsWindow(gameCanvas);
-            mSkillsWindow = new SkillsWindow(gameCanvas);
+            mSkillsWindow = new SkillsWindow(gameCanvas, Globals.Me);
         }
 
         //Methods
