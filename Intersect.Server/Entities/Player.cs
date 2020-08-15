@@ -176,10 +176,12 @@ namespace Intersect.Server.Entities
                 return -1;
             }
 
-            var skillBase = SkillBase.DEFAULT_BASE_EXPERIENCE;
-            var Gain = 1.5;
+            var skillBase = 8;
+            var Gain = 3;
+            var level = FarmingLevel;
 
-            return(long)Math.Floor(skillBase * Math.Pow(Gain, FarmingLevel - 1));
+
+            return (long)Math.Floor(skillBase + ((4*(Math.Pow(level - 1, Gain))) / 5));
         }
         public void SetOnline()
         {
@@ -885,7 +887,6 @@ namespace Intersect.Server.Entities
                 FarmingExp = 0;
             }
 
-            RecalculateStatsAndPoints();
             PacketSender.SendEntityDataToProximity(this);
             PacketSender.SendSkillExperience(this);
         }
@@ -963,7 +964,7 @@ namespace Intersect.Server.Entities
                 }
             }
 
-            PacketSender.SendChatMsg(this, Strings.Player.levelup.ToString(FarmingLevel), CustomColors.Combat.LevelUp, Name);
+            PacketSender.SendChatMsg(this, Strings.Player.Farminglevelup.ToString(FarmingLevel), CustomColors.Combat.Farminglevelup, Name);
             //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
             foreach (var message in messages)
             {
