@@ -103,6 +103,7 @@ namespace Intersect.Editor.Forms
             this.picLogo.Location = new System.Drawing.Point(32, 22);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(580, 160);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLogo.TabIndex = 4;
             this.picLogo.TabStop = false;
             // 
