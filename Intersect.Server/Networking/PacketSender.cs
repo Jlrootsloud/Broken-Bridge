@@ -335,7 +335,10 @@ namespace Intersect.Server.Networking
             if (en == player)
             {
                 SendExperience(player);
-                SendSkillExperience(player);
+                SendFarmingExperience(player);
+                SendMiningExperience(player);
+                SendFishingExperience(player);
+                SendWoodExperience(player);
                 SendInventory(player);
                 SendPlayerSpells(player);
                 SendPointsTo(player);
@@ -1245,13 +1248,30 @@ namespace Intersect.Server.Networking
             player.SendPacket(new ExperiencePacket(player.Exp, player.ExperienceToNextLevel));
            
         }
-        public static void SendSkillExperience(Player player)
+        public static void SendFarmingExperience(Player player)
         {
            
-            player.SendPacket(new SkillsExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
-            player.SendPacket(new SkillsExperiencePacket(player.MiningExp, player.ExperienceToMiningNextLevel));
-            player.SendPacket(new SkillsExperiencePacket(player.FishingExp, player.ExperienceToFishingNextLevel));
-            player.SendPacket(new SkillsExperiencePacket(player.WoodExp, player.ExperienceToWoodNextLevel));
+            player.SendPacket(new FarmingExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
+           
+        }
+
+        public static void SendMiningExperience(Player player)
+        {
+
+            player.SendPacket(new MiningExperiencePacket(player.MiningExp, player.ExperienceToMiningNextLevel));
+
+        }
+        public static void SendFishingExperience(Player player)
+        {
+
+            player.SendPacket(new FishingExperiencePacket(player.FishingExp, player.ExperienceToFishingNextLevel));
+
+        }
+        public static void SendWoodExperience(Player player)
+        {
+
+            player.SendPacket(new WoodExperiencePacket(player.WoodExp, player.ExperienceToWoodNextLevel));
+
         }
 
         //PlayAnimationPacket

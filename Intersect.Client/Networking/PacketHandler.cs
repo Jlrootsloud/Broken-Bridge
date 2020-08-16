@@ -1028,24 +1028,47 @@ namespace Intersect.Client.Networking
                 Globals.Me.ExperienceToNextLevel = packet.ExperienceToNextLevel;
             }
         }
-        private static void HandlePacket(SkillsExperiencePacket packet)
+        private static void HandlePacket(FarmingExperiencePacket packet)
         {
             if (Globals.Me != null)
             {
                 Globals.Me.FarmingExperience = packet.FarmingExperience;
                 Globals.Me.ExperienceToFarmingNextLevel = packet.ExperienceToFarmingNextLevel;
 
-                Globals.Me.MiningExperience = packet.MiningExperience;
-                Globals.Me.ExperienceToMiningNextLevel = packet.ExperienceToMiningNextLevel;
-
-                Globals.Me.FishingExperience = packet.FishingExperience;
-                Globals.Me.ExperienceToFishingNextLevel = packet.ExperienceToFishingNextLevel;
-
-                Globals.Me.WoodExperience = packet.WoodExperience;
-                Globals.Me.ExperienceToWoodNextLevel = packet.ExperienceToWoodNextLevel;
+             
             }
         }
 
+        private static void HandlePacket(MiningExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.MiningExperience = packet.MiningExperience;
+                Globals.Me.ExperienceToMiningNextLevel = packet.ExperienceToMiningNextLevel;
+
+
+            }
+        }
+        private static void HandlePacket(FishingExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.FishingExperience = packet.FishingExperience;
+                Globals.Me.ExperienceToFishingNextLevel = packet.ExperienceToFishingNextLevel;
+
+
+            }
+        }
+        private static void HandlePacket(WoodExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.WoodExperience = packet.WoodExperience;
+                Globals.Me.ExperienceToWoodNextLevel = packet.ExperienceToWoodNextLevel;
+
+
+            }
+        }
         //ProjectileDeadPacket
         private static void HandlePacket(ProjectileDeadPacket packet)
         {

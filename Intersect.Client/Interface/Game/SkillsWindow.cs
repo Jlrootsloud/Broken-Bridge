@@ -194,10 +194,21 @@ namespace Intersect.Client.Interface.Game
             if (MyEntity == Globals.Me)
             {
                 UpdateFarmingXpBar(elapsedTime);
+          
+              
+            
+                
                 UpdateMiningXpBar(elapsedTime);
+
+           
+                
                 UpdateFishingXpBar(elapsedTime);
+              
+            
+               
                 UpdateWoodXpBar(elapsedTime);
             }
+
 
         }
         private void UpdateFarmingXpBar(float elapsedTime)

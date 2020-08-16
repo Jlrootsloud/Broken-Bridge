@@ -943,7 +943,7 @@ namespace Intersect.Server.Entities
             }
 
             PacketSender.SendEntityDataToProximity(this);
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendFarmingExperience(this);
         }
         public void SetMiningLevel(int Mininglevel, bool resetExperience = false)
         {
@@ -959,7 +959,7 @@ namespace Intersect.Server.Entities
             }
 
             PacketSender.SendEntityDataToProximity(this);
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendMiningExperience(this);
         }
         public void SetFishingLevel(int Fishinglevel, bool resetExperience = false)
         {
@@ -975,7 +975,7 @@ namespace Intersect.Server.Entities
             }
 
             PacketSender.SendEntityDataToProximity(this);
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendFishingExperience(this);
         }
         public void SetWoodLevel(int Woodlevel, bool resetExperience = false)
         {
@@ -991,7 +991,7 @@ namespace Intersect.Server.Entities
             }
 
             PacketSender.SendEntityDataToProximity(this);
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendWoodExperience(this);
         }
         public void LevelUp(bool resetExperience = true, int levels = 1)
         {
@@ -1071,7 +1071,7 @@ namespace Intersect.Server.Entities
             {
                 PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
             }
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendFarmingExperience(this);
             PacketSender.SendEntityDataToProximity(this);
 
         }
@@ -1092,7 +1092,7 @@ namespace Intersect.Server.Entities
             {
                 PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
             }
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendMiningExperience(this);
             PacketSender.SendEntityDataToProximity(this);
 
         }
@@ -1113,7 +1113,7 @@ namespace Intersect.Server.Entities
             {
                 PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
             }
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendFishingExperience(this);
             PacketSender.SendEntityDataToProximity(this);
 
         }
@@ -1134,7 +1134,7 @@ namespace Intersect.Server.Entities
             {
                 PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
             }
-            PacketSender.SendSkillExperience(this);
+            PacketSender.SendWoodExperience(this);
             PacketSender.SendEntityDataToProximity(this);
 
         }
@@ -1161,7 +1161,7 @@ namespace Intersect.Server.Entities
 
             if (!CheckFarmingLevelUp())
             {
-                PacketSender.SendSkillExperience(this);
+                PacketSender.SendFarmingExperience(this);
             }
         }
 
@@ -1175,7 +1175,7 @@ namespace Intersect.Server.Entities
 
             if (!CheckMiningLevelUp())
             {
-                PacketSender.SendSkillExperience(this);
+                PacketSender.SendMiningExperience(this);
             }
         }
         public void GiveFishingExperience(long amount)
@@ -1188,7 +1188,7 @@ namespace Intersect.Server.Entities
 
             if (!CheckFishingLevelUp())
             {
-                PacketSender.SendSkillExperience(this);
+                PacketSender.SendFishingExperience(this);
             }
         }
         public void GiveWoodExperience(long amount)
@@ -1201,7 +1201,7 @@ namespace Intersect.Server.Entities
 
             if (!CheckWoodLevelUp())
             {
-                PacketSender.SendSkillExperience(this);
+                PacketSender.SendWoodExperience(this);
             }
         }
         private bool CheckLevelUp()

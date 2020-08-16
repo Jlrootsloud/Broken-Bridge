@@ -335,7 +335,10 @@
     <Compile Include="Network\Packets\Client\HotbarUpdatePacket.cs" />
     <Compile Include="Network\Packets\Client\LoginPacket.cs" />
     <Compile Include="Network\Packets\Client\LogoutPacket.cs" />
-    <Compile Include="Network\Packets\Server\SkillsExperiencePacket.cs" />
+    <Compile Include="Network\Packets\Server\WoodExperiencePacket.cs" />
+    <Compile Include="Network\Packets\Server\FishingExperiencePacket.cs" />
+    <Compile Include="Network\Packets\Server\MiningExperiencePacket.cs" />
+    <Compile Include="Network\Packets\Server\FarmingExperiencePacket.cs" />
     <Compile Include="Network\Packets\SlotQuantityPacket.cs" />
     <Compile Include="Network\Packets\Client\SwapBankItemsPacket.cs" />
     <Compile Include="Network\Packets\Client\MovePacket.cs" />
