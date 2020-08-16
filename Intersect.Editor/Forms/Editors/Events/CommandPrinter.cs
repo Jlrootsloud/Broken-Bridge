@@ -600,6 +600,30 @@ namespace Intersect.Editor.Forms.Editors.Events
             {
                 return Strings.EventCommandList.giveFarmingexp.ToString(command.FarmingExp);
             }
+            if (command.MiningExp == 0)
+            {
+
+            }
+            else
+            {
+                return Strings.EventCommandList.giveMiningexp.ToString(command.MiningExp);
+            }
+            if (command.FishingExp == 0)
+            {
+
+            }
+            else
+            {
+                return Strings.EventCommandList.giveFishingexp.ToString(command.FishingExp);
+            }
+            if (command.WoodExp == 0)
+            {
+
+            }
+            else
+            {
+                return Strings.EventCommandList.giveWoodexp.ToString(command.WoodExp);
+            }
 
             return " ";
         }

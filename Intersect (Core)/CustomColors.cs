@@ -180,7 +180,7 @@ namespace Intersect
 
             public Color LevelUp = Color.Cyan;
 
-            public Color Farminglevelup = Color.Red; 
+            public Color Skilllevelup = Color.Red; 
 
             public Color MagicDamage = new Color(255, 255, 0, 255);
 

@@ -31,21 +31,36 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private void InitializeComponent()
         {
             this.grpGiveExperience = new DarkUI.Controls.DarkGroupBox();
+            this.FarmingXP = new DarkUI.Controls.DarkNumericUpDown();
+            this.FamingLabel = new System.Windows.Forms.Label();
             this.nudExperience = new DarkUI.Controls.DarkNumericUpDown();
             this.lblExperience = new System.Windows.Forms.Label();
             this.btnCancel = new DarkUI.Controls.DarkButton();
             this.btnSave = new DarkUI.Controls.DarkButton();
-            this.FarmingXP = new DarkUI.Controls.DarkNumericUpDown();
-            this.FamingLabel = new System.Windows.Forms.Label();
+            this.FishingXP = new DarkUI.Controls.DarkNumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MiningXP = new DarkUI.Controls.DarkNumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.WoodXP = new DarkUI.Controls.DarkNumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.grpGiveExperience.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudExperience)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FarmingXP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudExperience)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FishingXP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiningXP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WoodXP)).BeginInit();
             this.SuspendLayout();
             // 
             // grpGiveExperience
             // 
             this.grpGiveExperience.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.grpGiveExperience.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpGiveExperience.Controls.Add(this.WoodXP);
+            this.grpGiveExperience.Controls.Add(this.label3);
+            this.grpGiveExperience.Controls.Add(this.MiningXP);
+            this.grpGiveExperience.Controls.Add(this.label2);
+            this.grpGiveExperience.Controls.Add(this.FishingXP);
+            this.grpGiveExperience.Controls.Add(this.label1);
             this.grpGiveExperience.Controls.Add(this.FarmingXP);
             this.grpGiveExperience.Controls.Add(this.FamingLabel);
             this.grpGiveExperience.Controls.Add(this.nudExperience);
@@ -59,6 +74,35 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpGiveExperience.TabIndex = 17;
             this.grpGiveExperience.TabStop = false;
             this.grpGiveExperience.Text = "Give Experience:";
+            // 
+            // FarmingXP
+            // 
+            this.FarmingXP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.FarmingXP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.FarmingXP.Location = new System.Drawing.Point(112, 48);
+            this.FarmingXP.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.FarmingXP.Name = "FarmingXP";
+            this.FarmingXP.Size = new System.Drawing.Size(141, 20);
+            this.FarmingXP.TabIndex = 24;
+            this.FarmingXP.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.FarmingXP.ValueChanged += new System.EventHandler(this.FarmingXP_ValueChanged);
+            // 
+            // FamingLabel
+            // 
+            this.FamingLabel.AutoSize = true;
+            this.FamingLabel.Location = new System.Drawing.Point(4, 50);
+            this.FamingLabel.Name = "FamingLabel";
+            this.FamingLabel.Size = new System.Drawing.Size(106, 13);
+            this.FamingLabel.TabIndex = 23;
+            this.FamingLabel.Text = "Farming Experience: ";
             // 
             // nudExperience
             // 
@@ -109,33 +153,89 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.btnSave.Text = "Ok";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // FarmingXP
+            // FishingXP
             // 
-            this.FarmingXP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.FarmingXP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.FarmingXP.Location = new System.Drawing.Point(112, 48);
-            this.FarmingXP.Maximum = new decimal(new int[] {
+            this.FishingXP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.FishingXP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.FishingXP.Location = new System.Drawing.Point(112, 101);
+            this.FishingXP.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
-            this.FarmingXP.Name = "FarmingXP";
-            this.FarmingXP.Size = new System.Drawing.Size(141, 20);
-            this.FarmingXP.TabIndex = 24;
-            this.FarmingXP.Value = new decimal(new int[] {
+            this.FishingXP.Name = "FishingXP";
+            this.FishingXP.Size = new System.Drawing.Size(141, 20);
+            this.FishingXP.TabIndex = 26;
+            this.FishingXP.Value = new decimal(new int[] {
             0,
             0,
             0,
             0});
             // 
-            // FamingLabel
+            // label1
             // 
-            this.FamingLabel.AutoSize = true;
-            this.FamingLabel.Location = new System.Drawing.Point(4, 50);
-            this.FamingLabel.Name = "FamingLabel";
-            this.FamingLabel.Size = new System.Drawing.Size(106, 13);
-            this.FamingLabel.TabIndex = 23;
-            this.FamingLabel.Text = "Farming Experience: ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Fishing Experience: ";
+            // 
+            // MiningXP
+            // 
+            this.MiningXP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.MiningXP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.MiningXP.Location = new System.Drawing.Point(112, 74);
+            this.MiningXP.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.MiningXP.Name = "MiningXP";
+            this.MiningXP.Size = new System.Drawing.Size(141, 20);
+            this.MiningXP.TabIndex = 28;
+            this.MiningXP.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Mining Experience: ";
+            // 
+            // WoodXP
+            // 
+            this.WoodXP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.WoodXP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.WoodXP.Location = new System.Drawing.Point(113, 128);
+            this.WoodXP.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.WoodXP.Name = "WoodXP";
+            this.WoodXP.Size = new System.Drawing.Size(141, 20);
+            this.WoodXP.TabIndex = 30;
+            this.WoodXP.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 130);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Wood Experience: ";
             // 
             // EventCommandGiveExperience
             // 
@@ -148,8 +248,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.Size = new System.Drawing.Size(268, 228);
             this.grpGiveExperience.ResumeLayout(false);
             this.grpGiveExperience.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudExperience)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FarmingXP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudExperience)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FishingXP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiningXP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WoodXP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +266,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private DarkNumericUpDown nudExperience;
         private DarkNumericUpDown FarmingXP;
         private System.Windows.Forms.Label FamingLabel;
+        private DarkNumericUpDown WoodXP;
+        private System.Windows.Forms.Label label3;
+        private DarkNumericUpDown MiningXP;
+        private System.Windows.Forms.Label label2;
+        private DarkNumericUpDown FishingXP;
+        private System.Windows.Forms.Label label1;
     }
 }

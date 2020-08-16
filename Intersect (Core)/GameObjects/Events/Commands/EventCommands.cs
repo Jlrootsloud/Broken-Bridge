@@ -333,6 +333,9 @@ namespace Intersect.GameObjects.Events.Commands
         public long Exp { get; set; }
 
         public long FarmingExp { get; set; }
+        public long FishingExp { get; set; }
+        public long MiningExp { get; set; }
+        public long WoodExp { get; set; }
 
     }
 

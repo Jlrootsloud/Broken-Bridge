@@ -351,16 +351,17 @@ namespace Intersect.Client.Localization
         }
         public struct Skills
         {
-            public static LocalizedString skill = @"Skills:";
+            public static LocalizedString skill = @"Skills";
             public static LocalizedString recoskill = @" Recolection Skills:";
             public static LocalizedString craftskill = @" Crafting Skills:";
-            public static LocalizedString skill0 = @"{00}: {01}/100";
+            public static LocalizedString SkillLv = @"Lv.{00} ";
+            public static LocalizedString skill0 = @"{00}";
 
-            public static LocalizedString skill1 = @"{00}: {01}";
+            public static LocalizedString skill1 = @"{00}";
 
-            public static LocalizedString skill2 = @"{00}: {01}";
+            public static LocalizedString skill2 = @"{00}";
 
-            public static LocalizedString skill3 = @"{00}: {01}";
+            public static LocalizedString skill3 = @"{00}";
 
             public static LocalizedString skill4 = @"{00}: {01}";
             public static LocalizedString skill5 = @"{00}: {01}";
@@ -502,14 +503,12 @@ namespace Intersect.Client.Localization
         }
         public struct Job
         {
+            public static LocalizedString Level = @"Lv. ";
             public static LocalizedString skill0 = @"Farming";
 
             public static LocalizedString skill1 = @"Mining";
-
-            public static LocalizedString skill2 = @"Woodcutter";
-
-            public static LocalizedString skill3 = @"Fishing";
-
+            public static LocalizedString skill2 = @"Fishing";
+            public static LocalizedString skill3 = @"Woodcutter";                    
             public static LocalizedString skill4 = @"Hunter";
             public static LocalizedString skill5 = @"Cooking";
             public static LocalizedString skill6 = @"Smithing";

@@ -1034,6 +1034,15 @@ namespace Intersect.Client.Networking
             {
                 Globals.Me.FarmingExperience = packet.FarmingExperience;
                 Globals.Me.ExperienceToFarmingNextLevel = packet.ExperienceToFarmingNextLevel;
+
+                Globals.Me.MiningExperience = packet.MiningExperience;
+                Globals.Me.ExperienceToMiningNextLevel = packet.ExperienceToMiningNextLevel;
+
+                Globals.Me.FishingExperience = packet.FishingExperience;
+                Globals.Me.ExperienceToFishingNextLevel = packet.ExperienceToFishingNextLevel;
+
+                Globals.Me.WoodExperience = packet.WoodExperience;
+                Globals.Me.ExperienceToWoodNextLevel = packet.ExperienceToWoodNextLevel;
             }
         }
 

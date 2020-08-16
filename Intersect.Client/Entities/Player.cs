@@ -33,11 +33,22 @@ namespace Intersect.Client.Entities
         public Guid Class;
 
         public long Experience = 0;
-
-        public long FarmingExperience = 0;
-
         public long ExperienceToNextLevel = 0;
+        public long FarmingExperience = 0;
+             
         public long ExperienceToFarmingNextLevel = 0;
+
+        public long MiningExperience = 0;
+
+        public long ExperienceToMiningNextLevel = 0;
+
+        public long FishingExperience = 0;
+
+        public long ExperienceToFishingNextLevel = 0;
+
+        public long WoodExperience = 0;
+
+        public long ExperienceToWoodNextLevel = 0;
 
         public List<FriendInstance> Friends = new List<FriendInstance>();
 
@@ -1332,6 +1343,18 @@ namespace Intersect.Client.Entities
             return ExperienceToFarmingNextLevel;
         }
 
+        public long GetNextMiningLevelExperience()
+        {
+            return ExperienceToMiningNextLevel;
+        }
+        public long GetNextFishingLevelExperience()
+        {
+            return ExperienceToFishingNextLevel;
+        }
+        public long GetNextWoodLevelExperience()
+        {
+            return ExperienceToWoodNextLevel;
+        }
         public override int CalculateAttackTime()
         {
             ItemBase weapon = null;

@@ -1249,6 +1249,9 @@ namespace Intersect.Server.Networking
         {
            
             player.SendPacket(new SkillsExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
+            player.SendPacket(new SkillsExperiencePacket(player.MiningExp, player.ExperienceToMiningNextLevel));
+            player.SendPacket(new SkillsExperiencePacket(player.FishingExp, player.ExperienceToFishingNextLevel));
+            player.SendPacket(new SkillsExperiencePacket(player.WoodExp, player.ExperienceToWoodNextLevel));
         }
 
         //PlayAnimationPacket

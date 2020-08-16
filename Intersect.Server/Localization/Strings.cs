@@ -1076,6 +1076,16 @@ namespace Intersect.Server.Localization
             [NotNull]
             public readonly LocalizedString Farminglevelup = @"Your Farming Skill are now level {00}!";
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            [NotNull]
+            public readonly LocalizedString Mininglevelup = @"Your Mining Skill are now level {00}!";
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            [NotNull]
+            public readonly LocalizedString Fishinglevelup = @"Your Fishing Skill are now level {00}!";
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            [NotNull]
+            public readonly LocalizedString Woodlevelup = @"Your Woodcutter Skill are now level {00}!";
+
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] [NotNull]
             public readonly LocalizedString mod = @"{00} has been given moderation powers!";
 

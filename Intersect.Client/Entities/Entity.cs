@@ -102,6 +102,11 @@ namespace Intersect.Client.Entities
         public int Level = 1;
 
         public int FarmingLevel = 1;
+        public int MiningLevel = 1;
+        public int FishingLevel = 1;
+        public int WoodLevel = 1;
+
+        public int HauntLevel = 1;
 
         //Vitals & Stats
         public int[] MaxVital = new int[(int) Vitals.VitalCount];
@@ -274,6 +279,9 @@ namespace Intersect.Client.Entities
             Face = packet.Face;
             Level = packet.Level;
             FarmingLevel = packet.FarmingLevel;
+            MiningLevel = packet.MiningLevel;
+            FishingLevel = packet.FishingLevel;
+            WoodLevel = packet.WoodLevel;
             X = packet.X;
             Y = packet.Y;
             Z = packet.Z;

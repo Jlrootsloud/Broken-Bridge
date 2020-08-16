@@ -81,6 +81,9 @@ namespace Intersect.Server.Entities
 
         public long Exp { get; set; }
         public long FarmingExp { get; set; }
+        public long MiningExp { get; set; }
+        public long FishingExp { get; set; }
+        public long WoodExp { get; set; }
 
         public int StatPoints { get; set; }
 
@@ -124,6 +127,13 @@ namespace Intersect.Server.Entities
 
         [NotMapped]
         public long ExperienceToFarmingNextLevel => GetExperienceToFarmingNextLevel(FarmingLevel);
+
+        [NotMapped]
+        public long ExperienceToMiningNextLevel => GetExperienceToMiningNextLevel(MiningLevel);
+        [NotMapped]
+        public long ExperienceToFishingNextLevel => GetExperienceToFishingNextLevel(FishingLevel);
+        [NotMapped]
+        public long ExperienceToWoodNextLevel => GetExperienceToWoodNextLevel(WoodLevel);
 
         public static Player FindOnline(Guid id)
         {
@@ -182,6 +192,51 @@ namespace Intersect.Server.Entities
 
 
             return (long)Math.Floor(skillBase + ((4*(Math.Pow(level - 1, Gain))) / 5));
+        }
+
+        private long GetExperienceToMiningNextLevel(int MiningLevel)
+        {
+            if (MiningLevel >= Options.MaxLevel)
+            {
+                return -1;
+            }
+
+            var skillBase = 8;
+            var Gain = 3;
+            var level = MiningLevel;
+
+
+            return (long)Math.Floor(skillBase + ((4 * (Math.Pow(level - 1, Gain))) / 5));
+        }
+
+        private long GetExperienceToFishingNextLevel(int FishingLevel)
+        {
+            if (FishingLevel >= Options.MaxLevel)
+            {
+                return -1;
+            }
+
+            var skillBase = 8;
+            var Gain = 3;
+            var level = FishingLevel;
+
+
+            return (long)Math.Floor(skillBase + ((4 * (Math.Pow(level - 1, Gain))) / 5));
+        }
+
+        private long GetExperienceToWoodNextLevel(int WoodLevel)
+        {
+            if (WoodLevel >= Options.MaxLevel)
+            {
+                return -1;
+            }
+
+            var skillBase = 8;
+            var Gain = 3;
+            var level = WoodLevel;
+
+
+            return (long)Math.Floor(skillBase + ((4 * (Math.Pow(level - 1, Gain))) / 5));
         }
         public void SetOnline()
         {
@@ -890,7 +945,54 @@ namespace Intersect.Server.Entities
             PacketSender.SendEntityDataToProximity(this);
             PacketSender.SendSkillExperience(this);
         }
+        public void SetMiningLevel(int Mininglevel, bool resetExperience = false)
+        {
+            if (Mininglevel < 1)
+            {
+                return;
+            }
 
+            MiningLevel = Math.Min(Options.MaxLevel, Mininglevel);
+            if (resetExperience)
+            {
+                MiningExp = 0;
+            }
+
+            PacketSender.SendEntityDataToProximity(this);
+            PacketSender.SendSkillExperience(this);
+        }
+        public void SetFishingLevel(int Fishinglevel, bool resetExperience = false)
+        {
+            if (Fishinglevel < 1)
+            {
+                return;
+            }
+
+            FishingLevel = Math.Min(Options.MaxLevel, Fishinglevel);
+            if (resetExperience)
+            {
+                FishingExp = 0;
+            }
+
+            PacketSender.SendEntityDataToProximity(this);
+            PacketSender.SendSkillExperience(this);
+        }
+        public void SetWoodLevel(int Woodlevel, bool resetExperience = false)
+        {
+            if (Woodlevel < 1)
+            {
+                return;
+            }
+
+            WoodLevel = Math.Min(Options.MaxLevel, Woodlevel);
+            if (resetExperience)
+            {
+                WoodExp = 0;
+            }
+
+            PacketSender.SendEntityDataToProximity(this);
+            PacketSender.SendSkillExperience(this);
+        }
         public void LevelUp(bool resetExperience = true, int levels = 1)
         {
             var messages = new List<string>();
@@ -963,22 +1065,78 @@ namespace Intersect.Server.Entities
                     SetFarmingLevel(FarmingLevel + 1, resetExperience);    
                 }
             }
-
-            PacketSender.SendChatMsg(this, Strings.Player.Farminglevelup.ToString(FarmingLevel), CustomColors.Combat.Farminglevelup, Name);
+            PacketSender.SendChatMsg(this, Strings.Player.Farminglevelup.ToString(FarmingLevel), CustomColors.Combat.Skilllevelup, Name);
             //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
             foreach (var message in messages)
             {
                 PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
             }
-
-           
-
-            
             PacketSender.SendSkillExperience(this);
             PacketSender.SendEntityDataToProximity(this);
 
-           
-            
+        }
+
+        public void MiningLevelUp(bool resetExperience = true, int levels = 1)
+        {
+            var messages = new List<string>();
+            if (MiningLevel < Options.MaxLevel)
+            {
+                for (var i = 0; i < levels; i++)
+                {
+                    SetMiningLevel(MiningLevel + 1, resetExperience);
+                }
+            }
+            PacketSender.SendChatMsg(this, Strings.Player.Mininglevelup.ToString(MiningLevel), CustomColors.Combat.Skilllevelup, Name);
+            //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
+            foreach (var message in messages)
+            {
+                PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
+            }
+            PacketSender.SendSkillExperience(this);
+            PacketSender.SendEntityDataToProximity(this);
+
+        }
+
+        public void FishingLevelUp(bool resetExperience = true, int levels = 1)
+        {
+            var messages = new List<string>();
+            if (FishingLevel < Options.MaxLevel)
+            {
+                for (var i = 0; i < levels; i++)
+                {
+                    SetFishingLevel(FishingLevel + 1, resetExperience);
+                }
+            }
+            PacketSender.SendChatMsg(this, Strings.Player.Fishinglevelup.ToString(FishingLevel), CustomColors.Combat.Skilllevelup, Name);
+            //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
+            foreach (var message in messages)
+            {
+                PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
+            }
+            PacketSender.SendSkillExperience(this);
+            PacketSender.SendEntityDataToProximity(this);
+
+        }
+
+        public void WoodLevelUp(bool resetExperience = true, int levels = 1)
+        {
+            var messages = new List<string>();
+            if (WoodLevel < Options.MaxLevel)
+            {
+                for (var i = 0; i < levels; i++)
+                {
+                    SetWoodLevel(WoodLevel + 1, resetExperience);
+                }
+            }
+            PacketSender.SendChatMsg(this, Strings.Player.Woodlevelup.ToString(WoodLevel), CustomColors.Combat.Skilllevelup, Name);
+            //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
+            foreach (var message in messages)
+            {
+                PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
+            }
+            PacketSender.SendSkillExperience(this);
+            PacketSender.SendEntityDataToProximity(this);
+
         }
         public void GiveExperience(long amount)
         {
@@ -1002,6 +1160,46 @@ namespace Intersect.Server.Entities
             }
 
             if (!CheckFarmingLevelUp())
+            {
+                PacketSender.SendSkillExperience(this);
+            }
+        }
+
+        public void GiveMiningExperience(long amount)
+        {
+            MiningExp += (int)(amount);
+            if (MiningExp < 0)
+            {
+                MiningExp = 0;
+            }
+
+            if (!CheckMiningLevelUp())
+            {
+                PacketSender.SendSkillExperience(this);
+            }
+        }
+        public void GiveFishingExperience(long amount)
+        {
+            FishingExp += (int)(amount);
+            if (FishingExp < 0)
+            {
+                FishingExp = 0;
+            }
+
+            if (!CheckFishingLevelUp())
+            {
+                PacketSender.SendSkillExperience(this);
+            }
+        }
+        public void GiveWoodExperience(long amount)
+        {
+            WoodExp += (int)(amount);
+            if (WoodExp < 0)
+            {
+                WoodExp = 0;
+            }
+
+            if (!CheckWoodLevelUp())
             {
                 PacketSender.SendSkillExperience(this);
             }
@@ -1041,6 +1239,65 @@ namespace Intersect.Server.Entities
             }
 
             FarmingLevelUp(false, levelCount);
+
+            return true;
+        }
+        private bool CheckMiningLevelUp()
+        {
+            var levelCount = 0;
+            while (MiningExp >= GetExperienceToMiningNextLevel(MiningLevel + levelCount) &&
+                   GetExperienceToMiningNextLevel(MiningLevel + levelCount) > 0)
+            {
+                MiningExp -= GetExperienceToMiningNextLevel(MiningLevel + levelCount);
+                levelCount++;
+            }
+
+            if (levelCount <= 0)
+            {
+                return false;
+            }
+
+            MiningLevelUp(false, levelCount);
+
+            return true;
+        }
+
+        private bool CheckFishingLevelUp()
+        {
+            var levelCount = 0;
+            while (FishingExp >= GetExperienceToFishingNextLevel(FishingLevel + levelCount) &&
+                   GetExperienceToFishingNextLevel(FishingLevel + levelCount) > 0)
+            {
+                FishingExp -= GetExperienceToFishingNextLevel(FishingLevel + levelCount);
+                levelCount++;
+            }
+
+            if (levelCount <= 0)
+            {
+                return false;
+            }
+
+            FishingLevelUp(false, levelCount);
+
+            return true;
+        }
+
+        private bool CheckWoodLevelUp()
+        {
+            var levelCount = 0;
+            while (WoodExp >= GetExperienceToWoodNextLevel(WoodLevel + levelCount) &&
+                   GetExperienceToWoodNextLevel(WoodLevel + levelCount) > 0)
+            {
+                WoodExp -= GetExperienceToWoodNextLevel(WoodLevel + levelCount);
+                levelCount++;
+            }
+
+            if (levelCount <= 0)
+            {
+                return false;
+            }
+
+            WoodLevelUp(false, levelCount);
 
             return true;
         }

@@ -111,6 +111,12 @@ namespace Intersect.Server.Database.PlayerData.SeedData
                         Exp = 0,
                         FarmingExp = 0,
                         FarmingLevel = 1,
+                        MiningExp = 0,
+                        MiningLevel = 1,
+                        FishingExp = 0,
+                        FishingLevel = 1,
+                        WoodExp = 0,
+                        WoodLevel = 1,
                         StatPoints = 0,
 
                         Sprite = "1.png",
