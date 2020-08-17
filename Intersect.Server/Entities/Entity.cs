@@ -75,7 +75,7 @@ namespace Intersect.Server.Entities
         public string Face { get; set; }
 
         public int Level { get; set; }
-
+       
         public int FarmingLevel { get; set; }
 
         public int MiningLevel { get; set; }

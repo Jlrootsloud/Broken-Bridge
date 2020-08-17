@@ -298,6 +298,9 @@ namespace Intersect.Server.Localization
             public readonly LocalizedString levelup = @"LEVEL UP!";
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            public readonly LocalizedString Farminglevelup = @"FARMING LEVEL UP!";
+
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
             public readonly LocalizedString lowhealth = @"Not enough health.";
 
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]

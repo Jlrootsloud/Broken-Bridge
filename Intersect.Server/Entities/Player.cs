@@ -187,11 +187,12 @@ namespace Intersect.Server.Entities
             }
 
             var skillBase = 8;
-            var Gain = 3;
+            var Gain = 1.8;
             var level = FarmingLevel;
 
 
-            return (long)Math.Floor(skillBase + ((4*(Math.Pow(level - 1, Gain))) / 5));
+           // return (long)Math.Floor(skillBase + ((4*(Math.Pow(level - 1, Gain))) / 5));
+            return (long)Math.Floor(skillBase+(skillBase / 3) * (Math.Pow(level, Gain) + (6 * Math.Pow((level), Gain)) -2 * ((level) -3)));
         }
 
         private long GetExperienceToMiningNextLevel(int MiningLevel)
@@ -202,11 +203,11 @@ namespace Intersect.Server.Entities
             }
 
             var skillBase = 8;
-            var Gain = 3;
+            var Gain = 1.8;
             var level = MiningLevel;
 
 
-            return (long)Math.Floor(skillBase + ((4 * (Math.Pow(level - 1, Gain))) / 5));
+            return (long)Math.Floor(skillBase + (skillBase / 3) * (Math.Pow(level, Gain) + (6 * Math.Pow((level), Gain)) - 2 * ((level) - 3)));
         }
 
         private long GetExperienceToFishingNextLevel(int FishingLevel)
@@ -217,11 +218,11 @@ namespace Intersect.Server.Entities
             }
 
             var skillBase = 8;
-            var Gain = 3;
+            var Gain = 1.8;
             var level = FishingLevel;
 
 
-            return (long)Math.Floor(skillBase + ((4 * (Math.Pow(level - 1, Gain))) / 5));
+            return (long)Math.Floor(skillBase + (skillBase / 3) * (Math.Pow(level, Gain) + (6 * Math.Pow((level), Gain)) - 2 * ((level) - 3)));
         }
 
         private long GetExperienceToWoodNextLevel(int WoodLevel)
@@ -232,11 +233,11 @@ namespace Intersect.Server.Entities
             }
 
             var skillBase = 8;
-            var Gain = 3;
+            var Gain = 1.8;
             var level = WoodLevel;
 
 
-            return (long)Math.Floor(skillBase + ((4 * (Math.Pow(level - 1, Gain))) / 5));
+            return (long)Math.Floor(skillBase + (skillBase / 3) * (Math.Pow(level, Gain) + (6 * Math.Pow((level), Gain)) - 2 * ((level) - 3)));
         }
         public void SetOnline()
         {
@@ -888,6 +889,7 @@ namespace Intersect.Server.Entities
             //Must have at least 1 hp and no less than 0 mp
             if (vital == (int) Vitals.Health)
             {
+              
                 classVital = Math.Max(classVital, 1);
             }
             else if (vital == (int) Vitals.Mana)
@@ -1066,7 +1068,7 @@ namespace Intersect.Server.Entities
                 }
             }
             PacketSender.SendChatMsg(this, Strings.Player.Farminglevelup.ToString(FarmingLevel), CustomColors.Combat.Skilllevelup, Name);
-            //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
+            PacketSender.SendActionMsg(this, Strings.Combat.Farminglevelup, CustomColors.Combat.Skilllevelup);
             foreach (var message in messages)
             {
                 PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
@@ -1140,6 +1142,7 @@ namespace Intersect.Server.Entities
         }
         public void GiveExperience(long amount)
         {
+           
             Exp += (int) (amount * GetExpMultiplier() / 100);
             if (Exp < 0)
             {
@@ -2844,8 +2847,8 @@ namespace Intersect.Server.Entities
                     }
                 }
             }
-
-            return exp;
+            var Wisdom = 1 + ((int)Stats.AbilityPower/100);
+            return exp+ Wisdom;
         }
 
         public int GetEquipmentVitalRegen(Vitals vital)

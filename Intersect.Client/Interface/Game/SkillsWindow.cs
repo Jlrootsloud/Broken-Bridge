@@ -14,9 +14,7 @@ namespace Intersect.Client.Interface.Game
     public class SkillsWindow
     {
 
-       
-
-     
+          
 
         //Controls
         private WindowControl mSkillsWindow;
@@ -195,20 +193,25 @@ namespace Intersect.Client.Interface.Game
             {
                 UpdateFarmingXpBar(elapsedTime);
           
-              
-            
-                
+            }
+
+            if (MyEntity == Globals.Me)
+            {
+               
                 UpdateMiningXpBar(elapsedTime);
 
-           
+            }
+            if (MyEntity == Globals.Me)
+            {
                 
                 UpdateFishingXpBar(elapsedTime);
-              
-            
+
+            }
+            if (MyEntity == Globals.Me)
+            {
                
                 UpdateWoodXpBar(elapsedTime);
             }
-
 
         }
         private void UpdateFarmingXpBar(float elapsedTime)
