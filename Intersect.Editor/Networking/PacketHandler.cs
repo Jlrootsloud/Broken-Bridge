@@ -39,6 +39,7 @@ namespace Intersect.Editor.Networking
         }
 
         //PingPacket
+       
         private static void HandlePacket(PingPacket packet)
         {
             if (packet.RequestingReply)
@@ -46,7 +47,6 @@ namespace Intersect.Editor.Networking
                 PacketSender.SendPing();
             }
         }
-
         //ConfigPacket
         private static void HandlePacket(ConfigPacket packet)
         {
