@@ -480,7 +480,6 @@
     <Compile Include="Entities\Pathfinding\SpatialAStar.cs" />
     <Compile Include="Entities\Pathfinding\PathfinderTarget.cs" />
     <Compile Include="Entities\Pathfinding\PriorityQueue.cs" />
-
     <Compile Include="Migrations\20200402173703_PlayerHair_PlayerEdits.cs" />
     <Compile Include="Migrations\20200402173703_PlayerHair_PlayerEdits.designer.cs">
       <DependentUpon>20200402173703_PlayerHair_PlayerEdits.cs</DependentUpon>
@@ -504,7 +503,7 @@
     <Compile Include="Migrations\Game\20200404174804_CraftRequirementsv2.cs" />
     <Compile Include="Migrations\Game\20200404174804_CraftRequirementsv2.designer.cs">
       <DependentUpon>20200404174804_CraftRequirementsv2.cs</DependentUpon>
-
+ </Compile>
     <Compile Include="Migrations\Game\20200423004850_AddingTagSystem.cs" />
     <Compile Include="Migrations\Game\20200423004850_AddingTagSystem.designer.cs">
       <DependentUpon>20200423004850_AddingTagSystem.cs</DependentUpon>
@@ -756,6 +755,7 @@
     <Compile Include="Web\RestApi\Types\DataPage.cs" />
     <Compile Include="Web\Utilities\HeaderHelper.cs" />
   </ItemGroup>
+	
   <ItemGroup>
     <EmbeddedResource Include="private-intersect.bek" />
     <None Include="app.config" />
