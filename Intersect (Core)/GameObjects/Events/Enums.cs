@@ -223,8 +223,13 @@
         //Player Label
         PlayerLabel,
 
+
         //Change Hair
         ChangeHair,
+
+        // Take Items By tag
+        ChangeItemsByTag,
+
 
     }
 

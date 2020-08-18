@@ -131,6 +131,65 @@ namespace Intersect.Server.Entities.Events
         }
 
         public static bool MeetsCondition(
+            HasItemWTagCondition condition,
+            Player player,
+            Event eventInstance,
+            QuestBase questBase
+        )
+        {
+            // Get a list of all unique items the player has, filtering out the non-existant ones.
+            var playerItems = player.Items.Select(i => ItemBase.Get(i.ItemId))
+                .Where(item => item != null)
+                .Distinct().ToArray();
+
+            // Go through every unique item the player has, and see if we have enough tagged with our condition tag.
+            var tagItemCount = 0;
+            foreach (var item in playerItems)
+            {
+                // Does this item have the tag we are looking for?
+                if (item.Tags.Contains(condition.Tag))
+                {
+                    // Check if we can find an inventory slot the player has this item in.
+                    if (player.FindInventoryItemQuantity(item.Id) > -1)
+                    {
+                        // Increase our total item count by the actual amount of this item the player has.
+                        tagItemCount += player.CountItems(item.Id);
+
+                        // We've just increased our count, are we at the requirement?
+                        if (tagItemCount >= condition.Quantity)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static bool MeetsCondition(
+            EquippedItemTagIsCondition condition,
+            Player player,
+            Event eventInstance,
+            QuestBase questBase
+        )
+        {
+            // Go through each equipment slot we have and check if the item equipped has a tag matching our condition.
+            for (var i = 0; i < Options.EquipmentSlots.Count; i++)
+            {
+                if (player.Equipment[i] >= 0)
+                {
+                    if (ItemBase.Get(player.Items[player.Equipment[i]].ItemId).Tags.Contains(condition.Tag))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public static bool MeetsCondition(
             ClassIsCondition condition,
             Player player,
             Event eventInstance,
@@ -383,6 +442,41 @@ namespace Intersect.Server.Entities.Events
         }
 
         public static bool MeetsCondition(
+            MapHasNPCWTag condition,
+            Player player,
+            Event eventInstance,
+            QuestBase questBase
+        )
+        {
+            // Get the map our event is handled on, or if that fails the one our player is on.
+            var map = MapInstance.Get(eventInstance?.MapId ?? Guid.Empty);
+            if (map == null)
+            {
+                map = MapInstance.Get(player.MapId);
+            }
+
+            // if we have a map, actually process the condition.
+            if (map != null)
+            {
+                // Go through all our map entities and loook for any NPCs, if we have one check to see if they have a matching tag.
+                foreach (var en in map.GetEntities())
+                {
+                    if (en.GetType() == typeof(Npc))
+                    {
+                        var npc = (Npc)en;
+                        if (npc.Base.Tags.Contains(condition.Tag))
+                        {
+                            return true;
+                        }
+                    }
+
+                }
+            }
+
+            return false;
+        }
+
+        public static bool MeetsCondition(
             GenderIsCondition condition,
             Player player,
             Event eventInstance,
@@ -400,6 +494,16 @@ namespace Intersect.Server.Entities.Events
         )
         {
             return player.MapId == condition.MapId;
+        }
+
+        public static bool MeetsCondition(
+            MapHasTag condition,
+            Player player,
+            Event eventInstance,
+            QuestBase questBase
+        )
+        {
+            return player.Map.Tags.Contains(condition.Tag);
         }
 
         public static bool MeetsCondition(

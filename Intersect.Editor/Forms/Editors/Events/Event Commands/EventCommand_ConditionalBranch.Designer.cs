@@ -69,6 +69,14 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.cmbComparePlayerVar = new DarkUI.Controls.DarkComboBox();
             this.rdoVarComparePlayerVar = new DarkUI.Controls.DarkRadioButton();
             this.rdoVarCompareGlobalVar = new DarkUI.Controls.DarkRadioButton();
+            this.grpHasItemWTag = new DarkUI.Controls.DarkGroupBox();
+            this.nudHasItemWTag = new DarkUI.Controls.DarkNumericUpDown();
+            this.lblHasAtleastTag = new System.Windows.Forms.Label();
+            this.lblHasItemWTag = new System.Windows.Forms.Label();
+            this.cmbHasItemWTag = new DarkUI.Controls.DarkComboBox();
+            this.grpEquippedItemTag = new DarkUI.Controls.DarkGroupBox();
+            this.lblItemEquippedTag = new System.Windows.Forms.Label();
+            this.cmbEquippedItemTag = new DarkUI.Controls.DarkComboBox();
             this.grpQuestCompleted = new DarkUI.Controls.DarkGroupBox();
             this.lblQuestCompleted = new System.Windows.Forms.Label();
             this.cmbCompletedQuest = new DarkUI.Controls.DarkComboBox();
@@ -132,6 +140,9 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpBooleanVariable.SuspendLayout();
             this.grpNumericVariable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudVariableValue)).BeginInit();
+            this.grpHasItemWTag.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHasItemWTag)).BeginInit();
+            this.grpEquippedItemTag.SuspendLayout();
             this.grpQuestCompleted.SuspendLayout();
             this.grpQuestInProgress.SuspendLayout();
             this.grpStartQuest.SuspendLayout();
@@ -154,12 +165,14 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpConditional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.grpConditional.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.grpConditional.Controls.Add(this.grpFreeInventorySlots);
+            this.grpConditional.Controls.Add(this.grpVariable);
+            this.grpConditional.Controls.Add(this.grpHasItemWTag);
+            this.grpConditional.Controls.Add(this.grpEquippedItemTag);
             this.grpConditional.Controls.Add(this.chkNegated);
             this.grpConditional.Controls.Add(this.btnSave);
             this.grpConditional.Controls.Add(this.cmbConditionType);
             this.grpConditional.Controls.Add(this.lblType);
             this.grpConditional.Controls.Add(this.btnCancel);
-            this.grpConditional.Controls.Add(this.grpVariable);
             this.grpConditional.Controls.Add(this.grpQuestCompleted);
             this.grpConditional.Controls.Add(this.grpQuestInProgress);
             this.grpConditional.Controls.Add(this.grpStartQuest);
@@ -308,7 +321,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpVariable.Controls.Add(this.grpBooleanVariable);
             this.grpVariable.Controls.Add(this.grpNumericVariable);
             this.grpVariable.ForeColor = System.Drawing.Color.Gainsboro;
-            this.grpVariable.Location = new System.Drawing.Point(9, 40);
+            this.grpVariable.Location = new System.Drawing.Point(7, 43);
             this.grpVariable.Name = "grpVariable";
             this.grpVariable.Size = new System.Drawing.Size(262, 233);
             this.grpVariable.TabIndex = 24;
@@ -739,6 +752,201 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.rdoVarCompareGlobalVar.Text = "Global Variable Value:";
             this.rdoVarCompareGlobalVar.CheckedChanged += new System.EventHandler(this.rdoVarCompareGlobalVar_CheckedChanged);
             // 
+            // grpHasItemWTag
+            //
+            this.grpHasItemWTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.grpHasItemWTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpHasItemWTag.Controls.Add(this.nudHasItemWTag);
+            this.grpHasItemWTag.Controls.Add(this.lblHasAtleastTag);
+            this.grpHasItemWTag.Controls.Add(this.lblHasItemWTag);
+            this.grpHasItemWTag.Controls.Add(this.cmbHasItemWTag);
+            this.grpHasItemWTag.ForeColor = System.Drawing.Color.Gainsboro;
+            this.grpHasItemWTag.Location = new System.Drawing.Point(6, 43);
+            this.grpHasItemWTag.Name = "grpHasItemWTag";
+            this.grpHasItemWTag.Size = new System.Drawing.Size(262, 96);
+            this.grpHasItemWTag.TabIndex = 56;
+            this.grpHasItemWTag.TabStop = false;
+            this.grpHasItemWTag.Text = "Has Item With Tag:";
+            this.grpHasItemWTag.Visible = false;
+            //
+            // nudHasItemWTag
+            //
+            this.nudHasItemWTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.nudHasItemWTag.ForeColor = System.Drawing.Color.Gainsboro;
+            this.nudHasItemWTag.Location = new System.Drawing.Point(92, 19);
+            this.nudHasItemWTag.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.nudHasItemWTag.Name = "nudHasItemWTag";
+            this.nudHasItemWTag.Size = new System.Drawing.Size(162, 20);
+            this.nudHasItemWTag.TabIndex = 9;
+            this.nudHasItemWTag.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            //
+            // lblHasAtleastTag
+            //
+            this.lblHasAtleastTag.AutoSize = true;
+            this.lblHasAtleastTag.Location = new System.Drawing.Point(6, 21);
+            this.lblHasAtleastTag.Name = "lblHasAtleastTag";
+            this.lblHasAtleastTag.Size = new System.Drawing.Size(66, 13);
+            this.lblHasAtleastTag.TabIndex = 6;
+            this.lblHasAtleastTag.Text = "Has at least:";
+            //
+            // lblHasItemWTag
+            //
+            this.lblHasItemWTag.AutoSize = true;
+            this.lblHasItemWTag.Location = new System.Drawing.Point(6, 55);
+            this.lblHasItemWTag.Name = "lblHasItemWTag";
+            this.lblHasItemWTag.Size = new System.Drawing.Size(29, 13);
+            this.lblHasItemWTag.TabIndex = 5;
+            this.lblHasItemWTag.Text = "Tag:";
+            //
+            // cmbHasItemWTag
+            //
+            this.cmbHasItemWTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.cmbHasItemWTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbHasItemWTag.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbHasItemWTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbHasItemWTag.ButtonIcon = ((System.Drawing.Bitmap)(resources.GetObject("cmbHasItemWTag.ButtonIcon")));
+            this.cmbHasItemWTag.DrawDropdownHoverOutline = false;
+            this.cmbHasItemWTag.DrawFocusRectangle = false;
+            this.cmbHasItemWTag.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbHasItemWTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHasItemWTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbHasItemWTag.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbHasItemWTag.FormattingEnabled = true;
+            this.cmbHasItemWTag.Location = new System.Drawing.Point(92, 52);
+            this.cmbHasItemWTag.Name = "cmbHasItemWTag";
+            this.cmbHasItemWTag.Size = new System.Drawing.Size(162, 21);
+            this.cmbHasItemWTag.TabIndex = 3;
+            this.cmbHasItemWTag.Text = null;
+            this.cmbHasItemWTag.TextPadding = new System.Windows.Forms.Padding(2);
+            //
+            // grpEquippedItemTag
+            //
+            this.grpEquippedItemTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.grpEquippedItemTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpEquippedItemTag.Controls.Add(this.lblItemEquippedTag);
+            this.grpEquippedItemTag.Controls.Add(this.cmbEquippedItemTag);
+            this.grpEquippedItemTag.ForeColor = System.Drawing.Color.Gainsboro;
+            this.grpEquippedItemTag.Location = new System.Drawing.Point(6, 41);
+            this.grpEquippedItemTag.Name = "grpEquippedItemTag";
+            this.grpEquippedItemTag.Size = new System.Drawing.Size(262, 71);
+            this.grpEquippedItemTag.TabIndex = 55;
+            this.grpEquippedItemTag.TabStop = false;
+            this.grpEquippedItemTag.Text = "Item Equipped Tag";
+            this.grpEquippedItemTag.Visible = false;
+            //
+            // lblItemEquippedTag
+            //
+            this.lblItemEquippedTag.AutoSize = true;
+            this.lblItemEquippedTag.Location = new System.Drawing.Point(6, 21);
+            this.lblItemEquippedTag.Name = "lblItemEquippedTag";
+            this.lblItemEquippedTag.Size = new System.Drawing.Size(29, 13);
+            this.lblItemEquippedTag.TabIndex = 5;
+            this.lblItemEquippedTag.Text = "Tag:";
+            //
+            // cmbEquippedItemTag
+            //
+            this.cmbEquippedItemTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.cmbEquippedItemTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbEquippedItemTag.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbEquippedItemTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbEquippedItemTag.ButtonIcon = ((System.Drawing.Bitmap)(resources.GetObject("cmbEquippedItemTag.ButtonIcon")));
+            this.cmbEquippedItemTag.DrawDropdownHoverOutline = false;
+            this.cmbEquippedItemTag.DrawFocusRectangle = false;
+            this.cmbEquippedItemTag.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbEquippedItemTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEquippedItemTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbEquippedItemTag.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbEquippedItemTag.FormattingEnabled = true;
+            this.cmbEquippedItemTag.Location = new System.Drawing.Point(92, 18);
+            this.cmbEquippedItemTag.Name = "cmbEquippedItemTag";
+            this.cmbEquippedItemTag.Size = new System.Drawing.Size(162, 21);
+            this.cmbEquippedItemTag.TabIndex = 3;
+            this.cmbEquippedItemTag.Text = null;
+            this.cmbEquippedItemTag.TextPadding = new System.Windows.Forms.Padding(2);
+            //
+            // chkNegated
+            //
+            this.chkNegated.Location = new System.Drawing.Point(199, 279);
+            this.chkNegated.Name = "chkNegated";
+            this.chkNegated.Size = new System.Drawing.Size(72, 17);
+            this.chkNegated.TabIndex = 34;
+            this.chkNegated.Text = "Negated";
+            //
+            // btnSave
+            //
+            this.btnSave.Location = new System.Drawing.Point(12, 307);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(5);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 19;
+            this.btnSave.Text = "Ok";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            //
+            // cmbConditionType
+            //
+            this.cmbConditionType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.cmbConditionType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbConditionType.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbConditionType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbConditionType.ButtonIcon = ((System.Drawing.Bitmap)(resources.GetObject("cmbConditionType.ButtonIcon")));
+            this.cmbConditionType.DrawDropdownHoverOutline = false;
+            this.cmbConditionType.DrawFocusRectangle = false;
+            this.cmbConditionType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbConditionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbConditionType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbConditionType.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbConditionType.FormattingEnabled = true;
+            this.cmbConditionType.Items.AddRange(new object[] {
+            "Variable is...",
+            "Has item...",
+            "Class is...",
+            "Knows spell...",
+            "Level is....",
+            "Self Switch is....",
+            "Power level is....",
+            "Time is between....",
+            "Can Start Quest....",
+            "Quest In Progress....",
+            "Quest Completed....",
+            "Player death...",
+            "No NPCs on the map...",
+            "Gender is...",
+            "Item Equipped Is..."});
+            this.cmbConditionType.Location = new System.Drawing.Point(88, 13);
+            this.cmbConditionType.Name = "cmbConditionType";
+            this.cmbConditionType.Size = new System.Drawing.Size(183, 21);
+            this.cmbConditionType.TabIndex = 22;
+            this.cmbConditionType.Text = "Variable is...";
+            this.cmbConditionType.TextPadding = new System.Windows.Forms.Padding(2);
+            this.cmbConditionType.SelectedIndexChanged += new System.EventHandler(this.cmbConditionType_SelectedIndexChanged);
+            //
+            // lblType
+            //
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(6, 16);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(81, 13);
+            this.lblType.TabIndex = 21;
+            this.lblType.Text = "Condition Type:";
+            //
+            // btnCancel
+            //
+            this.btnCancel.Location = new System.Drawing.Point(113, 307);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 20;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            //
             // grpQuestCompleted
             // 
             this.grpQuestCompleted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -1568,6 +1776,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpNumericVariable.ResumeLayout(false);
             this.grpNumericVariable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudVariableValue)).EndInit();
+            this.grpHasItemWTag.ResumeLayout(false);
+            this.grpHasItemWTag.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudHasItemWTag)).EndInit();
+            this.grpEquippedItemTag.ResumeLayout(false);
+            this.grpEquippedItemTag.PerformLayout();
             this.grpQuestCompleted.ResumeLayout(false);
             this.grpQuestCompleted.PerformLayout();
             this.grpQuestInProgress.ResumeLayout(false);
@@ -1693,5 +1906,13 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private DarkGroupBox grpFreeInventorySlots;
         private DarkNumericUpDown nudFreeInventorySlots;
         private System.Windows.Forms.Label lblFreeInventorySlotAmount;
+        private DarkGroupBox grpEquippedItemTag;
+        private System.Windows.Forms.Label lblItemEquippedTag;
+        private DarkComboBox cmbEquippedItemTag;
+        private DarkGroupBox grpHasItemWTag;
+        private DarkNumericUpDown nudHasItemWTag;
+        private System.Windows.Forms.Label lblHasAtleastTag;
+        private System.Windows.Forms.Label lblHasItemWTag;
+        private DarkComboBox cmbHasItemWTag;
     }
 }
