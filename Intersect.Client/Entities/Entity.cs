@@ -118,8 +118,6 @@ namespace Intersect.Client.Entities
 
         private byte mDir;
 
-        private byte mDeplDir;
-
         protected bool mDisposed;
 
         private long mLastUpdate;
@@ -235,15 +233,6 @@ namespace Intersect.Client.Entities
         {
             get => mDir;
             set => mDir = (byte) ((value + 4) % 4);
-        }
-
-        // DeplacementDir is used because I don't know how to set the sprite animation for the diagonal mouvement.
-        public byte DeplacementDir
-        {
-            get => mDeplDir;
-            set => mDeplDir = (byte)((value + 8) % 8);
-            // I don't know why there was a +4 % 4 for the Dir field, but I just repeated the same thing here.
-            // I guess it's to be sure the value is in the acceptable range.
         }
 
         public virtual string TransformedSprite
@@ -557,18 +546,11 @@ namespace Intersect.Client.Entities
             }
             else if (IsMoving)
             {
-                float deplacementTime = ecTime * Options.TileHeight / GetMovementTime();
-
-                // Dir = facing direction (only 4)
-                // delta offset Must be more than 0 for movements. 0 = slowest
-                // Direction is related to the sprite animation, I don't know how to set a sprite animation for eache direction
-                // so I use DeplacementDir...
-                switch (DeplacementDir)
+                switch (Dir)
                 {
-                    case 0: // Up
-                        OffsetY -= deplacementTime;
+                    case 0:
+                        OffsetY -= (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetX = 0;
-
                         if (OffsetY < 0)
                         {
                             OffsetY = 0;
@@ -576,8 +558,8 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 1: // Down
-                        OffsetY += deplacementTime;
+                    case 1:
+                        OffsetY += (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetX = 0;
                         if (OffsetY > 0)
                         {
@@ -586,10 +568,9 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 2: // Left
-                        OffsetX -= deplacementTime;
+                    case 2:
+                        OffsetX -= (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetY = 0;
-
                         if (OffsetX < 0)
                         {
                             OffsetX = 0;
@@ -597,53 +578,13 @@ namespace Intersect.Client.Entities
 
                         break;
 
-                    case 3: // Right
-                        OffsetX += deplacementTime;
+                    case 3:
+                        OffsetX += (float) ecTime * (float) Options.TileHeight / GetMovementTime();
                         OffsetY = 0;
                         if (OffsetX > 0)
                         {
                             OffsetX = 0;
                         }
-
-                        break;
-                    case 4: // NW     
-                        OffsetY -= deplacementTime;
-                        OffsetX -= deplacementTime;
-
-                        if (OffsetY < 0)
-                            OffsetY = 0;
-                        if (OffsetX < 0)
-                            OffsetX = 0;
-
-                        break;
-                    case 5: // NE
-                        OffsetY -= deplacementTime;
-                        OffsetX += deplacementTime;
-
-                        if (OffsetY < 0)
-                            OffsetY = 0;
-                        if (OffsetX > 0)
-                            OffsetX = 0;
-
-                        break;
-                    case 6: //SW
-                        OffsetY += deplacementTime;
-                        OffsetX -= deplacementTime;
-
-                        if (OffsetY > 0)
-                            OffsetY = 0;
-                        if (OffsetX < 0)
-                            OffsetX = 0;
-
-                        break;
-                    case 7: // SE
-                        OffsetY += deplacementTime;
-                        OffsetX += deplacementTime;
-
-                        if (OffsetY > 0)
-                            OffsetY = 0;
-                        if (OffsetX > 0)
-                            OffsetX = 0;
 
                         break;
                 }
