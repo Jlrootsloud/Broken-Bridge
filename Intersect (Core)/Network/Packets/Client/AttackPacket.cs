@@ -6,14 +6,13 @@ namespace Intersect.Network.Packets.Client
     public class AttackPacket : CerasPacket
     {
 
-        public AttackPacket(Guid target, bool targetOnFocus)
+        public AttackPacket(Guid target)
         {
             Target = target;
-            TargetOnFocus = targetOnFocus;
         }
 
         public Guid Target { get; set; }
-        public bool TargetOnFocus { get; set; }
+
     }
 
 }

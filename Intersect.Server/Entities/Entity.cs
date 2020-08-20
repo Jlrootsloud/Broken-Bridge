@@ -511,40 +511,8 @@ namespace Intersect.Server.Entities
                         }
 
                         break;
-
-                    case MoveRouteEnum.MoveUpLeft:
-                        if (CanMove((int)Directions.UpLeft) == -1)
-                        {
-                            Move((int)Directions.UpLeft, forPlayer, false, true);
-                            moved = true;
-                        }
-
-                        break;
-                    case MoveRouteEnum.MoveUpRight:
-                        if (CanMove((int)Directions.UpRight) == -1)
-                        {
-                            Move((int)Directions.UpRight, forPlayer, false, true);
-                            moved = true;
-                        }
-
-                        break;
-                    case MoveRouteEnum.MoveDownLeft:
-                        if (CanMove((int)Directions.DownLeft) == -1)
-                        {
-                            Move((int)Directions.DownLeft, forPlayer, false, true);
-                            moved = true;
-                        }
-
-                        break;
-                    case MoveRouteEnum.MoveDownRight:
-                        if (CanMove((int)Directions.DownRight) == -1)
-                        {
-                            Move((int)Directions.DownRight, forPlayer, false, true);
-                            moved = true;
-                        }
-                        break;
                     case MoveRouteEnum.MoveRandomly:
-                        var dir = (byte)Randomization.Next(0, 8);
+                        var dir = (byte)Randomization.Next(0, 4);
                         if (CanMove(dir) == -1)
                         {
                             Move(dir, forPlayer);
@@ -577,23 +545,6 @@ namespace Intersect.Server.Entities
                                 break;
                             case (int) Directions.Right:
                                 moveDir = (int) Directions.Left;
-
-                                break;
-
-                            case (int)Directions.UpLeft:
-                                moveDir = (int)Directions.DownRight;
-
-                                break;
-                            case (int)Directions.UpRight:
-                                moveDir = (int)Directions.DownLeft;
-
-                                break;
-                            case (int)Directions.DownLeft:
-                                moveDir = (int)Directions.UpRight;
-
-                                break;
-                            case (int)Directions.DownRight:
-                                moveDir = (int)Directions.UpLeft;
 
                                 break;
                         }
@@ -629,35 +580,19 @@ namespace Intersect.Server.Entities
                         switch (Dir)
                         {
                             case (int) Directions.Up:
-                                lookDir = (int)Directions.UpRight;
+                                lookDir = (int) Directions.Right;
 
                                 break;
                             case (int) Directions.Down:
-                                lookDir = (int)Directions.DownLeft;
+                                lookDir = (int) Directions.Left;
 
                                 break;
                             case (int) Directions.Left:
-                                lookDir = (int)Directions.UpLeft;
+                                lookDir = (int) Directions.Down;
 
                                 break;
                             case (int) Directions.Right:
-                                lookDir = (int)Directions.DownRight;
-
-                                break;
-                            case (int)Directions.UpLeft:
-                                lookDir = (int)Directions.Up;
-
-                                break;
-                            case (int)Directions.UpRight:
-                                lookDir = (int)Directions.Right;
-
-                                break;
-                            case (int)Directions.DownLeft:
-                                lookDir = (int)Directions.Left;
-
-                                break;
-                            case (int)Directions.DownRight:
-                                lookDir = (int)Directions.Down;
+                                lookDir = (int) Directions.Up;
 
                                 break;
                         }
@@ -669,37 +604,21 @@ namespace Intersect.Server.Entities
                     case MoveRouteEnum.Turn90CounterClockwise:
                         switch (Dir)
                         {
-
-                            case (int)Directions.Up:
-                                lookDir = (int)Directions.UpLeft;
-
-                                break;
-                            case (int)Directions.Down:
-                                lookDir = (int)Directions.DownRight;
+                            case (int) Directions.Up:
+                                lookDir = (int) Directions.Left;
 
                                 break;
-                            case (int)Directions.Left:
-                                lookDir = (int)Directions.DownLeft;
+                            case (int) Directions.Down:
+                                lookDir = (int) Directions.Right;
 
                                 break;
-                            case (int)Directions.Right:
-                                lookDir = (int)Directions.UpRight;
-                                                            
-                                break;
-                            case (int)Directions.UpLeft:
-                                lookDir = (int)Directions.Left;
+                            case (int) Directions.Left:
+                                lookDir = (int) Directions.Up;
 
                                 break;
-                            case (int)Directions.UpRight:
-                                lookDir = (int)Directions.Up;
+                            case (int) Directions.Right:
+                                lookDir = (int) Directions.Down;
 
-                                break;
-                            case (int)Directions.DownLeft:
-                                lookDir = (int)Directions.Down;
-
-                                break;
-                            case (int)Directions.DownRight:
-                                lookDir = (int)Directions.Right;
                                 break;
                         }
 
@@ -726,23 +645,6 @@ namespace Intersect.Server.Entities
                                 lookDir = (int) Directions.Left;
 
                                 break;
-                            case (int)Directions.UpLeft:
-                                lookDir = (int)Directions.DownRight;
-
-                                break;
-                            case (int)Directions.UpRight:
-                                lookDir = (int)Directions.DownLeft;
-
-                                break;
-                            case (int)Directions.DownLeft:
-                                lookDir = (int)Directions.UpRight;
-
-                                break;
-                            case (int)Directions.DownRight:
-                                lookDir = (int)Directions.UpLeft;
-
-                                break;
-
                         }
 
                         ChangeDir(lookDir);
@@ -750,7 +652,7 @@ namespace Intersect.Server.Entities
 
                         break;
                     case MoveRouteEnum.TurnRandomly:
-                        ChangeDir((byte)Randomization.Next(0, 8));
+                        ChangeDir((byte)Randomization.Next(0, 4));
                         moved = true;
 
                         break;
@@ -2290,53 +2192,31 @@ namespace Intersect.Server.Entities
             var enemyTile = new TileHelper(target.MapId, target.X, target.Y);
             if (Z == target.Z)
             {
-                myTile.Translate(0, -1);// Target Up
+                myTile.Translate(0, -1);
                 if (myTile.Matches(enemyTile))
                 {
                     return true;
                 }
 
-                myTile.Translate(0, 2);// Target Down
+                myTile.Translate(0, 2);
                 if (myTile.Matches(enemyTile))
                 {
                     return true;
                 }
 
-                myTile.Translate(-1, -1);// Target Left
+                myTile.Translate(-1, -1);
                 if (myTile.Matches(enemyTile))
                 {
                     return true;
                 }
 
-                myTile.Translate(2, 0);// Target Right 
-                if (myTile.Matches(enemyTile))
-                {
-                    return true;
-                }
-                myTile.Translate(-2, -1); // Target UpLeft
-                if (myTile.Matches(enemyTile))
-                {
-                    return true;
-                }
-
-                myTile.Translate(2, 0); // Target UpRight
-                if (myTile.Matches(enemyTile))
-                {
-                    return true;
-                }
-
-                myTile.Translate(-2, 2); // Target DownLeft
-                if (myTile.Matches(enemyTile))
-                {
-                    return true;
-                }
-
-                myTile.Translate(2, 0); // Target DownRight
+                myTile.Translate(2, 0);
                 if (myTile.Matches(enemyTile))
                 {
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -2367,29 +2247,6 @@ namespace Intersect.Server.Entities
 
                 myTile.Translate(2, 0);
                 if (myTile.Matches(enemyTile) && Dir == (int) Directions.Right)
-                {
-                    return true;
-                }
-                myTile.Translate(-2, -1);
-                if (myTile.Matches(enemyTile) && Dir == (int)Directions.UpLeft)
-                {
-                    return true;
-                }
-
-                myTile.Translate(2, 0);
-                if (myTile.Matches(enemyTile) && Dir == (int)Directions.UpRight)
-                {
-                    return true;
-                }
-
-                myTile.Translate(-2, 2);
-                if (myTile.Matches(enemyTile) && Dir == (int)Directions.DownLeft)
-                {
-                    return true;
-                }
-
-                myTile.Translate(2, 0);
-                if (myTile.Matches(enemyTile) && Dir == (int)Directions.DownRight)
                 {
                     return true;
                 }
@@ -2459,49 +2316,27 @@ namespace Intersect.Server.Entities
             var x2 = target.X + MapInstance.Get(target.MapId).MapGridX * Options.MapWidth;
             var y2 = target.Y + MapInstance.Get(target.MapId).MapGridY * Options.MapHeight;
 
-            //Left or Right
-            if (x1 - x2 < 0 && y1 - y2 < 0)
+            if (Math.Abs(x1 - x2) > Math.Abs(y1 - y2))
             {
-                return (byte)Directions.DownRight;
+                //Left or Right
+                if (x1 - x2 < 0)
+                {
+                    return (byte) Directions.Right;
+                }
+
+                return (byte) Directions.Left;
             }
 
             //Left or Right
-            else if (x1 - x2 < 0 && y1 - y2 > 0)
+            if (y1 - y2 < 0)
             {
-                return (byte)Directions.UpRight;
-            }
-            else if (x1 - x2 < 0 && y1 - y2 == 0)
-            {
-                return (byte)Directions.Right;
-            }
-            else if (x1 - x2 > 0 && y1 - y2 < 0)
-            {
-                return (byte)Directions.DownLeft;
-            }
-            else if (x1 - x2 > 0 && y1 - y2 > 0)
-            {
-                return (byte)Directions.UpLeft;
-            }
-            else if (x1 - x2 > 0 && y1 - y2 == 0)
-            {
-                return (byte)Directions.Left;
-            }
-            else if (x1 - x2 == 0 && y1 - y2 < 0)
-            {
-                return (byte)Directions.Down;
-            }
-            else if (x1 - x2 == 0 && y1 - y2 > 0)
-            {
-                return (byte)Directions.Up;
-            }
-            else
-            {
-                return 0;
+                return (byte) Directions.Down;
             }
 
+            return (byte) Directions.Up;
         }
-        // Outdated : Check if the target is either up, down, left or right of the target on the correct Z dimension.
-        // Check for 8 directions
+
+        //Check if the target is either up, down, left or right of the target on the correct Z dimension.
         protected bool IsOneBlockAway(Guid mapId, int x, int y, int z = 0)
         {
             //Calculate World Tile of Me
@@ -2513,7 +2348,7 @@ namespace Intersect.Server.Entities
             var y2 = y + MapInstance.Get(mapId).MapGridY * Options.MapHeight;
             if (z == Z)
             {
-                if (y1 == y2 || y1 - 1 == y2 || y1 + 1 == y2)
+                if (y1 == y2)
                 {
                     if (x1 == x2 - 1)
                     {
@@ -2525,7 +2360,7 @@ namespace Intersect.Server.Entities
                     }
                 }
 
-                if (x1 == x2 || x1 - 1 == x2 || x1 + 1 == x2)
+                if (x1 == x2)
                 {
                     if (y1 == y2 - 1)
                     {
