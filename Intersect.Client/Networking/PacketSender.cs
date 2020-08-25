@@ -43,7 +43,7 @@ namespace Intersect.Client.Networking
 
         public static void SendMove()
         {
-            Network.SendPacket(new MovePacket(Globals.Me.CurrentMap, Globals.Me.X, Globals.Me.Y, Globals.Me.Dir, Globals.Me.DeplacementDir));
+            Network.SendPacket(new MovePacket(Globals.Me.CurrentMap, Globals.Me.X, Globals.Me.Y, Globals.Me.Dir));
         }
 
         public static void SendChatMsg(string msg, byte channel)
@@ -51,9 +51,9 @@ namespace Intersect.Client.Networking
             Network.SendPacket(new ChatMsgPacket(msg, channel));
         }
 
-        public static void SendAttack(Guid targetId)
+        public static void SendAttack(Guid targetId, bool targetOnFocus)
         {
-            Network.SendPacket(new AttackPacket(targetId));
+            Network.SendPacket(new AttackPacket(targetId, targetOnFocus));
         }
 
         public static void SendBlock(bool blocking)
