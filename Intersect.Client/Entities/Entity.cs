@@ -165,7 +165,7 @@ namespace Intersect.Client.Entities
 
         public long LastActionTime = -1;
 
-        public const long TimeBeforeIdling = 100;
+        public long TimeBeforeIdling = Options.MaxLevel;
 
         public const long IdleFrameDuration = 200;
         #endregion

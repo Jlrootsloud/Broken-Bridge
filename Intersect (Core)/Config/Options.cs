@@ -70,7 +70,7 @@ namespace Intersect
         public static int MaxStatValue => Instance.PlayerOpts.MaxStat;
 
         public static int MaxLevel => Instance.PlayerOpts.MaxLevel;
-
+        public static int TimeIdle => Instance.PlayerOpts.TimeIdle;
         public static int MaxInvItems => Instance.PlayerOpts.MaxInventory;
 
         public static int MaxPlayerSkills => Instance.PlayerOpts.MaxSpells;

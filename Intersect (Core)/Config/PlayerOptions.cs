@@ -14,6 +14,8 @@
 
         public int MaxLevel = 100;
 
+        public int TimeIdle = 1000;
+
         public int MaxSpells = 35;
 
         public int MaxStat = 255;
