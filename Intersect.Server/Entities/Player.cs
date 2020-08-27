@@ -1554,9 +1554,9 @@ namespace Intersect.Server.Entities
             {
                 return false;
             }
-
-            //Check if the attacker is stunned or blinded.
-            if (Statuses.Values.ToArray()
+            
+                //Check if the attacker is stunned or blinded.
+                if (Statuses.Values.ToArray()
                 .Any(status => status?.Type == StatusTypes.Stun || status?.Type == StatusTypes.Sleep))
             {
                 return false;
@@ -4421,6 +4421,7 @@ namespace Intersect.Server.Entities
             return Party.Contains(member);
         }
 
+             
         public void StartTrade(Player target)
         {
             if (target?.Trading.Counterparty != null)
@@ -6090,6 +6091,8 @@ namespace Intersect.Server.Entities
         [JsonIgnore, NotMapped] public List<Player> Party = new List<Player>();
 
         [JsonIgnore, NotMapped] public Player PartyRequester;
+
+      
 
         [JsonIgnore, NotMapped] public Dictionary<Player, long> PartyRequests = new Dictionary<Player, long>();
 

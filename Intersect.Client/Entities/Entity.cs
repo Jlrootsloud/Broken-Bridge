@@ -1764,6 +1764,7 @@ namespace Intersect.Client.Entities
         }
 
         public virtual bool CanBeAttacked()
+
         {
             return true;
         }

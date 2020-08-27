@@ -1415,6 +1415,13 @@ namespace Intersect.Server.Entities
                 {
                     return;
                 }
+
+                if (player.Gender == targetPlayer.Gender)
+                {
+                    
+                    return;
+                }
+
             }
 
             if (parentSpell == null)
@@ -1523,7 +1530,10 @@ namespace Intersect.Server.Entities
                     {
                         return;
                     }
-
+                    if (player.Gender==targetPlayer.Gender)
+                    {
+                        return;
+                    }
                     // Check if either the attacker or the defender is in a "safe zone" (Only apply if combat is PVP)
                     if (MapInstance.Get(MapId).ZoneType == MapZones.Safe)
                     {
@@ -1705,7 +1715,10 @@ namespace Intersect.Server.Entities
                 {
                     return;
                 }
-
+                if (player.Gender == targetPlayer.Gender)
+                {
+                    return;
+                }
                 //Check if either the attacker or the defender is in a "safe zone" (Only apply if combat is PVP)
                 //Player interaction common events
                 foreach (EventBase evt in EventBase.Lookup.Values)

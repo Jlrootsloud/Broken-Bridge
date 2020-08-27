@@ -1134,7 +1134,7 @@ namespace Intersect.Client.Entities
                     {
                         continue;
                     }
-
+                  
                     if (en.Value != Globals.Me)
                     {
                         if (en.Value.CurrentMap == map &&
@@ -1148,6 +1148,7 @@ namespace Intersect.Client.Entities
                                 {
                                     if (hitBx[0] == en.Value.X && hitBx[1] == en.Value.Y)
                                     {
+                                       
                                         canAttack = true;
                                         break;
                                     }
