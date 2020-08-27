@@ -74,10 +74,10 @@ namespace Intersect.Client.Interface.Menu
             mSubmitBtn.SetText(Strings.ForgotPass.submit);
             mSubmitBtn.Clicked += SubmitBtn_Clicked;
 
-            //Login - Back Button
+           /* //Login - Back Button
             mBackBtn = new Button(mResetWindow, "BackButton");
             mBackBtn.SetText(Strings.ForgotPass.back);
-            mBackBtn.Clicked += BackBtn_Clicked;
+            mBackBtn.Clicked += BackBtn_Clicked;*/
 
             mResetWindow.LoadJsonUi(GameContentManager.UI.Menu, Graphics.Renderer.GetResolutionString());
 
@@ -120,11 +120,11 @@ namespace Intersect.Client.Interface.Menu
             mInputTextbox.Text = "";
         }
 
-        void BackBtn_Clicked(Base sender, ClickedEventArgs arguments)
+        /*void BackBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
             Hide();
             Interface.MenuUi.MainMenu.NotifyOpenLogin();
-        }
+        }*/
 
         void Textbox_SubmitPressed(Base sender, EventArgs arguments)
         {

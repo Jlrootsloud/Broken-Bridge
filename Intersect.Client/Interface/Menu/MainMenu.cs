@@ -11,8 +11,21 @@ using Intersect.Client.Localization;
 using Intersect.Client.Networking;
 using Intersect.Network;
 using Intersect.Network.Events;
+using Intersect.Client.Core;
+using Intersect.Client.Framework.File_Management;
+using Intersect.Client.Framework.Gwen.Control;
+using Intersect.Client.Framework.Gwen.Control.EventArguments;
+using Intersect.Client.Framework.Input;
+using Intersect.Client.General;
+using Intersect.Client.Interface.Game.Chat;
+using Intersect.Client.Localization;
+using Intersect.Client.Networking;
+using Intersect.Utilities;
 
 using JetBrains.Annotations;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Intersect.Client.Interface.Menu
 {
@@ -38,7 +51,7 @@ namespace Intersect.Client.Interface.Menu
 
         [NotNull] private readonly Button mLoginButton;
 
-        private readonly LoginWindow mLoginWindow;
+        private readonly ImagePanel mLoginWindow;
 
         //Controls
         private readonly Canvas mMenuCanvas;
@@ -68,17 +81,45 @@ namespace Intersect.Client.Interface.Menu
 
         private bool mShouldOpenCharacterSelection;
 
+       
+
+        private Button mForgotPassswordButton;
+
+    
+
+   
+        //Parent
+      
+
+        private ImagePanel mPasswordBackground;
+
+        private Label mPasswordLabel;
+
+        private TextBoxPassword mPasswordTextbox;
+
+        private string mSavedPass = "";
+
+        private LabeledCheckBox mSavePassChk;
+
+        //Controls
+        private ImagePanel mUsernameBackground;
+
+        private Label mUsernameLabel;
+
+        private TextBox mUsernameTextbox;
+
+        private bool mUseSavedPass;
         //Init
         public MainMenu(Canvas menuCanvas)
         {
             mMenuCanvas = menuCanvas;
-
+           
             var logo = new ImagePanel(menuCanvas, "Logo");
             logo.LoadJsonUi(GameContentManager.UI.Menu, Graphics.Renderer.GetResolutionString());
 
             //Main Menu Window
             mMenuWindow = new ImagePanel(menuCanvas, "MenuWindow");
-
+            mLoginWindow = new ImagePanel(menuCanvas, "LoginWindow");
             mServerStatusLabel = new Label(mMenuWindow, "ServerStatusLabel")
             {
                 AutoSizeToContents = true,
@@ -101,7 +142,36 @@ namespace Intersect.Client.Interface.Menu
             mLoginButton = new Button(mMenuWindow, "LoginButton");
             mLoginButton.SetText(Strings.MainMenu.login);
             mLoginButton.Clicked += LoginButton_Clicked;
+            mUsernameBackground = new ImagePanel(mMenuWindow, "UsernamePanel");
 
+            //Login Username Label
+            mUsernameLabel = new Label(mUsernameBackground, "UsernameLabel");
+            mUsernameLabel.SetText(Strings.Login.username);
+
+            //Login Username Textbox
+            mUsernameTextbox = new TextBox(mUsernameBackground, "UsernameField");
+            mUsernameTextbox.SubmitPressed += UsernameTextbox_SubmitPressed;
+            mUsernameTextbox.Clicked += _usernameTextbox_Clicked;
+
+            mPasswordBackground = new ImagePanel(mMenuWindow, "PasswordPanel");
+
+            //Login Password Label
+            mPasswordLabel = new Label(mPasswordBackground, "PasswordLabel");
+            mPasswordLabel.SetText(Strings.Login.password);
+
+            //Login Password Textbox
+            mPasswordTextbox = new TextBoxPassword(mPasswordBackground, "PasswordField");
+            mPasswordTextbox.SubmitPressed += PasswordTextbox_SubmitPressed;
+            mPasswordTextbox.TextChanged += _passwordTextbox_TextChanged;
+
+            //Login Save Pass Checkbox
+            mSavePassChk = new LabeledCheckBox(mMenuWindow, "SavePassCheckbox") { Text = Strings.Login.savepass };
+
+            //Forgot Password Button
+            mForgotPassswordButton = new Button(mMenuWindow, "ForgotPasswordButton");
+            mForgotPassswordButton.IsHidden = true;
+            mForgotPassswordButton.SetText(Strings.Login.forgot);
+            mForgotPassswordButton.Clicked += mForgotPassswordButton_Clicked;
             //Register Button
             mRegisterButton = new Button(mMenuWindow, "RegisterButton");
             mRegisterButton.SetText(Strings.MainMenu.register);
@@ -131,9 +201,6 @@ namespace Intersect.Client.Interface.Menu
             //Options Controls
             mOptionsWindow = new OptionsWindow(menuCanvas, this, mMenuWindow);
 
-            //Login Controls
-            mLoginWindow = new LoginWindow(menuCanvas, this, mMenuWindow);
-
             //Register Controls
             mRegisterWindow = new RegisterWindow(menuCanvas, this, mMenuWindow);
 
@@ -153,8 +220,35 @@ namespace Intersect.Client.Interface.Menu
             mCreditsWindow = new CreditsWindow(mMenuCanvas, this);
 
             UpdateDisabled();
+
+            LoadCredentials();
+        }
+        private void mForgotPassswordButton_Clicked(Base sender, ClickedEventArgs arguments)
+        {
+            Interface.MenuUi.MainMenu.NotifyOpenForgotPassword();
         }
 
+        private void _usernameTextbox_Clicked(Base sender, ClickedEventArgs arguments)
+        {
+            Globals.InputManager.OpenKeyboard(
+                GameInput.KeyboardType.Normal, mUsernameTextbox.Text, false, false, false
+            );
+        }
+        void _passwordTextbox_TextChanged(Base sender, EventArgs arguments)
+        {
+            mUseSavedPass = false;
+        }
+
+        void UsernameTextbox_SubmitPressed(Base sender, EventArgs arguments)
+        {
+            TryLogin();
+        }
+
+        void PasswordTextbox_SubmitPressed(Base sender, EventArgs arguments)
+        {
+            TryLogin();
+        }
+       
         ~MainMenu()
         {
             // ReSharper disable once DelegateSubtraction
@@ -174,11 +268,7 @@ namespace Intersect.Client.Interface.Menu
                 CreateCharacterCreation();
             }
 
-            if (!mLoginWindow.IsHidden)
-            {
-                mLoginWindow.Update();
-            }
-
+            
             if (!mCreateCharacterWindow.IsHidden)
             {
                 mCreateCharacterWindow.Update();
@@ -244,12 +334,7 @@ namespace Intersect.Client.Interface.Menu
             mForgotPasswordWindow.Show();
         }
 
-        public void NotifyOpenLogin()
-        {
-            Reset();
-            Hide();
-            mLoginWindow.Show();
-        }
+       
 
         public void OpenResetPassword(string nameEmail)
         {
@@ -291,8 +376,7 @@ namespace Intersect.Client.Interface.Menu
         //Input Handlers
         void LoginButton_Clicked(Base sender, ClickedEventArgs arguments)
         {
-            Hide();
-            mLoginWindow.Show();
+            TryLogin();
         }
 
         void RegisterButton_Clicked(Base sender, ClickedEventArgs arguments)
@@ -342,6 +426,91 @@ namespace Intersect.Client.Interface.Menu
             NetworkStatusChanged?.Invoke();
         }
 
+        public void TryLogin()
+        {
+            if (Globals.WaitingOnServer)
+            {
+                return;
+            }
+
+            if (!Networking.Network.Connected)
+            {
+                Interface.MsgboxErrors.Add(new KeyValuePair<string, string>("", Strings.Errors.notconnected));
+
+                return;
+            }
+
+            if (!FieldChecking.IsValidUsername(mUsernameTextbox?.Text, Strings.Regex.username))
+            {
+                Interface.MsgboxErrors.Add(new KeyValuePair<string, string>("", Strings.Errors.usernameinvalid));
+
+                return;
+            }
+
+            if (!FieldChecking.IsValidPassword(mPasswordTextbox?.Text, Strings.Regex.password))
+            {
+                if (!mUseSavedPass)
+                {
+                    Interface.MsgboxErrors.Add(new KeyValuePair<string, string>("", Strings.Errors.passwordinvalid));
+
+                    return;
+                }
+            }
+
+            var password = mSavedPass;
+            if (!mUseSavedPass)
+            {
+                password = ComputePasswordHash(mPasswordTextbox?.Text?.Trim());
+            }
+
+            PacketSender.SendLogin(mUsernameTextbox?.Text, password);
+            SaveCredentials();
+            Globals.WaitingOnServer = true;
+            ChatboxMsg.ClearMessages();
+        }
+        private void LoadCredentials()
+        {
+            var name = Globals.Database.LoadPreference("Username");
+            if (string.IsNullOrEmpty(name))
+            {
+                return;
+            }
+
+            mUsernameTextbox.Text = name;
+            var pass = Globals.Database.LoadPreference("Password");
+            if (string.IsNullOrEmpty(pass))
+            {
+                return;
+            }
+
+            mPasswordTextbox.Text = "******";
+            mSavedPass = pass;
+            mUseSavedPass = true;
+            mSavePassChk.IsChecked = true;
+        }
+
+        private static string ComputePasswordHash(string password)
+        {
+            using (var sha = new SHA256Managed())
+            {
+                return BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(password ?? ""))).Replace("-", "");
+            }
+        }
+
+        private void SaveCredentials()
+        {
+            var username = "";
+            var password = "";
+
+            if (mSavePassChk.IsChecked)
+            {
+                username = mUsernameTextbox?.Text?.Trim();
+                password = mUseSavedPass ? mSavedPass : ComputePasswordHash(mPasswordTextbox?.Text?.Trim());
+            }
+
+            Globals.Database.SavePreference("Username", username);
+            Globals.Database.SavePreference("Password", password);
+        }
     }
 
 }

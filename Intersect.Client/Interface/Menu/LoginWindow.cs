@@ -240,7 +240,7 @@ namespace Intersect.Client.Interface.Menu
                 return;
             }
 
-            mPasswordTextbox.Text = "****************";
+            mPasswordTextbox.Text = "******";
             mSavedPass = pass;
             mUseSavedPass = true;
             mSavePassChk.IsChecked = true;
