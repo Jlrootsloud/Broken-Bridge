@@ -546,6 +546,15 @@ namespace Intersect.GameObjects.Events.Commands
 
     }
 
+    public class ChangeFactionCommand : EventCommand
+    {
+
+        public override EventCommandType Type { get; } = EventCommandType.ChangeFaction;
+
+        public Factions Faction { get; set; } = Factions.Neutral;
+
+    }
+
     public class SetAccessCommand : EventCommand
     {
 

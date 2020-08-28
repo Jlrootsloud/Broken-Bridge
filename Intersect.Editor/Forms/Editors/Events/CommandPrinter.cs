@@ -711,6 +711,25 @@ namespace Intersect.Editor.Forms.Editors.Events
                 return Strings.EventCommandList.setgender.ToString(Strings.EventCommandList.female);
             }
         }
+        private static string GetCommandText(ChangeFactionCommand command, MapInstance map)
+        {
+
+            switch (command.Faction)
+            {
+                case Factions.Mezuk:
+                    return Strings.EventCommandList.setFaction.ToString(Strings.EventCommandList.Mezuk);
+                    
+
+                case Factions.Gollik:
+                    return Strings.EventCommandList.setFaction.ToString(Strings.EventCommandList.Gollik);
+                   
+                
+                    
+                    
+            }
+            return Strings.EventCommandList.setFaction.ToString(Strings.EventCommandList.Neutral);
+
+        }
 
         private static string GetCommandText(SetAccessCommand command, MapInstance map)
         {

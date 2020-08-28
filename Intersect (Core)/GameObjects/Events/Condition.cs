@@ -39,7 +39,7 @@ namespace Intersect.GameObjects.Events
         IsItemEquipped,
 
         HasFreeInventorySlots,
-
+        FactionIs
     }
 
     public class Condition
@@ -183,6 +183,14 @@ namespace Intersect.GameObjects.Events
         public override ConditionTypes Type { get; } = ConditionTypes.GenderIs;
 
         public Gender Gender { get; set; } = Gender.Male;
+
+    }
+    public class FactionIsCondition : Condition
+    {
+
+        public override ConditionTypes Type { get; } = ConditionTypes.FactionIs;
+
+        public Factions Faction{ get; set; } = Factions.Neutral;
 
     }
 

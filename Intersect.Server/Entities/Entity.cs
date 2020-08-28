@@ -81,7 +81,7 @@ namespace Intersect.Server.Entities
         public int MiningLevel { get; set; }
         public int FishingLevel { get; set; }
         public int WoodLevel { get; set; }
-
+        public int FactionLv { get; set; }
 
         [JsonIgnore, Column("Vitals")]
         public string VitalsJson
@@ -1416,7 +1416,7 @@ namespace Intersect.Server.Entities
                     return;
                 }
 
-                if (player.Gender == targetPlayer.Gender)
+                if (player.Faction == targetPlayer.Faction)
                 {
                     
                     return;
@@ -1715,7 +1715,7 @@ namespace Intersect.Server.Entities
                 {
                     return;
                 }
-                if (player.Gender == targetPlayer.Gender)
+                if (player.Faction == targetPlayer.Faction)
                 {
                     return;
                 }
@@ -2728,6 +2728,7 @@ namespace Intersect.Server.Entities
             packet.MiningLevel = MiningLevel;
             packet.FishingLevel = FishingLevel;
             packet.WoodLevel = WoodLevel;
+            packet.FactionLv = FactionLv;
             packet.X = (byte) X;
             packet.Y = (byte) Y;
             packet.Z = (byte) Z;

@@ -226,6 +226,8 @@
         //Change Hair
         ChangeHair,
 
+        ChangeFaction
+
     }
 
 }

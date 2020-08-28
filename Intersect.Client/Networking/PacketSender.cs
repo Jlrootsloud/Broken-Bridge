@@ -109,6 +109,7 @@ namespace Intersect.Client.Networking
         public static void SendCreateCharacter(string name, Guid classId, int sprite, int[] customSpriteLayers)
         {
             Network.SendPacket(new CreateCharacterPacket(name, classId, sprite, customSpriteLayers));
+
         }
 
         public static void SendPickupItem(int index)

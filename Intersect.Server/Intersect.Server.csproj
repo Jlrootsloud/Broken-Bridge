@@ -492,6 +492,10 @@
     <Compile Include="Migrations\20200816040937_PrincipalSkills.designer.cs">
       <DependentUpon>20200816040937_PrincipalSkills.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200828023842_AddingFactions.cs" />
+    <Compile Include="Migrations\20200828023842_AddingFactions.designer.cs">
+      <DependentUpon>20200828023842_AddingFactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Game\20200402142818_PlayerHair_ClassEdits.cs" />
     <Compile Include="Migrations\Game\20200402142818_PlayerHair_ClassEdits.designer.cs">
       <DependentUpon>20200402142818_PlayerHair_ClassEdits.cs</DependentUpon>

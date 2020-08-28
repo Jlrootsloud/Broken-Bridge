@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Intersect.Client.Core;
+using Intersect.Client.Entities;
 using Intersect.Client.Framework.File_Management;
 using Intersect.Client.Framework.Gwen.Control;
 using Intersect.Client.Framework.Gwen.Control.EventArguments;
@@ -9,6 +10,7 @@ using Intersect.Client.General;
 using Intersect.Client.Interface.Game.Chat;
 using Intersect.Client.Localization;
 using Intersect.Client.Networking;
+using Intersect.Enums;
 using Intersect.GameObjects;
 using Intersect.Utilities;
 
@@ -31,12 +33,12 @@ namespace Intersect.Client.Interface.Menu
         //Image
         private string mCharacterPortraitImg = "";
 
-        private Label mCharCreationHeader;
+        private Framework.Gwen.Control.Label mCharCreationHeader;
 
         //Controls
         private ImagePanel mCharCreationPanel;
 
-        private Label mCharnameLabel;
+        private Framework.Gwen.Control.Label mCharnameLabel;
 
         private TextBox mCharnameTextbox;
 
@@ -44,7 +46,7 @@ namespace Intersect.Client.Interface.Menu
 
         private ComboBox mClassCombobox;
 
-        private Label mClassLabel;
+        private  Framework.Gwen.Control.Label mClassLabel;
 
         private Button mCreateButton;
 
@@ -58,17 +60,24 @@ namespace Intersect.Client.Interface.Menu
 
         private ImagePanel mGenderBackground;
 
-        private Label mGenderLabel;
+        private Framework.Gwen.Control.Label mGenderLabel;
+        private Framework.Gwen.Control.Label mFactionLabel;
+        private Framework.Gwen.Control.Label mHint2Label;
 
-        private Label mHint2Label;
-
-        private Label mHintLabel;
+        private Framework.Gwen.Control.Label mHintLabel;
 
         //Parent
         private MainMenu mMainMenu;
 
         private LabeledCheckBox mMaleChk;
 
+        private LabeledCheckBox mGollikhk;
+
+        private LabeledCheckBox mMezukhk;
+
+        private Framework.Gwen.Control.Label mHint3Label;
+
+        private Framework.Gwen.Control.Label mHint4Label;
         //Class Info
         private List<KeyValuePair<int, ClassSprite>> mMaleSprites = new List<KeyValuePair<int, ClassSprite>>();
 
@@ -104,14 +113,14 @@ namespace Intersect.Client.Interface.Menu
             mCharCreationPanel.IsHidden = true;
 
             //Menu Header
-            mCharCreationHeader = new Label(mCharCreationPanel, "CharacterCreationHeader");
+            mCharCreationHeader = new Framework.Gwen.Control.Label(mCharCreationPanel, "CharacterCreationHeader");
             mCharCreationHeader.SetText(Strings.CharacterCreation.title);
 
             //Character Name Background
             mCharacterNameBackground = new ImagePanel(mCharCreationPanel, "CharacterNamePanel");
 
             //Character name Label
-            mCharnameLabel = new Label(mCharacterNameBackground, "CharacterNameLabel");
+            mCharnameLabel = new Framework.Gwen.Control.Label(mCharacterNameBackground, "CharacterNameLabel");
             mCharnameLabel.SetText(Strings.CharacterCreation.name);
 
             //Character name Textbox
@@ -122,7 +131,7 @@ namespace Intersect.Client.Interface.Menu
             mClassBackground = new ImagePanel(mCharCreationPanel, "ClassPanel");
 
             //Class Label
-            mClassLabel = new Label(mClassBackground, "ClassLabel");
+            mClassLabel = new Framework.Gwen.Control.Label(mClassBackground, "ClassLabel");
             mClassLabel.SetText(Strings.CharacterCreation.Class);
 
             //Class Combobox
@@ -130,14 +139,23 @@ namespace Intersect.Client.Interface.Menu
             mClassCombobox.ItemSelected += classCombobox_ItemSelected;
 
             //Hint Label
-            mHintLabel = new Label(mCharCreationPanel, "HintLabel");
+            mHintLabel = new Framework.Gwen.Control.Label(mCharCreationPanel, "HintLabel");
             mHintLabel.SetText(Strings.CharacterCreation.hint);
             mHintLabel.IsHidden = true;
 
             //Hint2 Label
-            mHint2Label = new Label(mCharCreationPanel, "Hint2Label");
+          mHint2Label = new Framework.Gwen.Control.Label(mCharCreationPanel, "Hint2Label");
             mHint2Label.SetText(Strings.CharacterCreation.hint2);
             mHint2Label.IsHidden = true;
+
+            /*mHint3Label = new Label(mCharCreationPanel, "Hint3Label");
+          mHint3Label.SetText(Strings.CharacterCreation.hint);
+          mHint3Label.IsHidden = true;
+
+            //Hint2 Label
+            mHint4Label = new Label(mCharCreationPanel, "Hint4Label");
+            mHint4Label.SetText(Strings.CharacterCreation.hint2);
+            mHint4Label.IsHidden = true;*/
 
             //Character Container
             mCharacterContainer = new ImagePanel(mCharCreationPanel, "CharacterContainer");
@@ -170,7 +188,7 @@ namespace Intersect.Client.Interface.Menu
             mGenderBackground = new ImagePanel(mCharCreationPanel, "GenderPanel");
 
             //Gender Label
-            mGenderLabel = new Label(mGenderBackground, "GenderLabel");
+            mGenderLabel = new Framework.Gwen.Control.Label(mGenderBackground, "GenderLabel");
             mGenderLabel.SetText(Strings.CharacterCreation.gender);
 
             //Male Checkbox
@@ -191,6 +209,28 @@ namespace Intersect.Client.Interface.Menu
 
             mFemaleChk.Checked += femaleChk_Checked;
             mFemaleChk.UnChecked += maleChk_Checked;
+            //Faction Label
+            mFactionLabel = new Framework.Gwen.Control.Label(mGenderBackground, "FactionLabel");
+            mFactionLabel.SetText(Strings.CharacterCreation.faction);
+
+            //Male Checkbox
+            mMezukhk = new LabeledCheckBox(mGenderBackground, "MezukCheckbox")
+            {
+                Text = Strings.CharacterCreation.mezuk
+            };
+
+          /*  mMezukhk.IsChecked = true;
+            mMezukhk.Checked += Mezukhk_Checked;
+            mMezukhk.UnChecked += Gollikhk_Checked; // If you notice this, feel free to hate us ;)
+
+            //Female Checkbox
+            mGollikhk = new LabeledCheckBox(mGenderBackground, "GollikCheckbox")
+            {
+                Text = Strings.CharacterCreation.gollik
+            };
+
+            mGollikhk.Checked += Gollikhk_Checked;
+            mGollikhk.UnChecked += Mezukhk_Checked;*/
 
             //Register - Send Registration Button
             mCreateButton = new Button(mCharCreationPanel, "CreateButton");
@@ -670,10 +710,12 @@ namespace Intersect.Client.Interface.Menu
                         var layer = (Enums.CustomSpriteLayers)i;
                         customSpriteLayers[i] = mDisplayCustomSpriteLayerIndex[i] != -1 ? mMaleCustomSpriteLayers[layer][mDisplayCustomSpriteLayerIndex[i]].Key : -1;
                     }
-
-                    PacketSender.SendCreateCharacter(
-                        mCharnameTextbox.Text, GetClass().Id, mMaleSprites[mDisplaySpriteIndex].Key, customSpriteLayers
-                    );
+                   
+                        
+                        PacketSender.SendCreateCharacter(
+                        mCharnameTextbox.Text, GetClass().Id, mMaleSprites[mDisplaySpriteIndex].Key, customSpriteLayers);
+                                       
+                  
                 }
                 else
                 {
@@ -732,7 +774,20 @@ namespace Intersect.Client.Interface.Menu
             ResetSprite();
             UpdateDisplay();
         }
+      /*  void Mezukhk_Checked(Base sender, EventArgs arguments)
+        {
+            mMezukhk.IsChecked = true;
+            mGollikhk.IsChecked = false;
+            UpdateDisplay();
+        }
 
+        void Gollikhk_Checked(Base sender, EventArgs arguments)
+        {
+            mGollikhk.IsChecked = true;
+            mMezukhk.IsChecked = false;
+            UpdateDisplay();
+        }*/
+        
         void CreateButton_Clicked(Base sender, ClickedEventArgs arguments)
         {
             if (mMaleChk.IsChecked == true)
@@ -742,6 +797,18 @@ namespace Intersect.Client.Interface.Menu
             else
             {
                 TryCreateCharacter(1);
+            }
+
+            if (mMezukhk.IsChecked == true) 
+            {
+                   Globals.Me.Faction= Factions.Mezuk;
+            }
+            else
+            {
+                if (mGollikhk.IsChecked == true)
+                {
+                    Globals.Me.Faction = Factions.Gollik;
+                }
             }
         }
 

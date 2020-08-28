@@ -22,7 +22,7 @@ namespace Intersect.Network.Packets.Server
         public int MiningLevel { get; set; }
         public int FishingLevel { get; set; }
         public int WoodLevel { get; set; }
-
+        public int FactionLv { get; set; }
         public byte X { get; set; }
 
         public byte Y { get; set; }

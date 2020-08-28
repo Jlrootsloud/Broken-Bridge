@@ -77,7 +77,7 @@ namespace Intersect.Client.Entities
         public Label FooterLabel;
 
         public Gender Gender = Gender.Male;
-
+        public Factions Faction = Factions.Neutral;
         public Label HeaderLabel;
 
         public bool HideEntity = false;
@@ -105,7 +105,7 @@ namespace Intersect.Client.Entities
         public int MiningLevel = 1;
         public int FishingLevel = 1;
         public int WoodLevel = 1;
-
+        public int FactionLv = 1;
         public int HauntLevel = 1;
 
         //Vitals & Stats

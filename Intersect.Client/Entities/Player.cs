@@ -50,6 +50,10 @@ namespace Intersect.Client.Entities
 
         public long ExperienceToWoodNextLevel = 0;
 
+        public long FactionExperience = 0;
+
+        public long FactionExperienceToNextLevel = 0;
+
         public List<FriendInstance> Friends = new List<FriendInstance>();
 
         public HotbarInstance[] Hotbar = new HotbarInstance[Options.MaxHotbar];
@@ -223,6 +227,7 @@ namespace Intersect.Client.Entities
             base.Load(packet);
             var pkt = (PlayerEntityPacket) packet;
             Gender = pkt.Gender;
+            Faction = pkt.Faction;
             Class = pkt.ClassId;
             Type = pkt.AccessLevel;
             CombatTimer = pkt.CombatTimeRemaining + Globals.System.GetTimeMs();

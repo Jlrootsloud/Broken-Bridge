@@ -1238,6 +1238,25 @@ Tick timer saved in server config.json.";
 
         }
 
+        public struct EventChangeFaction
+        {
+
+            public static LocalizedString cancel = @"Cancel";
+
+            public static Dictionary<int, LocalizedString> faction = new Dictionary<int, LocalizedString>
+            {
+                {0, @"Mezuk"},
+                {1, @"Gollik"},
+                {2, @"Neutral"}
+            };
+
+            public static LocalizedString label = @"Faction:";
+
+            public static LocalizedString okay = @"Ok";
+
+            public static LocalizedString title = @"Change Faction";
+
+        }
         public struct EventChangeItems
         {
 
@@ -1511,6 +1530,10 @@ Tick timer saved in server config.json.";
             public static LocalizedString False = @"False";
 
             public static LocalizedString female = @"Female";
+            public static LocalizedString Neutral= @"Neutral";
+            public static LocalizedString Gollik = @"Gollik";
+
+            public static LocalizedString Mezuk = @"Mezuk ";
 
             public static LocalizedString forcedstart = @"Forced Start";
 
@@ -1633,6 +1656,8 @@ Tick timer saved in server config.json.";
             public static LocalizedString changeplayerlabel = @"Change Player Label to {00}";
 
             public static LocalizedString setgender = @"Set Player Gender to {00}";
+
+            public static LocalizedString setFaction= @"Set Player Faction to {00}";
 
             public static LocalizedString setlevel = @"Set Player Level To: {00}";
 
@@ -1761,6 +1786,7 @@ Tick timer saved in server config.json.";
                 {"inputvariable", @"Input Variable"},
                 {"changeplayerlabel", @"Change Player Label"},
                 {"changehair", @"Change Hair"},
+                {"changefaction", @"Change Faction"},
             };
 
         }

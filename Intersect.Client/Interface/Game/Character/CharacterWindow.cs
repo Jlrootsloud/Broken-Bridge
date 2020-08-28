@@ -41,6 +41,7 @@ namespace Intersect.Client.Interface.Game.Character
         private Label mCharacterLevelAndClass;
 
         private Label mCharacterName;
+        private Label mFaction;
 
         private ImagePanel mCharacterPortrait;
 
@@ -78,6 +79,9 @@ namespace Intersect.Client.Interface.Game.Character
 
             mCharacterName = new Label(mCharacterWindow, "CharacterNameLabel");
             mCharacterName.SetTextColor(Color.White, Label.ControlState.Normal);
+
+            mFaction= new Label(mCharacterWindow, "FactionLabel");
+            mFaction.SetText("");
 
             mCharacterLevelAndClass = new Label(mCharacterWindow, "ChatacterInfoLabel");
             mCharacterLevelAndClass.SetText("");
@@ -172,7 +176,7 @@ namespace Intersect.Client.Interface.Game.Character
             mCharacterLevelAndClass.Text = Strings.Character.levelandclass.ToString(
                 Globals.Me.Level, ClassBase.GetName(Globals.Me.Class)
             );
-
+            mFaction.Text = Strings.Character.faction.ToString(Globals.Me.Faction);
             //Load Portrait
             //UNCOMMENT THIS LINE IF YOU'D RATHER HAVE A FACE HERE GameTexture faceTex = Globals.ContentManager.GetTexture(GameContentManager.TextureType.Face, Globals.Me.Face);
             var entityTex = Globals.ContentManager.GetTexture(

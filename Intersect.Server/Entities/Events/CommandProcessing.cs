@@ -525,6 +525,19 @@ namespace Intersect.Server.Entities.Events
             PacketSender.SendEntityDataToProximity(player);
         }
 
+        //Change Gender Command
+        private static void ProcessCommand(
+            ChangeFactionCommand command,
+            Player player,
+            Event instance,
+            CommandInstance stackInfo,
+            Stack<CommandInstance> callStack
+        )
+        {
+            player.Faction = command.Faction;
+            PacketSender.SendEntityDataToProximity(player);
+        }
+
         //Change Name Color Command
         private static void ProcessCommand(
             ChangeNameColorCommand command,

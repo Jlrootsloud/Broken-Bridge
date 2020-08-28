@@ -382,6 +382,8 @@ namespace Intersect.Client.Localization
 
             public static LocalizedString name = @"{00}";
 
+            public static LocalizedString faction = @"{00}";
+
             public static LocalizedString points = @"Points: {00}";
 
             public static LocalizedString stat0 = @"{00}: {01}";
@@ -414,13 +416,15 @@ namespace Intersect.Client.Localization
             public static LocalizedString gender = @"Gender:";
 
             public static LocalizedString hint = @"Customize";
-
+            public static LocalizedString faction = @"Faction";
             public static LocalizedString hint2 = @"Your Character";
 
             public static LocalizedString invalidname =
                 @"Character name is invalid. Please use alphanumeric characters with a length between 2 and 20.";
 
             public static LocalizedString male = @"Male";
+            public static LocalizedString mezuk = @"Mezuk";
+            public static LocalizedString gollik = @"Gollik";
 
             public static LocalizedString name = @"Char Name:";
 

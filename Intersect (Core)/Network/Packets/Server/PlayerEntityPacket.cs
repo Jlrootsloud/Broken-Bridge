@@ -11,7 +11,7 @@ namespace Intersect.Network.Packets.Server
         public int AccessLevel { get; set; }
 
         public Gender Gender { get; set; }
-
+        public Factions Faction { get; set; } = Factions.Neutral;
         public Guid ClassId { get; set; }
 
         public EquipmentPacket Equipment { get; set; }

@@ -69,6 +69,8 @@ namespace Intersect.Server.Entities
 
         public Gender Gender { get; set; }
 
+        public Factions Faction { get; set; }
+
         [NotMapped]
         public string[] CustomSpriteLayers { get; set; } = new string[(int)Enums.CustomSpriteLayers.CustomCount];
 
@@ -84,7 +86,7 @@ namespace Intersect.Server.Entities
         public long MiningExp { get; set; }
         public long FishingExp { get; set; }
         public long WoodExp { get; set; }
-
+        public long FactionExp { get; set; }
         public int StatPoints { get; set; }
 
         [Column("Equipment"), JsonIgnore]
@@ -727,6 +729,7 @@ namespace Intersect.Server.Entities
 
             var pkt = (PlayerEntityPacket) packet;
             pkt.Gender = Gender;
+            pkt.Faction = Faction;
             pkt.ClassId = ClassId;
 
             if (Power.IsAdmin)
