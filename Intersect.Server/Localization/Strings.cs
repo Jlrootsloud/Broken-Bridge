@@ -1089,6 +1089,10 @@ namespace Intersect.Server.Localization
             [NotNull]
             public readonly LocalizedString Woodlevelup = @"Your Woodcutter Skill are now level {00}!";
 
+            [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+            [NotNull]
+            public readonly LocalizedString Factionlevelup = @"Your Faction are now level {00}!";
+
             [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] [NotNull]
             public readonly LocalizedString mod = @"{00} has been given moderation powers!";
 

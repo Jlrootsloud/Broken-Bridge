@@ -123,6 +123,9 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.cmbItem = new DarkUI.Controls.DarkComboBox();
             this.lblItem = new System.Windows.Forms.Label();
             this.lblItemQuantity = new System.Windows.Forms.Label();
+            this.GrpFaction = new DarkUI.Controls.DarkGroupBox();
+            this.cmbFaction = new DarkUI.Controls.DarkComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpConditional.SuspendLayout();
             this.grpFreeInventorySlots.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFreeInventorySlots)).BeginInit();
@@ -147,6 +150,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpEquippedItem.SuspendLayout();
             this.grpHasItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudItemAmount)).BeginInit();
+            this.GrpFaction.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpConditional
@@ -170,7 +174,6 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpConditional.Controls.Add(this.grpClass);
             this.grpConditional.Controls.Add(this.grpLevelStat);
             this.grpConditional.Controls.Add(this.grpMapIs);
-            this.grpConditional.Controls.Add(this.grpGender);
             this.grpConditional.Controls.Add(this.grpEquippedItem);
             this.grpConditional.Controls.Add(this.grpHasItem);
             this.grpConditional.ForeColor = System.Drawing.Color.Gainsboro;
@@ -185,6 +188,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             // 
             this.grpFreeInventorySlots.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.grpFreeInventorySlots.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpFreeInventorySlots.Controls.Add(this.grpGender);
             this.grpFreeInventorySlots.Controls.Add(this.nudFreeInventorySlots);
             this.grpFreeInventorySlots.Controls.Add(this.lblFreeInventorySlotAmount);
             this.grpFreeInventorySlots.ForeColor = System.Drawing.Color.Gainsboro;
@@ -255,6 +259,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.cmbConditionType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbConditionType.ForeColor = System.Drawing.Color.Gainsboro;
             this.cmbConditionType.FormattingEnabled = true;
+            this.cmbConditionType.ItemHeight = 25;
             this.cmbConditionType.Items.AddRange(new object[] {
             "Variable is...",
             "Has item...",
@@ -271,11 +276,12 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             "No NPCs on the map...",
             "Gender is...",
             "Item Equipped Is...",
-            "Has X free Inventory slots..."});
+            "Has X free Inventory slots...",
+            "Faction is..."});
             this.cmbConditionType.Location = new System.Drawing.Point(88, 13);
             this.cmbConditionType.Name = "cmbConditionType";
-            this.cmbConditionType.Size = new System.Drawing.Size(183, 21);
-            this.cmbConditionType.TabIndex = 22;
+            this.cmbConditionType.Size = new System.Drawing.Size(183, 31);
+            this.cmbConditionType.TabIndex = 25;
             this.cmbConditionType.Text = "Variable is...";
             this.cmbConditionType.TextPadding = new System.Windows.Forms.Padding(2);
             this.cmbConditionType.SelectedIndexChanged += new System.EventHandler(this.cmbConditionType_SelectedIndexChanged);
@@ -303,10 +309,10 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             // 
             this.grpVariable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.grpVariable.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.grpVariable.Controls.Add(this.grpSelectVariable);
             this.grpVariable.Controls.Add(this.grpStringVariable);
             this.grpVariable.Controls.Add(this.grpBooleanVariable);
             this.grpVariable.Controls.Add(this.grpNumericVariable);
+            this.grpVariable.Controls.Add(this.grpSelectVariable);
             this.grpVariable.ForeColor = System.Drawing.Color.Gainsboro;
             this.grpVariable.Location = new System.Drawing.Point(9, 40);
             this.grpVariable.Name = "grpVariable";
@@ -1385,10 +1391,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             // 
             this.grpGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.grpGender.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.grpGender.Controls.Add(this.GrpFaction);
             this.grpGender.Controls.Add(this.cmbGender);
             this.grpGender.Controls.Add(this.lblGender);
             this.grpGender.ForeColor = System.Drawing.Color.Gainsboro;
-            this.grpGender.Location = new System.Drawing.Point(10, 42);
+            this.grpGender.Location = new System.Drawing.Point(3, 0);
             this.grpGender.Name = "grpGender";
             this.grpGender.Size = new System.Drawing.Size(261, 51);
             this.grpGender.TabIndex = 33;
@@ -1544,6 +1551,54 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.lblItemQuantity.TabIndex = 0;
             this.lblItemQuantity.Text = "Has at least:";
             // 
+            // GrpFaction
+            // 
+            this.GrpFaction.BackColor = System.Drawing.Color.RoyalBlue;
+            this.GrpFaction.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.GrpFaction.Controls.Add(this.cmbFaction);
+            this.GrpFaction.Controls.Add(this.label1);
+            this.GrpFaction.ForeColor = System.Drawing.Color.Gainsboro;
+            this.GrpFaction.Location = new System.Drawing.Point(2, 42);
+            this.GrpFaction.Name = "GrpFaction";
+            this.GrpFaction.Size = new System.Drawing.Size(261, 51);
+            this.GrpFaction.TabIndex = 56;
+            this.GrpFaction.TabStop = false;
+            this.GrpFaction.Text = "Faction is...";
+            // 
+            // cmbFaction
+            // 
+            this.cmbFaction.BackColor = System.Drawing.Color.MidnightBlue;
+            this.cmbFaction.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.cmbFaction.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmbFaction.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.cmbFaction.ButtonIcon = ((System.Drawing.Bitmap)(resources.GetObject("cmbFaction.ButtonIcon")));
+            this.cmbFaction.DrawDropdownHoverOutline = false;
+            this.cmbFaction.DrawFocusRectangle = false;
+            this.cmbFaction.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbFaction.ForeColor = System.Drawing.Color.Gainsboro;
+            this.cmbFaction.FormattingEnabled = true;
+            this.cmbFaction.Items.AddRange(new object[] {
+            "Mezuk",
+            "Gollik",
+            "Neutral"});
+            this.cmbFaction.Location = new System.Drawing.Point(79, 17);
+            this.cmbFaction.Name = "cmbFaction";
+            this.cmbFaction.Size = new System.Drawing.Size(174, 21);
+            this.cmbFaction.TabIndex = 1;
+            this.cmbFaction.Text = "Mezuk";
+            this.cmbFaction.TextPadding = new System.Windows.Forms.Padding(2);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Faction:";
+            // 
             // EventCommandConditionalBranch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1595,6 +1650,8 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             this.grpHasItem.ResumeLayout(false);
             this.grpHasItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudItemAmount)).EndInit();
+            this.GrpFaction.ResumeLayout(false);
+            this.GrpFaction.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1693,5 +1750,8 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private DarkGroupBox grpFreeInventorySlots;
         private DarkNumericUpDown nudFreeInventorySlots;
         private System.Windows.Forms.Label lblFreeInventorySlotAmount;
+        private DarkGroupBox GrpFaction;
+        private DarkComboBox cmbFaction;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -393,6 +393,16 @@ namespace Intersect.Server.Entities.Events
         }
 
         public static bool MeetsCondition(
+            FactionIsCondition condition,
+            Player player,
+            Event eventInstance,
+            QuestBase questBase
+        )
+        {
+            return player.Faction == condition.Faction;
+        }
+
+        public static bool MeetsCondition(
             MapIsCondition condition,
             Player player,
             Event eventInstance,

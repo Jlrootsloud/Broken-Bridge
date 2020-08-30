@@ -214,6 +214,13 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             cmbGender.Items.Add(Strings.EventConditional.male);
             cmbGender.Items.Add(Strings.EventConditional.female);
 
+            //Gender is
+            GrpFaction.Text = Strings.EventConditional.Factionis;
+            label1.Text = Strings.EventConditional.Faction;
+            cmbFaction.Items.Clear();
+            cmbFaction.Items.Add(Strings.EventConditional.Mezuk);
+            cmbFaction.Items.Add(Strings.EventConditional.Gollik);
+            cmbFaction.Items.Add(Strings.EventConditional.Neutral);
             //Map Is
             grpMapIs.Text = Strings.EventConditional.mapis;
             btnSelectMap.Text = Strings.EventConditional.selectmap;
@@ -322,6 +329,8 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                     cmbGender.SelectedIndex = 0;
 
                     break;
+
+             
                 case ConditionTypes.MapIs:
                     Condition = new MapIsCondition();
                     btnSelectMap.Tag = Guid.Empty;
@@ -338,6 +347,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                 case ConditionTypes.HasFreeInventorySlots:
                     Condition = new HasFreeInventorySlots();
                     nudFreeInventorySlots.Value = 1;
+
+                    break;
+                case ConditionTypes.FactionIs:
+                    Condition = new FactionIsCondition();
+                    cmbFaction.SelectedIndex = 0;
 
                     break;
 
@@ -363,6 +377,7 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             grpMapIs.Hide();
             grpEquippedItem.Hide();
             grpFreeInventorySlots.Hide();
+            GrpFaction.Hide();
             switch (type)
             {
                 case ConditionTypes.VariableIs:
@@ -446,6 +461,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
                     break;
                 case ConditionTypes.GenderIs:
                     grpGender.Show();
+
+                    break;
+
+                case ConditionTypes.FactionIs:
+                    GrpFaction.Show();
 
                     break;
                 case ConditionTypes.MapIs:
@@ -978,6 +998,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             cmbGender.SelectedIndex = (int) condition.Gender;
         }
 
+        private void SetupFormValues(FactionIsCondition condition)
+        {
+            cmbFaction.SelectedIndex = (int)condition.Faction;
+        }
+
         private void SetupFormValues(MapIsCondition condition)
         {
             btnSelectMap.Tag = condition.MapId;
@@ -1113,7 +1138,10 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         {
             condition.Gender = (Gender) cmbGender.SelectedIndex;
         }
-
+        private void SaveFormValues(FactionIsCondition condition)
+        {
+            condition.Faction = (Factions)cmbFaction.SelectedIndex;
+        }
         private void SaveFormValues(MapIsCondition condition)
         {
             condition.MapId = (Guid) btnSelectMap.Tag;

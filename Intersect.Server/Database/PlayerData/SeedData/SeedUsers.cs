@@ -107,7 +107,7 @@ namespace Intersect.Server.Database.PlayerData.SeedData
                         Name = n == 0 ? "test" : $@"test{n:D3}",
                         ClassId = Guid.Empty,
                         Gender = n % 2 == 0 ? Gender.Male : Gender.Female,
-                        Faction = n % 2 == 0 ? Factions.Mezuk : Factions.Gollik,
+                        Faction = n % 2 == 0 ? Factions.Neutral : Factions.Gollik,
                         Level = 1,
                         Exp = 0,
                         FarmingExp = 0,

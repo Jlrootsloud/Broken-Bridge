@@ -625,6 +625,15 @@ namespace Intersect.Editor.Forms.Editors.Events
                 return Strings.EventCommandList.giveWoodexp.ToString(command.WoodExp);
             }
 
+            if (command.FactionXP == 0)
+            {
+
+            }
+            else
+            {
+                return Strings.EventCommandList.giveFactionexp.ToString(command.FactionXP);
+            }
+           
             return " ";
         }
 

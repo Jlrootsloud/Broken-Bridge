@@ -355,6 +355,7 @@ namespace Intersect.Server.Entities.Events
             player.GiveMiningExperience(command.MiningExp);
             player.GiveFishingExperience(command.FishingExp);
             player.GiveWoodExperience(command.WoodExp);
+            player.GiveFactionExperience(command.FactionXP);
 
         }
 

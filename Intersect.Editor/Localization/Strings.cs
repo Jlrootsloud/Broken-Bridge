@@ -229,6 +229,19 @@ namespace Intersect.Editor.Localization
             );
         }
 
+
+        public static string GetEventConditionalDesc(FactionIsCondition condition)
+        {
+            switch (condition.Faction)
+            {
+                case Factions.Mezuk:
+                    return Strings.EventConditionDesc.faction.ToString(Strings.EventConditionDesc.Mezuk);
+                case Factions.Gollik:
+                    return Strings.EventConditionDesc.faction.ToString(Strings.EventConditionDesc.Gollik);
+            }
+            return Strings.EventConditionDesc.faction.ToString(Strings.EventConditionDesc.Neutral);
+        }
+
         public static string GetEventConditionalDesc(MapIsCondition condition)
         {
             var map = Intersect.GameObjects.Maps.MapList.MapList.List.FindMap(condition.MapId);
@@ -1546,6 +1559,7 @@ Tick timer saved in server config.json.";
             public static LocalizedString giveFarmingexp = @"Give Player {00}  Farming Experience";
             public static LocalizedString giveMiningexp = @"Give Player {00}  Mining Experience";
             public static LocalizedString giveWoodexp = @"Give Player {00}  Wood Experience";
+            public static LocalizedString giveFactionexp = @"Give Player {00}  Factions points";
             public static LocalizedString giveFishingexp = @"Give Player {00}  Fishing Experience";
 
             public static LocalizedString globalswitch = @"Set Global Switch {00} to {01}";
@@ -1877,7 +1891,15 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString gender = @"Gender:";
 
+            public static LocalizedString Mezuk = @"Mezuk";
+
+            public static LocalizedString Gollik = @"Gollik";
+            public static LocalizedString Neutral = @"Neutral";
+
             public static LocalizedString genderis = @"Gender Is..";
+            public static LocalizedString Faction = @"Faction:";
+
+            public static LocalizedString Factionis = @"Faction Is..";
 
             public static LocalizedString globalswitch = @"Global Switch";
 
@@ -2009,7 +2031,14 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString female = @"Female";
 
+            public static LocalizedString Neutral = @"Neutral";
+
+            public static LocalizedString Mezuk= @"Mezuk";
+
+            public static LocalizedString Gollik = @"Gollik";
+
             public static LocalizedString gender = @"Player's Gender is {00}";
+            public static LocalizedString faction = @"Player's Faction is {00}";
 
             public static LocalizedString globalvariable = @"Global Variable: {00} {01}";
 

@@ -1274,6 +1274,13 @@ namespace Intersect.Server.Networking
 
         }
 
+        public static void SendFactionExperience(Player player)
+        {
+
+            player.SendPacket(new WoodExperiencePacket(player.FactionExp, player.ExperienceToFactionNextLevel));
+
+        }
+
         //PlayAnimationPacket
         public static void SendAnimationToProximity(
             Guid animId,

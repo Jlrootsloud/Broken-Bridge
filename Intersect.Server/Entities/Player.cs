@@ -137,6 +137,9 @@ namespace Intersect.Server.Entities
         [NotMapped]
         public long ExperienceToWoodNextLevel => GetExperienceToWoodNextLevel(WoodLevel);
 
+        [NotMapped]
+        public long ExperienceToFactionNextLevel => GetExperienceToFactionNextLevel(FactionLv);
+
         public static Player FindOnline(Guid id)
         {
             return OnlinePlayers.ContainsKey(id) ? OnlinePlayers[id] : null;
@@ -240,6 +243,21 @@ namespace Intersect.Server.Entities
 
 
             return (long)Math.Floor(skillBase + (skillBase / 3) * (Math.Pow(level, Gain) + (6 * Math.Pow((level), Gain)) - 2 * ((level) - 3)));
+        }
+
+        private long GetExperienceToFactionNextLevel(int FactionLevel)
+        {
+            if (FactionLevel >= 10)
+            {
+                return -1;
+            }
+
+            var Factionpoint = 7;
+            var Gain = 1.5;
+            var level = FactionLevel;
+
+
+            return (long)Math.Floor(Factionpoint + (Factionpoint / 3) * (Math.Pow(level, Gain) + (6 * Math.Pow((level), Gain)) - 2 * ((level) - 3)));
         }
         public void SetOnline()
         {
@@ -998,6 +1016,23 @@ namespace Intersect.Server.Entities
             PacketSender.SendEntityDataToProximity(this);
             PacketSender.SendWoodExperience(this);
         }
+
+        public void SetFactionLevel(int Factionlevel, bool resetExperience = false)
+        {
+            if (Factionlevel < 1)
+            {
+                return;
+            }
+
+            FactionLv = Math.Min(Options.MaxLevel, Factionlevel);
+            if (resetExperience)
+            {
+                FactionExp = 0;
+            }
+
+            PacketSender.SendEntityDataToProximity(this);
+            PacketSender.SendFactionExperience(this);
+        }
         public void LevelUp(bool resetExperience = true, int levels = 1)
         {
             var messages = new List<string>();
@@ -1143,6 +1178,27 @@ namespace Intersect.Server.Entities
             PacketSender.SendEntityDataToProximity(this);
 
         }
+
+        public void FactionLevelUp(bool resetExperience = false, int levels = 1)
+        {
+            var messages = new List<string>();
+            if (FactionLv < Options.MaxLevel)
+            {
+                for (var i = 0; i < levels; i++)
+                {
+                    SetFactionLevel(FactionLv + 1, resetExperience);
+                }
+            }
+            PacketSender.SendChatMsg(this, Strings.Player.Factionlevelup.ToString(FactionLv), CustomColors.Combat.Skilllevelup, Name);
+            //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
+            foreach (var message in messages)
+            {
+                PacketSender.SendChatMsg(this, message, CustomColors.Alerts.Info, Name);
+            }
+            PacketSender.SendFactionExperience(this);
+            PacketSender.SendEntityDataToProximity(this);
+
+        }
         public void GiveExperience(long amount)
         {
            
@@ -1208,6 +1264,17 @@ namespace Intersect.Server.Entities
             if (!CheckWoodLevelUp())
             {
                 PacketSender.SendWoodExperience(this);
+            }
+        }
+
+        public void GiveFactionExperience(long amount)
+        {
+            FactionExp += (int)(amount);
+            
+
+            if (!CheckFactionLevelUp())
+            {
+                PacketSender.SendFactionExperience(this);
             }
         }
         private bool CheckLevelUp()
@@ -1304,6 +1371,26 @@ namespace Intersect.Server.Entities
             }
 
             WoodLevelUp(false, levelCount);
+
+            return true;
+        }
+
+        private bool CheckFactionLevelUp()
+        {
+            var levelCount = 0;
+            while (FactionExp >= GetExperienceToFactionNextLevel(FactionLv + levelCount) &&
+                   GetExperienceToFactionNextLevel(FactionLv + levelCount) > 0)
+            {
+                FactionExp -= GetExperienceToFactionNextLevel(FactionLv + levelCount);
+                levelCount++;
+            }
+
+            if (levelCount <= 0)
+            {
+                return false;
+            }
+
+            FactionLevelUp(false, levelCount);
 
             return true;
         }
