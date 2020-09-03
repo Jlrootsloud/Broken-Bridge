@@ -210,7 +210,7 @@ namespace Intersect.Client.Interface.Menu
             mFemaleChk.Checked += femaleChk_Checked;
             mFemaleChk.UnChecked += maleChk_Checked;
             //Faction Label
-            mFactionLabel = new Framework.Gwen.Control.Label(mGenderBackground, "FactionLabel");
+           /* mFactionLabel = new Framework.Gwen.Control.Label(mGenderBackground, "FactionLabel");
             mFactionLabel.SetText(Strings.CharacterCreation.faction);
 
             //Male Checkbox
@@ -799,7 +799,7 @@ namespace Intersect.Client.Interface.Menu
                 TryCreateCharacter(1);
             }
 
-            if (mMezukhk.IsChecked == true) 
+          /*  if (mMezukhk.IsChecked == true) 
             {
                    Globals.Me.Faction= Factions.Mezuk;
             }
@@ -809,7 +809,7 @@ namespace Intersect.Client.Interface.Menu
                 {
                     Globals.Me.Faction = Factions.Gollik;
                 }
-            }
+            }*/
         }
 
         private void BackButton_Clicked(Base sender, ClickedEventArgs arguments)
