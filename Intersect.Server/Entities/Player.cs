@@ -1182,13 +1182,14 @@ namespace Intersect.Server.Entities
         public void FactionLevelUp(bool resetExperience = false, int levels = 1)
         {
             var messages = new List<string>();
-            if (FactionLv < Options.MaxLevel)
+            if (FactionLv < 10)
             {
                 for (var i = 0; i < levels; i++)
                 {
                     SetFactionLevel(FactionLv + 1, resetExperience);
                 }
             }
+
             PacketSender.SendChatMsg(this, Strings.Player.Factionlevelup.ToString(FactionLv), CustomColors.Combat.Skilllevelup, Name);
             //PacketSender.SendActionMsg(this, Strings.Combat.levelup, CustomColors.Combat.LevelUp);
             foreach (var message in messages)
@@ -1381,8 +1382,12 @@ namespace Intersect.Server.Entities
             while (FactionExp >= GetExperienceToFactionNextLevel(FactionLv + levelCount) &&
                    GetExperienceToFactionNextLevel(FactionLv + levelCount) > 0)
             {
-                FactionExp -= GetExperienceToFactionNextLevel(FactionLv + levelCount);
+               // FactionExp -= GetExperienceToFactionNextLevel(FactionLv + levelCount);
                 levelCount++;
+                if (FactionExp < 0)
+                {
+                    levelCount--;
+                }
             }
 
             if (levelCount <= 0)
@@ -2937,8 +2942,8 @@ namespace Intersect.Server.Entities
                     }
                 }
             }
-            var Wisdom = 1 + ((int)Stats.AbilityPower/100);
-            return exp+ Wisdom;
+            //var Wisdom = 1 + ((int)Stats.AbilityPower/100);
+            return exp;
         }
 
         public int GetEquipmentVitalRegen(Vitals vital)

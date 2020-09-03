@@ -90,6 +90,11 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             0,
             0,
             0});
+            this.FactionXP.Minimum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            -2147483648});
             this.FactionXP.Name = "FactionXP";
             this.FactionXP.Size = new System.Drawing.Size(141, 20);
             this.FactionXP.TabIndex = 32;

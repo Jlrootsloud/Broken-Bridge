@@ -61,6 +61,7 @@ namespace Intersect.Client.Interface.Game.Character
         Label mPointsLabel;
 
         Label mSpeedLabel;
+        Label mFactionLevel;
 
         public ImagePanel[] PaperdollPanels;
 
@@ -82,7 +83,7 @@ namespace Intersect.Client.Interface.Game.Character
 
             mFaction= new Label(mCharacterWindow, "FactionLabel");
             mFaction.SetText("");
-
+            mFactionLevel = new Label(mCharacterWindow, "FactionLevelLabel");
             mCharacterLevelAndClass = new Label(mCharacterWindow, "ChatacterInfoLabel");
             mCharacterLevelAndClass.SetText("");
 
@@ -177,6 +178,7 @@ namespace Intersect.Client.Interface.Game.Character
                 Globals.Me.Level, ClassBase.GetName(Globals.Me.Class)
             );
             mFaction.Text = Strings.Character.faction.ToString(Globals.Me.Faction);
+            mFactionLevel.Text = Strings.Character.faction.ToString(Globals.Me.FactionExperience);
             //Load Portrait
             //UNCOMMENT THIS LINE IF YOU'D RATHER HAVE A FACE HERE GameTexture faceTex = Globals.ContentManager.GetTexture(GameContentManager.TextureType.Face, Globals.Me.Face);
             var entityTex = Globals.ContentManager.GetTexture(

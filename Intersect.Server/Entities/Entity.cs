@@ -1220,7 +1220,7 @@ namespace Intersect.Server.Entities
 
         public void SetMaxVital(int vital, int value)
         {
-            if (value <= 0 && vital == (int) Vitals.Health)
+            if (value <= 0 && vital == (int) Vitals.Health )
             {
                 value = 1; //Must have at least 1 hp
             }
@@ -1229,7 +1229,10 @@ namespace Intersect.Server.Entities
             {
                 value = 0; //Can't have less than 0 mana
             }
-
+            if ( vital == (int)Vitals.Health)
+            {
+                value = (int)Vitals.Health + Stat[(int)Stats.Speed].Value() * 4; 
+            }
             _maxVital[vital] = value;
             if (value < GetVital(vital))
             {
@@ -1421,7 +1424,29 @@ namespace Intersect.Server.Entities
                     
                     return;
                 }
+                if (player.Faction == Factions.Neutral && targetPlayer.Faction == Factions.Mezuk)
+                {
+                    return;
+                }
+                if (player.Faction == Factions.Neutral &&  targetPlayer.Faction == Factions.Gollik)
+                {
+                    return;
+                }
 
+                if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Gollik)
+                {
+                    return;
+                }
+
+                if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Mezuk)
+                {
+                    return;
+                }
+
+                /*if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Mezuk || player.Faction == Factions.Gollik)
+                {
+                    return;
+                }*/
             }
 
             if (parentSpell == null)
@@ -1530,10 +1555,34 @@ namespace Intersect.Server.Entities
                     {
                         return;
                     }
-                    if (player.Gender==targetPlayer.Gender)
+                    if (player.Faction==targetPlayer.Faction)
                     {
                         return;
                     }
+
+                    if (player.Faction == Factions.Neutral && targetPlayer.Faction == Factions.Mezuk)
+                    {
+                        return;
+                    }
+                    if (player.Faction == Factions.Neutral && targetPlayer.Faction == Factions.Gollik)
+                    {
+                        return;
+                    }
+
+                    if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Gollik)
+                    {
+                        return;
+                    }
+
+                    if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Mezuk)
+                    {
+                        return;
+                    }
+
+                    /*if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Mezuk || player.Faction == Factions.Gollik)
+                    {
+                        return;
+                    }*/
                     // Check if either the attacker or the defender is in a "safe zone" (Only apply if combat is PVP)
                     if (MapInstance.Get(MapId).ZoneType == MapZones.Safe)
                     {
@@ -1716,6 +1765,25 @@ namespace Intersect.Server.Entities
                     return;
                 }
                 if (player.Faction == targetPlayer.Faction)
+                {
+                    return;
+                }
+
+                if (player.Faction == Factions.Neutral && targetPlayer.Faction == Factions.Mezuk)
+                {
+                    return;
+                }
+                if (player.Faction == Factions.Neutral && targetPlayer.Faction == Factions.Gollik)
+                {
+                    return;
+                }
+
+                if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Gollik)
+                {
+                    return;
+                }
+
+                if (targetPlayer.Faction == Factions.Neutral && player.Faction == Factions.Mezuk )
                 {
                     return;
                 }
