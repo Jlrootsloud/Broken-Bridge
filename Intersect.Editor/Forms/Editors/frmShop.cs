@@ -679,6 +679,10 @@ namespace Intersect.Editor.Forms.Editors
 
         #endregion
 
+        private void nudSellCost_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

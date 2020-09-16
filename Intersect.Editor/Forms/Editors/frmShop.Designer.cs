@@ -294,7 +294,7 @@ namespace Intersect.Editor.Forms.Editors
             this.nudSellCost.ForeColor = System.Drawing.Color.Gainsboro;
             this.nudSellCost.Location = new System.Drawing.Point(81, 325);
             this.nudSellCost.Maximum = new decimal(new int[] {
-            1000000,
+            999999999,
             0,
             0,
             0});
@@ -306,6 +306,7 @@ namespace Intersect.Editor.Forms.Editors
             0,
             0,
             0});
+            this.nudSellCost.ValueChanged += new System.EventHandler(this.nudSellCost_ValueChanged);
             // 
             // cmbSellFor
             // 
@@ -436,7 +437,7 @@ namespace Intersect.Editor.Forms.Editors
             this.nudBuyAmount.ForeColor = System.Drawing.Color.Gainsboro;
             this.nudBuyAmount.Location = new System.Drawing.Point(82, 325);
             this.nudBuyAmount.Maximum = new decimal(new int[] {
-            1000000,
+            999999999,
             0,
             0,
             0});
