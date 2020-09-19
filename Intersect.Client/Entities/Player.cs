@@ -35,6 +35,11 @@ namespace Intersect.Client.Entities
 
         public List<FriendInstance> Friends = new List<FriendInstance>();
 
+        /// <summary>
+        /// Contains a record of all members of this player's guild.
+        /// </summary>
+        public List<GuildInstance> GuildMembers = new List<GuildInstance>();
+
         public HotbarInstance[] Hotbar = new HotbarInstance[Options.MaxHotbar];
 
         public InventoryUpdated InventoryUpdatedDelegate;
@@ -191,6 +196,12 @@ namespace Intersect.Client.Entities
                 {
                     this.Equipment = ((PlayerEntityPacket) packet).Equipment.ItemIds;
                 }
+            }
+
+            // Hide our Guild window if we're not in a guild!
+            if (this == Globals.Me && string.IsNullOrEmpty(Guild) && Interface.Interface.GameUi != null)
+            {
+                Interface.Interface.GameUi.HideGuildWindow();
             }
         }
 
@@ -1976,6 +1987,15 @@ namespace Intersect.Client.Entities
 
         public bool Online = false;
 
+    }
+
+    public class GuildInstance
+    {
+        public string Rank;
+
+        public string Name;
+
+        public bool Online = false;
     }
 
     public class HotbarInstance
