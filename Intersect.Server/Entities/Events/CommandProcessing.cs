@@ -1192,21 +1192,23 @@ namespace Intersect.Server.Entities.Events
                 if (!string.IsNullOrEmpty(gname))
                 {
                     // Is the name already in use?
-                    if (Guild.GetGuild(PlayerContext.Current, gname) == null)
+                    if (Guild.GetGuild(gname) == null)
                     {
                         // Is the player already in a guild?
                         if (player.Guild == null)
                         {
                             // Finally, we can actually MAKE this guild happen!
                             var guild = new Guild(player, gname);
-                            PlayerContext.Current.Guilds.Add(guild);
+
+                            lock (DbInterface.GetPlayerContextLock())
+                            {
+                                PlayerContext.Current.Guilds.Add(guild);
+                            }
+
                             guild.AddMember(player, GuildRanks.Guildmaster);
 
                             // Send them a welcome message!
                             PacketSender.SendChatMsg(player, Strings.Guilds.Welcome.ToString(gname), CustomColors.Alerts.Success);
-
-                            // Send the newly updated player information to everyone.
-                            PacketSender.SendEntityDataToProximity(player);
 
                             // Denote that we were successful.
                             success = true;
