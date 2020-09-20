@@ -3,14 +3,16 @@ using System;
 using Intersect.Server.Database.PlayerData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Intersect.Server.Migrations
 {
     [DbContext(typeof(PlayerContext))]
-    partial class PlayerContextModelSnapshot : ModelSnapshot
+    [Migration("20200905170245_Guilds")]
+    partial class Guilds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,7 +181,8 @@ namespace Intersect.Server.Migrations
 
                     b.ToTable("Player_Friends");
                 });
-			modelBuilder.Entity("Intersect.Server.Database.PlayerData.Players.Guild", b =>
+
+            modelBuilder.Entity("Intersect.Server.Database.PlayerData.Players.Guild", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -192,6 +195,7 @@ namespace Intersect.Server.Migrations
 
                     b.ToTable("Guilds");
                 });
+
             modelBuilder.Entity("Intersect.Server.Database.PlayerData.Players.HotbarSlot", b =>
                 {
                     b.Property<Guid>("Id")
@@ -341,9 +345,6 @@ namespace Intersect.Server.Migrations
 
                     b.Property<Guid>("ClassId");
 
-                    b.Property<string>("CustomSpriteLayersJson")
-                        .HasColumnName("CustomSpriteLayers");
-
                     b.Property<int>("Dir");
 
                     b.Property<string>("EquipmentJson")
@@ -357,9 +358,11 @@ namespace Intersect.Server.Migrations
                         .HasColumnName("FooterLabel");
 
                     b.Property<int>("Gender");
-					b.Property<Guid?>("GuildId");
+
+                    b.Property<Guid?>("GuildId");
 
                     b.Property<int>("GuildRank");
+
                     b.Property<string>("HeaderLabelJson")
                         .HasColumnName("HeaderLabel");
 
@@ -403,8 +406,8 @@ namespace Intersect.Server.Migrations
 
                     b.HasKey("Id");
 
-					b.HasIndex("GuildId");
-					
+                    b.HasIndex("GuildId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Players");
@@ -517,10 +520,10 @@ namespace Intersect.Server.Migrations
 
             modelBuilder.Entity("Intersect.Server.Entities.Player", b =>
                 {
-					  b.HasOne("Intersect.Server.Database.PlayerData.Players.Guild", "Guild")
+                    b.HasOne("Intersect.Server.Database.PlayerData.Players.Guild", "Guild")
                         .WithMany("Members")
                         .HasForeignKey("GuildId");
-						
+
                     b.HasOne("Intersect.Server.Database.PlayerData.User", "User")
                         .WithMany("Players")
                         .HasForeignKey("UserId")

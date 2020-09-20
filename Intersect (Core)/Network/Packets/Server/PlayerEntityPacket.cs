@@ -19,6 +19,8 @@ namespace Intersect.Network.Packets.Server
         public CustomSpriteLayersPacket CustomSpriteLayers { get; set; }
 
         public long CombatTimeRemaining { get; set; }
+		
+		 public string Guild { get; set; }
 
     }
 

@@ -17,7 +17,7 @@ using JetBrains.Annotations;
 namespace Intersect.Client.Interface.Game
 {
 
-    public class GameInterface
+    public class GameInterface : MutableInterface
     {
 
         public bool FocusChat;
@@ -71,15 +71,19 @@ namespace Intersect.Client.Interface.Game
 
         private bool mShouldUpdateFriendsList;
 
+        private bool mShouldUpdateGuildList;
+
+        private bool mShouldHideGuildWindow;
+
         private string mTradingTarget;
 
         private TradingWindow mTradingWindow;
 
         public EntityBox PlayerBox;
 
-        public GameInterface([NotNull] Canvas myCanvas)
+        public GameInterface([NotNull] Canvas canvas) : base(canvas)
         {
-            GameCanvas = myCanvas;
+            GameCanvas = canvas;
             EscapeMenu = new EscapeMenu(GameCanvas) {IsHidden = true};
 
             InitGameGui();
@@ -119,6 +123,16 @@ namespace Intersect.Client.Interface.Game
         public void NotifyUpdateFriendsList()
         {
             mShouldUpdateFriendsList = true;
+        }
+
+        public void NotifyUpdateGuildList()
+        {
+            mShouldUpdateGuildList = true;
+        }
+
+        public void HideGuildWindow()
+        {
+            mShouldHideGuildWindow = true;
         }
 
         //Admin Window
@@ -161,10 +175,7 @@ namespace Intersect.Client.Interface.Game
 
         public void OpenShop()
         {
-            if (mShopWindow != null)
-            {
-                mShopWindow.Close();
-            }
+            mShopWindow?.Close();
 
             mShopWindow = new ShopWindow(GameCanvas);
             mShouldOpenShop = false;
@@ -183,10 +194,7 @@ namespace Intersect.Client.Interface.Game
 
         public void OpenBank()
         {
-            if (mBankWindow != null)
-            {
-                mBankWindow.Close();
-            }
+            mBankWindow?.Close();
 
             mBankWindow = new BankWindow(GameCanvas);
             mShouldOpenBank = false;
@@ -206,10 +214,7 @@ namespace Intersect.Client.Interface.Game
 
         public void OpenBag()
         {
-            if (mBagWindow != null)
-            {
-                mBagWindow.Close();
-            }
+            mBagWindow?.Close();
 
             mBagWindow = new BagWindow(GameCanvas);
             mShouldOpenBag = false;
@@ -360,6 +365,7 @@ namespace Intersect.Client.Interface.Game
             if (mShouldOpenShop)
             {
                 OpenShop();
+                GameMenu.OpenInventory();
             }
 
             if (mShopWindow != null && (!mShopWindow.IsVisible() || mShouldCloseShop))
@@ -374,6 +380,7 @@ namespace Intersect.Client.Interface.Game
             if (mShouldOpenBank)
             {
                 OpenBank();
+                GameMenu.OpenInventory();
             }
 
             if (mBankWindow != null)
@@ -416,6 +423,7 @@ namespace Intersect.Client.Interface.Game
             if (mShouldOpenCraftingTable)
             {
                 OpenCraftingTable();
+                GameMenu.OpenInventory();
             }
 
             if (mCraftingWindow != null)
@@ -437,6 +445,7 @@ namespace Intersect.Client.Interface.Game
             if (mShouldOpenTrading)
             {
                 OpenTrading();
+                GameMenu.OpenInventory();
             }
 
             if (mTradingWindow != null)
@@ -463,6 +472,17 @@ namespace Intersect.Client.Interface.Game
             if (mShouldUpdateFriendsList)
             {
                 GameMenu.UpdateFriendsList();
+            }
+
+            if (mShouldUpdateGuildList)
+            {
+                GameMenu.UpdateGuildList();
+            }
+
+            if (mShouldHideGuildWindow)
+            {
+                GameMenu.HideGuildWindow();
+                mShouldHideGuildWindow = false;
             }
 
             mShouldCloseTrading = false;

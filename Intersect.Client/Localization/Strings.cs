@@ -441,6 +441,7 @@ namespace Intersect.Client.Localization
                 {0, @"local"},
                 {1, @"global"},
                 {2, @"party"},
+				{3, @"guild"}
             };
 
             public static LocalizedString channeladmin = @"admin";
@@ -755,7 +756,24 @@ namespace Intersect.Client.Localization
             public static LocalizedString title = @"Friends";
 
         }
+		public struct Guild
+        {
+            public static LocalizedString Invite = @"Invite";
+			 public static LocalizedString Leave = @"Leave";
+			public static LocalizedString NotInGuild = @"You are not currently in a guild!";
+						
+            public static LocalizedString InviteMemberTitle = @"Invite Player";
 
+            public static LocalizedString InviteMemberPrompt = @"Who would you like to invite to {00}?";
+
+            public static LocalizedString InviteRequestTitle = @"Guild Invite";
+
+            public static LocalizedString InviteRequestPrompt = @"{00} would like to invite you to join their guild, {01}. Do you accept?";
+			
+			 public static LocalizedString LeaveTitle = @"Leave Guild";
+
+            public static LocalizedString LeavePrompt = @"Are you sure you would like to leave your guild?";
+        }
         public struct GameMenu
         {
 
@@ -772,9 +790,13 @@ namespace Intersect.Client.Localization
             public static LocalizedString quest = @"Quest Log";
 
             public static LocalizedString spells = @"Spell Book";
+			
+			public static LocalizedString Guild = @"Guild";
+			
 
         }
-
+	
+       
         public struct General
         {
 

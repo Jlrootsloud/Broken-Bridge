@@ -18,6 +18,7 @@ using Intersect.Network.Packets.Client;
 using Intersect.Server.Admin.Actions;
 using Intersect.Server.Core;
 using Intersect.Server.Database;
+using Intersect.Server.Database.PlayerData.Players;
 using Intersect.Server.Database.PlayerData;
 using Intersect.Server.Database.PlayerData.Security;
 using Intersect.Server.Entities;
@@ -479,7 +480,13 @@ namespace Intersect.Server.Networking
                         cmd = Strings.Chat.partycmd;
 
                         break;
-                    case 3: //admin
+						
+                    case 3: //guild
+                        cmd = Strings.Chat.GuildCmd;
+
+                        break;
+
+                    case 4: //admin
                         cmd = Strings.Chat.admincmd;
 
                         break;
@@ -662,6 +669,213 @@ namespace Intersect.Server.Networking
                 {
                     PacketSender.SendChatMsg(player, Strings.Player.offline, CustomColors.Alerts.Error);
                 }
+            }
+			 else if (cmd == Strings.Chat.GuildCmd)
+            {
+                if (player.Guild == null)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                    return;
+                }
+                
+                if (msg.Trim().Length == 0)
+                {
+                    return;
+                }
+
+                PacketSender.SendGuildMsg(player, Strings.Chat.Guild.ToString(player.Name, msg), CustomColors.Chat.GuildChat);
+			 }
+              
+            
+			   else if(cmd == Strings.Chat.KickCmd)
+            {
+                // Are we in a guild?
+                if (player.Guild == null)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Are we allowed to do this?
+                if ((int)player.Guild.GetPlayerRank(player) < (int)GuildRanks.Officer)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Find our potential player.
+                var target = Player.Find(msg.Trim());
+
+                // Does our elusive player exist, or are they even a part of this guild?
+                if (target == null || !player.Guild.IsMember(target))
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NoSuchPlayer.ToString(msg), CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Do not allow this on ourselves, or the guild master.
+                if (player == target || target.GuildRank == GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Notify people there's a kickage going on, then remove this player from the guild!
+                PacketSender.SendGuildMsg(player, Strings.Guilds.Kicked.ToString(target.Name, player.Guild.Name), CustomColors.Alerts.Info);
+                player.Guild.RemoveMember(target);
+				
+            }
+            else if (cmd == Strings.Chat.PromoteCmd)
+            {
+                // Are we in a guild?
+                if (player.Guild == null)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Are we allowed to do this?
+                if ((int)player.Guild.GetPlayerRank(player) < (int)GuildRanks.Officer)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Find our potential player.
+                var target = Player.Find(msg.Trim());
+
+                // Does our elusive player exist, or are they even a part of this guild?
+                if (target == null || !player.Guild.IsMember(target))
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NoSuchPlayer.ToString(msg), CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Do not allow this on ourselves, or the guild master.
+                if (player == target || target.GuildRank == GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                var tempRank = (int)player.Guild.GetPlayerRank(target);
+                // Can this player be promoted? We can't promote people beyond Officer!
+                if (tempRank < (int)GuildRanks.Officer)
+                {
+                    player.Guild.SetPlayerRank(target, (GuildRanks)tempRank + 1);
+                    PacketSender.SendGuildMsg(player, Strings.Guilds.Promoted.ToString(target.Name, Strings.Guilds.RankNames[(GuildRanks)tempRank + 1]), CustomColors.Alerts.Success);
+                }
+                else
+                {
+                    // We can't promote them further.
+                    PacketSender.SendChatMsg(player, Strings.Guilds.PromotionFailed.ToString(target.Name), CustomColors.Alerts.Error);
+                }
+            }
+            else if (cmd == Strings.Chat.DemoteCmd)
+            {
+                // Are we in a guild?
+                if (player.Guild == null)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Are we allowed to do this?
+                if ((int)player.Guild.GetPlayerRank(player) < (int)GuildRanks.Officer)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Find our potential player.
+                var target = Player.Find(msg.Trim());
+
+                // Does our elusive player exist, or are they even a part of this guild?
+                if (target == null || !player.Guild.IsMember(target))
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NoSuchPlayer.ToString(msg), CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Do not allow this on ourselves, or the guild master.
+                if (player == target || target.GuildRank == GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                var tempRank = (int)player.Guild.GetPlayerRank(target);
+                // Can this player be demoted? We can't promote people beyond Officer!
+                if (tempRank > (int)GuildRanks.Recruit)
+                {
+                    player.Guild.SetPlayerRank(target, (GuildRanks)tempRank - 1);
+                    PacketSender.SendGuildMsg(player, Strings.Guilds.Demoted.ToString(target.Name, Strings.Guilds.RankNames[(GuildRanks)tempRank - 1]), CustomColors.Alerts.Success);
+                }
+                else
+                {
+                    // We can't promote them further.
+                    PacketSender.SendChatMsg(player, Strings.Guilds.DemotionFailed.ToString(target.Name), CustomColors.Alerts.Error);
+                }
+            }
+			
+			 else if (cmd == Strings.Chat.MakeGuildmasterCmd)
+            {
+                // Are we in a guild?
+                if (player.Guild == null)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Are we allowed to do this?
+                if (player.Guild.GetPlayerRank(player) != GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Find our potential player.
+                var target = Player.Find(msg.Trim());
+
+                // Does our elusive player exist, or are they even a part of this guild?
+                if (target == null || !player.Guild.IsMember(target))
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NoSuchPlayer.ToString(msg), CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Do not allow this on ourselves, or the guild master.
+                if (player == target || target.GuildRank == GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Make this player the guild master and set ourselves to be an Officer.
+                player.Guild.SetPlayerRank(target, GuildRanks.Guildmaster);
+                player.Guild.SetPlayerRank(player, GuildRanks.Officer);
+                PacketSender.SendGuildMsg(player, Strings.Guilds.Demoted.ToString(target.Name, Strings.Guilds.RankNames[GuildRanks.Guildmaster]), CustomColors.Alerts.Success);
+
+            }
+            else if (cmd == Strings.Chat.DisbandCmd)
+            {
+                // Are we in a guild?
+                if (player.Guild == null)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Are we allowed to do this?
+                if (player.Guild.GetPlayerRank(player) != GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                    return;
+                }
+
+                // Oh boy, here we go.. Sending a message to everyone then nuking this guild!
+                PacketSender.SendGuildMsg(player, Strings.Guilds.DisbandGuild.ToString(player.Guild.Name), CustomColors.Alerts.Info);
+                Guild.DeleteGuild(player.Guild);
             }
             else
             {
@@ -1917,6 +2131,133 @@ namespace Intersect.Server.Networking
                 }
             }
         }
+      //RequestGuildPacket
+        public void HandlePacket(Client client, Player player, RequestGuildPacket packet)
+        {
+            if (player == null)
+            {
+                return;
+            }
+
+            PacketSender.SendGuild(player);
+        }
+		
+		   //UpdateGuildMemberPacket
+        public void HandlePacket(Client client, Player player, UpdateGuildMemberPacket packet)
+        {
+            // Handle our desired action, assuming we're allowed to of course.
+            switch (packet.Action)
+            {
+                case GuildMemberUpdateActions.Invite:
+                    // Are we in a guild?
+                    if (player.Guild == null)
+                    {
+                        PacketSender.SendChatMsg(player, Strings.Guilds.NotInGuild, CustomColors.Alerts.Error);
+                        return;
+                    }
+
+                    // Are we allowed to invite players?
+                    if ((int)player.Guild.GetPlayerRank(player) < (int)GuildRanks.Officer)
+                    {
+                          PacketSender.SendChatMsg(player, Strings.Guilds.NotAllowed, CustomColors.Alerts.Error);
+                        return;
+                    }
+
+                    // Does our target player exist online?
+                    var target = Player.FindOnline(packet.Name);
+                    if (target != null)
+                    {
+                        target.SendGuildInvite(player);
+                    }
+                    else
+                    {
+                        PacketSender.SendChatMsg(player, Strings.Guilds.InviteNotOnline, CustomColors.Alerts.Error);
+                    }
+                    break;
+                case GuildMemberUpdateActions.Remove:
+
+                    break;
+                case GuildMemberUpdateActions.Promote:
+
+                    break;
+                case GuildMemberUpdateActions.Demote:
+
+                    break;
+                default:
+                    /// ???
+                    break;
+            }
+        }
+
+        //GuildInviteAcceptPacket
+        public void HandlePacket(Client client, Player player, GuildInviteAcceptPacket packet)
+        {
+            // Have we received an invite at all?
+            if (player.GuildInvite == null)
+            {
+                PacketSender.SendChatMsg(player, Strings.Guilds.NotReceivedInvite, CustomColors.Alerts.Error);
+                return;
+            }
+
+            // Accept our invite!
+            player.GuildInvite.Item2.AddMember(player, GuildRanks.Recruit);
+            player.GuildInvite = null;
+
+            // Notify everyone involved!
+            PacketSender.SendGuildMsg(player, Strings.Guilds.Joined.ToString(player.Name, player.Guild.Name), CustomColors.Alerts.Success);
+
+
+        }
+
+        //GuildInviteDeclinePacket
+        public void HandlePacket(Client client, Player player, GuildInviteDeclinePacket packet)
+        {
+            // Have we received an invite at all?
+            if (player.GuildInvite == null)
+            {
+                PacketSender.SendChatMsg(player, Strings.Guilds.NotReceivedInvite, CustomColors.Alerts.Error);
+                return;
+            }
+
+            // Politely decline our invite.
+            if (player.GuildInvite.Item1 != null)
+            {
+                var onlinePlayer = Player.FindOnline(player.GuildInvite.Item1.Id);
+                if (onlinePlayer != null)
+                {
+                    PacketSender.SendChatMsg(onlinePlayer, Strings.Guilds.InviteDeclinedResponse.ToString(player.Name, player.GuildInvite.Item2.Name), CustomColors.Alerts.Info);
+                    PacketSender.SendChatMsg(player, Strings.Guilds.InviteDeclined.ToString(onlinePlayer.Name, player.GuildInvite.Item2.Name), CustomColors.Alerts.Info);
+                }
+                else
+                {
+                    PacketSender.SendChatMsg(player, Strings.Guilds.InviteDeclined.ToString("someone", player.GuildInvite.Item2.Name), CustomColors.Alerts.Info);
+                }
+
+                player.GuildInvite = null;
+            }
+        }
+ //GuildLeavePacket
+        public void HandlePacket(Client client, Player player, GuildLeavePacket packet)
+        {
+            // Are we in a guild at all?
+            if (player.Guild == null)
+            {
+                return;
+            }
+
+            // Are we the guild master? If so, they're not allowed to leave.
+            if (player.GuildRank == GuildRanks.Guildmaster) 
+            {
+                PacketSender.SendChatMsg(player, Strings.Guilds.GuildLeaderLeave, CustomColors.Alerts.Error);
+                return;
+            }
+
+            // Notify the guild a player has left and remove them from the roster.
+            PacketSender.SendGuildMsg(player, Strings.Guilds.Left.ToString(player.Name, player.Guild.Name), CustomColors.Alerts.Info);
+            player.Guild.RemoveMember(player);
+
+                        
+        }
 
         //SelectCharacterPacket
         public void HandlePacket(Client client, Player player, SelectCharacterPacket packet)
@@ -1947,6 +2288,13 @@ namespace Intersect.Server.Networking
             var character = DbInterface.GetUserCharacter(client.User, packet.CharacterId);
             if (character != null)
             {
+				 // Do not allow a guild master character to be deleted, they have to disband or move ownership first.
+                if (character.GuildRank == GuildRanks.Guildmaster)
+                {
+                    PacketSender.SendError(client, Strings.Account.DeleteCharGuildmaster, Strings.Account.deleted);
+                    return;
+                }
+                
                 foreach (var chr in client.Characters.ToArray())
                 {
                     if (chr.Id == packet.CharacterId)

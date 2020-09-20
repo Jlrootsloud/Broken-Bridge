@@ -191,6 +191,7 @@
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Configuration\ConfigurationHelper.cs" />
     <Compile Include="Config\ChatOptions.cs" />
+	<Compile Include="Config\GuildOptions.cs" />
     <Compile Include="Config\LootOptions.cs" />
     <Compile Include="Config\PacketOptions.cs" />
     <Compile Include="Config\PartyOptions.cs" />
@@ -272,6 +273,8 @@
     <Compile Include="Enums\EventTrigger.cs" />
     <Compile Include="Enums\GameObjectTypeExtensions.cs" />
     <Compile Include="Enums\Gender.cs" />
+	<Compile Include="Enums\GuildMemberUpdateActions.cs" />
+    <Compile Include="Enums\GuildRanks.cs" />
     <Compile Include="Enums\ItemTypes.cs" />
     <Compile Include="Enums\MapAttributes.cs" />
     <Compile Include="Enums\MapListUpdates.cs" />
@@ -328,6 +331,13 @@
     <Compile Include="Network\Packets\Client\EventResponsePacket.cs" />
     <Compile Include="Network\Packets\Client\ForgetSpellPacket.cs" />
     <Compile Include="Network\Packets\Client\FriendRequestResponsePacket.cs" />
+	  <Compile Include="Network\Packets\Client\GuildInviteAcceptPacket.cs" />
+    <Compile Include="Network\Packets\Client\GuildInviteDeclinePacket.cs" />
+    <Compile Include="Network\Packets\Client\GuildLeavePacket.cs" />
+	  <Compile Include="Network\Packets\Client\RequestGuildPacket.cs" />
+    <Compile Include="Network\Packets\Client\UpdateGuildMemberPacket.cs" />
+    <Compile Include="Network\Packets\Server\GuildInvitePacket.cs" />
+    <Compile Include="Network\Packets\Server\GuildPacket.cs" />
     <Compile Include="Network\Packets\Client\HotbarSwapPacket.cs" />
     <Compile Include="Network\Packets\Client\HotbarUpdatePacket.cs" />
     <Compile Include="Network\Packets\Client\LoginPacket.cs" />

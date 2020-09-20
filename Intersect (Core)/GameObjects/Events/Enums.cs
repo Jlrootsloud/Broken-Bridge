@@ -225,6 +225,9 @@
 
         //Change Hair
         ChangeHair,
+		
+		 // Guilds
+        CreateGuild,
 
     }
 

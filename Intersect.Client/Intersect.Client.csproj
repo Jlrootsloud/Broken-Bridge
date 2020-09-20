@@ -110,6 +110,7 @@
     <Compile Include="Interface\Game\Bank\BankItem.cs" />
     <Compile Include="Interface\Game\Character\EquipmentItem.cs" />
     <Compile Include="Interface\Game\Crafting\RecipeItem.cs" />
+	 <Compile Include="Interface\Game\GuildWindow.cs" />
     <Compile Include="Interface\Game\EntityPanel\SpellStatus.cs" />
     <Compile Include="Interface\Game\Hotbar\HotbarItem.cs" />
     <Compile Include="Interface\Game\EscapeMenu.cs" />

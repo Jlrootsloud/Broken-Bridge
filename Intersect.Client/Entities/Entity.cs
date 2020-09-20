@@ -39,6 +39,8 @@ namespace Intersect.Client.Entities
             ChatBubble,
 
             Class,
+			
+			Guild
 
         }
 
@@ -1547,7 +1549,30 @@ namespace Intersect.Client.Entities
                 case LabelType.Class:
                     nameSize = Graphics.Renderer.MeasureText(Name, Graphics.EntityNameFont, 1);
                     y = GetLabelLocation(LabelType.Name) - nameSize.Y;
+					break;
+                case LabelType.Guild:
+                    // ???? This should never NOT run on a player ????
+                    if (this is Player player)
+                    {
+                        if (string.IsNullOrWhiteSpace(player.Guild))
+                        {
+                            return GetLabelLocation(LabelType.Name);
+                        }
 
+                        // Do we have a header? If so, slightly change the position!
+                        if (string.IsNullOrWhiteSpace(HeaderLabel.Text))
+                        {
+                            y = GetLabelLocation(LabelType.Name);
+                        }
+                        else 
+                        {
+                            y = GetLabelLocation(LabelType.Header);
+                        }
+
+                        var guildSize = Graphics.Renderer.MeasureText(player.Guild, Graphics.EntityNameFont, 1);
+                        y -= guildSize.Y;
+                    }
+                    
                     break;
             }
 

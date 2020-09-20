@@ -1640,6 +1640,50 @@ namespace Intersect.Client.Networking
 
             Interface.Interface.GameUi.NotifyUpdateFriendsList();
         }
+		 //GuildPacket
+        private static void HandlePacket(GuildPacket packet)
+        {
+			if (Globals.Me == null || Globals.Me.Guild == null)
+            {
+                return;
+            }
+
+            Globals.Me.GuildMembers.Clear();
+
+            foreach (var member in packet.OnlineMembers)
+            {
+                var f = new GuildInstance() {
+                    Name = member.Key,
+                    Rank = member.Value,
+					Map = member.Value,
+                    Online = true
+                };
+
+                Globals.Me.GuildMembers.Add(f);
+            }
+
+            foreach (var member in packet.OfflineMembers)
+            {
+                var f = new GuildInstance() {
+                    Name = member.Key,
+                    Rank = member.Value,
+                    Online = false
+                };
+
+                Globals.Me.GuildMembers.Add(f);
+            }
+
+            Interface.Interface.GameUi.NotifyUpdateGuildList();
+        }
+		//GuildInvitePacket
+        private static void HandlePacket(GuildInvitePacket packet)
+        {
+            var iBox = new InputBox(
+                Strings.Guild.InviteRequestTitle, Strings.Guild.InviteRequestPrompt.ToString(packet.Inviter, packet.GuildName), true,
+                InputBox.InputType.YesNo, PacketSender.SendGuildInviteAccept, PacketSender.SendGuildInviteDecline, 
+                null
+            );
+        }
 
         //FriendRequestPacket
         private static void HandlePacket(FriendRequestPacket packet)

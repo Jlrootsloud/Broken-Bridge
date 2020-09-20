@@ -337,12 +337,36 @@ namespace Intersect.Client.Networking
         {
             Network.SendPacket(new FriendRequestResponsePacket((Guid) ((InputBox) sender).UserData, false));
         }
+		public static void SendRequestGuild()
+        {
+            Network.SendPacket(new RequestGuildPacket());
+        }
 
         public static void SendSelectCharacter(Guid charId)
         {
             Network.SendPacket(new SelectCharacterPacket(charId));
         }
+		
+		public static void SendGuildInviteAccept(Object sender, EventArgs e)
+        {
+            Network.SendPacket(new GuildInviteAcceptPacket());
+        }
 
+        public static void SendGuildInviteDecline(Object sender, EventArgs e)
+        {
+            Network.SendPacket(new GuildInviteDeclinePacket());
+        }
+
+        public static void SendInviteGuild(string name)
+        {
+            Network.SendPacket(new UpdateGuildMemberPacket(name, Enums.GuildMemberUpdateActions.Invite));
+        }
+
+		public static void SendLeaveGuild()
+        {
+            Network.SendPacket(new GuildLeavePacket());
+        }
+		
         public static void SendDeleteCharacter(Guid charId)
         {
             Network.SendPacket(new DeleteCharacterPacket(charId));

@@ -4,6 +4,7 @@ using Intersect.Client.Framework.Gwen.Control;
 using Intersect.Client.Framework.Gwen.Control.EventArguments;
 using Intersect.Client.General;
 using Intersect.Client.Interface.Game.Character;
+using Intersect.Client.Interface.Game.Chat;
 using Intersect.Client.Interface.Game.Inventory;
 using Intersect.Client.Interface.Game.Spells;
 using Intersect.Client.Localization;
@@ -28,6 +29,12 @@ namespace Intersect.Client.Interface.Game
         [NotNull] private readonly Button mFriendsButton;
 
         [NotNull] private readonly FriendsWindow mFriendsWindow;
+
+        [NotNull] private readonly ImagePanel mGuildBackground;
+
+        [NotNull] private readonly Button mGuildButton;
+
+        [NotNull] private readonly GuildWindow mGuildWindow;
 
         [NotNull] private readonly ImagePanel mInventoryBackground;
 
@@ -106,6 +113,11 @@ namespace Intersect.Client.Interface.Game
             mFriendsButton.SetToolTipText(Strings.GameMenu.friends);
             mFriendsButton.Clicked += FriendsBtn_Clicked;
 
+            mGuildBackground = new ImagePanel(mMenuContainer, "GuildContainer");
+            mGuildButton = new Button(mGuildBackground, "GuildButton");
+            mGuildButton.SetToolTipText(Strings.GameMenu.Guild);
+            mGuildButton.Clicked += GuildBtn_Clicked;
+
             mPartyBackground = new ImagePanel(mMenuContainer, "PartyContainer");
             mPartyButton = new Button(mPartyBackground, "PartyButton");
             mPartyButton.SetToolTipText(Strings.GameMenu.party);
@@ -121,6 +133,7 @@ namespace Intersect.Client.Interface.Game
             //Assign Window References
             mPartyWindow = new PartyWindow(gameCanvas);
             mFriendsWindow = new FriendsWindow(gameCanvas);
+            mGuildWindow = new GuildWindow(gameCanvas);
             mInventoryWindow = new InventoryWindow(gameCanvas);
             mSpellsWindow = new SpellsWindow(gameCanvas);
             mCharacterWindow = new CharacterWindow(gameCanvas);
@@ -135,12 +148,18 @@ namespace Intersect.Client.Interface.Game
             mCharacterWindow.Update();
             mPartyWindow.Update();
             mFriendsWindow.Update();
+            mGuildWindow.Update();
             mQuestsWindow.Update(updateQuestLog);
         }
 
         public void UpdateFriendsList()
         {
             mFriendsWindow.UpdateList();
+        }
+
+        public void UpdateGuildList()
+        {
+            mGuildWindow.UpdateList();
         }
 
         public void HideWindows()
@@ -156,6 +175,12 @@ namespace Intersect.Client.Interface.Game
             mPartyWindow.Hide();
             mQuestsWindow.Hide();
             mSpellsWindow.Hide();
+            mGuildWindow.Hide();
+        }
+
+        public void HideGuildWindow()
+        {
+            mGuildWindow.Hide();
         }
 
         public void ToggleCharacterWindow()
@@ -188,6 +213,23 @@ namespace Intersect.Client.Interface.Game
             return mFriendsWindow.IsVisible();
         }
 
+        public bool ToggleGuildWindow()
+        {
+            if (mGuildWindow.IsVisible())
+            {
+                mGuildWindow.Hide();
+            }
+            else
+            {
+                HideWindows();
+                PacketSender.SendRequestGuild();
+                mGuildWindow.UpdateList();
+                mGuildWindow.Show();
+            }
+
+            return mGuildWindow.IsVisible();
+        }
+
         public void ToggleInventoryWindow()
         {
             if (mInventoryWindow.IsVisible())
@@ -199,6 +241,11 @@ namespace Intersect.Client.Interface.Game
                 HideWindows();
                 mInventoryWindow.Show();
             }
+        }
+
+        public void OpenInventory()
+        {
+            mInventoryWindow.Show();
         }
 
         public void TogglePartyWindow()
@@ -254,6 +301,18 @@ namespace Intersect.Client.Interface.Game
         private void FriendsBtn_Clicked(Base sender, ClickedEventArgs arguments)
         {
             ToggleFriendsWindow();
+        }
+
+        private void GuildBtn_Clicked(Base sender, ClickedEventArgs arguments)
+        {
+            if (!string.IsNullOrEmpty(Globals.Me.Guild))
+            {
+                ToggleGuildWindow();
+            }
+            else
+            {
+                ChatboxMsg.AddMessage(new ChatboxMsg(Strings.Guild.NotInGuild, CustomColors.Alerts.Error));
+            }
         }
 
         private void QuestBtn_Clicked(Base sender, ClickedEventArgs arguments)

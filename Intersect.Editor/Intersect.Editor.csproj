@@ -98,6 +98,12 @@
     <Compile Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeHair.Designer.cs">
       <DependentUpon>EventCommand_ChangeHair.cs</DependentUpon>
     </Compile>
+	<Compile Include="Forms\Editors\Events\Event Commands\EventCommand_CreateGuild.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Editors\Events\Event Commands\EventCommand_CreateGuild.Designer.cs">
+      <DependentUpon>EventCommand_CreateGuild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Maps\MapGridItem.cs" />
     <Compile Include="Maps\MapSaveState.cs" />
     <Compile Include="Forms\Controls\SearchableDarkTreeView.cs">
@@ -668,6 +674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\Events\Event Commands\EventCommand_ChangePlayerLabel.resx">
       <DependentUpon>EventCommand_ChangePlayerLabel.cs</DependentUpon>
+    </EmbeddedResource>
+	<EmbeddedResource Include="Forms\Editors\Events\Event Commands\EventCommand_CreateGuild.resx">
+      <DependentUpon>EventCommand_CreateGuild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Editors\Events\Event Commands\EventCommand_ChangeNameColor.resx">
       <DependentUpon>EventCommand_ChangeNameColor.cs</DependentUpon>

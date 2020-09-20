@@ -713,6 +713,9 @@ namespace Intersect.Editor.Forms.Editors.Events
                     break;
                 case EventCommandType.ShowPlayer:
                     tmpCommand = new ShowPlayerCommand();
+					break;
+                case EventCommandType.CreateGuild:
+                    tmpCommand = new CreateGuildCommand(CurrentPage.CommandLists);
 
                     break;
                 default:
@@ -1285,6 +1288,10 @@ namespace Intersect.Editor.Forms.Editors.Events
                     break;
                 case EventCommandType.EndQuest:
                     cmdWindow = new EventCommandEndQuest((EndQuestCommand) command, this);
+				break;
+
+                case EventCommandType.CreateGuild:
+                    cmdWindow = new EventCommandCreateGuild((CreateGuildCommand) command, CurrentPage, this);
 
                     break;
                 default:

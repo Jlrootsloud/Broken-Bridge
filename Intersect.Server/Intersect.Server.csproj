@@ -431,6 +431,7 @@
     <Compile Include="Database\PlayerData\Api\RefreshToken.cs" />
     <Compile Include="Database\PlayerData\Ban.cs" />
     <Compile Include="Database\PlayerData\Players\Bag.cs" />
+	 <Compile Include="Database\PlayerData\Players\Guild.cs" />
     <Compile Include="Database\PlayerData\Players\BagSlot.cs" />
     <Compile Include="Database\PlayerData\Players\BankSlot.cs" />
     <Compile Include="Database\PlayerData\Players\Friend.cs" />

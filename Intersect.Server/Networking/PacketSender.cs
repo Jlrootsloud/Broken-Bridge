@@ -21,7 +21,7 @@ using Intersect.Server.Entities.Events;
 using Intersect.Server.General;
 using Intersect.Server.Localization;
 using Intersect.Server.Maps;
-
+using Microsoft.Diagnostics.Runtime.Interop;
 using JetBrains.Annotations;
 
 namespace Intersect.Server.Networking
@@ -663,7 +663,17 @@ namespace Intersect.Server.Networking
                 }
             }
         }
-
+//ChatMsgPacket
+        public static void SendGuildMsg(Player player, string message, Color clr, string target = "")
+        {
+            foreach (var p in player.Guild.FindOnlineMembers())
+            {
+                if (p != null)
+                {
+                    SendChatMsg(p, message, clr, target);
+                }
+            }
+        }
         //ChatMsgPacket
         public static void SendPartyMsg(Player player, string message, Color clr, string target = "")
         {
@@ -1835,6 +1845,41 @@ namespace Intersect.Server.Networking
         public static void SendFriendRequest(Player player, Player partner)
         {
             player.SendPacket(new FriendRequestPacket(partner.Id, partner.Name));
+        }
+		
+		 //GuildRequestPacket
+        public static void SendGuildInvite(Player player, Player from)
+        {
+            player.SendPacket(new GuildInvitePacket(from.Name, from.Guild.Name));
+        }
+
+
+        // Send a player their guild member list.
+      
+        public static void SendGuild(Player player)
+        {
+            if (player == null || player.Guild == null)
+            {
+                return;
+            }
+
+            var online = new Dictionary<string, string>();
+            var offline = new Dictionary<string, string>();
+
+            var onlineMembers = player.Guild.FindOnlineMembers();
+            foreach (var member in player.Guild.Members)
+            {
+                if (onlineMembers.Contains(member))
+                {
+                    online.Add(member.Name, Strings.Guilds.RankNames[member.GuildRank]);
+                }
+                else
+                {
+                    offline.Add(member.Name, Strings.Guilds.RankNames[member.GuildRank]);
+                }
+            }
+
+            player.SendPacket(new GuildPacket(online, offline));
         }
 
         //PasswordResetResultPacket

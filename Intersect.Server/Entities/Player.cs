@@ -121,6 +121,14 @@ namespace Intersect.Server.Entities
         [NotMapped]
         public long ExperienceToNextLevel => GetExperienceToNextLevel(Level);
 
+        // Guilds
+        public Guild Guild { get; set; }
+
+        public GuildRanks GuildRank { get; set; }
+
+        [NotMapped]
+        public Tuple<Player, Guild> GuildInvite { get; set; }
+
         public static Player FindOnline(Guid id)
         {
             return OnlinePlayers.ContainsKey(id) ? OnlinePlayers[id] : null;
@@ -561,7 +569,7 @@ namespace Intersect.Server.Entities
             var pkt = (PlayerEntityPacket) packet;
             pkt.Gender = Gender;
             pkt.ClassId = ClassId;
-
+			pkt.Guild = Guild?.Name;
             if (Power.IsAdmin)
             {
                 pkt.AccessLevel = (int) Access.Admin;
@@ -1121,7 +1129,7 @@ namespace Intersect.Server.Entities
             var friendly = spell?.Combat != null && spell.Combat.Friendly;
             switch (entity)
             {
-                case Player player when friendly != player.InParty(this):
+                  case Player player when friendly != player.InParty(this) || (!Options.Guild.AllowGuildMemberPvP && friendly != (player.Guild == this.Guild)):
                 case Resource _ when spell != null:
                     return false;
                 case Npc npc:
@@ -3491,6 +3499,24 @@ namespace Intersect.Server.Entities
             if (friend != null)
             {
                 Friends.Remove(friend);
+            }
+        }
+  // Guilds
+        public void SendGuildInvite(Player from)
+        {
+            // Are we already in a guild? or have a pending invite?
+            if (Guild == null && GuildInvite == null)
+            {
+                // Thank god, we can FINALLY get started!
+                // Set our invite and send our players the relevant messages.
+                GuildInvite = new Tuple<Player, Guild>(from, from.Guild);
+
+                PacketSender.SendChatMsg(from, Strings.Guilds.InviteSent.ToString(Name, from.Guild.Name), CustomColors.Alerts.Info);
+                PacketSender.SendGuildInvite(this, from);
+            }
+            else
+            {
+                PacketSender.SendChatMsg(from, Strings.Guilds.InviteAlreadyInGuild, CustomColors.Alerts.Error);
             }
         }
 
