@@ -718,6 +718,11 @@ namespace Intersect.Editor.Forms.Editors.Events
                     tmpCommand = new CreateGuildCommand(CurrentPage.CommandLists);
 
                     break;
+
+                case EventCommandType.ChangeItemsByTag:
+                    tmpCommand = new ChangeItemsByTag(CurrentPage.CommandLists);
+
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -1292,6 +1297,10 @@ namespace Intersect.Editor.Forms.Editors.Events
 
                 case EventCommandType.CreateGuild:
                     cmdWindow = new EventCommandCreateGuild((CreateGuildCommand) command, CurrentPage, this);
+
+                    break;
+                case EventCommandType.ChangeItemsByTag:
+                    cmdWindow = new EventCommandChangeItemsBytag((ChangeItemsByTag)command, CurrentPage, this);
 
                     break;
                 default:

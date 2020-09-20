@@ -162,6 +162,7 @@ namespace Intersect.Editor.Forms.Editors
             }
 
             lblDesc.Text = Strings.ItemEditor.description;
+            lblTag.Text = Strings.ItemEditor.tag;
             lblPic.Text = Strings.ItemEditor.picture;
             lblPrice.Text = Strings.ItemEditor.price;
             lblAnim.Text = Strings.ItemEditor.animation;
@@ -273,6 +274,7 @@ namespace Intersect.Editor.Forms.Editors
                 txtName.Text = mEditorItem.Name;
                 cmbFolder.Text = mEditorItem.Folder;
                 txtDesc.Text = mEditorItem.Description;
+                txtTag.Text = String.Join(";", mEditorItem.Tags);
                 cmbType.SelectedIndex = (int) mEditorItem.ItemType;
                 cmbPic.SelectedIndex = cmbPic.FindString(TextUtils.NullToNone(mEditorItem.Icon));
                 cmbEquipmentAnimation.SelectedIndex = AnimationBase.ListIndex(mEditorItem.EquipmentAnimationId) + 1;
@@ -513,6 +515,20 @@ namespace Intersect.Editor.Forms.Editors
         private void txtDesc_TextChanged(object sender, EventArgs e)
         {
             mEditorItem.Description = txtDesc.Text;
+        }
+
+        private void txtTag_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                mEditorItem.Tags.Clear();
+                mEditorItem.Tags.AddRange(txtTag.Text.Split(';'));
+            }
+            catch
+            {
+                MessageBox.Show(Strings.ItemEditor.tagparseerror, Strings.ItemEditor.tagparseerrortitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
 
         private void cmbEquipmentSlot_SelectedIndexChanged(object sender, EventArgs e)
@@ -1135,7 +1151,6 @@ namespace Intersect.Editor.Forms.Editors
         }
 
         #endregion
-
     }
 
 }

@@ -1048,7 +1048,47 @@ namespace Intersect.Client.Networking
                 Globals.Me.ExperienceToNextLevel = packet.ExperienceToNextLevel;
             }
         }
+        private static void HandlePacket(FarmingExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.FarmingExperience = packet.FarmingExperience;
+                Globals.Me.ExperienceToFarmingNextLevel = packet.ExperienceToFarmingNextLevel;
 
+             
+            }
+        }
+
+        private static void HandlePacket(MiningExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.MiningExperience = packet.MiningExperience;
+                Globals.Me.ExperienceToMiningNextLevel = packet.ExperienceToMiningNextLevel;
+
+
+            }
+        }
+        private static void HandlePacket(FishingExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.FishingExperience = packet.FishingExperience;
+                Globals.Me.ExperienceToFishingNextLevel = packet.ExperienceToFishingNextLevel;
+
+
+            }
+        }
+        private static void HandlePacket(WoodExperiencePacket packet)
+        {
+            if (Globals.Me != null)
+            {
+                Globals.Me.WoodExperience = packet.WoodExperience;
+                Globals.Me.ExperienceToWoodNextLevel = packet.ExperienceToWoodNextLevel;
+
+
+            }
+        }
         //ProjectileDeadPacket
         private static void HandlePacket(ProjectileDeadPacket packet)
         {
@@ -1219,11 +1259,26 @@ namespace Intersect.Client.Networking
             {
                 Globals.ActiveCraftingTable = new CraftingTableBase();
                 Globals.ActiveCraftingTable.Load(packet.TableData);
+                Globals.ActiveCraftingTableReqs = packet.ReqCheck;
                 Interface.Interface.GameUi.NotifyOpenCraftingTable();
             }
             else
             {
                 Interface.Interface.GameUi.NotifyCloseCraftingTable();
+            }
+        }
+
+        //CraftStartPacket
+        private static void HandlePacket(CraftStartPacket packet)
+        {
+            if (!packet.Canstart)
+            {
+                Globals.canCraftrq = false;
+            }
+            else
+            {
+                Globals.canCraftrq = true;
+                Globals.canCraftitem = packet.CraftData;
             }
         }
 

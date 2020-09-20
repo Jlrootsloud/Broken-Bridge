@@ -89,6 +89,7 @@ namespace Intersect.Server.Migrations
                     Sprite = table.Column<string>(nullable: true),
                     Face = table.Column<string>(nullable: true),
                     Level = table.Column<int>(nullable: false),
+                    FarmingLevel = table.Column<int>(nullable: false),
                     Vitals = table.Column<string>(nullable: true),
                     BaseStats = table.Column<string>(nullable: true),
                     StatPointAllocations = table.Column<string>(nullable: true),
@@ -97,6 +98,7 @@ namespace Intersect.Server.Migrations
                     ClassId = table.Column<Guid>(nullable: false),
                     Gender = table.Column<int>(nullable: false),
                     Exp = table.Column<long>(nullable: false),
+                    FarmingExp = table.Column<long>(nullable: false),
                     StatPoints = table.Column<int>(nullable: false),
                     Equipment = table.Column<string>(nullable: true),
                     LastOnline = table.Column<DateTime>(nullable: true)

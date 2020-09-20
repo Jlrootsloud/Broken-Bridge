@@ -75,6 +75,13 @@ namespace Intersect.Server.Entities
         public string Face { get; set; }
 
         public int Level { get; set; }
+       
+        public int FarmingLevel { get; set; }
+
+        public int MiningLevel { get; set; }
+        public int FishingLevel { get; set; }
+        public int WoodLevel { get; set; }
+
 
         [JsonIgnore, Column("Vitals")]
         public string VitalsJson
@@ -2704,6 +2711,10 @@ namespace Intersect.Server.Entities
             packet.Sprite = Sprite;
             packet.Face = Face;
             packet.Level = Level;
+            packet.FarmingLevel = FarmingLevel;
+            packet.MiningLevel = MiningLevel;
+            packet.FishingLevel = FishingLevel;
+            packet.WoodLevel = WoodLevel;
             packet.X = (byte) X;
             packet.Y = (byte) Y;
             packet.Z = (byte) Z;

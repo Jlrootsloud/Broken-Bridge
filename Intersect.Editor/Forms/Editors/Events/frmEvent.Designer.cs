@@ -65,9 +65,12 @@ namespace Intersect.Editor.Forms.Editors.Events
             System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Change Level");
             System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Change Spells");
             System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Change Items");
+
             System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Change Sprite");
             System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Change Face");
             System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Change Hair");
+
+            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("Change Items By Tag");
             System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Change Gender");
             System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Set Access");
             System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Change Class");
@@ -861,6 +864,7 @@ namespace Intersect.Editor.Forms.Editors.Events
             treeNode20.Name = "changeitems";
             treeNode20.Tag = "18";
             treeNode20.Text = "Change Items";
+
             treeNode21.Name = "changesprite";
             treeNode21.Tag = "19";
             treeNode21.Text = "Change Sprite";
@@ -870,6 +874,13 @@ namespace Intersect.Editor.Forms.Editors.Events
             treeNode23.Name = "changehair";
             treeNode23.Tag = "51";
             treeNode23.Text = "Change Hair";
+
+            treeNode59.Name = "changeitemsbytag";
+            treeNode59.Tag = "52";
+            treeNode59.Text = "Change Items By Tag";
+            treeNode22.Name = "changesprite";
+            
+
             treeNode24.Name = "changegender";
             treeNode24.Tag = "21";
             treeNode24.Text = "Change Gender";

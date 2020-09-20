@@ -32,7 +32,8 @@ namespace Intersect.Server.Networking
 
         //Cached GameDataPacket that gets sent to clients
         public static GameDataPacket CachedGameDataPacket = null;
-
+        //reqcheck
+        public static string reqcheck;
         //PingPacket
         public static void SendPing(Client client, bool request = true)
         {
@@ -334,6 +335,10 @@ namespace Intersect.Server.Networking
             if (en == player)
             {
                 SendExperience(player);
+                SendFarmingExperience(player);
+                SendMiningExperience(player);
+                SendFishingExperience(player);
+                SendWoodExperience(player);
                 SendInventory(player);
                 SendPlayerSpells(player);
                 SendPointsTo(player);
@@ -1251,6 +1256,32 @@ namespace Intersect.Server.Networking
         public static void SendExperience(Player player)
         {
             player.SendPacket(new ExperiencePacket(player.Exp, player.ExperienceToNextLevel));
+           
+        }
+        public static void SendFarmingExperience(Player player)
+        {
+           
+            player.SendPacket(new FarmingExperiencePacket(player.FarmingExp, player.ExperienceToFarmingNextLevel));
+           
+        }
+
+        public static void SendMiningExperience(Player player)
+        {
+
+            player.SendPacket(new MiningExperiencePacket(player.MiningExp, player.ExperienceToMiningNextLevel));
+
+        }
+        public static void SendFishingExperience(Player player)
+        {
+
+            player.SendPacket(new FishingExperiencePacket(player.FishingExp, player.ExperienceToFishingNextLevel));
+
+        }
+        public static void SendWoodExperience(Player player)
+        {
+
+            player.SendPacket(new WoodExperiencePacket(player.WoodExp, player.ExperienceToWoodNextLevel));
+
         }
 
         //PlayAnimationPacket
@@ -1354,14 +1385,37 @@ namespace Intersect.Server.Networking
         {
             if (table != null)
             {
-                player.SendPacket(new CraftingTablePacket(table.JsonData, false));
+                reqcheck = "";
+                for (var i = 0; i < table?.Crafts?.Count; ++i)
+                {
+                    if (!Conditions.MeetsConditionLists(CraftBase.Get(table.Crafts[i]).CraftRequirements, player, null))
+                    {
+                        reqcheck += i + "-";
+                    }
+                }
+                player.SendPacket(new CraftingTablePacket(table.JsonData, false, reqcheck));
             }
         }
 
-        //CraftingTablePacket
+       //CraftingTablePacket
         public static void SendCloseCraftingTable(Player player)
         {
-            player.SendPacket(new CraftingTablePacket(null, true));
+            player.SendPacket(new CraftingTablePacket(null, true, null));
+        }
+
+        //CraftStartPacket
+        public static void SendStartCraft(Player player, Guid craft)
+        {
+            if (craft != null)
+            {
+                player.SendPacket(new CraftStartPacket(craft, true));
+            }
+        }
+
+        //CraftStartPacket
+        public static void SendStartCraft(Player player)
+        {
+            player.SendPacket(new CraftStartPacket(Guid.Empty, false));
         }
 
         //BankUpdatePacket

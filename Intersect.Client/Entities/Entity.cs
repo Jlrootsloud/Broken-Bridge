@@ -103,6 +103,13 @@ namespace Intersect.Client.Entities
 
         public int Level = 1;
 
+        public int FarmingLevel = 1;
+        public int MiningLevel = 1;
+        public int FishingLevel = 1;
+        public int WoodLevel = 1;
+
+        public int HauntLevel = 1;
+
         //Vitals & Stats
         public int[] MaxVital = new int[(int) Vitals.VitalCount];
 
@@ -151,6 +158,7 @@ namespace Intersect.Client.Entities
         public Spell[] Spells = new Spell[Options.MaxPlayerSkills];
 
         public int[] Stat = new int[(int) Stats.StatCount];
+        public int[] Skill = new int[(int)Skills.SkillCount];
 
         public int Target = -1;
 
@@ -283,6 +291,10 @@ namespace Intersect.Client.Entities
             MySprite = packet.Sprite;
             Face = packet.Face;
             Level = packet.Level;
+            FarmingLevel = packet.FarmingLevel;
+            MiningLevel = packet.MiningLevel;
+            FishingLevel = packet.FishingLevel;
+            WoodLevel = packet.WoodLevel;
             X = packet.X;
             Y = packet.Y;
             Z = packet.Z;
@@ -435,11 +447,10 @@ namespace Intersect.Client.Entities
         }
 
         public virtual bool IsDisposed()
-        {/* Cambio chingon aca perro
+        {
             bool temp = mDisposed;
             mDisposed = false;
-            return temp;*/
-            return mDisposed;
+            return temp;
         }
 
         public virtual void Dispose()
