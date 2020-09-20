@@ -99,7 +99,7 @@ namespace Intersect.Client.Interface.Game
 
             foreach (var f in Globals.Me.GuildMembers)
             {
-                var row = mGuildMembers.AddRow(f.Name + " - " + f.Rank + " - " + f.Map);
+                var row = mGuildMembers.AddRow(f.Name + " - " + f.Rank /*+ " - " + f.Map*/);
                 row.UserData = f.Name;
                 row.Clicked += member_Clicked;
 

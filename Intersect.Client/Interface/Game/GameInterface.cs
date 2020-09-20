@@ -17,7 +17,7 @@ using JetBrains.Annotations;
 namespace Intersect.Client.Interface.Game
 {
 
-    public class GameInterface : MutableInterface
+    public class GameInterface 
     {
 
         public bool FocusChat;
@@ -81,7 +81,7 @@ namespace Intersect.Client.Interface.Game
 
         public EntityBox PlayerBox;
 
-        public GameInterface([NotNull] Canvas canvas) : base(canvas)
+        public GameInterface([NotNull] Canvas canvas) 
         {
             GameCanvas = canvas;
             EscapeMenu = new EscapeMenu(GameCanvas) {IsHidden = true};
