@@ -3517,7 +3517,7 @@ namespace Intersect.Server.Entities
                 }
             }
 
-            if (Party.Count < 4)
+            if (Party.Count < 10)
             {
                 target.LeaveParty();
                 Party.Add(target);

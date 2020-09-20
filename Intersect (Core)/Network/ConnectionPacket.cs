@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-using Ceras;
-
-using JetBrains.Annotations;
-
 #if INTERSECT_DIAGNOSTIC
 using Intersect.Logging;
 #endif
@@ -17,9 +13,7 @@ namespace Intersect.Network
 
         protected const int SIZE_HANDSHAKE_SECRET = 32;
 
-        protected RSACryptoServiceProvider mRsa;
-
-        private byte[] mEncryptedData;
+        protected readonly RSACryptoServiceProvider mRsa;
 
         protected byte[] mHandshakeSecret;
 
@@ -34,24 +28,11 @@ namespace Intersect.Network
             mHandshakeSecret = handshakeSecret;
         }
 
-        [Exclude]
         public byte[] HandshakeSecret
         {
             get => mHandshakeSecret;
             set => mHandshakeSecret = value;
         }
-
-        [Include, NotNull]
-        protected byte[] EncryptedData
-        {
-            get => mEncryptedData;
-
-            set => mEncryptedData = value;
-        }
-
-        public abstract bool Encrypt();
-
-        public abstract bool Decrypt([NotNull] RSACryptoServiceProvider rsa);
 
         protected static void DumpKey(RSAParameters parameters, bool isPublic)
         {
