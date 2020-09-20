@@ -485,34 +485,9 @@
     <Compile Include="Migrations\20200402173703_PlayerHair_PlayerEdits.designer.cs">
       <DependentUpon>20200402173703_PlayerHair_PlayerEdits.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200815181407_FarmingSkill.cs" />
-    <Compile Include="Migrations\20200815181407_FarmingSkill.designer.cs">
-      <DependentUpon>20200815181407_FarmingSkill.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200816040937_PrincipalSkills.cs" />
-    <Compile Include="Migrations\20200816040937_PrincipalSkills.designer.cs">
-      <DependentUpon>20200816040937_PrincipalSkills.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Game\20200402142818_PlayerHair_ClassEdits.cs" />
     <Compile Include="Migrations\Game\20200402142818_PlayerHair_ClassEdits.designer.cs">
       <DependentUpon>20200402142818_PlayerHair_ClassEdits.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Game\20200404164233_ExtendedCraftingNew.cs" />
-    <Compile Include="Migrations\Game\20200404164233_ExtendedCraftingNew.designer.cs">
-      <DependentUpon>20200404164233_ExtendedCraftingNew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Game\20200404174804_CraftRequirementsv2.cs" />
-    <Compile Include="Migrations\Game\20200404174804_CraftRequirementsv2.designer.cs">
-      <DependentUpon>20200404174804_CraftRequirementsv2.cs</DependentUpon>
- </Compile>
-    <Compile Include="Migrations\Game\20200423004850_AddingTagSystem.cs" />
-    <Compile Include="Migrations\Game\20200423004850_AddingTagSystem.designer.cs">
-      <DependentUpon>20200423004850_AddingTagSystem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Game\20200424140012_MapTags.cs" />
-    <Compile Include="Migrations\Game\20200424140012_MapTags.designer.cs">
-      <DependentUpon>20200424140012_MapTags.cs</DependentUpon>
-
     </Compile>
     <Compile Include="Networking\Client.cs" />
     <Compile Include="Entities\Npc.cs" />
@@ -756,7 +731,6 @@
     <Compile Include="Web\RestApi\Types\DataPage.cs" />
     <Compile Include="Web\Utilities\HeaderHelper.cs" />
   </ItemGroup>
-	
   <ItemGroup>
     <EmbeddedResource Include="private-intersect.bek" />
     <None Include="app.config" />

@@ -4,20 +4,16 @@
     public class CraftingTablePacket : CerasPacket
     {
 
-        public CraftingTablePacket(string tableData, bool close, string reqcheck)
+        public CraftingTablePacket(string tableData, bool close)
         {
             TableData = tableData;
             Close = close;
-            ReqCheck = reqcheck;
         }
 
         public string TableData { get; set; }
 
         public bool Close { get; set; }
 
-        public string ReqCheck { get; set; }
-
     }
 
 }
-

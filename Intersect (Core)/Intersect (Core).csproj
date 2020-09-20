@@ -222,21 +222,16 @@
     <Compile Include="Config\Passability.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="Config\SmtpSettings.cs" />
-    <Compile Include="Enums\CustomSpriteLayers.cs" />
+	<Compile Include="Enums\CustomSpriteLayers.cs" />
     <Compile Include="CustomColors.cs" />
     <Compile Include="Enums\ItemHandling.cs" />
-
-    <Compile Include="Enums\DisplayLevelStyles.cs" />
-
-    <Compile Include="Enums\TagType.cs" />
-
-    <Compile Include="ErrorHandling\ExceptionInfo.cs" />
+	<Compile Include="Enums\DisplayLevelStyles.cs" />
+	<Compile Include="ErrorHandling\ExceptionInfo.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
     <Compile Include="Extensions\LogLevelExtensions.cs" />
-    <Compile Include="GameObjects\SkillBase.cs" />
     <Compile Include="GameObjects\Events\VariableMod.cs" />
     <Compile Include="GameObjects\Switches and Variables\VariableValue.cs" />
     <Compile Include="IO\ConsoleContext.cs" />
@@ -292,7 +287,6 @@
     <Compile Include="Enums\SpellTargetTypes.cs" />
     <Compile Include="Enums\SpellTypes.cs" />
     <Compile Include="Enums\Stats.cs" />
-    <Compile Include="Enums\Skills.cs" />
     <Compile Include="Enums\StatusTypes.cs" />
     <Compile Include="Enums\SwitchVariableTypes.cs" />
     <Compile Include="Enums\TargetTypes.cs" />
@@ -323,7 +317,6 @@
     <Compile Include="Network\Packets\Client\CloseBagPacket.cs" />
     <Compile Include="Network\Packets\Client\CloseBankPacket.cs" />
     <Compile Include="Network\Packets\Client\CloseCraftingPacket.cs" />
-    <Compile Include="Network\Packets\Client\CraftRequestPacket.cs" />
     <Compile Include="Network\Packets\Client\CloseShopPacket.cs" />
     <Compile Include="Network\Packets\Client\CraftItemPacket.cs" />
     <Compile Include="Network\Packets\Client\CreateAccountPacket.cs" />
@@ -349,10 +342,6 @@
     <Compile Include="Network\Packets\Client\HotbarUpdatePacket.cs" />
     <Compile Include="Network\Packets\Client\LoginPacket.cs" />
     <Compile Include="Network\Packets\Client\LogoutPacket.cs" />
-    <Compile Include="Network\Packets\Server\WoodExperiencePacket.cs" />
-    <Compile Include="Network\Packets\Server\FishingExperiencePacket.cs" />
-    <Compile Include="Network\Packets\Server\MiningExperiencePacket.cs" />
-    <Compile Include="Network\Packets\Server\FarmingExperiencePacket.cs" />
     <Compile Include="Network\Packets\SlotQuantityPacket.cs" />
     <Compile Include="Network\Packets\Client\SwapBankItemsPacket.cs" />
     <Compile Include="Network\Packets\Client\MovePacket.cs" />
@@ -410,7 +399,7 @@
     <Compile Include="Network\Packets\Server\BagPacket.cs" />
     <Compile Include="Network\Packets\Server\BagUpdatePacket.cs" />
     <Compile Include="Network\Packets\Server\BankPacket.cs" />
-    <Compile Include="Network\Packets\Server\CustomSpriteLayersPacket.cs" />
+	<Compile Include="Network\Packets\Server\CustomSpriteLayersPacket.cs" />
     <Compile Include="Network\Packets\Server\BankUpdatePacket.cs" />
     <Compile Include="Network\Packets\Server\CharacterPacket.cs" />
     <Compile Include="Network\Packets\Server\CharactersPacket.cs" />
@@ -445,7 +434,6 @@
     <Compile Include="Network\Packets\Server\CharacterCreationPacket.cs" />
     <Compile Include="Network\Packets\Server\ChatMsgPacket.cs" />
     <Compile Include="Network\Packets\Server\ConfigPacket.cs" />
-    <Compile Include="Network\Packets\Server\CraftStartPacket.cs" />
     <Compile Include="Network\Packets\Server\EntityAttackPacket.cs" />
     <Compile Include="Network\Packets\Server\EntityDirectionPacket.cs" />
     <Compile Include="Network\Packets\Server\EntityLeftPacket.cs" />

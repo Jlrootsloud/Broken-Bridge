@@ -33,22 +33,8 @@ namespace Intersect.Client.Entities
         public Guid Class;
 
         public long Experience = 0;
+
         public long ExperienceToNextLevel = 0;
-        public long FarmingExperience = 0;
-             
-        public long ExperienceToFarmingNextLevel = 0;
-
-        public long MiningExperience = 0;
-
-        public long ExperienceToMiningNextLevel = 0;
-
-        public long FishingExperience = 0;
-
-        public long ExperienceToFishingNextLevel = 0;
-
-        public long WoodExperience = 0;
-
-        public long ExperienceToWoodNextLevel = 0;
 
         public List<FriendInstance> Friends = new List<FriendInstance>();
   /// <summary>
@@ -1458,23 +1444,6 @@ namespace Intersect.Client.Entities
             return ExperienceToNextLevel;
         }
 
-        public long GetNextFarmingLevelExperience()
-        {
-            return ExperienceToFarmingNextLevel;
-        }
-
-        public long GetNextMiningLevelExperience()
-        {
-            return ExperienceToMiningNextLevel;
-        }
-        public long GetNextFishingLevelExperience()
-        {
-            return ExperienceToFishingNextLevel;
-        }
-        public long GetNextWoodLevelExperience()
-        {
-            return ExperienceToWoodNextLevel;
-        }
         public override int CalculateAttackTime()
         {
             ItemBase weapon = null;
@@ -2241,7 +2210,7 @@ namespace Intersect.Client.Entities
 
             var srcRectangle = new FloatRect();
             var destRectangle = new FloatRect();
-            var d = 0;
+            var dir = 0;
 
             var texture = CustomSpriteLayersAnimationTexture[SpriteAnimation][(int)layer] ?? CustomSpriteLayersTexture[(int)layer];
 
@@ -2262,24 +2231,36 @@ namespace Intersect.Client.Entities
                 switch (Dir)
                 {
                     case 0:
-                        d = 3;
+                        dir = 3;
 
                         break;
                     case 1:
-                        d = 0;
+                        dir = 0;
 
                         break;
                     case 2:
-                        d = 1;
+                        dir = 1;
 
                         break;
                     case 3:
-                        d = 2;
-
+                        dir = 2;
                         break;
+                    case 4:
+                        dir = 1;
+                        break;
+                    case 5:
+                        dir = 2;
+                        break;
+                    case 6:
+                        dir = 1;
+                        break;
+                    case 7:
+                        dir = 2;
+                        break;
+                    
                     default:
                         Dir = 0;
-                        d = 3;
+                        dir = 3;
 
                         break;
                 }
@@ -2289,7 +2270,7 @@ namespace Intersect.Client.Entities
                 if (Options.AnimatedSprites.Contains(CustomSpriteLayers[(int)layer].ToLower()))
                 {
                     srcRectangle = new FloatRect(
-                        AnimationFrame * (int)texture.GetWidth() / 4, d * (int)texture.GetHeight() / 4,
+                        AnimationFrame * (int)texture.GetWidth() / 4, dir * (int)texture.GetHeight() / 4,
                         (int)texture.GetWidth() / 4, (int)texture.GetHeight() / 4
                     );
                 }
@@ -2301,7 +2282,7 @@ namespace Intersect.Client.Entities
                         if (AttackTimer - CalculateAttackTime() / 2 > Globals.System.GetTimeMs() || Blocking)
                         {
                             srcRectangle = new FloatRect(
-                                3 * (int)texture.GetWidth() / 4, d * (int)texture.GetHeight() / 4,
+                                3 * (int)texture.GetWidth() / 4, dir * (int)texture.GetHeight() / 4,
                                 (int)texture.GetWidth() / 4, (int)texture.GetHeight() / 4
                             );
                         }
@@ -2309,7 +2290,7 @@ namespace Intersect.Client.Entities
                         {
                             //Restore Original Attacking/Blocking Code
                             srcRectangle = new FloatRect(
-                                WalkFrame * (int)texture.GetWidth() / 4, d * (int)texture.GetHeight() / 4,
+                                WalkFrame * (int)texture.GetWidth() / 4, dir * (int)texture.GetHeight() / 4,
                                 (int)texture.GetWidth() / 4, (int)texture.GetHeight() / 4
                             );
                         }
@@ -2317,7 +2298,7 @@ namespace Intersect.Client.Entities
                     else
                     {
                         srcRectangle = new FloatRect(
-                            SpriteFrame * (int)texture.GetWidth() / 4, d * (int)texture.GetHeight() / 4,
+                            SpriteFrame * (int)texture.GetWidth() / 4, dir * (int)texture.GetHeight() / 4,
                             (int)texture.GetWidth() / 4, (int)texture.GetHeight() / 4
                         );
                     }

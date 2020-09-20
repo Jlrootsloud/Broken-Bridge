@@ -12,7 +12,6 @@ using Intersect.Editor.Networking;
 using Intersect.Enums;
 using Intersect.GameObjects;
 using Intersect.GameObjects.Events;
-using Intersect.Logging;
 
 namespace Intersect.Editor.Forms.Editors.Quest
 {
@@ -104,29 +103,12 @@ namespace Intersect.Editor.Forms.Editors.Quest
         {
             foreach (var item in mChanged)
             {
-                if (item == null)
-                {
-                    Log.Warn($"Unexpected null: {nameof(FrmQuest)}.{nameof(btnCancel_Click)}() {nameof(item)}");
-                }
-                else
-                {
-                    if (item.StartEvent == null)
-                    {
-                        Log.Warn($"Unexpected null: {nameof(FrmQuest)}.{nameof(btnCancel_Click)}() {nameof(item)}.{nameof(item.StartEvent)}");
-                    }
-
-                    if (item.EndEvent == null)
-                    {
-                        Log.Warn($"Unexpected null: {nameof(FrmQuest)}.{nameof(btnCancel_Click)}() {nameof(item)}.{nameof(item.EndEvent)}");
-                    }
-                }
-
-                item?.StartEvent?.RestoreBackup();
-                item?.StartEvent?.DeleteBackup();
-                item?.EndEvent?.RestoreBackup();
-                item?.EndEvent?.DeleteBackup();
-                item?.RestoreBackup();
-                item?.DeleteBackup();
+                item.StartEvent.RestoreBackup();
+                item.StartEvent.DeleteBackup();
+                item.EndEvent.RestoreBackup();
+                item.EndEvent.DeleteBackup();
+                item.RestoreBackup();
+                item.DeleteBackup();
             }
 
             mEditorItem = null;

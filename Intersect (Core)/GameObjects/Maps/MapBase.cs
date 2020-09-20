@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -39,22 +38,6 @@ namespace Intersect.GameObjects.Maps
 
         //SyncLock
         [JsonIgnore] [NotMapped] protected object mMapLock = new object();
-
-        [NotMapped]
-        public List<String> Tags = new List<String>();
-
-        [Column("Tag")]
-        [JsonIgnore]
-        public string JsonTags
-        {
-            get => JsonConvert.SerializeObject(Tags);
-            set => Tags = JsonConvert.DeserializeObject<List<String>>(value ?? "[]");
-        }
-
-        [JsonIgnore, NotMapped]
-        public static string[] AllTags => Lookup
-            .SelectMany(pair => ((MapBase)pair.Value)?.Tags)
-            .Distinct().OrderBy(t => t).ToArray();
 
         [JsonConstructor]
         public MapBase(Guid id) : base(id)

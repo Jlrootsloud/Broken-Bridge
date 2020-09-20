@@ -353,14 +353,6 @@ namespace Intersect.Server.Migrations
 
                     b.Property<string>("Face");
 
-                    b.Property<long>("FarmingExp");
-
-                    b.Property<int>("FarmingLevel");
-
-                    b.Property<long>("FishingExp");
-
-                    b.Property<int>("FishingLevel");
-
                     b.Property<string>("FooterLabelJson")
                         .HasColumnName("FooterLabel");
 
@@ -379,10 +371,6 @@ namespace Intersect.Server.Migrations
                     b.Property<int>("Level");
 
                     b.Property<Guid>("MapId");
-
-                    b.Property<long>("MiningExp");
-
-                    b.Property<int>("MiningLevel");
 
                     b.Property<string>("Name");
 
@@ -406,10 +394,6 @@ namespace Intersect.Server.Migrations
 
                     b.Property<string>("VitalsJson")
                         .HasColumnName("Vitals");
-
-                    b.Property<long>("WoodExp");
-
-                    b.Property<int>("WoodLevel");
 
                     b.Property<int>("X");
 

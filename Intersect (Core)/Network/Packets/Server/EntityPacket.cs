@@ -18,11 +18,6 @@ namespace Intersect.Network.Packets.Server
 
         public int Level { get; set; }
 
-        public int FarmingLevel { get; set; }
-        public int MiningLevel { get; set; }
-        public int FishingLevel { get; set; }
-        public int WoodLevel { get; set; }
-
         public byte X { get; set; }
 
         public byte Y { get; set; }

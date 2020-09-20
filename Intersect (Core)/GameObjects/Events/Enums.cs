@@ -223,16 +223,11 @@
         //Player Label
         PlayerLabel,
 
-
         //Change Hair
         ChangeHair,
 		
 		 // Guilds
         CreateGuild,
-
-        // Take Items By tag
-        ChangeItemsByTag,
-
 
     }
 

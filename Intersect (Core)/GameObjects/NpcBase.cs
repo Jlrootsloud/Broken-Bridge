@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -191,17 +190,6 @@ namespace Intersect.GameObjects
 
         public string Sprite { get; set; } = "";
 
-        [NotMapped]
-        public List<String> Tags = new List<String>();
-
-        [Column("Tag")]
-        [JsonIgnore]
-        public string JsonTags
-        {
-            get => JsonConvert.SerializeObject(Tags);
-            set => Tags = JsonConvert.DeserializeObject<List<String>>(value ?? "[]");
-        }
-
         [Column("Stats")]
         [JsonIgnore]
         public string JsonStat
@@ -218,11 +206,6 @@ namespace Intersect.GameObjects
             get => DatabaseUtils.SaveIntArray(VitalRegen, (int) Vitals.VitalCount);
             set => VitalRegen = DatabaseUtils.LoadIntArray(value, (int) Vitals.VitalCount);
         }
-
-        [JsonIgnore, NotMapped]
-        public static string[] AllTags => Lookup
-            .SelectMany(pair => ((NpcBase)pair.Value)?.Tags)
-            .Distinct().OrderBy(t => t).ToArray();
 
         /// <inheritdoc />
         public string Folder { get; set; } = "";

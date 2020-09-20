@@ -21,10 +21,6 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             mEventEditor = editor;
             InitLocalization();
             nudExperience.Value = mMyCommand.Exp;
-            FarmingXP.Value = mMyCommand.FarmingExp;
-            MiningXP.Value = mMyCommand.MiningExp;
-            FishingXP.Value = mMyCommand.FishingExp;
-            WoodXP.Value = mMyCommand.WoodExp;
         }
 
         private void InitLocalization()
@@ -38,10 +34,6 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
         private void btnSave_Click(object sender, EventArgs e)
         {
             mMyCommand.Exp = (long) nudExperience.Value;
-            mMyCommand.FarmingExp = (long)FarmingXP.Value;
-            mMyCommand.MiningExp = (long)MiningXP.Value;
-            mMyCommand.FishingExp = (long)FishingXP.Value;
-            mMyCommand.WoodExp = (long)WoodXP.Value;
             mEventEditor.FinishCommandEdit();
         }
 
@@ -50,15 +42,6 @@ namespace Intersect.Editor.Forms.Editors.Events.Event_Commands
             mEventEditor.CancelCommandEdit();
         }
 
-        private void nudExperience_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FarmingXP_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

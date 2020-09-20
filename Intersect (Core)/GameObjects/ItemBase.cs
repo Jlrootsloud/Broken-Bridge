@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using Intersect.Enums;
@@ -122,17 +120,6 @@ namespace Intersect.GameObjects
 
         public string Description { get; set; } = "";
 
-        [NotMapped]
-        public List<String> Tags = new List<String>();
-
-        [Column("Tag")]
-        [JsonIgnore]
-        public string JsonTags
-        {
-            get => JsonConvert.SerializeObject(Tags);
-            set => Tags = JsonConvert.DeserializeObject<List<String>>(value ?? "[]");
-        }
-
         public string FemalePaperdoll { get; set; } = "";
 
         public ItemTypes ItemType { get; set; }
@@ -236,11 +223,6 @@ namespace Intersect.GameObjects
         public bool IsStackable => (ItemType == ItemTypes.Currency || Stackable) &&
                                    ItemType != ItemTypes.Equipment &&
                                    ItemType != ItemTypes.Bag;
-
-        [JsonIgnore, NotMapped]
-        public static string[] AllTags => Lookup
-            .SelectMany(pair => ((ItemBase)pair.Value)?.Tags)
-            .Distinct().OrderBy(t => t).ToArray();
 
         /// <inheritdoc />
         public string Folder { get; set; } = "";
