@@ -2384,55 +2384,33 @@ namespace Intersect.Server.Entities
 
                 //Give them the craft
                 var quantity = Math.Max(CraftBase.Get(id).Quantity, 1);
-                var successrate = Math.Max(CraftBase.Get(id).SuccessRate, 1);
                 var itm = ItemBase.Get(CraftBase.Get(id).ItemId);
                 if (itm == null || !itm.IsStackable)
                 {
                     quantity = 1;
                 }
-                // Success Rate Check
-                Random rand = new Random();
-                int result = rand.Next(1, 101);
-                
-                // Craft item if success rate is higher
-                if (result <= successrate)
-                {
-                    if (TryGiveItem(new Item(CraftBase.Get(id).ItemId, quantity)))
-                    {
-                        PacketSender.SendChatMsg(
-                            this, Strings.Crafting.crafted.ToString(ItemBase.GetName(CraftBase.Get(id).ItemId)),
-                            CustomColors.Alerts.Success
-                        );
-                        // trigger craft event
-                        if (CraftBase.Get(id).CraftEventId != Guid.Empty)
-                        {
-                            StartCommonEvent(EventBase.Get(CraftBase.Get(id).CraftEventId), CommonEventTrigger.None);
-                        }
 
-
-                    }
-                    else
-                    {
-                        for (var i = 0; i < invbackup.Count; i++)
-                        {
-                            Items[i].Set(invbackup[i]);
-                        }
-
-                        PacketSender.SendInventory(this);
-                        PacketSender.SendChatMsg(
-                            this, Strings.Crafting.nospace.ToString(ItemBase.GetName(CraftBase.Get(id).ItemId)),
-                            CustomColors.Alerts.Error
-                        );
-                    }
-                }
-                // Else send an craft failed message
-                else
+                if (TryGiveItem(new Item(CraftBase.Get(id).ItemId, quantity)))
                 {
                     PacketSender.SendChatMsg(
-                                this, Strings.Crafting.failed.ToString(ItemBase.GetName(CraftBase.Get(id).ItemId)),
-                                CustomColors.Alerts.Error
-                            );
+                        this, Strings.Crafting.crafted.ToString(ItemBase.GetName(CraftBase.Get(id).ItemId)),
+                        CustomColors.Alerts.Success
+                    );
                 }
+                else
+                {
+                    for (var i = 0; i < invbackup.Count; i++)
+                    {
+                        Items[i].Set(invbackup[i]);
+                    }
+
+                    PacketSender.SendInventory(this);
+                    PacketSender.SendChatMsg(
+                        this, Strings.Crafting.nospace.ToString(ItemBase.GetName(CraftBase.Get(id).ItemId)),
+                        CustomColors.Alerts.Error
+                    );
+                }
+
                 CraftId = Guid.Empty;
             }
         }

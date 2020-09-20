@@ -1056,10 +1056,6 @@ Tick timer saved in server config.json.";
 
             public static LocalizedString undotitle = @"Undo Changes";
 
-            public static LocalizedString craftevent = @"Craft Event";
-
-            public static LocalizedString successrate = @"Success Rate";
-
         }
 
         public struct Directions

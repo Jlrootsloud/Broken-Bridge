@@ -124,9 +124,6 @@ namespace Intersect.Server.Migrations.Game
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("CraftEventId")
-                        .HasColumnName("CraftEvent");
-
                     b.Property<string>("Folder");
 
                     b.Property<string>("IngredientsJson")
@@ -137,9 +134,6 @@ namespace Intersect.Server.Migrations.Game
                     b.Property<string>("Name");
 
                     b.Property<int>("Quantity");
-
-                    b.Property<int>("SuccessRate")
-                        .HasColumnName("SuccessRate");
 
                     b.Property<int>("Time");
 
